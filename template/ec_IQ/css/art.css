@@ -1,0 +1,40 @@
+/*****************************************
+* 作 者：草根前端组
+* 概 要：文章资讯频道
+* 版 本：1.2.1
+* 官方网站：www.cgzyb.com
+* 禁止删除或修改文件声明，违反者视为放弃授权，我们将不提供任何售后服务。
+*****************************************/
+
+/*幻灯片*/
+.artlist-slide .bd ul{width:100%;height:300px}
+.artlist-slide .ec-jakt{opacity: 1!important;width:100%;height:100%}
+.artlist-slide .focus_arrow{position:absolute;top:50%;margin-top:-41px}
+.artlist-slide .next,.artlist-slide .prev{width:40px;height:60px;margin:-40px 0 0;display:none;background:url(../images/ad_ctr.png) no-repeat 0 0;position:absolute;top:50%;z-index:10;cursor:pointer;text-indent:-9999px;opacity:.2}
+.artlist-slide .prev{left:0}
+.artlist-slide .next{background-position:0 -60px;right:0}
+.artlist-slide .hd{width:100%;overflow:hidden;position:absolute;left:0;bottom:20px;z-index:1}
+.artlist-slide .hd ul{padding-right: 20px;text-align:right;display:block;font-size:0;overflow:hidden;zoom:1}
+.artlist-slide .hd .dotList_item{margin:0 5px;display:inline-block;width:12px;height:6px;border-radius:4px;background:#d5d5d5}
+.artlist-slide .hd .dotList_item.on{width:18px;background:#00be06}
+.artlist-slide .title{position:absolute;z-index:1;width:100%;bottom:0;left:0;padding:40px 20px 16px;margin:0;font-size:18px;line-height:26px;font-weight:500;color:#fff;-webkit-box-sizing:border-box;box-sizing:border-box;background:#333;background:-o-linear-gradient(top,transparent,rgba(0,0,0,.7));background:linear-gradient(180deg,transparent,rgba(0,0,0,.7))}
+.artlist-slide .title a{color:#fff;width:70%;display:block}
+
+/*列表*/
+.ecdiy-zz-lft{width:180px;position:fixed;top:90px}
+.ecdiy-zz-lft li a:hover,.ecdiy-zz-lft li.on a{background-color:#f8f8f8;border-radius:4px}
+.ecdiy-zz-lft li a{position:relative;display:block;height:30px;line-height:30px;padding:12px 20px;font-size:15px}
+.ecdiy-zz-lft li a i{display:inline-block;width:30px;height:30px;margin-right:8px;vertical-align:top}
+.ecdiy-zz-lft li a em{position:absolute;top:50%;left:120px;margin-top:-4px;width:7px;height:7px;border-width:1px 1px 0 0;border-style:solid;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}
+.ec-ewm{padding-top:10px;color:#999;text-align:center;margin-top:10px;border-top:1px solid #f1f1f1}
+.ec-ewm .ecerwiema{margin-top:10px}
+.albliric{float:right;width:320px}
+.ecnav-itemlis{margin-left:196px;width:756px}
+.partitio-name{line-height:25px;font-size:18px}
+
+/*内容*/
+.arrtnews{padding:0 20px;border-bottom:1px solid #f1f1f1;padding-bottom:16px}
+.arrtnews .content img{max-width:100%!important;border-radius:4px}
+.arrtnews .content p{margin-top:0;margin-bottom:0;padding:10px 0;font-size:15px;line-height:26px;text-align:justify;white-space:normal}
+.arrtnews .source{margin-top:10px;color:#999}
+.arrtnews .tabs-nav{margin:20px 0;text-align:center}

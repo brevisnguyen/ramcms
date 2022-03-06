@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html>
+<head>
+	{include file="module/meta"}
+    <title>{$maccms.site_name}</title>
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div class="top-banner"></div>
+<div class="wap ec-body-z">
+{maccms:type ids="'.$conch['dscms']['logtype'].'" order="asc" by="sort" mid="1" id="vo3"}
+<div class="size">
+  <div class="ec-top-mod-item">
+	<div class="ec-top-sum">
+		<div class="top-sum-head anthology-wrap"><h3 class="head-txt">{$vo4.type_name}总评分排行榜</h3></div>
+		<ul class="ec-top-sum-ul">
+		    {maccms:vod num="10" type="'.$vo3['type_id'].'" order="desc" by="hits"}
+			{include file="module/rank"}
+			{/maccms:vod}
+		</ul>
+	</div>
+  </div>
+  <div class="ec-top-mod-item" style="margin:0 20px;">
+	<div class="ec-top-sum">
+		<div class="top-sum-head anthology-wrap"><h3 class="head-txt">{$vo4.type_name}月人气排行榜</h3></div>
+		<ul class="ec-top-sum-ul">
+		    {maccms:vod num="10" type="'.$vo3['type_id'].'" order="desc" by="hits_month"}
+			{include file="module/rank"}
+			{/maccms:vod}
+		</ul>
+	</div>
+  </div>
+  <div class="ec-top-mod-item ">
+	<div class="ec-top-sum">
+		<div class="top-sum-head anthology-wrap"><h3 class="head-txt">{$vo4.type_name}周人气排行榜</h3></div>
+		<ul class="ec-top-sum-ul">
+		    {maccms:vod num="10" type="'.$vo3['type_id'].'" order="desc" by="hits_week"}
+			{include file="module/rank"}
+			{/maccms:vod}
+		</ul>
+	</div>
+  </div>
+</div>
+{/maccms:type}
+</div>
+{include file="public/foot"}
+</body>
+</html>

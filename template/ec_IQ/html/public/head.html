@@ -1,0 +1,129 @@
+<div class="header">
+    <div class="header-container cf [wap]" id="header-contain">
+       <div class="new-yklogo l">
+        <a class="logo-1edqf" href="{$maccms.path}" title="{$maccms.site_name}"><img src="{$maccms.site_logo|mac_url_img}" alt="{$maccms.site_name}" /></a>
+       </div>
+       <div class="ecnav-nav l cf">
+	       <div class="nav-channel xiaoyinqing l">
+		       {maccms:type ids="parent" order="asc" by="sort"}
+		       <a href="{:mac_url_type($vo)}" class='anthology-wrap nav-link col1'>{$vo.type_name}</a>
+               {/maccms:type}
+               {if condition="$conch['dscms']['nav']['zdyname1']" eq false}<a target="_blank" href="{$conch['dscms']['nav']['zdyurl1']}" class='anthology-wrap nav-link col1'>{$conch['dscms']['nav']['zdyname1']}</a>{/if}
+	       </div>
+	       <div id="dhBtn" class="nav-guide l col1">
+	       	<div><span>更多<i class="fa icon-xiangxia2"></i></span></div>
+		       <div class="ec-allnav box">
+		           <li class="arrow_YxvxT triangle"></li>
+			       <ul class="cf dayinqing">
+			           {maccms:type ids="parent" order="asc" by="sort"}
+			           <li><a href="{:mac_url_type($vo)}" class='anthology-wrap nav-link col5b'>{$vo.type_name}</a></li>
+			           {/maccms:type}
+			       </ul>
+                   <ul class="cf">
+                       {if condition="$conch['dscms']['nav']['actor'] eq 1"}<li><a href="{:mac_url('actor/index')}" class='anthology-wrap nav-link col5b'>明星</a></li>{/if}
+                       {if condition="$conch['dscms']['nav']['topic'] eq 1"}<li><a href="{:mac_url_topic_index()}" class='anthology-wrap nav-link col5b'>专题</a></li>{/if}
+				       <li><a href="{:mac_url('label/rank')}" class='anthology-wrap nav-link col5b'>热播</a></li>
+                       {if condition="$conch['dscms']['nav']['ivi'] eq 1"}<li><a href="{:mac_url('label/ivi')}" class='anthology-wrap nav-link col5b'>电视直播</a></li>{/if}
+                       {if condition="$conch['dscms']['nav']['vip'] eq 1"}<li><a href="{:mac_url('label/jx')}" class='anthology-wrap nav-link col5b'>VIP解析</a></li>{/if}
+                       {if condition="$conch['dscms']['nav']['zdyname2']" eq false}<li><a target="_blank" href="{$conch['dscms']['nav']['zdyurl2']}" class='anthology-wrap nav-link col5b'>{$conch['dscms']['nav']['zdyname2']}</a></li>{/if}
+			       </ul>
+		       </div>
+	       </div>
+       </div>
+	   <div class="r cf">
+       <div class="so-home l">
+           <div class="search-input cf">
+            <form id="search" name="search" method="get" action="{:mac_url('vod/search')}">
+                <input type="text" name="wd" class="search-input mac_wd l col1b" value="{$param.wd}" placeholder="{$conch['dscms']['gx']['soconet']}" />
+                <div class="qh-search"><a href="javascript:;" class="mac-navs-name">视频</a><i class="fa icon-xiangxia2"></i></div>
+				<a class="search-hot l col2b" href="{:mac_url('label/rank')}" class="search-right-entry"><i class="header-svgrank fa icon-hot"></i>热搜榜</a>
+				<button type="submit" id="searchbutton" class="sllogo l"><i class="fa icon-sousuo blue"></i></button>
+            </form>
+           </div>
+           <div class="hot-search-list box">
+             <h5 class="title col04">热门搜索</h5>
+             {maccms:foreach name=":explode(',',$maccms.search_hot)"}
+             <a href="{:mac_url('vod/search',['wd'=>$vo])}" class="hot-item"><span class="order {if condition="$key==0"}loadia0{elseif condition="($key==1) "/}loadia1{elseif condition="($key==2) "/}loadia2 {/if}">{$key+1}</span><span class="hot-word">{$vo}</span><span class="tag">荐</span></a>
+             {/maccms:foreach}
+           </div>
+           <div class="qh-event box rec-list_2b8oe animated topfadeInUp">
+               <i class="arrow-3XYp7 triangle" style="left: 22px;"></i>
+               <a href="javascript:;" class="qh-navs-name" value="{:mac_url('art/search')}">资讯</a>
+               <a href="javascript:;" class="qh-navs-name" value="{:mac_url('actor/search')}">明星</a>
+               <a href="javascript:;" class="qh-navs-name" value="{:mac_url('vod/search')}">视频</a>
+           </div>
+       </div>
+       <div class="ucenter l">
+          <div class="handle mac_history">
+           <a class="col0" href="javascript:;"><span class="fa fa-clock-o" style="font-size:24px;"></span><span class="icon-title">播放记录</span></a>
+           <div class="panel_3YBhC mac_history_box box animated topfadeInUp">
+              <div class="bottom-1orQ7">
+               <a class="more-button button" href="{:mac_url('user/plays')}">查看更多</a>
+              </div>
+           </div> 
+          </div>
+       </div>
+       <div class="ucenter l">
+          <div class="handle">
+		      <a class="col0" href="{:mac_url_topic_index()}"><span class="fa fa-bookmark-o" style="font-size:24px"></span><span class="icon-title">专题</span></a>
+		  </div>
+       </div>
+       <div class="ucenter l">
+           <div class="handle">
+		   <a class="col0" href="{:mac_url('label/app')}"><span class="fa fa-tablet" style="font-size:24px;"></span><span class="icon-title">APP</span></a>
+		   </div>
+       </div>
+        <div class="ucenter l">
+          <div class="login-after">
+           <a class="avatar mac_ulog" href="{if condition="$GLOBALS['user']['user_id']" gt 0}{:mac_url('user/index')}{else/}javascript:;{/if}"><img class="vip-border" src="{$user.user_id|mac_get_user_portrait}" onerror="javascript:this.src='/static/images/touxiang.png'" title="{$user.user_name}" alt="{$user.user_name}" />
+		   {if condition="$GLOBALS['user']['user_id']" gt 0}{else/}<img class="avatar-pass" src="{$maccms.path_tpl}images/avatar-pass.png" />{/if}  
+		   </a>
+           {if condition="$GLOBALS['user']['user_id']" gt 0}
+           <div id="panel" class="panel-asGkf login-PEtQ box animated topfadeInUp" style="width:378px">
+            <i class="arrow-3XYp7 triangle"></i>
+            <div class="content_25Psf">
+             <div>
+              <div class="info-Y5T5e">
+               <a href="{:mac_url('user/index')}"><img src="{$user.user_id|mac_get_user_portrait}" onerror="javascript:this.src='/static/images/touxiang.png'" class="vip-border" /></a>
+               <a href="{:mac_url('user/index')}" class="link-1zlt5" title="{$user.user_name}">{$user.user_name}</a>
+               <a href="{:mac_url('user/logout')}" class="exit-login3-1Hc col0b col5b">退出</a>
+              </div>
+              <div class="list-1IMn">
+               <div class="title-4cHX col5">个人中心</div>
+               <div class="item-yVmpL last-item1MAEV">
+                   <div class="img-box1Tukq"><i class="fa fa-clock-o blue"></i></div>
+                   <a href="{:mac_url('user/plays')}" class="text-2jcMn col5b">我观看的</a>
+               </div>
+               <div class="item-yVmpL last-item1MAEV">
+                   <div class="img-box1Tukq"><i class="fa fa-heart-o blue"></i></div>
+                   <a href="{:mac_url('user/favs')}" class="text-2jcMn col5b">我的收藏</a>
+               </div>
+               <div class="item-yVmpL last-item1MAEV">
+                   <div class="img-box1Tukq"><i class="fa icon-kefufill blue"></i></div>
+                   <a href="{:mac_url('user/info')}" class="text-2jcMn col5b">安全中心</a>
+               </div>
+               <div class="item-yVmpL">
+                   <div class="img-box1Tukq"><i class="fa icon-account blue"></i></div>
+                   <a href="{:mac_url('user/upgrade')}" class="text-2jcMn col5b">VIP会员</a>
+               </div>
+              </div>
+             </div>
+            </div>
+           </div>
+           {else/}
+           <div id="panel" class="panel-asGkf login-PEtQ box col5 animated topfadeInUp" style="width:198px">
+            <i class="arrow-3XYp7 triangle"></i>
+            <div class="content_25Psf">
+            <div class="logout-header"><div class="text-content">登录后可享受</div></div>
+            <div class="text-alink"><i class="fa fa-clock-o blue"></i>尊享极清观影体验</div>
+            <div class="text-alink"><i class="fa icon-crown blue"></i>同步多端播放记录</div>
+            <div class="text-alink"><i class="fa icon-hot blue"></i>热播精彩及时追</div>
+            <div class="button-area"><a href="{:mac_url('user/login')}"><button class="button">立即登录</button></a></div>
+            </div>
+           </div>
+           {/if}  
+         </div>
+        </div>
+		</div>
+   </div>
+</div>

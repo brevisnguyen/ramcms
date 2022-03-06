@@ -1,0 +1,31 @@
+<div class="ecmod-wrap r ecright">
+    <div class="ecmod-title">
+        <h3 class="mod-title anthology-wrap">{$obj.type.type_name}{$conch['theme']['rank']['title']} · 风云榜
+            <div class="ecrank-enter">
+                <a href="{:mac_url('label/rank')}" class="rank-enter-link col04"><span class="more">全部榜单&nbsp;</span><i class="fa fa-step-forward"></i></a>
+            </div>
+        </h3>
+    </div>
+    <div class="qy-mod-rank-des-min">
+        <ul class="rank-list">
+            {maccms:vod num="6" type="'.$vo['type_id'].'" order="desc" by="hits"}
+            <li class="rank-item cf"><a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" class="rank-item-link" title="{$vo.vod_name}{$conch.dscms.seo.votitle}">
+                <div class="mod-left">
+                    <div class="rank-num-box">
+                        {if condition="$key<=3"}<span class="ecrank-no No1">NO</span>{/if}<i class="rank-nub col8 loadia{$key}">{$key}</i>
+                    </div>
+                </div>
+                <div class="mod-right">
+                    <h3 class="anthology-wrap main-title">{$vo.vod_name}</h3>
+                    <div class="sub-box">
+                        <div class="sub-right">
+                            <i class="fa icon-hotfill ecsvgicon-hot"></i><span class="count col1c">{$vo.vod_hits}</span>
+                        </div>
+                        <p class="sub-des col1c">{$vo.vod_actor|mac_default=$vo.vod_area.$vo.type.type_name|mac_filter_html}</p>
+                    </div>
+                </div>
+            </a></li>
+            {/maccms:vod}
+        </ul>
+    </div>
+</div>

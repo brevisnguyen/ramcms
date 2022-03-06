@@ -1,0 +1,65 @@
+{maccms:type ids="'.$conch['dscms']['logtype'].'" order="asc" by="sort" mid="1" id="vo3"}
+<div class="cf pageconnt palyconnt top20">
+    <div class="public wow fadeInUp l">
+        <div class="ant-tabsbar">
+            <div class="ant-tabscontent cf">
+                <h2 class="tabs-moduletitle l"><a href="{:mac_url_type($vo3,[],'show')}" title="{$vo3.type_name}" class="tabs-maintitle l">{$vo3.type_name}</a></h2>
+                <div class="tabs-nav l col7">
+                    {maccms:type  parent="'.$vo3['type_id'].'" order="asc" by="sort" id="vo4" key="key4"}
+                    <a class="col2b" href="{:mac_url_type($vo4,[],'show')}" title="">{$vo4.type_name}</a><i class="slash">|</i>
+                    {/maccms:type}
+                    <a class="col2b" href="{:mac_url_type($vo3,[],'show')}">更多 &gt;</a>
+                </div>
+                <div class="pagebnt r">
+                    <a class="bnt {$vo3.type_en}prevf disable" onclick="inprev('{$vo3.type_en}')"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="leftarrow_cu"><path d="M10 0c5.523 0 10 4.477 10 10s-4.477 10-10 10S0 15.523 0 10 4.477 0 10 0zm2.439 4.95a1.429 1.429 0 0 0-2.02 0L5.367 10l5.05 5.05.125.112c.56.444 1.378.407 1.896-.111l.11-.125a1.429 1.429 0 0 0-.11-1.896L9.409 10l3.03-3.03.11-.125a1.429 1.429 0 0 0-.11-1.896z"></path></svg></a>
+                    <a class="bnt {$vo3.type_en}nextf" onclick="innext('{$vo3.type_en}')"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="rightarrow_cu"><path d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zM7.561 4.95a1.429 1.429 0 0 1 2.02 0L14.633 10l-5.05 5.05-.125.112a1.429 1.429 0 0 1-1.896-.111l-.11-.125a1.429 1.429 0 0 1 .11-1.896l3.03-3.03-3.03-3.03-.11-.125a1.429 1.429 0 0 1 .11-1.896z"></path></svg></a>
+                </div>
+            </div>
+        </div>
+        <div id="{$vo3.type_en}1" class="hotgrow eclist listdh">
+            {maccms:vod num="'.($conch['dscms']['hnum']*2+2).'" type="'.$vo3['type_id'].'" order="desc" by="time"}
+            {include file="module/vod_box"}
+            {/maccms:vod}
+        </div>
+        <div id="{$vo3.type_en}2" class="hotgrow eclist listdh" style="display:none">
+            {maccms:vod num="'.($conch['dscms']['hnum']*2+2).'" type="'.$vo3['type_id'].'" start="8" order="desc" by="time"}
+            {include file="module/vod_box"}
+            {/maccms:vod}
+        </div>
+        <div id="{$vo3.type_en}3" class="hotgrow eclist listdh" style="display:none">
+            {maccms:vod num="'.($conch['dscms']['hnum']*2+2).'" type="'.$vo3['type_id'].'" start="17" order="desc" by="time"}
+            {include file="module/vod_box"}
+            {/maccms:vod}
+        </div>
+    </div>
+    <div class="ecmod-wrap r ecright" style="width: 206px;">
+        <div class="ecmod-title">
+            <h3 class="mod-title anthology-wrap col1b">风云榜
+                <div class="ecrank-enter">
+                    <a href="{:mac_url('label/rank')}" class="rank-enter-link col2b"><span class="more">全部&nbsp;</span><i class="fa fa-step-forward"></i></a>
+                </div>
+            </h3>
+        </div>
+        <div class="qy-mod-rank-des-min">
+            <ul class="rank-list">
+                {maccms:vod num="'.($conch['dscms']['hnum']*2).'" type="'.$vo3['type_id'].'" order="desc" by="hits"}
+                <li class="rank-item cf hothide{$key}"><a style="padding: 12px 0;" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" class="rank-item-link" title="{$vo.vod_name}{$conch.dscms.seo.votitle}">
+                    <div class="mod-left" style="margin-right: 10px;">
+                        <div class="rank-num-box" style="width: 40px;">
+                            {if condition="$key<=3"}<span style="font-size: 34px;" class="ecrank-no No1">NO</span>{/if}<i style="font: 600 30px/34px Impact;" class="rank-nub col7 loadia{$key}">{$key}</i>
+                        </div>
+                    </div>
+                    <div class="mod-right">
+                        <h3 class="anthology-wrap main-title" style="margin-bottom: 5px;">{$vo.vod_name}</h3>
+                        <div class="col2">
+                            <i class="fa icon-hotfill ecsvgicon-hot"></i><span class="count">{$vo.vod_hits}</span>
+                        </div>
+                    </div>
+                    </a></li>
+                {/maccms:vod}
+            </ul>
+        </div>
+    </div>
+    <div></div>
+</div>
+{/maccms:type}

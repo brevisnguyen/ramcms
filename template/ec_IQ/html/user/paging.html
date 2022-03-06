@@ -1,0 +1,22 @@
+{if condition="$__PAGING__.record_total gt 0"}
+{if condition="$__PAGING__.record_total >= 20"}
+<div class="member-page mac_pages top20">
+	<a class="page_link" href="{$__PAGING__.page_url|str_replace='PAGELINK',$__PAGING__.page_prev,###}" title="上一页">上一页</a>
+	{volist name="$__PAGING__.page_num" id="num"}
+	{if condition="$__PAGING__['page_current'] eq $num"}
+	<a class="page_link page_current" href="javascript:;" title="第{$num}页">{$num}</a>
+	{else}
+	<a class="page_link" href="{$__PAGING__.page_url|str_replace='PAGELINK',$num,###}" title="第{$num}页" >{$num}</a>
+	{/if}
+	{/volist}
+	<a class="page_link" href="{$__PAGING__.page_url|str_replace='PAGELINK',$__PAGING__.page_next,###}" title="下一页">下一页</a>
+</div>
+{/if}
+{else}
+<div style="text-align: center;">
+	<div>
+		<img src="{$maccms.path_tpl}images/null.png" alt="暂无数据">
+	</div>
+	<p class="top20 col1c">暂无数据</p>
+</div>
+{/if}

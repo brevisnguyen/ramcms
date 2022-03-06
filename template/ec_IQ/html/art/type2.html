@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <title>{$obj.type_title} - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" />
+    <link href="{$maccms.path_tpl}css/art2.css" rel="stylesheet" type="text/css" />
+    {include file="public/include"}
+</head>
+<body style="background: #eee;">
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div class="ec-body-z cf" style="padding-top:20px;">
+    <div class="art-slide">
+        <div class="feature-posts-wrap">
+            {maccms:art num="5" level="9" order="desc" type="current" by="time"}
+            <div class="feature-posts-inner">
+                <div class="fp-item fp-item-{$key} ec-jakt" style="background-image: url('{$vo.art_pic|mac_url_img}');">
+                    <a class="fp-item-inner" href="{:mac_url_art_detail($vo)}" target="_blank">
+                        <h3 class="item-title">{$vo.art_name}</h3>
+                        <div class="item-meta cf"><span class="item-meta-left l">{$vo.art_time|date='Y-m-d',###}</span><span class="item-meta-left r"><i class="fa icon-attention"></i>{$vo.art_hits}</span></div>
+                    </a>
+                </div>
+            </div>
+            {/maccms:art}
+        </div>
+    </div>
+    <div class="rat-list cf top40">
+        <div class="rat-list-left">
+            <div class="sub-nav cf">
+                <h2>最新更新</h2>
+                <div class="subnav-l l">
+                    {maccms:type order="asc" by="sort" mid="2" ids="5"}
+                    <a {if condition="($vo.type_id eq $GLOBALS['type_id'])"}class="subnav-hover"{/if} href="{:mac_url_type($vo)}">{$vo.type_name}首页</a>
+                    {/maccms:type}
+                    {maccms:type ids="current" order="asc" by="sort"}
+                    <a {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="subnav-hover"{/if} href="{:mac_url_type($vo)}"">{$vo.type_name}首页</a>
+                    {/maccms:type}
+                </div>
+            </div>
+            <div class="main-list">
+                <ul class="post-loop-default top10 cf">
+                    {maccms:art num="24" paging="yes" type="current" order="desc" by="time"}
+                    <li class="item">
+                        <div class="item-inner">
+                            <a class="item-img ec-jakt eclazy" href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}" target="_blank" data-original="{$vo.art_pic|mac_url_img}" style="background-image: url({$conch.dscms.gx.lazy2});"></a>
+                            <a class="item-category" href="{:mac_url_art_detail($vo)}" target="_blank">{$vo.type.type_name}</a>
+                            <h3 class="item-title"><a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}" target="_blank">{$vo.art_name}</a></h3>
+                            <div class="item-meta cf">
+                                <span class="item-meta-left l">{$vo.art_time|date='Y-m-d',###}</span>
+                                <span class="item-meta-left r"><i class="fa icon-attention"></i>{$vo.art_hits}</span>
+                            </div>
+                        </div>
+                    </li>
+                    {/maccms:art}
+                </ul>
+            </div>
+            <div>{include file="public/paging"}</div>
+        </div>
+        {include file="module/art_right"}
+    </div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

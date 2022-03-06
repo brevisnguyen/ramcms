@@ -1,0 +1,83 @@
+    <form class="comment comment_form cmt_form clearfix"  >
+        <input type="hidden" name="comment_pid" value="0">
+        <div class="input_wrap fl clearfix">
+            {if condition="$GLOBALS['user']['user_id']" gt 1}
+            <textarea class="comment_content content col3c" name="comment_content" placeholder="有事没事说两句..."></textarea>
+            {else/}
+            <div class="baffle">请先<a class="b-btn mac_ulog" href="javascript:;">登录</a>后发表评论 (・ω・)</div>
+            {/if}
+            <div class="fl clearfix handlet">
+                <div class="comment_face_panel face"></div>
+                <div class="comment_face_box face-box">
+                    <div class="face-arrow"></div>
+					<div class="comment_face_off l"><span class="l">选择表情</span><div class="r facecolose"><span class="fa fa-remove"></span></div></div>
+					{maccms:for start="1" end="50" }
+                    <img data-id="{$i}" src="__STATIC__/images/face/{$i}.gif">
+                    {/maccms:for}
+                </div>
+                <script>
+				$(".facecolose").click(function(){$(".comment_face_box").hide();})
+				</script>
+                <div class="smt fr cf">
+                        <span style="display: none;">
+                            <span></span>
+                        </span>
+                        <input class="cmttext" placeholder="验证码" type="text" id="verify" name="verify" />
+                        <img class="mac_verify_img" src="/index.php/verify/index.html?" title="看不清楚? 换一张！">
+						{if condition="$GLOBALS['user']['user_id']" gt 1}
+                        <input class="comment_submit cmtpost button" type="button" value="发表评论" />
+                        {else/}
+                        <input class="comment_submit cmtpost button forbid" type="button" value="发表评论" />
+						{/if}
+                        <div class="anthology-wrap remaining-w">还可以输入<span class="comment_remaining remaining fr" >200</span></div>
+                </div>
+            </div>
+         </div>
+    </form>
+    {maccms:comment num="5" paging="yes" order="desc" by="id"}
+    {/maccms:comment}
+    <div class="cmt_wrap top20" >
+            {maccms:foreach name="__LIST__" id="vo"}
+            <div class="cmt_item cf">
+                <a class="face_wrap l" href="javascript:;"><img class="face" src="{$vo.user_id|mac_get_user_portrait}"></a>
+                <div class="item_con fl">
+                    <div class="pingluser"><a class="name col1c" href="javascript:;">{$vo.comment_name}</a><span class="col4c">{$vo.comment_time|date='Y-m-d',###}</span></div>
+                    <p class="con anthology-wrap">{$vo.comment_content|mac_em_replace}</p>
+                    {maccms:foreach name="$vo.sub" id="child"}
+                    <div class="cmt_item childcmt_item">
+						<div>
+                            <div class="pingluser"><a class="name col1c" href="javascript:;">{$child.comment_name}</a><span class="col4c">{$vo.comment_time|date='Y-m-d',###}</span></div>
+                            <p class="con anthology-wrap">{$child.comment_content|mac_em_replace}</p>
+                            <div class="gw-action top10">
+                                <a class="digg_link col04" data-id="{$child.comment_id}" data-mid="4" data-type="up" href="javascript:;"><i class="icon-ding fa icon-zantong"></i><em class="digg_num">{$child.comment_up}</em></a>
+                                <a class="comment_report col04" data-id="{$child.comment_id}" href="javascript:;">举报</a>
+                            </div>
+						</div>
+                    </div>
+                    {/maccms:foreach}
+                    <div class="gw-action top10">
+                        <a class="digg_link col04" data-id="{$vo.comment_id}" data-mid="4" data-type="up" href="javascript:;"><i class="icon-ding fa icon-zantong"></i><em class="digg_num">{$vo.comment_up}</em></a>
+                        <a class="comment_reply col04" data-id="{$vo.comment_id}" href="javascript:;">回复</a>
+                        <a class="comment_report col04" data-id="{$vo.comment_id}" href="javascript:;">举报</a>
+                    </div>
+                </div>
+            </div>
+            {/maccms:foreach}
+        </div>
+    <!--评论结束-->
+	{if condition="$__PAGING__.record_total>5"} 
+    <div class="mac_pages" >
+        <div class="page_tip">共{$__PAGING__.record_total}条数据,当前{$__PAGING__.page_current}/{$__PAGING__.page_total}页</div>
+        <div class="page_info">
+            <a class="page_link" href="javascript:void(0);" onclick="MAC.Comment.Show('{$__PAGING__.page_prev}')" title="上一页">上一页</a>
+            {maccms:foreach name="$__PAGING__.page_num" id="num"}
+            {if condition="$__PAGING__['page_current'] eq $num"}
+            <a class="page_link page_current" href="javascript:;" title="第{$num}页">{$num}</a>
+            {else}
+            <a class="page_link" href="javascript:void(0)" onclick="MAC.Comment.Show('{$num}')" title="第{$num}页" >{$num}</a>
+            {/if}
+            {/maccms:foreach}
+            <a class="page_link" href="javascript:void(0)" onclick="MAC.Comment.Show('{$__PAGING__.page_next}')" title="下一页">下一页</a>
+        </div>
+    </div>
+	{/if}

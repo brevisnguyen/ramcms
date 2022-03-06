@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>{$obj.art_name} - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.art_name}最新资讯,推荐资讯" />
+    <meta name="description" content="{$obj.art_name}最新资讯,推荐资讯" />
+    <link href="{$maccms.path_tpl}css/art.css" rel="stylesheet" type="text/css" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div class="ec-body-z cf" style="padding-top: 20px;">
+  <div class="ecdiy-zz-lft nav-item ec-bjcolor">
+    <ul class="ecborb">
+        {maccms:type ids="current" order="asc" by="sort"}
+        <li {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="on"{/if}> <a class="anthology-wrap" href="{:mac_url_type($vo)}"> <i style="background-image: url({$maccms.path_tpl}images/pl{$key}.png);"></i>{$vo.type_name}首页<em></em> </a> </li>
+        {/maccms:type}
+    </ul>
+	<div class="ec-ewm">
+		<p>关注我们</p>
+		<p><img class="ecerwiema" src="{$conch.dscms.pd.gzh}"></p>
+	</div>
+  </div>
+  <div class="nav-item l ecnav-itemlis">
+    <div class="arrtnews ec-bjcolor">
+        <h1 class="module-maintitle">{$obj.art_name} - {$obj.art_page_list[$param['page']]['title']}</h1>
+        <div class="source"> 来源：{$obj.art_from}&nbsp;&nbsp;&nbsp;发布时间：{$obj.art_time|date='Y-m-d',###}&nbsp;&nbsp;&nbsp;浏览次数：{$obj.art_hits}</div>
+        <div class="content">{$obj.art_page_list[$param['page']]['content']|mac_url_content_img}</div>
+        {if$__PAGING__.page_total>1}
+        <div class="mac_pages">
+            <div class="page_tip">当前{$__PAGING__.page_current}/{$__PAGING__.page_total}页</div>
+            <div class="page_info">
+                <a class='page_link' href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" title="上一页">上一页</a>
+                <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}" title="下一页">下一页</a>
+            </div>
+        </div>
+        {/if}
+        <div class="digg_zan tabs-nav">
+            <div class="content_detail cf top40"><div class="playbtn o_bg" style="float: none;margin-right: inherit;">
+                <a target="_blank" style="margin: 0 auto;" class="digg_link btn btn_wxgzh" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-mid="{$maccms.mid}" data-type="up" href="javascript:;"><i class="rbj fa icon-zantong"></i>&nbsp;<em class="digg_num">{$obj.vod_up}{$obj.art_up}{$obj.topic_up}</em></a>
+            </div></div>
+        </div>
+        <div class="writer">若本站收录的文章侵犯了您的权益，请联系我们删除侵权内容！</div>
+    </div>
+      {if condition="$conch['dscms']['pd']['ratpl'] eq 1"}
+      <div class="ui-box marg w1180" id="pinglun" >
+          <h2 class="link-tile black top20">精彩评论</h2>
+          <div class="mac_comment" data-id="{$obj.art_id}" data-mid="{$maccms.mid}" ></div>
+          <script>
+              $(function(){
+                  MAC.Comment.Login = {$comment.login};
+                  MAC.Comment.Verify = {$comment.verify};
+                  MAC.Comment.Init();
+                  MAC.Comment.Show(1);
+              });
+          </script>
+      </div>
+      {/if}
+  </div>
+  <div class="albliric ec-bjcolor">
+      {include file="module/right_list"}
+  </div>
+    <div class="clear"></div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

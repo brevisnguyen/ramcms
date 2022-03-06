@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	{include file="module/meta"}
+    <title>{$obj.topic_name}专题详情- {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.topic_name}电影专题,{$obj.topic_name}电视剧专题,{$obj.topic_name}综艺专题,{$obj.topic_name}动漫专题,{$obj.topic_name}推荐专题" />
+    <meta name="description" content="本站提供{$obj.topic_name},最新最全精品专题数据" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+{if condition="$conch['dscms']['public'] eq 0"}
+<div class="public_bj">
+	<div class="bjcolor">
+		<span class="bgi" style="background-image:url('{$obj.topic_pic|mac_url_img}')"></span>
+		<span class="bgfd"></span>
+	</div>
+	<h1 class="head col1b">{$obj.topic_name}</h1>
+</div>
+<div class="public_box wwp">
+	<div class="boxtcon">
+		<div class="count"><i class="fa fa-bookmark-o"></i>本专题共“<span class="blue">{$obj.vod_list|count}</span>”部视频</div>
+		<p class="content">{$obj.topic_content|mac_default=$obj.topic_blurb}</p>
+	</div>
+</div>
+{/if}
+{if condition="$conch['dscms']['public'] eq 1"}
+<div class="headtopnull"></div>
+<div class="detail">
+	<div class="wwp cf">
+		<div class="detail-picture l">
+			<div class="ec-jakt eclazy" data-original="{$obj.topic_pic|mac_url_img}" style="background-image: url({$conch['dscms']['gx']['lazy2']});""></div>
+	</div>
+	<div class="public-content s-top-info r">
+		<h1 class="s-top-info h1" style="float: none;">{$obj.topic_name}</h1>
+		<div class="count">
+			本专题共“{$obj.vod_list|count}”部视频
+		</div>
+		<p class="content">{$obj.topic_content|mac_default=$obj.topic_blurb}</p>
+	</div>
+</div>
+</div>
+{/if}
+<div class="wwp top40">
+<div class="hotgrow eclist listdh wow fadeInUp">
+{maccms:foreach name="$obj.vod_list"}
+	{include file="module/type_list"}
+{/maccms:foreach}
+</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

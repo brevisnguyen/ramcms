@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="apple-mobile-web-app-title" content="{$maccms.site_name}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+	<meta name="theme-color" content="#4662d9" />
+	<link rel="shortcut icon" href="{$maccms.path_tpl}images/ico/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{$maccms.path_tpl}images/ico/icon57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{$maccms.path_tpl}images/ico/icon114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{$maccms.path_tpl}images/ico/icon152.png" />
+    <link rel="icon" sizes="114x114" href="{$maccms.path_tpl}images/ico/icon114.png" /> 
+	<meta charset="utf-8">
+    <meta name="viewport" content="width = device-width ,initial-scale = 1,minimum-scale = 1,maximum-scale = 1,user-scalable =no,"/>
+    <title>留言板 - {$maccms.site_name}</title>
+    {include file="public/include"}
+    <script>
+        $(function(){
+            MAC.Gbook.Login = {$gbook.login};
+            MAC.Gbook.Verify = {$gbook.verify};
+            MAC.Gbook.Init();
+        });
+    </script>
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div class="banner" style="background-image: url({$maccms.path_tpl}images/prod_home_banner.jpg);"></div>
+<div class="ec-body-z wrap_ff">
+    <section class="reply_box cf top20">
+        <!--留言开始-->
+        <div class="mac_msg_l l">
+            <div class="gbookgf"><span class="ecchengse"><i class="fa icon-kefufill"></i>官方提示：</span>请不要轻易相信留言板中的广告以及链接，以免被骗！！！  官方交流群：<a href="{$conch['dscms']['pd']['qqul']}"><img class="jiaqun" src="{$maccms.path_tpl}images/group.png" /></a></div>
+			{maccms:gbook num="10" paging="yes" order="desc" by="id"}
+            <div class="mac_msg_item cf">
+                <div class="msg_tag l">
+                    <a class="face_wrap" href="javascript:;"><img class="eeface" src="{$vo.user_id|mac_get_user_portrait}"></a>
+                </div>
+                <div class="msg_list l">
+                    <div class="pingluser col1c"><a class="name" href="javascript:;">{$vo.gbook_name}</a><span>{$vo.gbook_time|date='Y-m-d',###}</span></div>
+					<div class="msg_reply">{$vo.gbook_content}</div>
+					<div class="msg_arrow"></div>
+                </div>
+            </div>
+			{if condition="$vo.gbook_reply_time gt 0"}
+            <div class="mac_msg_item cf">
+               <div class="msg_tag r">
+                    <a class="face_wrap" href="javascript:;"><img class="eeface" src="{$maccms.path_tpl}images/adminavr.jpeg"></a>
+               </div>
+			   <div class="msg_list r" style="margin-left: 0;margin-right: 20px;">
+                    <div class="pingluser col1c" style="text-align: right;"><span>{$vo.gbook_time|date='Y-m-d',###}</span><a class="name" href="javascript:;">：站长回复</a></div>
+					<div class="msg_eearrow"></div>
+					<div class="eemsg_reply r">{$vo.gbook_reply}</div>
+                </div>
+            </div>
+            {/if}
+            {/maccms:gbook}
+			{include file="public/paging"}
+        </div>
+        <div class="mac_msg_r r">
+            <div class="msg_tit">我要留言</div>
+            <form class="gbook_form">
+                <p class="msg_cue">请输入您的留言内容：</p>
+                <textarea class="gbook_content" name="gbook_content"></textarea>
+                <div class="msg_code cf">
+                    {if condition="$gbook.verify eq 1"}
+                    <input type="text" placeholder="验证码" class="cmttext" name="verify" style="width: 66px;" />
+                    {/if}
+					<img class="mac_verify_img" src="/index.php/verify/index.html?" title="看不清楚? 换一张！">
+                    <div class="remaining-w fr">还可输入<span class="gbook_remaining remaining " >200</span></div>
+                </div>
+                <input type="button" class="button gbook_submit submit_btn" value="提交留言">
+            </form>
+        </div>
+        <!--留言结束-->
+    </section>
+</div>
+{include file="public/foot"}
+</body>
+</html>

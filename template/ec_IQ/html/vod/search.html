@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+    <meta name="description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div class="ec-body-z search-body cf">
+<div class="ec_sojg">搜索" <strong class="blue">{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</strong>" 结果 " <strong class="mac_total blue"></strong>" 个资源</div>
+<div class="ec-left-z l" id="list-focus">
+    <div class="ec-search">
+          <ul>
+          {maccms:vod num="10" paging="yes" pageurl="vod/search" order="desc" by="time"}
+            <li class="padd cf">
+	          <div class="l"><a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="{$vo.vod_name}{$conch.dscms.seo.votitle}" class="play-img"><div class="ecimgbor ec-jabj eclazy" data-original="{:mac_url_img($vo.vod_pic)}" style="background-image: url({$conch.dscms.gx.lazy1});"></div>
+			  </a></div>
+	          <div class="ecitem-r col1c">
+			    <a class="ecitem-name anthology-wrap" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}">{$vo.vod_name}</a>
+			    <div class="ec-item">
+	              <p class="ec_indezb"><span>状态：</span><span class="author">{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}</span><span>导演：</span>{$vo.vod_director}</p>
+	              <p class="albumtitle"><span>演员：</span>{$vo.vod_actor|mac_default=$vo.vod_area.$vo.type.type_name|mac_filter_html}</p>
+	            </div>
+	            <p class="ecitem-desc weaken">{$vo.vod_blurb}</p>
+                <div class="content_detail"><div class="playbtn o_play"><a class="btn btn_primary" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}"><i class="fa icon-xiangxia1"></i>&nbsp;立即播放</a></div></div>
+	          </div>
+	        </li>
+        {/maccms:vod}
+          </ul>
+      </div>
+    <div class="ui-bar list-page fn-clear">
+        {include file="public/paging"}
+    </div>
+    <script>
+        $('.mac_total').html('{$__PAGING__.record_total}');
+    </script>
+</div>
+<div class="r ec-right-z" id="xihuan">
+    {include file="module/right_list"}
+</div>
+</div>
+{include file="public/foot" wap="wap"}
+</body>
+</html>

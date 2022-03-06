@@ -1,0 +1,158 @@
+<div id="block-B" data-focus="" class="qy-carousel-wrap">
+    <div class="qy-carousel">
+        <div class="qy-carousel-fixed">
+            {if condition="$conch['dscms']['slide'] eq 1"}
+            <div class="qy-carousel-inner bd">
+                <ul class="qy-carousel-ul">
+                    {maccms:vod num="8" level="9" type="current" order="desc" by="time"}
+                    <li class="qy-carousel-li">
+                        <a href='{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}'><span class="qy-pc-carousel" style="background-image: url({$vo.vod_pic_slide|mac_url_img});"></span></a>
+                    </li>
+                    {/maccms:vod}
+                </ul>
+                <div class="qy-carousel-maskl" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
+                <div class="qy-carousel-maskr" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
+                <div class="qy-carousel-maskbottom"></div>
+            </div>
+            {else}
+            <div class="qy-carousel-inner wwp bd">
+                <ul class="qy-carousel-ul">
+                    {maccms:vod num="10" level="9" type="current" order="desc" by="time"}
+                    <li class="qy-carousel-li">
+                        <a href='{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}'><span class="qy-carousel" style="background-image: url({$vo.vod_pic_slide|mac_url_img});"></span></a>
+                    </li>
+                    {/maccms:vod}
+                </ul>
+                <div class="qy-carousel-maskl" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
+                <div class="qy-carousel-maskr" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
+                <div class="qy-carousel-maskbottom"></div>
+            </div>
+            {/if}
+            <div class="qy-carousel-con-gray">
+                <div class="qy-carousel-side-panel hd wwp">
+                    <ul class="qy-carousel-panel-list">
+                        {maccms:vod num="10" level="9" type="current" order="desc" by="time"}
+                        <li class="panel-item">
+                            <a href='{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}' target="_blank" class="panel-item-link">
+                            <p class="panel-item-title channelname">{$vo.vod_name}</p>
+                            <p class="panel-item-dec channelname">{$vo.vod_sub}</p>
+                            </a>
+                        </li>
+                        {/maccms:vod}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="qy-nav-focus">
+        <div class="qy-nav-wrap wwp returl">
+            <div class="qy-nav-channel">
+                <div class="nav-channel-box">
+                    <div class="homepage_main_tabs_title">
+                        <div class="channel-box-inner"><a href="/index.php/vod/type/id/1.html" target="_blank" class="qy-nav-link"><span class="nav-en">MOVIES</span><span class="nav-name col1">电影</span></a></div>
+                        <div class="homepage_channel_video_wrap">
+                            <a class="homepage_title col4" href="/index.php/vod/type/id/1.html">更多电影<span class="fa fa-step-forward"></span></a>
+                            {maccms:vod num="4" type="1" order="desc" by="hits"}
+                            <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col1">{$vo.vod_name}</div></a>
+                            {/maccms:vod}
+                        </div>
+                    </div>
+                    <div class="nav-text-box">
+                        <a href="/index.php/vod/show/area/大陆/id/1/year/2021.html" target="_blank" class="nav-text-link col4">影院新片</a>
+                        <a href="/index.php/vod/show/area/美国/id/1.html" target="_blank" class="nav-text-link col4">欧美大片</a>
+                    </div>
+                </div>
+                <div class="nav-channel-box">
+                    <div class="homepage_main_tabs_title">
+                        <div class="channel-box-inner"><a href="/index.php/vod/type/id/2.html" target="_blank" class="qy-nav-link"><span class="nav-en">TV SHOWS</span><span class="nav-name col1">电视剧</span></a></div>
+                        <div class="homepage_channel_video_wrap">
+                            <a class="homepage_title col4" href="/index.php/vod/type/id/2.html">更多剧集<span class="fa fa-step-forward"></span></a>
+                            {maccms:vod num="4" type="2" order="desc" by="hits"}
+                            <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col1">{$vo.vod_name}</div></a>
+                            {/maccms:vod}
+                        </div>
+                    </div>
+                    <div class="nav-text-box">
+                        <a href="/index.php/vod/show/id/13.html" target="_blank" class="nav-text-link col4">中国大陆</a>
+                        <a href="/index.php/vod/show/id/15/year/2020.html" target="_blank" class="nav-text-link col4">最新韩剧</a>
+                    </div>
+                </div>
+                <div class="nav-channel-box">
+                    <div class="homepage_main_tabs_title">
+                        <div class="channel-box-inner"><a href="/index.php/vod/type/id/3.html" target="_blank" class="qy-nav-link"><span class="nav-en">VARIETY SHOWS</span><span class="nav-name col1">综艺</span></a></div>
+                        <div class="homepage_channel_video_wrap">
+                            <a class="homepage_title col4" href="/index.php/vod/type/id/3.html">更多综艺<span class="fa fa-step-forward"></span></a>
+                            {maccms:vod num="4" type="3" order="desc" by="hits"}
+                            <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col1">{$vo.vod_name}</div></a>
+                            {/maccms:vod}
+                        </div>
+                    </div>
+                    <div class="nav-text-box">
+                        <a href="/index.php/vod/show/area/香港/id/3.html" target="_blank" class="nav-text-link col4">中国香港</a>
+                        <a href="/index.php/vod/show/area/日韩/id/3.html" target="_blank" class="nav-text-link col4">日韩综艺</a>
+                    </div>
+                </div>
+                <div class="nav-channel-box">
+                    <div class="homepage_main_tabs_title">
+                        <div class="channel-box-inner"><a href="/index.php/vod/type/id/4.html" target="_blank" class="qy-nav-link"><span class="nav-en">ANIME</span><span class="nav-name col1">动漫</span></a></div>
+                        <div class="homepage_channel_video_wrap">
+                            <a class="homepage_title col4" href="/index.php/vod/type/id/4.html">更多动漫<span class="fa fa-step-forward"></span></a>
+                            {maccms:vod num="4" type="4" order="desc" by="hits"}
+                            <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col1">{$vo.vod_name}</div></a>
+                            {/maccms:vod}
+                        </div>
+                    </div>
+                    <div class="nav-text-box">
+                        <a href="/index.php/vod/show/area/日本/id/4.html" target="_blank" class="nav-text-link col4">国产动漫</a>
+                        <a href="/index.php/vod/show/area/大陆/id/4.html" target="_blank" class="nav-text-link col4">日本动漫</a>
+                    </div>
+                </div>
+                <div class="nav-channel-box">
+                    <div class="homepage_main_tabs_title">
+                        <div class="channel-box-inner"><a href="" target="_blank" class="qy-nav-link"><span class="nav-en">DOCUMENTARIES</span><span class="nav-name col1">纪录片</span></a></div>
+                    </div>
+                    <div class="nav-text-box">
+                        <a href="" target="_blank" class="nav-text-link col4">热播剧场</a>
+                        <a href="" target="_blank" class="nav-text-link col4">探索世界</a>
+                    </div>
+                </div>
+                <div class="nav-channel-box qy-navff">
+                    <div class="homepage_main_tabs_title">
+                        <div class="channel-box-inner"><a href="" target="_blank" class="qy-nav-link"><span class="nav-en">NARRATE</span><span class="nav-name col1">解说</span></a></div>
+                    </div>
+                    <div class="nav-text-box">
+                        <a href="" target="_blank" class="nav-text-link col4">热播大片</a>
+                        <a href="" target="_blank" class="nav-text-link col4">全部电影</a>
+                    </div>
+                </div>
+            </div>
+            <div class="qy-nav-box qy-nav-wide">
+                <div class="qy-nav-list silde1">
+                    <a target="_blank" href="/index.php/vod/show/id/6.html" class="qy-nav-link"><span class="nav-name col1">动作</span></a>
+                    <a target="_blank" href="/index.php/vod/show/id/7.html" class="qy-nav-link"><span class="nav-name col1">喜剧</span></a>
+                </div>
+                <div class="qy-nav-list silde1">
+                    <a target="_blank" href="/index.php/vod/show/id/13.html" class="qy-nav-link"><span class="nav-name col1">国产剧</span></a>
+                    <a target="_blank" href="/index.php/vod/show/id/14.html" class="qy-nav-link"><span class="nav-name col1">港剧</span></a>
+                </div>
+                <div class="qy-nav-list silde1">
+                    <a target="_blank" href="/index.php/vod/show/id/8.html" class="qy-nav-link"><span class="nav-name col1">爱情</span></a>
+                    <a target="_blank" href="/index.php/vod/show/id/15.html" class="qy-nav-link"><span class="nav-name col1">韩剧</span></a>
+                </div>
+                <div class="qy-nav-list qy-navff silde1">
+                    <a target="_blank" href="/index.php/vod/show/id/9.html" class="qy-nav-link"><span class="nav-name col1">科幻</span></a>
+                    <a target="_blank" href="/index.php/vod/show/id/16.html" class="qy-nav-link"><span class="nav-name col1">美剧</span></a>
+                </div>
+                <div class="qy-nav-list silde1">
+                    <a target="_blank" href="{:mac_url('actor/index')}" class="qy-nav-link"><span class="nav-name col1">明星广场</span></a>
+                    <a target="_blank" href="{:mac_url_topic_index()}" class="qy-nav-link"><span class="nav-name col1">精选专题</span></a>
+                </div>
+                <div class="qy-nav-list" style="margin-right: 0px;">
+                    <a target="_blank" href="{:mac_url('label/ivi')}" class="qy-nav-link"><span class="nav-name col1">电视直播</span></a>
+                    <a target="_blank" href="{:mac_url('label/jx')}" class="qy-nav-link"><span class="nav-name col1">VIP解析</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">jQuery(".qy-carousel-fixed").slide({ mainCell:".bd ul",effect:"fold",autoPlay:true });</script>
