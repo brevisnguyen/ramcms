@@ -1,0 +1,25 @@
+{include file="public/header,user/banner"} 
+<div class="mo-cols-lays mo-back-white mo-part-round">
+	{include file="basics/titles" module="user" title=":mac_default('微信在线充值')" btns="返回" href=":mac_url('user/buy')"}
+	<form class="mo-paxs-5px mo-pamd-10px mo-lhxs-40px mo-pops-form mo-cols-rows mo-java-event" autocomplete="off">
+		<div class="mo-part-bbsd mo-bord-muted mo-cols-show"></div>
+		<div class="mo-cols-rows">
+			<span class="mo-cols-info mo-cols-xs4 mo-wrap-arow">订单编号</span>
+			<span class="mo-cols-info mo-cols-xs8 mo-wrap-arow mo-coxs-right">{$order.order_code}</span>
+		</div>
+		<div class="mo-part-bbsd mo-bord-muted mo-cols-show"></div>
+		<div class="mo-cols-rows">
+			<span class="mo-cols-info mo-cols-xs4 mo-wrap-arow">订单金额</span>
+			<span class="mo-cols-info mo-cols-xs8 mo-wrap-arow mo-coxs-right">{$order.order_price}元</span>
+		</div>
+		<div class="mo-part-bbsd mo-bord-muted mo-cols-show"></div>
+		<div class="mo-cols-rows">
+			<span class="mo-cols-info mo-cols-xs4 mo-wrap-arow">微信扫码</span>
+			<span class="mo-cols-info mo-cols-xs8 mo-wrap-arow mo-coxs-right">打开微信，扫码支付</span>
+		</div>
+		<div class="mo-cols-rows mo-user-chat" data-info="{:mac_url('user/order_info')}" data-index="{:mac_url('user/index')}" data-code="{$order.order_id}">
+			<span class="mo-cols-info mo-cols-xs12 mo-wrap-arow mo-coxs-center"><img src="{:mac_url('user/qrcode')}?data={$payment.code_url|urlencode}" width="150" height="150"/></span>
+		</div>
+	</form>
+</div>
+{include file="public/footer"}

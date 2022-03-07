@@ -1,0 +1,35 @@
+{include file="public/header"}
+<div class="mo-cols-lays mo-back-white mo-part-round mo-cols-rows">
+	{include file="module/siteer"}
+</div>
+<div class="mo-cols-lays mo-back-white mo-part-round mo-cols-rows mo-part-over mo-java-page">
+	<div class="mo-cols-rows mo-paxs-5px mo-pamd-10px">
+		<h2 class="mo-fsxs-14px mo-fsss-16px mo-fsmd-18px mo-part-slip mo-cols-xs10">
+			<a class="mo-tabs-btns mo-mrxs-5px mo-mrmd-10px mo-text-mojia" href="javascript:;">站点简介</a>
+			{if$GLOBALS['config']['comment']['status']}
+			<a class="mo-tabs-btns mo-mrxs-5px mo-mrmd-10px" href="javascript:;">发表评论</a>
+			{/if}{if$obj.website_pic}
+			<a class="mo-tabs-btns mo-mrxs-5px mo-mrmd-10px" href="javascript:;">站点截图</a>
+			{/if}
+		</h2>
+	</div>
+	<div class="mo-tabs-item mo-cols-show">
+		<div class="mo-word-info mo-pamd-5px">
+			<div class="mo-paxs-5px mo-ptxs-0px">
+				{:mac_default(mac_url_content_img(moJiaHtmlTags($obj[mac_get_mid_code($maccms['mid']).'_content'])),'暂无简介')}
+			</div>
+		</div>
+	</div>
+	{if$GLOBALS['config']['comment']['status']}
+	<div class="mo-tabs-item mo-cols-hide">
+		<div class="mo-comm-critic"></div>
+	</div>
+	{/if}{if$obj.website_pic}
+	<div class="mo-tabs-item mo-pamd-5px mo-cols-hide">
+		<div class="mo-paxs-5px mo-pamd-10px">
+			<a class="mo-situ-pics mo-situ-lazy mo-lazy-color mo-byxs-16by9 mo-cols-rows mo-bord-round" href="{$obj.website_pic|mac_url_img}" data-original="{$mojia['other']['chain']['state']?(stristr($mojia['other']['chain']['apis'],'asset/exc/create')==true?$template:''.stristr($obj['website_pic'],'//')==true?$mojia['other']['chain']['apis']:''):''}{:mac_url_img(trim($obj.website_pic))}" target="_blank"></a>
+		</div>
+	</div>
+	{/if}
+</div>
+{include file="tinier/relate,public/footer"}

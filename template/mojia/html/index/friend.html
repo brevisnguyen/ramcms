@@ -1,0 +1,20 @@
+{if$mojia['home']['friend']['state']}
+<div class="mo-cols-lays mo-back-white mo-part-round">
+	{include file="basics/titles" module="friend" title=":mac_default($mojia['home']['friend']['name'])" btns="申请" href=":mac_url('gbook/index')" more="hide"}
+	<ul class="mo-cols-rows">
+		{if$mojia['home']['friend']['advs']&&$mojia['home']['friend']['type']!='pic'}
+		
+		{/if}{maccms:link num="'.$mojia['home']['friend']['num'].'" type="'.$mojia['home']['friend']['type'].'" order="'.$mojia['home']['friend']['order'].'" by="'.$mojia['home']['friend']['sort'].'"}
+		{if$mojia['home']['friend']['type']=='pic'}
+		<li class="mo-paxs-5px mo-pamd-10px mo-cols-info mo-cols-xs4 mo-cols-sm3 mo-cols-lg2">
+			<a class="mo-situ-pics mo-situ-lazy mo-lazy-color mo-byxs-4by1 mo-cols-rows mo-bord-round" href="{$vo.link_url}" target="_blank" data-original="{$mojia['other']['chain']['state']?(stristr($mojia['other']['chain']['apis'],'asset/exc/create')==true?$template:''.stristr($vo['link_logo'],'//')==true?$mojia['other']['chain']['apis']:''):''}{:mac_url_img(trim($vo['link_logo']))}"></a>
+		</li>
+		{else}
+		<li class="mo-paxs-5px mo-pamd-10px mo-cols-info mo-cols-xs3 mo-cols-sm2 mo-cols-xl1x">
+			<a class="mo-wrap-arow mo-lhxs-20px mo-fsxs-14px" href="{$vo.link_url}" target="_blank">{$vo.link_name}</a>
+		</li>
+		{/if}
+		{/maccms:link}
+	</ul>
+</div>
+{/if}

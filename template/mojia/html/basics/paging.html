@@ -1,0 +1,4 @@
+{assign name="__LIST__" value=":array('total'=>count([data]),'limit'=>[limit],'page'=>$param['page'],'pageurl'=>[page],'half'=>3)"}
+{assign name="__PAGING__" value=":mac_page_param($__LIST__['total'],$__LIST__['limit'],$__LIST__['page'],$__LIST__['pageurl'],$__LIST__['half'])"}
+{assign name="start" value=":(intval($param['page'])-1)?(intval($param['page'])-1)*$__LIST__['limit']:0"}
+{assign name="data_list" value=":array_slice([data],$start,$__LIST__['limit'])"}

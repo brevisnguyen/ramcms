@@ -1,0 +1,16 @@
+{assign name="maccms['aid']" value="74"}
+{include file="public/header"}
+<div class="mo-cols-lays mo-back-white mo-part-round">
+	{include file="module/taobao"}
+</div>
+<div class="mo-cols-lays mo-back-white mo-part-round">
+	{include file="basics/titles" module="taobao" title=":mac_default('商品详情')" more="hide"}
+	<div class="mo-cols-show">
+		<div class="mo-pamd-5px">
+			<div class="mo-paxs-5px mo-ptxs-0px">
+				{$details['data']['desc']|mac_default=$details['msg']}
+			</div>
+		</div>
+	</div>
+</div>
+{include file="index/taobao,tinier/relate,public/footer"}

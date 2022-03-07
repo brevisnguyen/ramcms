@@ -1,0 +1,34 @@
+<div class="layui-tab-item">
+	<blockquote class="layui-elem-quote layui-quote-nm">
+		函数变量直接填入即可，字符串前后需要加单引号'，否则会报错！若有报错请恢复SEO默认设置！<a href="https://cdn.jsdelivr.net/gh/magicblack/maccms10@master/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/%E6%A0%87%E7%AD%BE%E8%AF%B4%E6%98%8E.txt" target="_blank"><font color="red">苹果CMS标签</font></a>
+	</blockquote>
+	<table class="layui-table" style="margin-top:0">
+		<colgroup>
+			<col width="80">
+			<col width="125">
+			<col width="125">
+			<col>
+		</colgroup>
+		{maccms:foreach name=":explode(',','1,2,4,6,10,20,30,70,80,90,100,110,11,21,71,81,111,12,22,72,82,112,13,23,33,73,83,93,103,113,14,15,16,24,34,74,84,94,104,114')"}
+		<thead>
+			<tr><th colspan="4">{$mojia['seo']['index'.$vo]['info']}</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="text" name="mojia[seo][index{$vo}][aid]" value="{$mojia['seo']['index'.$vo]['aid']}" class="layui-input" placeholder="AID"></td>
+				<td><input type="text" name="mojia[seo][index{$vo}][info]" value="{$mojia['seo']['index'.$vo]['info']}" class="layui-input" placeholder="模块"></td>
+				<td><input type="text" name="mojia[seo][index{$vo}][type]" value="{$mojia['seo']['index'.$vo]['type']}" class="layui-input" placeholder="请输入类型"></td>
+				<td><input type="text" name="mojia[seo][index{$vo}][title]" value="{$mojia['seo']['index'.$vo]['title']}" class="layui-input mo-java-seos" placeholder="请输入标题"></td>
+			</tr>
+			<tr>
+				<td colspan="3"><input type="text" name="mojia[seo][index{$vo}][image]" value="{$mojia['seo']['index'.$vo]['image']}" class="layui-input" placeholder="请输入封面地址"></td>
+				<td><input type="text" name="mojia[seo][index{$vo}][key]" value="{$mojia['seo']['index'.$vo]['key']}" class="layui-input mo-java-seos" placeholder="请输入关键词"></td>
+			</tr>
+			<tr>
+				<td colspan="3"><input type="text" name="mojia[seo][index{$vo}][url]" value="{$mojia['seo']['index'.$vo]['url']}" class="layui-input" placeholder="请输入URL地址"></td>
+				<td><input type="text" name="mojia[seo][index{$vo}][des]" value="{$mojia['seo']['index'.$vo]['des']}" class="layui-input mo-java-seos" placeholder="请输入描述"></td>
+			</tr>
+		</tbody>
+		{/maccms:foreach}
+	</table>
+</div>

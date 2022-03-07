@@ -1,0 +1,17 @@
+{include file="public/header,user/banner"}
+<div class="mo-cols-lays mo-back-white mo-part-round">
+	{include file="basics/titles" module="option" type="0" del=":mac_url('user/plog_del')" title=":mac_default('积分记录')" btns="返回" href=":mac_url('user/index')"}
+	<form class="mo-user-form" autocomplete="off" onkeydown="if(event.keyCode==13){return false}">
+		<ul class="mo-cols-rows mo-paxs-0px{if count($list)} mo-pamd-5px{/if}">
+			{volist name="list" id="vo"}
+			<li class="mo-paxs-5px"><span class="mo-part-dott mo-bord-muted mo-cols-show"></span></li>
+			<li class="mo-paxs-5px mo-cols-rows mo-lhxs-34px">
+				<span class="mo-cols-info mo-cols-xs4 mo-wrap-arow"><input class="mo-form-comp mo-mrxs-5px" name="ids[]" type="checkbox" value="{$vo.plog_id}">{$vo.plog_type|mac_get_plog_type_text}&nbsp;[积分{if condition="in_array($vo.plog_type,[1,2,3,4])"}+{else/}-{/if}{$vo.plog_points}]</span>
+				<span class="mo-cols-info mo-cols-xs8 mo-wrap-arow mo-coxs-right">{$vo.plog_time|mac_day}</span>
+			</li>
+			{/volist}
+		</ul>
+		{include file="tinier/paging"}
+	</form>
+</div>
+{include file="public/footer"}

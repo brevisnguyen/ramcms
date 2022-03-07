@@ -1,0 +1,17 @@
+{include file="public/header,user/banner"}
+<div class="mo-cols-lays mo-back-white mo-part-round">
+	{include file="basics/titles" module="option" del=":mac_url('user/ulog_del')" type="2" title=":mac_default('我的收藏')" btns="返回" href=":mac_url('user/index')"}
+	<form class="mo-user-form" autocomplete="off" onkeydown="if(event.keyCode==13){return false}">
+		<ul class="mo-cols-rows mo-paxs-0px{if count($list)} mo-pamd-5px{/if}">
+			{volist name="list" id="vo"}
+			<li class="mo-paxs-5px"><span class="mo-part-dott mo-bord-muted mo-cols-show"></span></li>
+			<li class="mo-paxs-5px mo-cols-rows mo-lhxs-34px">
+				<span class="mo-cols-info mo-cols-xs8 mo-wrap-arow"><input class="mo-form-comp mo-mrxs-5px" name="ids[]" type="checkbox" value="{$vo.ulog_id}"><a target="_blank" href="{$vo.data.link}">[{$vo.data.type.type_name}]&nbsp;{$vo.data.name}&nbsp;[第{$vo.ulog_nid}集]</a></span>
+				<span class="mo-cols-info mo-cols-xs4 mo-wrap-arow mo-coxs-right">消费{$vo.ulog_points}积分</span>
+			</li>
+			{/volist}
+		</ul>
+		{include file="tinier/paging"}
+	</form>
+</div>
+{include file="public/footer"}

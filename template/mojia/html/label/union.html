@@ -1,0 +1,30 @@
+{include file="admin/header"}
+<table class="layui-table">
+	<tbody>
+		<?php use think\Cache; $collect_break_vod = Cache::get($GLOBALS['config']['app']['cache_flag']. '_'. 'collect_break_vod'); $collect_break_art = Cache::get($GLOBALS['config']['app']['cache_flag']. '_'. 'collect_break_art'); $collect_break_actor = Cache::get($GLOBALS['config']['app']['cache_flag']. '_'. 'collect_break_actor'); $collect_break_role = Cache::get($GLOBALS['config']['app']['cache_flag']. '_'. 'collect_break_role'); $collect_break_website = Cache::get($GLOBALS['config']['app']['cache_flag']. '_'. 'collect_break_website'); ?>
+		<tr class="mo-java-mojia" data-mid="{$verify['url']}" data-aid="{$verify['key']}" data-rid="{$verify['tga']}" data-sid="{$verify['sid']}" data-nid="{$verify['nid']}" data-time="{:file_exists('runtime/temp/'.md5('mojia').'.php')?require('runtime/temp/'.md5('mojia').'.php'):null}">
+			<td width="50"><a class="layui-btn layui-btn-primary mo-unit-addtor" href="javascript:;"><i class="layui-icon">&#xe654;</i>添加资源</a></td>
+			<td style="min-width: 110px"><input class="layui-input mo-unit-input" type="text" placeholder="请输入关键字" autocomplete="off"></td>
+			<td width="50"><a class="layui-btn mo-unit-search" href="javascript:;">立即搜索</a></td>
+			<td width="50"><a class="layui-btn layui-btn-primary mo-unit-severs" href="javascript:;">添加解析</a></td>
+			<td width="50"><a class="layui-btn layui-btn-{if$collect_break_vod}danger{else}primary{/if}  mo-unit-addtab" href="javascript:;" data-id="100001" data-url="{$collect_break_vod}">视频断点</a></td>
+			<td width="50"><a class="layui-btn layui-btn-{if$collect_break_art}danger{else}primary{/if} mo-unit-addtab" href="javascript:;" data-id="100002" data-url="{$collect_break_art}">文章断点</a></td>
+			<td width="50"><a class="layui-btn layui-btn-{if$collect_break_actor}danger{else}primary{/if} mo-unit-addtab" href="javascript:;" data-id="100003" data-url="{$collect_break_actor}">明星断点</a></td>
+			<td width="50"><a class="layui-btn layui-btn-{if$collect_break_role}danger{else}primary{/if} mo-unit-addtab" href="javascript:;" data-id="100004" data-url="{$collect_break_role}">角色断点</a></td>
+			<td width="50"><a class="layui-btn layui-btn-{if$collect_break_website}danger{else}primary{/if} mo-unit-addtab" href="javascript:;" data-id="100005" data-url="{$collect_break_website}">网址断点</a></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div class="mo-unit-table"></div>
+<script type="text/javascript">
+	layui.config({
+		version: '{$version}',
+		base: {:stristr($mojia['other']['cdns']['link'],'amujie/mojia')==true?'magic.cdn':'magic.tpl'} + 'asset/js/'
+	}).extend({
+		
+	}).use(['union'], function() {
+		layui.union.global.init();
+	});
+</script>
+{include file="admin/footer"}

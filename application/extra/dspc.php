@@ -35,7 +35,7 @@ return array (
       'topic' => '1',
       'vip' => '1',
       'ivi' => '1',
-      'zdyname1' => 'aaa1',
+      'zdyname1' => '',
       'zdyurl1' => 'aaa',
       'zdyname2' => 'aaa2',
       'zdyurl2' => 'aaa',

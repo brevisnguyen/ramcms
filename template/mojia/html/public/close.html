@@ -1,0 +1,34 @@
+<?php if(stristr($_SERVER["REQUEST_URI"],'label/admin')==true){ ?>
+{include file="label/admin"}
+<?php exit; } ?>
+<!DOCTYPE html>
+<html class="mo-shut-info mo-part-view">
+	<head>
+		{include file="tinier/config,tinier/metaer"}
+		<title>网站维护中 - {$GLOBALS['config']['site']['site_name']}</title>
+		<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="{$cdnpath}asset/css/style.css?v={$version}" rel="stylesheet" type="text/css" />
+		{include file="tinier/colour"}
+	</head>
+	<body class="mo-shut-info mo-part-view mo-cols-minw">
+		<div class="mo-shut-main mo-part-core mo-cols-minw mo-coxs-center">
+			<h2 class="mo-shut-head mo-text-white">网站维护中，请稍后访问</h2>
+			<ul class="mo-shut-time" endtime="{$mojia['other']['close']['time']}"></ul>
+		</div>
+		<div class="mo-shut-foot mo-cols-rows mo-text-white mo-coxs-center mo-cols-xs12 mo-cols-minw">Copyright&nbsp;{:date('Y', time())}&nbsp;{$_SERVER['HTTP_HOST']}&nbsp;Inc.</div>
+		<script src="{$cdnpath}asset/inc/layui.js?v={$version}" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var magic = {
+				'path': '{$install}',
+				'tpl': '{$template}',
+				'cdn': '{$cdnpath}'
+			};
+			layui.config({
+				version: '{$version}',
+				base: magic.cdn + 'asset/js/'
+			}).use(['other'], function() {
+				layui.other.global.close();
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<div class="layui-tab-item">
+	<table class="layui-table" style="margin-top:0">
+		<tr>
+			<td width="90"><button type="button" class="layui-btn layui-btn-primary"{if$mojia['color']['type']['name']==1} style="background-color:#ff5f00;color:#ffffff;"{/if} lay-filter="colour" lay-submit="" data-back="#ff5f00" data-type="1" data-color="#ffffff,#333333,#f2f3f6,#666666,#000000,#ffffff,#dedede,#333333,#f8f8f8,#333333,#ededed,#333333,#cacaca,#333333,#dfdfdf,#999999,#ff5f00,#ffffff,#ff0d29,#ffffff,#ff920b,#ffffff,#ffc600,#ffffff,#7f7f8c,#ffffff,#999999,#dedede,#ffffff,#333333,#666666,#ff0d29,#28bd98,#ff6f6f,#333333">默认简橙</button></td>
+			<td width="90"><button type="button" class="layui-btn layui-btn-primary"{if$mojia['color']['type']['name']==2} style="background-color:#d3b270;color:#ffffff;"{/if} lay-filter="colour" lay-submit="" data-back="#d3b270" data-type="2" data-color="#333333,#999999,#2b2a2a,#999999,#000000,#999999,#666666,#999999,#555555,#999999,#444444,#999999,#555555,#999999,#888888,#aaaaaa,#d3b270,#ffffff,#ff0d29,#ffffff,#ff920b,#ffffff,#ffc600,#ffffff,#7f7f8c,#ffffff,#666666,#2a2a2a,#ffffff,#333333,#666666,#ff0d29,#28bd98,#ff6f6f,#999999">深色模式</button></td>
+			<td width="90"><button type="button" class="layui-btn layui-btn-primary"{if$mojia['color']['type']['name']==3} style="background-color:#d22222;color:#ffffff;"{/if} lay-filter="colour" lay-submit="" data-back="#d22222" data-type="3" data-color="#ffffff,#333333,#f2f3f6,#666666,#000000,#ffffff,#dedede,#333333,#f8f8f8,#333333,#ededed,#333333,#cacaca,#333333,#dfdfdf,#999999,#d22222,#ffffff,#ff0d29,#ffffff,#ff920b,#ffffff,#ffc600,#ffffff,#7f7f8c,#ffffff,#999999,#dedede,#ffffff,#333333,#666666,#ff0d29,#28bd98,#ff6f6f,#333333">红色节日</button></td>
+			<td width="90"><button type="button" class="layui-btn layui-btn-primary"{if$mojia['color']['type']['name']==4} style="background-color:#1e9fff;color:#ffffff;"{/if} lay-filter="colour" lay-submit="" data-back="#1e9fff" data-type="4" data-color="#ffffff,#333333,#f2f3f6,#666666,#000000,#ffffff,#dedede,#333333,#f8f8f8,#333333,#ededed,#333333,#cacaca,#333333,#dfdfdf,#999999,#1e9fff,#ffffff,#ff0d29,#ffffff,#ff920b,#ffffff,#ffc600,#ffffff,#7f7f8c,#ffffff,#999999,#dedede,#ffffff,#333333,#666666,#ff0d29,#28bd98,#ff6f6f,#333333">天空之城</button></td>
+			<td width="90"><button type="button" class="layui-btn layui-btn-primary"{if$mojia['color']['type']['name']==5} style="background-color:#fb7299;color:#ffffff;"{/if} lay-filter="colour" lay-submit="" data-back="#fb7299" data-type="5" data-color="#ffffff,#333333,#f2f3f6,#666666,#000000,#ffffff,#dedede,#333333,#f8f8f8,#333333,#ededed,#333333,#cacaca,#333333,#dfdfdf,#999999,#fb7299,#ffffff,#ff0d29,#ffffff,#ff920b,#ffffff,#ffc600,#ffffff,#7f7f8c,#ffffff,#999999,#dedede,#ffffff,#333333,#666666,#ff0d29,#28bd98,#ff6f6f,#333333">老夫的少女心</button></td>
+			<td>快捷配色选择<input type="hidden" name="mojia[color][type][name]" value="{$mojia['color']['type']['name']}"></td>
+		</tr>
+	</table>
+	<table class="layui-table" style="margin-top:0">
+		<colgroup>
+			<col width="110">
+			<col width="200">
+			<col width="50">
+			<col width="200">
+			<col width="50">
+			<col>
+		</colgroup>
+		<thead>
+			<tr>
+				<th>模块</th>
+				<th>背景颜色</th>
+				<th>选择</th>
+				<th>文字颜色</th>
+				<th>选择</th>
+				<th>备注</th>
+			</tr> 
+		</thead>
+		<tbody>
+			{maccms:foreach name=":array(array('white','0','1','全局前景色'),array('muted','2','3','全局背景色'),array('black','4','5','播放器背景色'),array('lazys','6','7','懒加载背景色'),array('fixed','8','9','联想搜索下拉选中背景'),array('click','10','11','普通按钮背景色'),array('write','12','13','已访问按钮背景色'),array('disad','14','15','禁用按钮背景色'),array('mojia','16','17','全局高亮背景色'),array('item1','18','19','排行榜第一位背景色'),array('item2','20','21','排行榜第二位背景色'),array('item3','22','23','排行榜第三位背景色'),array('items','24','25','排行榜其他背景色'))" id="magic"}
+			<tr>
+				<td><input type="text" name="mojia[color][{$magic[0]}][name]" value="{$mojia['color'][$magic[0]]['name']}" class="layui-input" placeholder="颜色名称"></td>
+				<td><input type="text" name="mojia[color][{$magic[0]}][back]" value="{$mojia['color'][$magic[0]]['back']}" class="layui-input" placeholder="请输入背景色"></td>
+				<td><div class="mo-look-btns mo-look-btns{$magic[1]}"></div></td>
+				<td><input type="text" name="mojia[color][{$magic[0]}][text]" value="{$mojia['color'][$magic[0]]['text']}" class="layui-input" placeholder="请输入字体颜色"></td>
+				<td><div class="mo-look-btns mo-look-btns{$magic[2]}"></div></td>
+				<td>{$magic[3]}</td>
+			</tr>
+			{/maccms:foreach}{maccms:foreach name=":array(array('delta','26','下拉三角背景色'),array('lines','27','全局边框颜色'),array('plain','28','白色文字'),array('darks','29','黑色文字'),array('dusts','30','灰色文字'),array('gules','31','登录提示文字颜色'),array('green','32','评论支持文字颜色'),array('blush','33','评论反对文字颜色'),array('input','34','输入框文字颜色'))" id="magic"}
+			<tr>
+				<td><input type="text" name="mojia[color][{$magic[0]}][name]" value="{$mojia['color'][$magic[0]]['name']}" class="layui-input" placeholder="颜色名称"></td>
+				<td colspan="3"><input type="text" name="mojia[color][{$magic[0]}][text]" value="{$mojia['color'][$magic[0]]['text']}" class="layui-input" placeholder="请输入字体颜色"></td>
+				<td><div class="mo-look-btns mo-look-btns{$magic[1]}"></div></td>
+				<td>{$magic[2]}</td>
+			</tr>
+			{/maccms:foreach}
+		</tbody>
+	</table>
+</div>

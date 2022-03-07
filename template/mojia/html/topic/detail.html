@@ -1,0 +1,56 @@
+{include file="public/header"}
+<div class="mo-cols-lays mo-back-white mo-part-round mo-cols-rows">
+	{include file="module/topics"}
+</div>
+<div class="mo-cols-lays mo-back-white mo-part-round mo-cols-rows mo-part-over mo-java-page">
+	<div class="mo-cols-rows mo-paxs-5px mo-pamd-10px">
+		<h2 class="mo-fsxs-14px mo-fsss-16px mo-fsmd-18px mo-part-slip mo-cols-xs10">
+			{if$obj.vod_list|count}
+			<a class="mo-tabs-btns mo-mrxs-5px mo-mrmd-10px mo-text-mojia mo-part-bans" href="javascript:;">关联视频</a>
+			{/if}{if$obj.art_list|count}
+			<a class="mo-tabs-btns mo-mrxs-5px mo-mrmd-10px{if!$obj.art_list|count} mo-text-mojia mo-part-bans{/if}" href="javascript:;">关联文章</a>
+			{/if}
+			<a class="mo-tabs-btns mo-mrxs-5px mo-mrmd-10px{if!$obj.art_list|count&&!$obj.vod_list|count} mo-text-mojia mo-part-bans{/if}" href="javascript:;">专题简介</a>
+			{if$GLOBALS['config']['comment']['status']}
+			<a class="mo-tabs-btns mo-mrxs-5px mo-mrmd-10px" href="javascript:;">发表评论</a>
+			{/if}
+		</h2>
+	</div>
+	{if$obj.vod_list|count}
+	<div class="mo-tabs-item mo-cols-show">
+		<ul class="mo-cols-rows">
+			{include file="basics/paging" limit="10" data="explode(',',$obj['topic_rel_vod'])" page="str_replace($GLOBALS['config']['app']['pathinfo_depr'].$obj['topic_id'].'.'.$GLOBALS['config']['app']['suffix'],$GLOBALS['config']['app']['pathinfo_depr'].$obj['topic_id'].$GLOBALS['config']['app']['pathinfo_depr'].'page'.$GLOBALS['config']['app']['pathinfo_depr'].'PAGELINK.'.$GLOBALS['config']['app']['suffix'],mac_url_topic_detail($obj))"}
+			{volist name="$data_list" id="magic"}{maccms:vod ids="'.$magic.'"}{include file="module/videos"}{/maccms:vod}
+			{if!is_numeric($magic)}{maccms:vod wd="'.$magic.'"}{include file="module/videos"}{/maccms:vod}{/if}{/volist}
+		</ul>
+		{include file="tinier/paging"}
+	</div>
+	{/if}{if$obj.art_list|count}
+	<div class="mo-tabs-item{if!$obj.art_list|count} mo-cols-show{else} mo-cols-hide{/if}">
+		<ul class="mo-cols-rows">
+			{maccms:foreach name=":explode(',',$obj['topic_rel_art'])" id="magic"}{if!is_numeric($magic)}{maccms:art wd="'.$magic.'"}
+			<li class="mo-paxs-5px mo-pamd-10px mo-cols-info mo-cols-xs6 mo-cols-sm4 mo-cols-lg3">
+			{include file="basics/picture" type="art" style=":mac_default(' mo-lazy-broad mo-byxs-16by9')" tips=":mac_default($vo['art_level']?'推荐':$vo['art_hits'].'阅读')" remark=":mac_default(mac_substring($vo['art_remarks'],12),date('Y-m-d H:i',$vo['art_time']))" name=":mac_filter_html($vo['art_name'])" desc=":mac_default(mac_substring(mac_filter_html($vo['art_content']),50),'暂无简介')" image=":mac_url_img(trim($vo['art_pic']))" href=":mac_url_art_detail($vo)" title="show" lazy="open"}
+			</li>
+			{/maccms:art}{/if}{maccms:art ids="'.$magic.'"}
+			<li class="mo-paxs-5px mo-pamd-10px mo-cols-info mo-cols-xs6 mo-cols-sm4 mo-cols-lg3">
+			{include file="basics/picture" type="art" style=":mac_default(' mo-lazy-broad mo-byxs-16by9')" tips=":mac_default($vo['art_level']?'推荐':$vo['art_hits'].'阅读')" remark=":mac_default(mac_substring($vo['art_remarks'],12),date('Y-m-d H:i',$vo['art_time']))" name=":mac_filter_html($vo['art_name'])" desc=":mac_default(mac_substring(mac_filter_html($vo['art_content']),50),'暂无简介')" image=":mac_url_img(trim($vo['art_pic']))" href=":mac_url_art_detail($vo)" title="show" lazy="open"}
+			</li>
+			{/maccms:art}{/maccms:foreach}
+		</ul>
+	</div>
+	{/if}
+	<div class="mo-tabs-item{if!$obj.art_list|count&&!$obj.vod_list|count} mo-cols-show{else} mo-cols-hide{/if}">
+		<div class="mo-word-info mo-pamd-5px">
+			<div class="mo-paxs-5px mo-ptxs-0px">
+				{:mac_default(mac_url_content_img(moJiaHtmlTags($obj[mac_get_mid_code($maccms['mid']).'_content'])),'暂无简介')}
+			</div>
+		</div>
+	</div>
+	{if$GLOBALS['config']['comment']['status']}
+	<div class="mo-tabs-item mo-cols-hide">
+		<div class="mo-comm-critic"></div>
+	</div>
+	{/if}
+</div>
+{include file="tinier/relate,public/footer"}
