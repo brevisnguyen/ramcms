@@ -2,11 +2,11 @@
 return array (
   'dscms' => 
   array (
-    'slide' => '1',
+    'slide' => '0',
     'module' => 
     array (
       0 => 'index_level',
-      1 => 'index_hot',
+      1 => 'index_hto',
       2 => 'index_art',
       4 => 'index_zhibo',
       5 => 'index_actor',
@@ -22,12 +22,12 @@ return array (
     array (
       'debugging' => '0',
       'zt' => '0',
-      'btn' => '0',
+      'btn' => '1',
       'donghua' => '1',
       'lazy1' => '/template/ec_IQ/images/load.gif',
       'lazy2' => '/template/ec_IQ/images/ipcbg.gif',
       'lazy3' => '/template/ec_IQ/images/adminavr.jpeg',
-      'soconet' => '短视cms多功能主题',
+      'soconet' => 'Tìm tên phim',
     ),
     'nav' => 
     array (
@@ -35,7 +35,7 @@ return array (
       'topic' => '1',
       'vip' => '1',
       'ivi' => '1',
-      'zdyname1' => '',
+      'zdyname1' => 'aaa1',
       'zdyurl1' => 'aaa',
       'zdyname2' => 'aaa2',
       'zdyurl2' => 'aaa',

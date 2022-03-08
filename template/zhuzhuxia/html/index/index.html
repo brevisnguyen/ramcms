@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="cache-control" content="no-siteapp">
+<title>{$maccms.site_name}</title>
+<link rel='stylesheet' id='main-css'  href='{$maccms.path_tpl}css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='{$maccms.path_tpl}css/index.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js?ver=0.5'></script>
+<meta name="keywords" content="{$maccms.site_keywords}">
+<meta name="description" content="{$maccms.site_description}">
+<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
+</head>
+<body class="home blog">
+{include file="public/head"}
+<section class="container">
+<br>
+<div class="single-strong">正在热映影片<span class="chak"><a>
+<script type="text/javascript">
+var now=(new Date()).getHours();
+if(now>0&&now<=6){
+document.write("❤熬夜对身体不好哦 快睡觉！");
+}else if(now>6&&now<=11){
+document.write("❤早上好 心情好来看看剧吧~");
+}else if(now>11&&now<=14){
+document.write("❤停下手中的工作 没吃饭的亲要去吃饭了哦~");
+}else if(now>14&&now<=18){
+document.write("❤累了一上午了 休息会儿 做点自己喜欢的事吧~");
+}else{
+document.write("❤晚上好 放松放松愉快的看个剧吧~");
+}
+</script>
+</a></span></div>
+<div class="b-listtab-main">
+<div class="s-tab-main">
+<ul class="list g-clear">
+{maccms:vod order="desc" by="time" num="6" paging="false" ids="all" type="all" level="5"}
+<li class='item'><a class='js-tongjic' href='{:mac_url_vod_play($vo)}' title='{$vo.vod_name}' target='_blank'>
+<div class='cover g-playicon'>
+<img src='{$vo.vod_pic}' alt='{$vo.vod_name}' />
+</div>
+<div class="detail">
+<p class="title g-clear">
+<span class="s1">{$vo.vod_name}</span>
+<span class="s2"></span></p>
+<p class="star">主演：{$vo.vod_actor}</p>
+</div>
+</a></li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</section><br>
+<section class="container">
+<br>{maccms:type order="asc" by="sort" mid="1" ids="1"}
+<div class="single-strong">最新{$vo.type_name} <span class="chak"><a href="{:mac_url_type($vo)}">查看更多</a></span></div>
+{/maccms:type}
+<div class="b-listtab-main">
+<div class="s-tab-main">
+<ul class="list g-clear">
+{maccms:vod order="desc" by="time" num="12" paging="false" ids="all" type="1"}
+<li class='item'><a class='js-tongjic' href='{:mac_url_vod_play($vo)}' title='{$vo.vod_name}' target='_blank'>
+<div class='cover g-playicon'>
+<img src='{$vo.vod_pic}' alt='{$vo.vod_name}' />
+</div>
+<div class="detail">
+<p class="title g-clear">
+<span class="s1">{$vo.vod_name}</span>
+<span class="s2"></span></p>
+<p class="star">主演：{$vo.vod_actor}</p>
+</div>
+</a></li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</section><br>
+<section class="container">
+<br>{maccms:type order="asc" by="sort" mid="1" ids="2"}
+<div class="single-strong">最新{$vo.type_name} <span class="chak"><a href="{:mac_url_type($vo)}">查看更多</a></span></div>
+{/maccms:type}
+<div class="b-listtab-main">
+<div class="s-tab-main">
+<ul class="list g-clear">
+{maccms:vod order="desc" by="time" num="12" paging="false" ids="all" type="2"}
+<li class='item'><a class='js-tongjic' href='{:mac_url_vod_play($vo)}' title='{$vo.vod_name}' target='_blank'>
+<div class='cover g-playicon'>
+<img src='{$vo.vod_pic}' alt='{$vo.vod_name}' />
+</div>
+<div class="detail">
+<p class="title g-clear">
+<span class="s1">{$vo.vod_name}</span>
+<span class="s2"></span></p>
+<p class="star">主演：{$vo.vod_actor}</p>
+</div>
+</a></li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</section><br>
+<section class="container">
+<br>{maccms:type order="asc" by="sort" mid="1" ids="3"}
+<div class="single-strong">最新{$vo.type_name} <span class="chak"><a href="{:mac_url_type($vo)}">查看更多</a></span></div>
+{/maccms:type}
+<div class="b-listtab-main">
+<div class="s-tab-main">
+<ul class="list g-clear">
+{maccms:vod order="desc" by="time" num="12" paging="false" ids="all" type="3"}
+<li class='item'><a class='js-tongjic' href='{:mac_url_vod_play($vo)}' title='{$vo.vod_name}' target='_blank'>
+<div class='cover g-playicon'>
+<img src='{$vo.vod_pic}' alt='{$vo.vod_name}' />
+</div>
+<div class="detail">
+<p class="title g-clear">
+<span class="s1">{$vo.vod_name}</span>
+<span class="s2"></span></p>
+<p class="star">主演：{$vo.vod_actor}</p>
+</div>
+</a></li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</section><br>
+<section class="container">
+<br>{maccms:type order="asc" by="sort" mid="1" ids="4"}
+<div class="single-strong">最新{$vo.type_name} <span class="chak"><a href="{:mac_url_type($vo)}">查看更多</a></span></div>
+{/maccms:type}
+<div class="b-listtab-main">
+<div class="s-tab-main">
+<ul class="list g-clear">
+{maccms:vod order="desc" by="time" num="12" paging="false" ids="all" type="4"}
+<li class='item'><a class='js-tongjic' href='{:mac_url_vod_play($vo)}' title='{$vo.vod_name}' target='_blank'>
+<div class='cover g-playicon'>
+<img src='{$vo.vod_pic}' alt='{$vo.vod_name}' />
+</div>
+<div class='detail'>
+<p class='title g-clear'>
+<span class='s1'>{$vo.vod_name}</span></p>
+</div>
+</a></li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</section><br>
+<div class="container" style="text-align: center;padding-left: 0px;padding-right: 0px;">
+<h2>友情链接（好基友我们做个朋友吧）</h2>
+<a target="blank" class="gobtn" href="http://www.cunshao.com/" style="color: #666;">村少博客</a>
+{maccms:link num="all" type="all" order="desc" by="id"}
+<a target="blank" class="gobtn" href="{$vo.link_url}" style="color: #666;">{$vo.link_name}</a>
+{/maccms:link}
+</br></br>
+</div></br>
+{include file="public/foot"}
+</body>
+</html>

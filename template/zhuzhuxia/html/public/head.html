@@ -1,0 +1,36 @@
+<header class="header">
+<div class="container">
+<h1 class="logo"><a href="/" title="{$maccms.site_name}"><img src="{$maccms.path_tpl}images/logo.png"><span>{$maccms.site_name}</span></a></h1>		<div class="sitenav">
+<ul>
+<li class="menu-item"><a href="/">首页</a>
+<ul class="">
+</ul>
+
+{maccms:type ids="1,2" order="asc" by="sort" id="vo1" key="key1"}
+<li class="menu-item  menu-item-has-children"><a href="{:mac_url_type($vo1)}">{$vo1.type_name}</a>
+<ul class="sub-menu">
+{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+<li class="menu-item"><a href="{:mac_url_type($vo2)}">{$vo2.type_name}</a></li>
+{/maccms:type}
+</ul>
+</li>{/maccms:type}
+{maccms:type order="asc" by="sort" mid="1" ids="3"}
+<li class="menu-item"><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+{/maccms:type}
+{maccms:type order="asc" by="sort" mid="1" ids="4"}
+<li class="menu-item"><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+{/maccms:type}
+</ul>
+</div>
+<span class="sitenav-on"><i class="icon-list"></i></span>
+<span class="sitenav-mask"></span>
+
+<span class="searchstart-on"><i class="icon-search"></i></span>
+<span class="searchstart-off"><i class="icon-search"></i></span>
+<form method="get" class="searchform" action="{:mac_url('vod/search')}" >
+<button tabindex="3" class="sbtn" type="submit"><i class="fa"></i></button>
+<input tabindex="2" class="sinput" name="wd" type="text" placeholder="输入关键字" value="">
+</form>
+</div>
+</header>
+</br>

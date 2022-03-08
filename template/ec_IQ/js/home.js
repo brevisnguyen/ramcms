@@ -457,13 +457,13 @@ var MAC={
             }
 
             html = '<i class="arrow_3-SGO triangle"></i><dl class="rec-list_2b8oe">';
-            html +='<dt><i class="fa fa-trash"></i><a target="_self" href="javascript:void(0)" onclick="MAC.History.Clear();">清空</a></dt>';
+            html +='<dt><i class="fa fa-trash"></i><a target="_self" href="javascript:void(0)" onclick="MAC.History.Clear();">Xóa</a></dt>';
             if(jsondata.length > 0){
                 for($i=0; $i<jsondata.length; $i++){
                     html +='<dd class="even"><a class="albumtitle" href="'+jsondata[$i].link+'" target="video" title="'+jsondata[$i].name+'"><span class="fa fa-play-circle"></span>'+jsondata[$i].name+'</a></dd>';
                 }
             }else{
-                html +='<div class="header-playhistory"><i class="header-playicon"></i><p class="headerpopno-tips">您还没有观看任何视频哦</p></div>';
+                html +='<div class="header-playhistory"><i class="header-playicon"></i><p class="headerpopno-tips">Bạn chưa xem video nào</p></div>';
             }
             html += '</dl>';
             $('.panel_3YBhC').prepend(html);
@@ -503,7 +503,7 @@ var MAC={
         },
         'Clear': function(){
             MAC.Cookie.Del('mac_history');
-            $('.mac_history_box').html('<div class="hx_clear header-playhistory"><i class="header-playicon"></i><p class="headerpopno-tips">已清空播放记录列表哦</p></div>');
+            $('.mac_history_box').html('<div class="hx_clear header-playhistory"><i class="header-playicon"></i><p class="headerpopno-tips">Danh sách phát đã bị xóa</p></div>');
         },
     },
 

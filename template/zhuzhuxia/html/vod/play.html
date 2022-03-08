@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="cache-control" content="no-siteapp">
+<title>在线播放{$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - 高清资源 - {$maccms.site_name}</title>
+<link rel='stylesheet' id='main-css'  href='{$maccms.path_tpl}css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='{$maccms.path_tpl}css/index.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js?ver=0.5'></script>
+<meta name="keywords" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍" />
+<meta name="description" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍" />
+<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
+</head>
+<body class="home blog">
+{include file="public/head"}
+<section class="container">
+<br>
+<div class="single-strong">{$obj.vod_name}</div>
+<div class="b-listtab-main">
+<div class="s-tab-main">
+<ul class="list g-clear" style="height: 450px;margin-left: -40px;">
+{$player_data}
+{$player_js}
+</ul>
+</div>
+</div>
+</section><br>
+{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+<section class="container">
+<br>
+<div class="single-strong">{$vo.player_info.show}-在线播放</div>
+<div class="b-listtab-main">
+<div class="s-tab-main">
+<ul class="list g-clear">
+{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+<li class="item" style="height: 45px;line-height: 43px;border: 1px solid #e9e9e9;text-align: center;"><a class='js-tongjic' href='{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}' title='{$vo2.name}' target='_blank'>
+<div class='detail'>
+<span class='s1'>{$vo2.name}</span>
+</div>
+</a></li>
+{/maccms:foreach}
+</ul>
+</div>
+</div>
+</section><br>
+{/maccms:foreach}
+<section class="container">
+<br>
+<div class="single-strong">猜你喜欢 <span class="chak"><a>
+<script type="text/javascript">
+var now=(new Date()).getHours();
+if(now>0&&now<=6){
+document.write("❤熬夜对身体不好哦 快睡觉！");
+}else if(now>6&&now<=11){
+document.write("❤早上好 心情好来看看剧吧~");
+}else if(now>11&&now<=14){
+document.write("❤停下手中的工作 没吃饭的亲要去吃饭了哦~");
+}else if(now>14&&now<=18){
+document.write("❤累了一上午了 休息会儿 做点自己喜欢的事吧~");
+}else{
+document.write("❤晚上好 放松放松愉快的看个剧吧~");
+}
+</script>
+</a></span></div>
+<div class="b-listtab-main">
+<div class="s-tab-main">
+<ul class="list g-clear">
+{maccms:vod num="12" type="current" order="desc" by="time"}
+<li class='item'><a class='js-tongjic' href='{:mac_url_vod_play($vo)}' title='{$vo.vod_name}' target='_blank'>
+<div class='cover g-playicon'>
+<img src='{$vo.vod_pic}' alt='{$vo.vod_name}' />
+</div>
+<div class='detail'>
+<p class="title g-clear">
+<span class='s1'>{$vo.vod_name}</span></p>
+</div>
+</a></li>
+{/maccms:vod}
+</ul>
+</div>
+</div>
+</section><br>
+</br>
+{include file="public/foot"}
+</body>
+</html>

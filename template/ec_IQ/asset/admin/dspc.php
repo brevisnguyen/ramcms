@@ -27,7 +27,7 @@ return array (
       'lazy1' => '/template/ec_IQ/images/load.gif',
       'lazy2' => '/template/ec_IQ/images/ipcbg.gif',
       'lazy3' => '/template/ec_IQ/images/adminavr.jpeg',
-      'soconet' => '短视cms多功能主题',
+      'soconet' => 'Tìm tên phim',
     ),
     'nav' => 
     array (
