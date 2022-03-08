@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <title>iframe播放器</title>
+    <title>iframe</title>
     <style>*{word-wrap:break-word;outline:none} html,body{width:100%;height:100%;background:#000;color:#fff;}
     .player_popeom{ width:500px;height:150px; position:absolute;text-align:center; top:50%;left:50%;margin:-75px 0 0 -250px; }
     .player_popeom a{  padding: 10px 16px;
@@ -22,17 +22,17 @@
     <div class="player_box">
         <div class="player_popeom">
             {if condition="$obj.vod_points_play eq 0"}
-            <p>试看{$popedom.trysee}分钟结束，完整观看本影片需要升级会员组，请升级后观看。</p>
-            <small>提示：购买VIP会员组，享受超级权限，谢谢支持。</small>
-            <p><a href="{:url('user/index')}" target="_blank">会员中心</a> <a href="{:url('user/upgrade')}" target="_blank">马上升级</a></p>
+            <p>{$popedom.trysee} phút xem thử đã hết, Để xem trọn vẹn video này, bạn cần nâng cấp nhóm thành viên, vui lòng xem sau khi nâng cấp</p>
+            <small>Mẹo: Mua nhóm thành viên VIP để được hưởng đặc quyền, cảm ơn bạn đã ủng hộ.</small>
+            <p><a href="{:url('user/index')}" target="_blank">Trung tâm thành viên</a> <a href="{:url('user/upgrade')}" target="_blank">Nâng cấp</a></p>
             {else/}
-            <p>试看{$popedom.trysee}分钟结束，完整观看本影片需要花费{$obj.vod_points_play}积分，请支付后观看。</p>
-            <small>提示：一次支付，永久观看，不重复扣费，谢谢支持。</small>
+            <p>{$popedom.trysee}phút xem thử đã hết, bạn cần ít nhất {$obj.vod_points_play} để xem, Vui lòng mua thêm.</p>
+            <small>Mẹo: Thanh toán một lần, xem mãi mãi, không bị trừ nhiều lần, cảm ơn quý khách đã ủng hộ.</small>
 
             {if condition="$user.group.group_id eq 1"}
-                <p><a href="{:url('user/login')}" target="_blank">马上登录</a></p>
+                <p><a href="{:url('user/login')}" target="_blank">ĐĂNG NHẬP</a></p>
             {else/}
-                <p><a href="{:url('user/buy')}" target="_blank">马上充值</a> <a href="javascript:;" onclick="window.parent.MAC.User.BuyPopedom(this)" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}" data-type="4">确认购买</a></p>
+                <p><a href="{:url('user/buy')}" target="_blank">NẠP TIỀN</a> <a href="javascript:;" onclick="window.parent.MAC.User.BuyPopedom(this)" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}" data-type="4">XÁC NHẬN MUA</a></p>
             {/if}
             {/if}
 
