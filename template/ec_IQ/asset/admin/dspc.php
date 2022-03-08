@@ -2,11 +2,11 @@
 return array (
   'dscms' => 
   array (
-    'slide' => '1',
+    'slide' => '0',
     'module' => 
     array (
       0 => 'index_level',
-      1 => 'index_hot',
+      1 => 'index_hto',
       2 => 'index_art',
       4 => 'index_zhibo',
       5 => 'index_actor',
@@ -22,7 +22,7 @@ return array (
     array (
       'debugging' => '0',
       'zt' => '0',
-      'btn' => '0',
+      'btn' => '1',
       'donghua' => '1',
       'lazy1' => '/template/ec_IQ/images/load.gif',
       'lazy2' => '/template/ec_IQ/images/ipcbg.gif',

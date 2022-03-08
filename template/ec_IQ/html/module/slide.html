@@ -2,17 +2,30 @@
     <div class="qy-carousel">
         <div class="qy-carousel-fixed">
             {if condition="$conch['dscms']['slide'] eq 1"}
-            <div class="qy-carousel-inner bd">
-                <ul class="qy-carousel-ul">
-                    {maccms:vod num="8" level="9" type="current" order="desc" by="time"}
-                    <li class="qy-carousel-li">
-                        <a href='{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}'><span class="qy-pc-carousel" style="background-image: url({$vo.vod_pic_slide|mac_url_img});"></span></a>
-                    </li>
-                    {/maccms:vod}
-                </ul>
-                <div class="qy-carousel-maskl" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
-                <div class="qy-carousel-maskr" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
-                <div class="qy-carousel-maskbottom"></div>
+            <div class="ec-type-slide" style="height: 670px;">
+                <div class="slideBox wwp">
+                    <div class="bd">
+                        <div class="qy-carousel-maskl" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
+                        <div class="qy-carousel-maskr" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
+                        <ul>
+                            {maccms:vod num="6" level="0" type="current" order="desc" by="time"}
+                            <li style="background-image: url({$vo.vod_pic_slide|mac_url_img}); height: 600px;">
+                                <a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" target="_blank">
+                                <div class="title" style="margin: 0 0 140px 100px;">
+                                    <i class="icon"></i>
+                                    <div class="caption text">{$vo.vod_name}</div>
+                                    <p class="desc text">[{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}]{$vo.vod_sub}</p>
+                                    <p class="desc text">[{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}]{$vo.vod_sub}</p>
+                                </div>
+                                </a>
+                            </li>
+                            {/maccms:vod}
+                        </ul>
+                    </div>
+                    <div class="hd"><ul>{maccms:vod num="6" level="9" type="current" order="desc" by="time"}<li class="dotList_item"></li>{/maccms:vod}</ul></div>
+                    <a class="prev focus_arrow" href="javascript:void(0)"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
+                    <a class="next focus_arrow" href="javascript:void(0)"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+                </div>
             </div>
             {else}
             <div class="qy-carousel-inner wwp bd">
@@ -28,20 +41,6 @@
                 <div class="qy-carousel-maskbottom"></div>
             </div>
             {/if}
-            <div class="qy-carousel-con-gray">
-                <div class="qy-carousel-side-panel hd wwp">
-                    <ul class="qy-carousel-panel-list">
-                        {maccms:vod num="10" level="9" type="current" order="desc" by="time"}
-                        <li class="panel-item">
-                            <a href='{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}' target="_blank" class="panel-item-link">
-                            <p class="panel-item-title channelname">{$vo.vod_name}</p>
-                            <p class="panel-item-dec channelname">{$vo.vod_sub}</p>
-                            </a>
-                        </li>
-                        {/maccms:vod}
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
     <div class="qy-nav-focus">
@@ -155,4 +154,11 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">jQuery(".qy-carousel-fixed").slide({ mainCell:".bd ul",effect:"fold",autoPlay:true });</script>
+<script type="text/javascript">
+    jQuery(".qy-carousel-fixed").slide({
+        mainCell:".bd ul",
+        effect:"fade",
+        autoPlay:false,
+        delayTime:500,
+    });
+</script>
