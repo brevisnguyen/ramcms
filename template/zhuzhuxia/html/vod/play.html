@@ -9,15 +9,12 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta http-equiv="cache-control" content="no-siteapp">
-    <title>在线播放{$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - 高清资源 -
-        {$maccms.site_name}</title>
+    <title>Đang phát {$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - FullHD - {$maccms.site_name}</title>
     <link rel='stylesheet' id='main-css' href='{$maccms.path_tpl}css/style.css' type='text/css' media='all' />
     <link rel='stylesheet' id='main-css' href='{$maccms.path_tpl}css/index.css' type='text/css' media='all' />
     <script type='text/javascript' src='http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js?ver=0.5'></script>
-    <meta name="keywords"
-        content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍" />
-    <meta name="description"
-        content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍" />
+    <meta name="keywords" content="xem trực tuyến miễn phí {$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}, tóm tắt {$obj.vod_name}" />
+    <meta name="description" content="xem trực tuyến miễn phí {$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}, tóm tắt {$obj.vod_name}" />
     <script>
         var maccms = {
             "path": "__ROOT__",
@@ -54,8 +51,7 @@
                     {maccms:foreach name="vo.urls" id="vo2" key="key2"}
                     <li class="item"
                         style="height: max-content;border: 1px solid #e9e9e9;text-align: left; width: max-content; padding: 12px;">
-                        <a class='js-tongjic' href='{:mac_url_vod_play($obj,[' sid'=>$vo.sid,'nid'=>$vo2.nid])}'
-                            title='{$vo2.name}' target='_blank'>
+                        <a class='js-tongjic' href='{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}' title='{$vo2.name}'>
                             <div class='detail'>
                                 <span class='s1'>{$vo2.name}</span>
                             </div>
