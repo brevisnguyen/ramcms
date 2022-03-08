@@ -1415,7 +1415,7 @@ function mac_play_list_one($url_one, $from_one, $server_one=''){
             $url_list[$key+1]['name'] = lang('the').($key+1).lang('episode');
             $url_list[$key+1]['url'] = $server_one.$title;
         }else{
-            $url_list[$key+1]['name'] = $title;
+            $url_list[$key+1]['name'] = ucfirst(lang('episode')).' '.($key+1);
             $url_list[$key+1]['url'] = $server_one.$url;
         }
         if(empty($from)){
