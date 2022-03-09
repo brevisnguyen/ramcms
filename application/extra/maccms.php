@@ -28,7 +28,7 @@ return array (
     'install_dir' => '/',
     'site_logo' => 'static/images/logo.jpg',
     'site_waplogo' => 'static/images/logo.jpg',
-    'template_dir' => 'zhuzhuxia',
+    'template_dir' => 'heisejianyue',
     'html_dir' => 'html',
     'mob_status' => '1',
     'mob_template_dir' => 'ec_IQ',

@@ -4,7 +4,7 @@
     <div class="ant-tabscontent cf">
         <h2 class="tabs-moduletitle l"><a href="{:mac_url_type($vo1)}" title="娱乐资讯" class="tabs-maintitle l">娱乐资讯</a></h2>
         <div class="tabs-nav l col7">
-            <a class="tabs-more col2" href="javascript:;">今日更新 <span class="gxtag ecorange col1b">{:mac_data_count($obj.type_id,'today','art')}</span> 篇  共 <span class="gxtag ecorange col1b">{:mac_data_count($obj.type_id,'all','art')} </span>篇</a>
+            <a class="tabs-more col2" href="javascript:;">Cập nhật hôm nay <span class="gxtag ecorange col1b">{:mac_data_count($obj.type_id,'today','art')}</span> 篇  共 <span class="gxtag ecorange col1b">{:mac_data_count($obj.type_id,'all','art')} </span>篇</a>
             {maccms:type num="5" parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
             <a class="col2b" href="{:mac_url_type($vo2)}" title="">{$vo2.type_name}</a><i class="slash">|</i>
             {/maccms:type}

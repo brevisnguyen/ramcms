@@ -19,5 +19,48 @@ MacPlayerConfig = {
 };
 //参数结束
 //缓存开始
-MacPlayerConfig.player_list={"nguon":{"show":"nguon","des":"nguon","ps":"0","parse":""},"ngm3u8":{"show":"ngm3u8","des":"ngm3u8","ps":"0","parse":""},"videojs":{"show":"videojs-H5\u64ad\u653e\u5668","des":"videojs.com","ps":"1","parse":""},"dplayer":{"show":"DPlayer-H5\u64ad\u653e\u5668","des":"dplayer.js.org","ps":"0","parse":""}},MacPlayerConfig.downer_list={"http":{"show":"http\u4e0b\u8f7d","des":"des\u63d0\u793a\u4fe1\u606f","ps":"0","parse":""},"xunlei":{"show":"xunlei\u4e0b\u8f7d","des":"des\u63d0\u793a\u4fe1\u606f","ps":"1","parse":""}},MacPlayerConfig.server_list={"server1":{"show":"\u6d4b\u8bd5\u670d\u52a1\u56681","des":"des\u63d0\u793a\u4fe1\u606f1"}};
+MacPlayerConfig.player_list = {
+    "nguon": {
+        "show": "nguon",
+        "des": "nguon",
+        "ps": "0",
+        "parse": ""
+    },
+    "ngm3u8": {
+        "show": "ngm3u8",
+        "des": "ngm3u8",
+        "ps": "0",
+        "parse": ""
+    },
+    "videojs": {
+        "show": "videojs-H5\u64ad\u653e\u5668",
+        "des": "videojs.com",
+        "ps": "1",
+        "parse": ""
+    },
+    "dplayer": {
+        "show": "DPlayer-H5\u64ad\u653e\u5668",
+        "des": "dplayer.js.org",
+        "ps": "0",
+        "parse": ""
+    }
+}, MacPlayerConfig.downer_list = {
+    "http": {
+        "show": "http\u4e0b\u8f7d",
+        "des": "des\u63d0\u793a\u4fe1\u606f",
+        "ps": "0",
+        "parse": ""
+    },
+    "xunlei": {
+        "show": "xunlei\u4e0b\u8f7d",
+        "des": "des\u63d0\u793a\u4fe1\u606f",
+        "ps": "1",
+        "parse": ""
+    }
+}, MacPlayerConfig.server_list = {
+    "server1": {
+        "show": "\u6d4b\u8bd5\u670d\u52a1\u56681",
+        "des": "des\u63d0\u793a\u4fe1\u606f1"
+    }
+};
 //缓存结束

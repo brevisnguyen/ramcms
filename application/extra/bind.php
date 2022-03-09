@@ -19,4 +19,5 @@ return array (
   '28cd58dff46743fc70710aaa44fa064a_21' => 20,
   '28cd58dff46743fc70710aaa44fa064a_22' => 14,
   '28cd58dff46743fc70710aaa44fa064a_23' => 16,
+  '28cd58dff46743fc70710aaa44fa064a_3' => 3,
 );

@@ -14,7 +14,7 @@
 			{maccms:type ids="1,2,3,4" order="asc" by="sort" id="vo1" key="key1"}
 			<div class="stui-pannel clearfix">
 				<div class="stui-pannel__head clearfix">
-					<a class="text-muted pull-right" href="{:mac_url_type($vo1,[],'show')}">更多 &gt;</a>
+					<a class="text-muted pull-right" href="{:mac_url_type($vo1,[],'show')}">Xem tất cả &gt;</a>
 					<span class="hidden-sm hidden-xs pull-right">
 						{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
 						{if condition="$key lt 11"}
@@ -23,7 +23,7 @@
                         {/maccms:type}						
 					</span>
 					<h3 class="title">
-						最新{$vo1.type_name}
+						{$vo1.type_name}
 					</h3>								
 				</div>
 				<ul class="stui-vodlist clearfix">
@@ -39,7 +39,7 @@
 			<div class="stui-pannel clearfix">				
 				<div class="stui-pannel__head clearfix">                                                                                                                                                                                                                                                       
 					<h3 class="title">								
-						友情链接
+						Liên kết
 					</h3>								
 				</div>																		
 				<ul class="stui-link__text col-pd clearfix">

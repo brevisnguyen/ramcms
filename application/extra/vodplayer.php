@@ -10,7 +10,7 @@ return array (
     'ps' => '0',
     'parse' => '',
     'sort' => '999',
-    'tip' => '9',
+    'tip' => 'Defaul',
     'id' => 'nguon',
   ),
   'ngm3u8' => 
@@ -23,7 +23,7 @@ return array (
     'ps' => '0',
     'parse' => '',
     'sort' => '908',
-    'tip' => 'nguon',
+    'tip' => 'M3U8',
     'id' => 'ngm3u8',
   ),
   'videojs' => 

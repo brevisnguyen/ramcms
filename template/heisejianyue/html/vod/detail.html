@@ -20,19 +20,19 @@
 					<div class="stui-content__detail">
 						<h3 class="title">{$obj.vod_name}</h3>	
 						<p class="data">
-							<span class="text-muted hidden-xs">类型：</span>{$obj.vod_class|mac_url_create='class'}
+							<span class="text-muted hidden-xs">Thể loại: </span>{$obj.vod_class|mac_url_create='class'}
 							<span class="split-line"></span>
-							<span class="text-muted hidden-xs">地区：</span>{$obj.vod_area|mac_url_create='area'}
+							<span class="text-muted hidden-xs">Quốc gia: </span>{$obj.vod_area|mac_url_create='area'}
 							<span class="split-line"></span>
-							<span class="text-muted hidden-xs">年份：</span>{$obj.vod_year|mac_url_create='year'}		
+							<span class="text-muted hidden-xs">Năm: </span>{$obj.vod_year|mac_url_create='year'}		
 						</p>
-						<p class="data"><span>主演：</span>{$obj.vod_actor|mac_substring=40}</p>
-						<p class="data"><span>导演：</span>{$obj.vod_director}</p>
+						<p class="data"><span>Vai chính: </span>{$obj.vod_actor|mac_substring=50}</p>
+						<p class="data"><span>Đạo diễn: </span>{$obj.vod_director}</p>
 						<p class="desc hidden-xs">
-							<span class="left text-muted">简介：</span>{$obj.vod_content|mac_filter_html|mac_substring=55} <a href="#desc">详细 &gt;</a>
+							<span class="left text-muted">Nội dung: </span>{$obj.vod_content|mac_filter_html|mac_substring=55} <a href="#desc">Chi tiết &gt;</a>
 						</p>							    
 						<div class="playbtn">
-							<a class="btn btn-primary" href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}">立即播放</a>
+							<a class="btn btn-primary" href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}">XEM PHIM</a>
 						</div>
 					</div>	
 					<div class="stui-content__ad hidden-sm hidden-xs">
@@ -68,7 +68,7 @@
 			<div class="stui-pannel clearfix" id="desc">
 				<div class="stui-pannel__head clearfix">
 					<h3 class="title">
-						剧情介绍
+						Tóm tắt
 					</h3>						
 				</div>																		
 				<div class="stui-content__desc col-pd clearfix">
@@ -81,7 +81,7 @@
 			<div class="stui-pannel clearfix">
 				<div class="stui-pannel__head clearfix">
 					<h3 class="title">
-						猜你喜欢
+						CÓ THỂ BẠN CŨNG THÍCH
 					</h3>						
 				</div>
 				<ul class="stui-vodlist__bd clearfix">
@@ -93,8 +93,8 @@
 			<!-- end 猜你喜欢 -->
         </div>
     </div>
-    <span class="mac_ulog_set hide" alt="浏览记录" data-type="1" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
-    <span class="mac_history_set hide" alt="历史记录" data-name="[{$obj.type.type_name}]{$obj.vod_name}" data-pic="{$obj.vod_pic|mac_url_img}"></span>
+    <span class="mac_ulog_set hide" alt="Lịch sử duyệt web" data-type="1" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+    <span class="mac_history_set hide" alt="Danh sách" data-name="[{$obj.type.type_name}]{$obj.vod_name}" data-pic="{$obj.vod_pic|mac_url_img}"></span>
 	{include file="block/foot"}
 </body>
 </html>

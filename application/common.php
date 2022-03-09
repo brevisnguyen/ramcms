@@ -1210,7 +1210,7 @@ function mac_filter_xss($str)
 
 function mac_format_text($str)
 {
-    return str_replace(array('/','，','|','、',' ',',,,'),',',$str);
+    return str_replace(array('/','，','|','、',',,,'),',',$str);
 }
 function mac_format_count($str)
 {
@@ -2426,7 +2426,7 @@ function mac_url_create($str,$type='actor',$flag='vod',$ac='search',$sp='&nbsp;'
         return 'Không xác định';
     }
     $res = [];
-    $str = str_replace(array('/','|',',','，',' '),',',$str);
+    $str = str_replace(array('/','|',',','，'),',',$str);
     $arr = explode(',',$str);
     foreach($arr as $k=>$v){
         $res[$k] = '<a href="'.mac_url($flag.'/'.$ac,[$type=>$v]).'" target="_blank">'.$v.'</a>'.$sp;

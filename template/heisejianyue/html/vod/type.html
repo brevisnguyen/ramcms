@@ -14,45 +14,31 @@
 				<!-- 筛选 -->
 				<ul class="stui-screen__list clearfix">
 					<li>
-						<span class="text-muted">按类型</span>
+						<span class="text-muted">Thể loại</span>
 					</li>
 				  	{empty name="$obj.type_extend.class"}
 				        {maccms:foreach name=":explode(',',$obj.parent.type_extend.class)"}
 				        <li><a href="{:mac_url_type($obj,['class'=>$vo],'show')}">{$vo}</a></li>
 				        {/maccms:foreach}
 				    {else /}
-				        {maccms:foreach name=":explode(',',$obj.type_extend.class)"}
-				       	<li><a href="{:mac_url_type($obj,['class'=>$vo],'show')}">{$vo}</a></li>
-				        {/maccms:foreach}
+						{maccms:type parent="'.$obj['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+				       	<li><a href="{:mac_url_type($vo2,[],'show')}">{$vo2.type_name}</a></li>
+						{/maccms:type}
 				    {/empty}								
 				</ul>
 				<ul class="stui-screen__list clearfix">
 					<li>
-						<span class="text-muted">按地区</span>
+						<span class="text-muted">Khu vực</span>
 					</li>
 					{empty name="$obj.type_extend.area"}
 				        {maccms:foreach name=":explode(',',$obj.parent.type_extend.area)"}
 				        <li><a href="{:mac_url_type($obj,['class'=>$vo],'show')}">{$vo}</a></li>
 				        {/maccms:foreach}
 				    {else /}
-				        {maccms:foreach name=":explode(',',$obj.type_extend.area)"}
-				        <li><a href="{:mac_url_type($obj,['area'=>$vo],'show')}">{$vo}</a></li>
-				        {/maccms:foreach}
+						{maccms:type parent="'.$obj['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+				        <li><a href="{:mac_url_type($vo2,[],'show')}">{$vo2.type_name}</a></li>
+				        {/maccms:type}
 				    {/empty}
-				</ul>
-				<ul class="stui-screen__list clearfix">
-					<li>
-						<span class="text-muted">按年份</span>
-					</li>
-					{empty name="$obj.type_extend.year"}
-				        {maccms:foreach name=":explode(',',$obj.parent.type_extend.year)"}
-				        <li><a href="{:mac_url_type($obj,['class'=>$vo],'show')}">{$vo}</a></li>
-				        {/maccms:foreach}
-				    {else /}
-				        {maccms:foreach name=":explode(',',$obj.type_extend.year)"}
-				        <li><a href="{:mac_url_type($obj,['year'=>$vo],'show')}">{$vo}</a></li>
-				        {/maccms:foreach}
-				    {/empty}						
 				</ul>
 				<!-- end 筛选 -->
 	
