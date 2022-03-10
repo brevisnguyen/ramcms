@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>找回密码 - {$maccms.site_name} </title>
+	<title>Lấy lại mật khẩu - {$maccms.site_name} </title>
 	<meta name="keywords" content="{$maccms.site_keywords}"/>
 	<meta name="description" content="{$maccms.site_description}"/>
 	{include file="public/include" /}
@@ -13,30 +13,30 @@
 			<a title="{$maccms.site_name}" style="background-image: url({$maccms.site_logo|mac_url_img});" href="{$maccms.path}"></a>
 		</div>
 		<form method="post" id="fm" action="">
-			<h4>密保找回密码</h4>
+			<h4>Khôi phục mật khẩu</h4>
 			<div class="reg-group ec-input">
-				<label class="bd-r" style="letter-spacing: normal;">账号</label><input type="text" id="user_name" name="user_name" class="reg-control" placeholder="请输入您的登录账号">
+				<label class="bd-r" style="letter-spacing: normal;">Username</label><input type="text" id="user_name" name="user_name" class="reg-control" placeholder="Nhập tên tài khoản">
 			</div>
 			<div class="reg-group ec-input">
-				<label>密保问题</label><input type="text" id="user_question" name="user_question" class="reg-control" placeholder="请输入您的密保问题">
+				<label>Câu hỏi bảo mật</label><input type="text" id="user_question" name="user_question" class="reg-control" placeholder="Nhập câu hỏi bảo mật">
 			</div>
 			<div class="reg-group ec-input">
-				<label>密保答案</label><input type="text" id="user_answer" name="user_answer" class="reg-control" placeholder="请输入您的密保答案">
+				<label>Câu trả lời</label><input type="text" id="user_answer" name="user_answer" class="reg-control" placeholder="Nhập câu trả lời">
 			</div>
 			<div class="reg-group ec-input">
-				<label>新的密码</label><input type="password" id="user_pwd" name="user_pwd" class="reg-control" placeholder="请输入您的新密码">
+				<label>Mật khẩu mới</label><input type="password" id="user_pwd" name="user_pwd" class="reg-control" placeholder="Nhập mật khẩu mới">
 			</div>
 			<div class="reg-group ec-input">
-				<label>确认密码</label><input type="password" id="user_pwd2" name="user_pwd2" class="reg-control" placeholder="请输入您的确认密码">
+				<label>Xác nhận mật khẩu</label><input type="password" id="user_pwd2" name="user_pwd2" class="reg-control" placeholder="Nhập xác nhận lại mật khẩu">
 			</div>
 			<div class="reg-group ec-input">
-				<label>验证码</label><input type="text" class="reg-control w150" id="verify" name="verify" placeholder="请输入验证码">
-				<img class="r m-hi" src="{:url('verify/index')}" onClick="this.src=this.src+'?'"  alt="单击刷新" />
+				<label>Mã xác nhận</label><input type="text" class="reg-control w150" id="verify" name="verify" placeholder="Nhập mã xác nhận">
+				<img class="r m-hi" src="{:url('verify/index')}" onClick="this.src=this.src+'?'"  alt="Làm mới" />
 			</div>
-			<input type="button" id="btn_submit" class="button ec-denglubj btn-brand btn-sub" value="立即找回">
+			<input type="button" id="btn_submit" class="button ec-denglubj btn-brand btn-sub" value="LẤY LẠI MẬT KHẨU">
 		</form>
     <div class="reg-ts anthology-wrap">
-    	<a href="{:url('user/login')}">登录账号</a><a href="{:url('user/findpass_msg')}?ac=email">用邮箱找回</a><a href="{:url('user/findpass_msg')}?ac=phone">用手机找回</a>
+    	<a href="{:url('user/login')}">Đăng nhập</a><a href="{:url('user/findpass_msg')}?ac=email">Khôi phục qua E-mail</a><a href="{:url('user/findpass_msg')}?ac=phone">Khôi phục qua SĐT</a>
     </div>
 	</div>
 	
@@ -48,9 +48,9 @@
 			if(event.keyCode==13){ $('#btnLogin').click(); }
 		});
 		$('#btn_submit').click(function() {
-			if ($('#user_name').val()  == '') { alert('请输入用户！'); $("#user_name").focus(); return false; }
-			if ($('#user_pwd').val()  == '') { alert('请输入密码！'); $("#user_pwd").focus(); return false; }
-			if ($('#verify').val()  == '') { alert('请输入验证码！'); $("#verify").focus(); return false; }
+			if ($('#user_name').val()  == '') { alert('Nhập tên tài khoản! '); $("#user_name").focus(); return false; }
+			if ($('#user_pwd').val()  == '') { alert('Nhập mật khẩu! '); $("#user_pwd").focus(); return false; }
+			if ($('#verify').val()  == '') { alert('Nhập mã xác nhận! '); $("#verify").focus(); return false; }
 
 			$.ajax({
 				url: "{:url('user/findpass')}",
@@ -70,7 +70,7 @@
 				},
 				complete: function () {
 					$('#verify').click();
-					$("#btn_submit").css("background","#fa4646").val("立即找回");
+					$("#btn_submit").css("background","#fa4646").val("LẤY LẠI MẬT KHẨU");
 				}
 			});
 

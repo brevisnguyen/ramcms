@@ -159,7 +159,7 @@ if(location.hostname.match()){
         if(urllin != null){
             var urldata = urllin.split(",");
             for(var i=0;i<urldata.length;i++){
-                $("#ec-xlqh").append('<button type="button" value="' + urldata[i] + '">线路' + (i+1) + '</button>');
+                $("#ec-xlqh").append('<button type="button" value="' + urldata[i] + '">Server-' + (i+1) + '</button>');
             };
         };
         var jxurllin = $("#jxurllin").html();

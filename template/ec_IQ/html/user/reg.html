@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>用户注册 - {$maccms.site_name}</title>
+	<title>Đăng ký - {$maccms.site_name}</title>
 	<meta name="keywords" content="{$maccms.site_keywords}"/>
 	<meta name="description" content="{$maccms.site_description}"/>
 	{include file="public/include" /}
@@ -14,46 +14,46 @@
 			<a title="{$maccms.site_name}" style="background-image: url({$maccms.site_logo|mac_url_img});" href="{$maccms.path}"></a>
 		</div>
 		<form method="post" id="fm" action="">
-			<h4>欢迎注册</h4>
+			<h4>Chào mừng bạn đến đăng ký</h4>
 			<div class="reg-group ec-input">
-				<label class="bd-r" style="letter-spacing: normal;">账号</label><input type="text" id="user_name" name="user_name" class="reg-control" placeholder="请输入您的登录账号">
+				<label class="bd-r" style="letter-spacing: normal;">Username</label><input type="text" id="user_name" name="user_name" class="reg-control" placeholder="Nhập tên tài khoản muốn đăng ký">
 			</div>
 			<div class="reg-group ec-input">
-				<label>密码</label><input type="password" id="user_pwd" name="user_pwd" class="reg-control" placeholder="请输入您的登录密码">
+				<label>Password</label><input type="password" id="user_pwd" name="user_pwd" class="reg-control" placeholder="Nhập mật khẩu">
 			</div>
 			<div class="reg-group ec-input">
-				<label>确认密码</label><input type="password" id="user_pwd2" name="user_pwd2" class="reg-control" placeholder="请输入您的确认密码">
+				<label>Confirm password</label><input type="password" id="user_pwd2" name="user_pwd2" class="reg-control" placeholder="Xác nhận lại mật khẩu">
 			</div>
 			{if condition="$user_config.reg_phone_sms neq 0"}
 			<input type="hidden" name="ac" value="phone">
 			<div class="reg-group ec-input">
-				<label>手机号码</label><input type="text" class="reg-control w150" id="to" name="to" placeholder="请输入手机号">
-				<input type="button" class="r m-hi reg-yzm" id="btn_send_sms" value="获取验证码"/>
+				<label>Phone number</label><input type="text" class="reg-control w150" id="to" name="to" placeholder="Nhập số điện thoại">
+				<input type="button" class="r m-hi reg-yzm" id="btn_send_sms" value="Gửi mã xác nhận"/>
 			</div>
 			<div class="reg-group ec-input">
-				<label>验证码</label><input type="text" class="reg-control" id="code" name="code" placeholder="请输入手机验证码">
+				<label>Mã xác nhận</label><input type="text" class="reg-control" id="code" name="code" placeholder="Nhập mã xác nhận">
 			</div>
 			{elseif condition="$user_config.reg_email_sms neq 0"}
 			<input type="hidden" name="ac" value="email">
 			<div class="reg-group ec-input">
-				<label>邮箱地址</label><input type="text" class="reg-control w150" id="to" name="to" placeholder="请输入邮箱">
-				<input type="button" class="r m-hi reg-yzm" id="btn_send_sms" value="获取验证码"/>
+				<label>Email</label><input type="text" class="reg-control w150" id="to" name="to" placeholder="Nhập email">
+				<input type="button" class="r m-hi reg-yzm" id="btn_send_sms" value="Gửi mã xác nhận"/>
 			</div>
 			<div class="reg-group ec-input">
-				<label>验证码</label><input type="text" class="reg-control" id="code" name="code" placeholder="请输入邮箱验证码">
+				<label>Mã xác nhận</label><input type="text" class="reg-control" id="code" name="code" placeholder="Nhập mã xác nhận">
 			</div>
 			{/if}
 
 			{if condition="$user_config.reg_verify neq 0"}
 			<div class="reg-group ec-input">
-				<label>验证码</label><input type="text" class="reg-control w150" id="verify" name="verify" placeholder="请输入验证码">
-				<img class="r m-hi" id="verify_img" src="{:url('verify/index')}" onClick="this.src=this.src+'?'"  alt="单击刷新" />
+				<label>Mã xác nhận</label><input type="text" class="reg-control w150" id="verify" name="verify" placeholder="Nhập mã xác nhận">
+				<img class="r m-hi" id="verify_img" src="{:url('verify/index')}" onClick="this.src=this.src+'?'"  alt="Làm mới" />
 			</div>
             {/if}
-			<input type="button" id="btn_submit" class="button ec-denglubj btn-brand btn-sub" value="立即注册">
+			<input type="button" id="btn_submit" class="button ec-denglubj btn-brand btn-sub" value="ĐĂNG KÝ">
 		</form>
 	<div class="reg-ts anthology-wrap">
-   	    <a href="{$maccms.path}">返回首页</a><a href="{:url('user/login')}">登录账号</a><a href="{:url('user/findpass')}">忘记密码</a>
+   	    <a href="{$maccms.path}">Trang chủ</a><a href="{:url('user/login')}">Đăng nhập</a><a href="{:url('user/findpass')}">Quên mật khẩu</a>
     </div>
 	</div>
 
@@ -64,12 +64,12 @@
     function settime(val) {
         if (countdown == 0) {
             val.removeAttribute("disabled");
-            val.value="获取验证码";
+            val.value="Lấy mã xác nhận";
             countdown = 60;
             return true;
         } else {
             val.setAttribute("disabled", true);
-            val.value="重新发送(" + countdown + ")";
+            val.value="Gửi lại sau (" + countdown + ")";
             countdown--;
         }
         setTimeout(function() {settime(val) },1000)
@@ -87,7 +87,7 @@
                 var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
                 var ex = pattern.test(to);
                 if (!ex) {
-                    alert('邮箱格式不正确');
+                    alert('Định dạng E-mail không chính xác');
                     return;
                 }
             }
@@ -95,12 +95,12 @@
                 var pattern=/^[1][0-9]{10}$/;
                 var ex = pattern.test(to);
                 if (!ex) {
-                    alert('手机号格式不正确');
+                    alert('Định dạng số điện không chính xác');
                     return;
                 }
             }
             else{
-                alert('参数错误');
+                alert('Tham số lỗi');
                 return;
             }
 
@@ -126,9 +126,9 @@
         });
 
 		$('#btn_submit').click(function() {
-			if ($('#user_name').val()  == '') { alert('请输入用户！'); $("#user_name").focus(); return false; }
-			if ($('#user_pwd').val()  == '') { alert('请输入密码！'); $("#user_pwd").focus(); return false; }
-			if ($('#verify').val()  == '') { alert('请输入验证码！'); $("#verify").focus(); return false; }
+			if ($('#user_name').val()  == '') { alert('Nhập tên tài khoản! '); $("#user_name").focus(); return false; }
+			if ($('#user_pwd').val()  == '') { alert('Nhập mật khẩu! '); $("#user_pwd").focus(); return false; }
+			if ($('#verify').val()  == '') { alert('Nhập mã xác nhận! '); $("#verify").focus(); return false; }
 
 			$.ajax({
 				url: "{:url('user/reg')}",
@@ -148,7 +148,7 @@
 					}
 				},
 				complete: function () {
-					$("#btn_submit").css("background","#fa4646").val("立即注册");
+					$("#btn_submit").css("background","#fa4646").val("ĐĂNG KÝ");
 				}
 			});
 

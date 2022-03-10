@@ -33,7 +33,7 @@
                                 <em class="comment_digg_num icon-num">{$vo.comment_down}</em>
                             </a>
                         </span>
-                        <a class="comment_report" data-id="{$vo.comment_id}" href="javascript:;">举报</a>
+                        <a class="comment_report" data-id="{$vo.comment_id}" href="javascript:;">Báo cáo</a>
                     </div>
                     {maccms:foreach name="$vo.sub" id="child"}
                     <div class="cmt_item clearfix">
@@ -56,7 +56,7 @@
                                 <em class="icon-num">{$child.comment_down}</em>
                             </a>
                         </span>
-                            <a class="comment_report" data-id="{$child.comment_id}" href="javascript:;">举报</a>
+                            <a class="comment_report" data-id="{$child.comment_id}" href="javascript:;">Báo cáo</a>
                         </div>
                     </div>
                     {/maccms:foreach}

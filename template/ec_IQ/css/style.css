@@ -831,7 +831,10 @@ a {
     display: inline-block;
     height: 48px;
     width: 150px;
-    margin-right: 0
+    margin-right: 0;
+    overflow: hidden;
+    object-fit: cover;
+    transform: scale(1.5);
 }
 
 .header .sllogo {
@@ -859,7 +862,7 @@ a {
     height: 38px;
     line-height: 38px;
     padding: 0 10px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     font-size: 0
 }
 
@@ -891,7 +894,7 @@ a {
     text-align: center;
     height: 60px;
     line-height: 60px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     margin: 0 20px;
     font-size: 16px
 }
@@ -1047,7 +1050,8 @@ a {
     width: 100%;
     border-radius: 4px;
     height: 32px;
-    line-height: 32px
+    line-height: 32px;
+    font-weight: bold;
 }
 
 .content_25Psf .img-box1Tukq .fa {
@@ -1317,6 +1321,10 @@ a {
 
 .index .content_25Psf .text-content {
     border-bottom: 1px solid hsla(0, 0%, 100%, .1);
+}
+
+.header .box .headerpopno-tips {
+    color: #16161a;
 }
 
 /*频道幻灯片*/
@@ -1719,7 +1727,7 @@ a {
 .qy-nav-focus .nav-text-link {
     display: inline-block;
     margin: 0 auto;
-    width: 4em;
+    max-width: fit-content;
     overflow: hidden;
     line-height: 30px;
     font-size: 15px;
@@ -1920,7 +1928,10 @@ a {
     line-height: 22px;
     font-size: 16px;
     display: block;
-    height: 22px
+    height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .pack-subtitle {
@@ -3007,6 +3018,9 @@ a {
 
 .fn-panel .share-panel-left {
     width: 190px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
     padding-right: 20px
 }
 
@@ -3213,7 +3227,6 @@ a {
     overflow: hidden;
     width: 70px;
     height: 28px;
-    position: absolute;
     right: -2px;
     top: 0
 }
@@ -3265,7 +3278,7 @@ a {
     margin-top: 8px;
     background-color: #303031;
     border-radius: 16px;
-    width: 26%;
+    width: 35%;
     height: 35px;
     overflow: hidden
 }
@@ -3419,7 +3432,8 @@ a {
     display: block;
     float: left;
     line-height: 22px;
-    height: 22px
+    height: 22px;
+    padding-right: 12px;
 }
 
 .ecleft {
@@ -5194,7 +5208,7 @@ em {
 }
 
 #reg .reg-w {
-    width: 410px;
+    width: 500px;
     padding: 66px;
     margin: 0 auto
 }
@@ -5231,7 +5245,7 @@ em {
 .reg-w form .reg-group label {
     height: 40px;
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 18px 0 4px;
     width: 30%;
     box-sizing: border-box;
     line-height: 40px
@@ -5445,7 +5459,7 @@ em {
 
 /*2020-9-5*/
 .ecnav-nav {
-    display: none;
+    display: inline-block;
     height: 24px;
     margin: 26px 0 0 20px;
     line-height: 21px

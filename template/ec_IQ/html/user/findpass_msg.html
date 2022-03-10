@@ -20,10 +20,10 @@
 				<label class="bd-r" style="letter-spacing: normal;">{$param['ac_text']}</label><input type="text" id="to" name="to" class="reg-control" placeholder="请输入您绑定的{$param['ac_text']}">
 			</div>
 			<div class="reg-group ec-input">
-				<label>验证码</label><input type="text" class="reg-control w150" id="verify" name="verify" placeholder="请输入验证码">
+				<label>Mã xác nhận</label><input type="text" class="reg-control w150" id="verify" name="verify" placeholder="请输入Mã xác nhận">
 				<img class="r m-hi" src="{:url('verify/index')}" onClick="this.src=this.src+'?'"  alt="单击刷新" />
 			</div>
-			<input type="button" id="btn_send" class="button ec-denglubj btn-brand btn-sub" value="发送验证码">
+			<input type="button" id="btn_send" class="button ec-denglubj btn-brand btn-sub" value="发送Mã xác nhận">
 		</form>
 		<form method="post" id="fm2" action="">
 			<h4>验证信息</h4>
@@ -70,7 +70,7 @@
 
 		$('#btn_submit').click(function() {
 			if ($('#to').val()  == '') { alert('请输入{$param["ac_text"]}'); $("#to").focus(); return false; }
-			if ($('#code').val()  == '') { alert('请输入验证码！'); $("#code").focus(); return false; }
+			if ($('#code').val()  == '') { alert('请输入Mã xác nhận！'); $("#code").focus(); return false; }
 			if ($('#user_pwd').val()  == '') { alert('请输入新密码！'); $("#user_pwd").focus(); return false; }
 			if ($('#user_pwd2').val()  == '') { alert('请输入确认密码！'); $("#user_pwd2").focus(); return false; }
 			if ($('#user_pwd').val()  != $('#user_pwd2').val() ) { alert('二次密码不一致！'); $("#user_pwd2").focus(); return false; }

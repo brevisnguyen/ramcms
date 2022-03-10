@@ -7,7 +7,7 @@
 		</div>
 		<div class="mod-right">
 			<h3 class="main-title"><a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" class="anthology-wrap title-link">{$vo.vod_name}</a></h3>
-			<p class="sub-des">{$vo.vod_year}年上映</p>
+			<p class="sub-des">Phát hành năm {$vo.vod_year}</p>
 			<div class="sub-title"><i class="qy-svgicon qy-svgicon-hot fa icon-hotfill"></i><span class="count">{$vo.vod_hits}</span></div>
 		</div>
 	</div>

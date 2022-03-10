@@ -14,7 +14,7 @@
 <div class="size">
   <div class="ec-top-mod-item">
 	<div class="ec-top-sum">
-		<div class="top-sum-head anthology-wrap"><h3 class="head-txt">{$vo4.type_name}总评分排行榜</h3></div>
+		<div class="top-sum-head anthology-wrap"><h3 class="head-txt">Bảng xếp hạng tổng - {$vo3.type_name}</h3></div>
 		<ul class="ec-top-sum-ul">
 		    {maccms:vod num="10" type="'.$vo3['type_id'].'" order="desc" by="hits"}
 			{include file="module/rank"}
@@ -24,7 +24,7 @@
   </div>
   <div class="ec-top-mod-item" style="margin:0 20px;">
 	<div class="ec-top-sum">
-		<div class="top-sum-head anthology-wrap"><h3 class="head-txt">{$vo4.type_name}月人气排行榜</h3></div>
+		<div class="top-sum-head anthology-wrap"><h3 class="head-txt">Xếp hạng hàng tháng - {$vo3.type_name}</h3></div>
 		<ul class="ec-top-sum-ul">
 		    {maccms:vod num="10" type="'.$vo3['type_id'].'" order="desc" by="hits_month"}
 			{include file="module/rank"}
@@ -34,7 +34,7 @@
   </div>
   <div class="ec-top-mod-item ">
 	<div class="ec-top-sum">
-		<div class="top-sum-head anthology-wrap"><h3 class="head-txt">{$vo4.type_name}周人气排行榜</h3></div>
+		<div class="top-sum-head anthology-wrap"><h3 class="head-txt">Xếp hạng hàng tuần - {$vo3.type_name}</h3></div>
 		<ul class="ec-top-sum-ul">
 		    {maccms:vod num="10" type="'.$vo3['type_id'].'" order="desc" by="hits_week"}
 			{include file="module/rank"}

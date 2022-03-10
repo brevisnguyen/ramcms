@@ -22,11 +22,11 @@
 	          <div class="ecitem-r col1c">
 			    <a class="ecitem-name anthology-wrap" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}">{$vo.vod_name}</a>
 			    <div class="ec-item">
-	              <p class="ec_indezb"><span>状态：</span><span class="author">{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}</span><span>导演：</span>{$vo.vod_director}</p>
-	              <p class="albumtitle"><span>演员：</span>{$vo.vod_actor|mac_default=$vo.vod_area.$vo.type.type_name|mac_filter_html}</p>
+	              <p class="ec_indezb"><span>Trạng thái: </span><span class="author">{$vo.vod_remarks|mac_default=$vo.vod_hits.'lượt xem'}</span><span>Đạo diễn</span>{$vo.vod_director}</p>
+	              <p class="albumtitle"><span>Đạo diễn: </span>{$vo.vod_actor|mac_default=$vo.vod_area.$vo.type.type_name|mac_filter_html}</p>
 	            </div>
 	            <p class="ecitem-desc weaken">{$vo.vod_blurb}</p>
-                <div class="content_detail"><div class="playbtn o_play"><a class="btn btn_primary" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}"><i class="fa icon-xiangxia1"></i>&nbsp;立即播放</a></div></div>
+                <div class="content_detail"><div class="playbtn o_play"><a class="btn btn_primary" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}"><i class="fa icon-xiangxia1"></i>&nbsp;立即lượt xem</a></div></div>
 	          </div>
 	        </li>
         {/maccms:vod}

@@ -72,8 +72,6 @@
                         src="{$user.user_id|mac_get_user_portrait}"
                         onerror="javascript:this.src='/static/images/touxiang.png'" title="{$user.user_name}"
                         alt="{$user.user_name}" />
-                    {if condition="$GLOBALS['user']['user_id']" gt 0}{else/}<img class="avatar-pass"
-                        src="{$maccms.path_tpl}images/avatar-pass.png" />{/if}
                     </a>
                     {if condition="$GLOBALS['user']['user_id']" gt 0}
                     <div id="panel" class="panel-asGkf login-PEtQ box animated topfadeInUp" style="width:378px">
@@ -120,8 +118,7 @@
                             <div class="text-alink"><i class="fa fa-clock-o blue"></i>Tận hưởng trải nghiệm xem FullHD</div>
                             <div class="text-alink"><i class="fa icon-crown blue"></i>Đồng bộ đa thiết bị</div>
                             <div class="text-alink"><i class="fa icon-hot blue"></i>Xem các chương trình HOT</div>
-                            <div class="button-area"><a href="{:mac_url('user/login')}"><button
-                                        class="button">ĐĂNG NHẬP</button></a></div>
+                            <div class="button-area"><a href="{:mac_url('user/login')}"><button class="button">ĐĂNG NHẬP</button></a></div>
                         </div>
                     </div>
                     {/if}

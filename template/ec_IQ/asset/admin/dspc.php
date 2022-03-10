@@ -2,6 +2,7 @@
 return array (
   'dscms' => 
   array (
+    'isOn' => '0',
     'slide' => '0',
     'module' => 
     array (
@@ -15,7 +16,7 @@ return array (
     ),
     'zhiboul' => 'http://127.0.0.1/index.php/vod/type/id/zhibo.html',
     'taobaoul' => 'http://demo.dataoke.com/',
-    'logtype' => '1,2,3,4',
+    'logtype' => '1,2,4',
     'hnum' => '2.5',
     'indexactor' => '1',
     'gx' => 
@@ -35,12 +36,12 @@ return array (
       'topic' => '1',
       'vip' => '1',
       'ivi' => '1',
-      'zdyname1' => 'aaa1',
+      'zdyname1' => '',
       'zdyurl1' => 'aaa',
       'zdyname2' => 'aaa2',
       'zdyurl2' => 'aaa',
     ),
-    'viptc' => '1',
+    'viptc' => '0',
     'aa01' => '<div style="margin:10px 0;background-color: #f5f5f5;border-radius: 4px;"><a href="#" target="_blank"><img src="/template/ec_IQ/images/1760X140.jpg" style="height: 100%;display: block;border-radius: 4px;width: 100%;"></a></div>',
     'aa02' => '<div style="margin:10px 0;background-color: #f5f5f5;border-radius: 4px;"><a href="#" target="_blank"><img src="/template/ec_IQ/images/1760X140.jpg" style="height: 100%;display: block;border-radius: 4px;width: 100%;"></a></div>',
     'aa03' => '<div style="margin:10px 0;background-color: #f5f5f5;border-radius: 4px;"><a href="#" target="_blank"><img src="/template/ec_IQ/images/1760X140.jpg" style="height: 100%;display: block;border-radius: 4px;width: 100%;"></a></div>',
@@ -52,17 +53,17 @@ return array (
     'public' => '0',
     'seo' => 
     array (
-      'votitle' => '高清在线播放',
+      'votitle' => ' HD在线播放',
       'actitle' => '全部电影作品',
     ),
     'pd' => 
     array (
       'detailart' => '1',
-      'jxxlof' => '1',
+      'jxxlof' => '0',
       'jxxl' => 'https://vip.ikjiexi.top/?url=,https://jiexi.380k.com/?url=,https://vip.66parse.club/?url=,https://z1.m1907.cn/?jx=',
       'gzh' => '/template/ec_IQ/images/ewm.png',
-      'zhifubao' => '/template/ec_IQ/images/null.jpg',
-      'weixin' => '/template/ec_IQ/images/null.jpg',
+      'zhifubao' => '/template/ec_IQ/images/ewm.png',
+      'weixin' => '/template/ec_IQ/images/ewm.png',
       'anma' => '/template/ec_IQ/images/ewm.png',
       'pingma' => '/template/ec_IQ/images/ewm.png',
       'anul' => '',

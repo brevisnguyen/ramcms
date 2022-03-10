@@ -12,7 +12,7 @@
     <ul class="bread-crumbs">
         <li class="home"><a href="index.html">首页</a></li>
         <li>最近100个更新</li>
-        <li class="back"><a href="javascript:MAC.GoBack()">返回上一页</a></li>
+        <li class="back"><a href="javascript:MAC.GoBack()">返回Trước</a></li>
     </ul>
 </div>
 <!--列表部分-->
@@ -21,7 +21,7 @@
         <h2>最近100个更新</h2>
         <div class="lasted-time fn-right">更新时间</div>
         <div class="lasted-tags fn-right">标签</div>
-        <div class="lasted-type fn-right">类型</div>
+        <div class="lasted-type fn-right">Loại</div>
     </div>
     <div class="ui-cnt">
         <ul class="lasted-list fn-clear">
@@ -35,7 +35,7 @@
                         <dt>{$vo.vod_name}</dt>
                         <dd><label>主演：</label>{$vo.vod_actor}</dd>
                         <dd><label>剧情：</label>{$vo.vod_blurb}…</dd>
-                        <dd class="bg">状态：{if condition="$vo.vod_serial gt 0"}第{$vo.vod_serial}集/共{$vo.vod_total}集{else/}{$vo.vod_version}{/if}<br />更新时间：{$vo.vod_time|date='Y-m-d H:i:s',###}</dd>
+                        <dd class="bg">Trạng thái: {if condition="$vo.vod_serial gt 0"}第{$vo.vod_serial}集/共{$vo.vod_total}集{else/}{$vo.vod_version}{/if}<br />更新时间：{$vo.vod_time|date='Y-m-d H:i:s',###}</dd>
                     </dl>
                 </div>
             </div>

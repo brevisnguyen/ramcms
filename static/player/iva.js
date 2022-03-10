@@ -17,7 +17,7 @@ setTimeout(function(){
 		skinSelect: 0,//选填，播放器皮肤，可选0、1、2，默认为0，
 		autoplay: true,//选填，是否自动播放，默认为false
 		rightHand: true,//选填，是否开启右键菜单，默认为false
-		autoFormat: false,//选填，是否自动选择最高清晰度，默>认为false
+		autoFormat: false,//选填，是否自动选择最 HD晰度，默>认为false
 		bubble: true,//选填，是否开启云泡功能，默认为true
 		jumpStep: 10,//选填，左右方向键快退快进的时间
 		tagTrack: false,//选填，云链是否跟踪，默认为false

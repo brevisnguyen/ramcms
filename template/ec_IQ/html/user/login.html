@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>用户登录 - {$maccms.site_name}</title>
+<title>Đăng nhập - {$maccms.site_name}</title>
 <meta name="keywords" content="{$maccms.site_keywords}"/>
 <meta name="description" content="{$maccms.site_description}"/>
 	{include file="public/include" /}
@@ -14,24 +14,24 @@
 			<a title="{$maccms.site_name}" style="background-image: url({$maccms.site_logo|mac_url_img});" href="{$maccms.path}"></a>
 		</div>
 		<form method="post" id="fm" action="">
-			<h4>欢迎回来~</h4>
+			<h4>Chào mừng bạn trở lại</h4>
 			<div class="reg-group ec-input">
-				<label>账号</label><input type="text" id="user_name" name="user_name" class="reg-control" placeholder="请输入您的登录账号">
+				<label>Username</label><input type="text" id="user_name" name="user_name" class="reg-control" autocomplete="username" placeholder="Nhập tên tài khoản của bạn">
 			</div>
 			<div class="reg-group ec-input">
-				<label>密码</label><input type="password" id="user_pwd" name="user_pwd" class="reg-control" placeholder="请输入您的登录密码">
+				<label>Password</label><input type="password" id="user_pwd" name="user_pwd" class="reg-control" autocomplete="current-password" placeholder="Nhập mật khẩu">
 			</div>
 
 			{if condition="$user_config.reg_verify neq 0"}
 			<div class="reg-group ec-input">
-				<label>验证码</label><input type="text" class="reg-control w150" id="verify" name="verify" placeholder="请输入验证码">
-				<img class="r m-hi" id="verify_img" src="{:url('verify/index')}" onClick="this.src=this.src+'?'"  alt="单击刷新" />
+				<label>Mã xác nhận</label><input type="text" class="reg-control w150" id="verify" name="verify" placeholder="Captcha">
+				<img class="r m-hi" id="verify_img" src="{:url('verify/index')}" onClick="this.src=this.src+'?'"  alt="Làm mới mã" />
 			</div>
             {/if}
-			<input type="button" id="btn_submit" class="button ec-denglubj btn-brand btn-sub" value="登录账号">
+			<input type="button" id="btn_submit" class="button ec-denglubj btn-brand btn-sub" value="ĐĂNG NHẬP">
 		</form>
 	<div class="reg-ts anthology-wrap">
-   	    <a href="{$maccms.path}">返回首页</a><a href="{:url('user/reg')}">注册账号</a><a href="{:url('user/findpass')}">忘记密码</a>
+   	    <a href="{$maccms.path}">Trang chủ</a><a href="{:url('user/reg')}">Đăng ký</a><a href="{:url('user/findpass')}">Quên mật khẩu</a>
     </div>
 	</div>
 <!-- // sign-box#regbox end -->
@@ -42,9 +42,9 @@
 			if(event.keyCode==13){ $('#btnLogin').click(); }
 		});
 		$('#btn_submit').click(function() {
-			if ($('#user_name').val()  == '') { alert('请输入用户！'); $("#user_name").focus(); return false; }
-			if ($('#user_pwd').val()  == '') { alert('请输入密码！'); $("#user_pwd").focus(); return false; }
-			if ($('#verify').length> 0 && $('#verify').val()  == '') { alert('请输入验证码！'); $("#verify").focus(); return false; }
+			if ($('#user_name').val()  == '') { alert('Nhập tên tài khoản! '); $("#user_name").focus(); return false; }
+			if ($('#user_pwd').val()  == '') { alert('Nhập mật khẩu! '); $("#user_pwd").focus(); return false; }
+			if ($('#verify').length> 0 && $('#verify').val()  == '') { alert('Nhập mã xác nhận！'); $("#verify").focus(); return false; }
 
 			$.ajax({
 				url: "{:url('user/login')}",
@@ -64,7 +64,7 @@
 					}
 				},
 				complete: function () {
-					$("#btn_submit").css("background","#fa4646").val("立即登录");
+					$("#btn_submit").css("background","#fa4646").val("ĐĂNG NHẬP");
 				}
 			});
 

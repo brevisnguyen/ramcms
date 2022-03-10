@@ -25,7 +25,7 @@
             <ul id="downul">
                 {maccms:foreach name="vo.urls" id="vo2" key="key2"}
                 <li><input type="checkbox" name="down_url_list_{$key}" class="style-input down_url" value="{$vo2.url}" file_name="{$vo2.name}" />
-                    <p><strong class="down_part_name"><span class="filename">{$vo2.name}</span><span class="filesize"></span></strong><input type="text" class="thunder_url" value="{$vo2.url}" title="鼠标左键单击可全选后手动复制该条迅雷地址进行分享或其它操作" onclick="this.select()" /></p><span><label class="thunder_down">迅雷下载</label><label class="xiaomi">小米路由</label><a href="{$vo2.url}" class="btn_bd btnd">本地下载</a><!--label class="kk">看看播放</label--></span></li>
+                    <p><strong class="down_part_name"><span class="filename">{$vo2.name}</span><span class="filesize"></span></strong><input type="text" class="thunder_url" value="{$vo2.url}" title="鼠标左键单击可全选后手动复制该条迅雷地址进行Chia sẻ或其它操作" onclick="this.select()" /></p><span><label class="thunder_down">迅雷下载</label><label class="xiaomi">小米路由</label><a href="{$vo2.url}" class="btn_bd btnd">本地下载</a><!--label class="kk">看看播放</label--></span></li>
                 {/maccms:foreach}
             </ul>
             <div class="downtools">
@@ -38,7 +38,7 @@
     {else}
     <div class="wrap">
         <div>
-            <img src="{$maccms.path_tpl}images/null.png" alt="暂无数据">
+            <img src="{$maccms.path_tpl}images/null.png" alt="CHƯA CÓ DỮ LIỆU">
         </div>
         <p class="top20">暂无下载资源<a class="active" href="{:mac_url('gbook/index')}">点击这里反馈</a></p>
     </div>

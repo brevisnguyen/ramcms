@@ -2,12 +2,12 @@
 {if condition="$conch['dscms']['module']['5'] eq index_actor"}
 <div class="ant-tabsbar top20">
     <div class="ant-tabscontent cf">
-        <h2 class="tabs-moduletitle l"><a href="{:mac_url('actor/index')}" title="荧幕星榜" class="tabs-maintitle l">荧幕星榜</a></h2>
+        <h2 class="tabs-moduletitle l"><a href="{:mac_url('actor/index')}" title="Ngôi sao màn ảnh" class="tabs-maintitle l">Ngôi sao màn ảnh</a></h2>
         <div class="tabs-nav l col7">
             {maccms:actor num="10" level="1" order="desc" by="hits"}
             <a class="col2b" href="{$vo|mac_url_actor_detail}" title="">{$vo.actor_name}</a><i class="slash">|</i>
             {/maccms:actor}
-            <a class="col2b" href="{:mac_url('actor/index')}">更多 &gt;</a>
+            <a class="col2b" href="{:mac_url('actor/index')}">Xem thêm &gt;</a>
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@
             <a title="{$vo.actor_name}{$conch.dscms.seo.actitle}" href="{$vo|mac_url_actor_detail}">
                 <span class="star-upimgbj"></span>
                 <span class="star-upimgbox"><div class="star-up-img ec-jaus eclazy" data-original="{$vo.actor_pic|mac_url_img}" style="background-image: url({$conch.dscms.gx.lazy3});"></div></span>
-                <span class="star-up-name">{$vo.actor_name}</span><span class="star-up-desc col4c"><span> {$vo.actor_up}</span>影响力</span>
+                <span class="star-up-name">{$vo.actor_name}</span><span class="star-up-desc col4c">Tầm ảnh hưởng <span> {$vo.actor_up}</span></span>
             </a>
         </div>
         {/maccms:actor}
