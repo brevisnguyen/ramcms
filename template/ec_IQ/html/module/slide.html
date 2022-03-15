@@ -8,14 +8,14 @@
                         <div class="qy-carousel-maskl" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
                         <div class="qy-carousel-maskr" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
                         <ul>
-                            {maccms:vod num="6" level="0" type="current" order="desc" by="time"}
-                            <li style="background-image: url({$vo.vod_pic_slide|mac_url_img}); height: 600px;">
+                            {maccms:vod num="6" score="10" type="current" order="desc" by="time"}
+                            <li style="background-image: url({$vo.vod_pic|mac_url_img}); height: 600px;">
                                 <a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" target="_blank">
                                 <div class="title" style="margin: 0 0 140px 100px;">
                                     <i class="icon"></i>
                                     <div class="caption text">{$vo.vod_name}</div>
                                     <p class="desc text">[{$vo.vod_remarks|mac_default=$vo.vod_hits.'lượt xem'}]{$vo.vod_sub}</p>
-                                    <p class="desc text">[{$vo.vod_remarks|mac_default=$vo.vod_hits.'lượt xem'}]{$vo.vod_sub}</p>
+                                    <p class="desc text">[{$vo.vod_hits.' lượt xem'}]{$vo.vod_sub}</p>
                                 </div>
                                 </a>
                             </li>
@@ -32,7 +32,7 @@
                 <ul class="qy-carousel-ul">
                     {maccms:vod num="10" level="9" type="current" order="desc" by="time"}
                     <li class="qy-carousel-li">
-                        <a href='{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}'><span class="qy-carousel" style="background-image: url({$vo.vod_pic_slide|mac_url_img});"></span></a>
+                        <a href='{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}'><span class="qy-carousel" style="background-image: url({$vo.vod_pic|mac_url_img});"></span></a>
                     </li>
                     {/maccms:vod}
                 </ul>

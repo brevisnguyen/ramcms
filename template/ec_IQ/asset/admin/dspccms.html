@@ -3,8 +3,8 @@
     <form class="layui-form layui-form-pane" action="">
         <div class="layui-tab">
             <ul class="layui-tab-title">
-                <li class="layui-this">首页</li>
-                <li class="">首页配置</li>
+                <li class="layui-this"></li>
+                <li class="">配置</li>
                 <li class="">导航菜单</li>
                 <li class="">运营广告</li>
                 <li class="">个性配置</li>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">首页启用模块：</label>
+                        <label class="layui-form-label">启用模块：</label>
                         <div class="layui-input-inline w500">
                             <input type="checkbox" lay-skin="primary" name="dscms[module][]" value="index_level" title="推荐" {if condition="$config['dscms']['module']['0'] eq index_level"}checked {/if}>
                             <input type="checkbox" lay-skin="primary" name="dscms[module][]" value="index_hto" title="热播" {if condition="$config['dscms']['module']['1'] eq index_hto"}checked {/if}>
@@ -81,10 +81,10 @@
                             <input type="checkbox" lay-skin="primary" name="dscms[module][]" value="index_topic" title="专题" {if condition="$config['dscms']['module']['6'] eq index_topic"}checked {/if}>
                             <input type="checkbox" lay-skin="primary" name="dscms[module][]" value="index_hezuo" title="合作伙伴" {if condition="$config['dscms']['module']['7'] eq index_hezuo"}checked {/if}>
                         </div>
-                        <div class="layui-form-mid layui-word-aux">注：目前淘宝客目标网站速度过慢的话会影响首页打开速度，淘宝客模块后期会优化缓存。</div>
+                        <div class="layui-form-mid layui-word-aux">注：目前淘宝客目标网站速度过慢的话会影响打开速度，淘宝客模块后期会优化缓存。</div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">直播更多链接：</label>
+                        <label class="layui-form-label">直播Xem thêm链接：</label>
                         <div class="layui-input-inline w500">
                             <input name="dscms[zhiboul]" type="text" value="{$config['dscms']['zhiboul']}" size="60" class="layui-input">
                         </div>
@@ -98,8 +98,8 @@
                         <div class="layui-form-mid layui-word-aux">你的淘宝客网站地址（结尾要带/）<a target="_blank" style="color:#3c99d3" href="https://www.dataoke.com/login">部署淘宝客</a></div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">首页循环分类：</label>
-                        <div class="layui-input-inline w200"><input name="dscms[logtype]" type="text" value="{$config['dscms']['logtype']}" size="60" class="layui-input"></div><div class="layui-form-mid layui-word-aux">将要在首页显示的分类id填入，多个用,隔开</div>
+                        <label class="layui-form-label">循环分类：</label>
+                        <div class="layui-input-inline w200"><input name="dscms[logtype]" type="text" value="{$config['dscms']['logtype']}" size="60" class="layui-input"></div><div class="layui-form-mid layui-word-aux">将要在显示的分类id填入，多个用,隔开</div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">分类显示数量：</label>
@@ -191,13 +191,13 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">首页01：</label>
+                        <label class="layui-form-label">01：</label>
                         <div class="layui-input-block">
                             <textarea name="dscms[aa01]" class="layui-textarea" placeholder="填写自定义广告代码">{$config['dscms']['aa01']}</textarea>
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">首页02：</label>
+                        <label class="layui-form-label">02：</label>
                         <div class="layui-input-block">
                             <textarea name="dscms[aa02]" class="layui-textarea" placeholder="填写自定义广告代码">{$config['dscms']['aa02']}</textarea>
                         </div>
@@ -459,8 +459,8 @@
                 <div class="layui-tab-item">
                     <blockquote class="layui-elem-quote layui-quote-nm">
                         1，模块文件存放在html/module文件夹中（非专业人员不建议修改）<br>
-                        2，模块设置一般在首页设置选项中，你可对模块进行简单的设置。<br>
-                        3，更多个性化定制可联系客服QQ<br>
+                        2，模块设置一般在设置选项中，你可对模块进行简单的设置。<br>
+                        3，Xem thêm个性化定制可联系客服QQ<br>
                     </blockquote>
                     <iframe scrolling="auto" allowtransparency="true" class="" frameborder="0" src="../../../template/ec_IQ/asset/module.html" style="height: 593px;width:100%;"></iframe>
                 </div>

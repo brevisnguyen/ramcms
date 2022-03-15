@@ -72,7 +72,7 @@ return array (
     'page_404' => '404',
     'player_sort' => '1',
     'encrypt' => '0',
-    'search_hot' => 'R&ocirc;-bốt đại chiến, Naruto,Biệt đội si&ecirc;u anh h&ugrave;ng ,chiến lang,Điệp vụ biển đỏ',
+    'search_hot' => '',
     'art_extend_class' => 'chơi chữ,chuyện ri&ecirc;ng tư,m&aacute;ch lẻo,y&ecirc;u cuộc sống,y&ecirc;u xe,cafe c&ocirc;ng nghệ,ẩm thực gia,lamabang',
     'vod_extend_class' => 't&igrave;nh y&ecirc;u,h&agrave;nh động,h&agrave;i kịch,chiến tranh,khoa học viễn tưởng,phim kịch t&iacute;nh,kiếm hiệp,mạo hiểm,đấu kiếm,khủng bố, phim vi m&ocirc;, phim kh&aacute;c ',
     'vod_extend_state' => 'phim ch&iacute;nh, trailer,hậu trường',

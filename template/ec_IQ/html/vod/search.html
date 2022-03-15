@@ -11,7 +11,7 @@
 {include file="public/head" wap="wap"}
 <div class="headtopnull"></div>
 <div class="ec-body-z search-body cf">
-<div class="ec_sojg">搜索" <strong class="blue">{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</strong>" 结果 " <strong class="mac_total blue"></strong>" 个资源</div>
+<div class="ec_sojg">Tìm kiếm cho " <strong class="blue">{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</strong>" có " <strong class="mac_total blue"></strong>" kết quả.</div>
 <div class="ec-left-z l" id="list-focus">
     <div class="ec-search">
           <ul>
@@ -26,7 +26,7 @@
 	              <p class="albumtitle"><span>Đạo diễn: </span>{$vo.vod_actor|mac_default=$vo.vod_area.$vo.type.type_name|mac_filter_html}</p>
 	            </div>
 	            <p class="ecitem-desc weaken">{$vo.vod_blurb}</p>
-                <div class="content_detail"><div class="playbtn o_play"><a class="btn btn_primary" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}"><i class="fa icon-xiangxia1"></i>&nbsp;立即lượt xem</a></div></div>
+                <div class="content_detail"><div class="playbtn o_play"><a class="btn btn_primary" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}"><i class="fa icon-xiangxia1"></i>&nbsp;Xem ngay</a></div></div>
 	          </div>
 	        </li>
         {/maccms:vod}

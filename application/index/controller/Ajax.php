@@ -18,6 +18,151 @@ class Ajax extends Base
 
     }
 
+    // Chi tiết bộ phim - detai
+    public function details()
+    {
+        $mid = $this->_param['mid'];
+        $type_id = $this->_param['tid'];
+        $id = $this->_param['id'];
+        if( !in_array($mid,['1','2','3','8','9','11']) ) {
+            return json(['code'=>1001,'msg'=>lang('param_err')]);
+        }
+        if( !is_numeric($id) ) {
+            return json(['code'=>1001,'msg'=>'ID have to a number']);
+        }
+
+        $pre = mac_get_mid_code($mid);
+        $order=[];
+        $where=[];
+        $where[$pre.'_status'] = [ 'eq',1];
+        $where[$pre.'_id'] = ['eq', $id];
+        if(!empty($type_id)) {
+            if(in_array($mid, ['1', '2'])){
+                $type_list = model('Type')->getCache('type_list');
+                $type_info = $type_list[$type_id];
+                if(!empty($type_info)) {
+                    $ids = $type_info['type_pid'] == 0 ? $type_info['childids'] : $type_info['type_id'];
+                    $where['type_id|type_id_1'] = ['in', $ids];
+                }
+            }
+        }
+        $field='*';
+        $res = model($pre)->listData($where,$order,1,1,0,$field);
+        if($res['code']==1) {
+            foreach ($res['list'] as $k => &$v) {
+                unset($v[$pre.'_time_hits'],$v[$pre.'_time_make']);
+                $v[$pre.'_time'] = date('Y-m-d H:i:s',$v[$pre.'_time']);
+                $v[$pre.'_time_add'] = date('Y-m-d H:i:s',$v[$pre.'_time_add']);
+                if($mid=='1'){
+                    unset($v['vod_down_from'],$v['vod_down_server'],$v['vod_down_note'],$v['vod_down_url']);
+                    unset($v['vod_writer'], $v['vod_behind'], $v['vod_tv'], $v['vod_douban_id'],);
+                    unset($v['type'], $v['type_1']);
+
+                    $urls = mac_play_list($v['vod_play_from'], $v['vod_play_url'], $v['vod_play_server'], $v['vod_play_note'], 'play');
+                    $v['vod_play_url'] = $urls;
+                    unset($v['vod_play_from'],$v['vod_play_server'],$v['vod_play_note']);
+                }
+                elseif($mid=='2'){
+                    $v['detail_link'] = mac_url_art_detail($v);
+                }
+                elseif($mid=='3'){
+                    $v['detail_link'] = mac_url_topic_detail($v);
+                }
+                elseif($mid=='8'){
+                    $v['detail_link'] = mac_url_actor_detail($v);
+                }
+                elseif($mid=='9'){
+                    $v['detail_link'] = mac_url_role_detail($v);
+                }
+                elseif($mid=='11'){
+                    $v['detail_link'] = mac_url_website_detail($v);
+                }
+                $v[$pre.'_pic'] = mac_url_img($v[$pre.'_pic']);
+                $v[$pre.'_pic_thumb'] = mac_url_img($v[$pre.'_pic_thumb']);
+                $v[$pre.'_pic_slide'] = mac_url_img($v[$pre.'_pic_slide']);
+            }
+        }
+        return json($res);
+    }
+
+    // Phim đề cử - NowPlayingMovies
+    public function recommended()
+    {
+        $mid = $this->_param['mid'];
+        $by = $this->_param['by'];
+        $type_id = $this->_param['tid'];
+        $type = $this->_param['type'];
+        if( !in_array($mid,['1','2','3','8','9','11']) ) {
+            return json(['code'=>1001,'msg'=>lang('param_err')]);
+        }
+        if(!empty($by)) {
+            if( !in_array($by,['score', 'score_num', 'up', 'hits','hits_day', 'hits_week', 'hits_month', 'time']) ) {
+                return json(['code'=>1001,'msg'=>lang('param_err')]);
+            }
+        }
+        else {
+            $by = 'time';
+        }
+
+        $pre = mac_get_mid_code($mid);
+        $order= $pre.'_'.$by.' desc';
+        $where=[];
+        $where[$pre.'_status'] = [ 'eq',1];
+        if ($type == 'single') {
+            $where[$pre.'_remarks'] = ['like', '%HD%'];
+        }
+        elseif ($type == 'serial') {
+            $where[$pre.'_remarks'] = ['like', '%T_p%'];
+        }
+        if(!empty($type_id)) {
+            if(in_array($mid, ['1', '2'])){
+                $type_list = model('Type')->getCache('type_list');
+                $type_info = $type_list[$type_id];
+                if(!empty($type_info)) {
+                    $ids = $type_info['type_pid'] == 0 ? $type_info['childids'].','.$type_id : $type_info['type_id'];
+                    $where['type_id'] = ['in', $ids];
+                }
+            }
+        }
+        $field='*';
+        $res = model($pre)->listData($where,$order,1,20,0,$field);
+        if($res['code']==1) {
+            foreach ($res['list'] as $k => &$v) {
+                unset($v[$pre.'_time_hits'],$v[$pre.'_time_make']);
+                $v[$pre.'_time'] = date('Y-m-d H:i:s',$v[$pre.'_time']);
+                $v[$pre.'_time_add'] = date('Y-m-d H:i:s',$v[$pre.'_time_add']);
+                if($mid=='1'){
+                    unset($v['vod_down_from'],$v['vod_down_server'],$v['vod_down_note'],$v['vod_down_url']);
+                    unset($v['vod_writer'], $v['vod_behind'], $v['vod_tv'], $v['vod_douban_id'],);
+                    unset($v['type'], $v['type_1']);
+
+                    $urls = mac_play_list($v['vod_play_from'], $v['vod_play_url'], $v['vod_play_server'], $v['vod_play_note'], 'play');
+                    $v['vod_play_url'] = $urls;
+                    unset($v['vod_play_from'],$v['vod_play_server'],$v['vod_play_note']);
+                }
+                elseif($mid=='2'){
+                    $v['detail_link'] = mac_url_art_detail($v);
+                }
+                elseif($mid=='3'){
+                    $v['detail_link'] = mac_url_topic_detail($v);
+                }
+                elseif($mid=='8'){
+                    $v['detail_link'] = mac_url_actor_detail($v);
+                }
+                elseif($mid=='9'){
+                    $v['detail_link'] = mac_url_role_detail($v);
+                }
+                elseif($mid=='11'){
+                    $v['detail_link'] = mac_url_website_detail($v);
+                }
+                $v[$pre.'_pic'] = mac_url_img($v[$pre.'_pic']);
+                $v[$pre.'_pic_thumb'] = mac_url_img($v[$pre.'_pic_thumb']);
+                $v[$pre.'_pic_slide'] = mac_url_img($v[$pre.'_pic_slide']);
+            }
+        }
+        return json($res);
+    }
+
     //加载最多不超过20页数据，防止非法采集。每页条数可以是10,20,30
     public function data()
     {
@@ -57,10 +202,10 @@ class Ajax extends Base
                 $v[$pre.'_time'] = date('Y-m-d H:i:s',$v[$pre.'_time']);
                 $v[$pre.'_time_add'] = date('Y-m-d H:i:s',$v[$pre.'_time_add']);
                 if($mid=='1'){
-                    unset($v['vod_play_from'],$v['vod_play_server'],$v['vod_play_note'],$v['vod_play_url']);
+                    // unset($v['vod_play_from'],$v['vod_play_server'],$v['vod_play_note'],$v['vod_play_url']);
                     unset($v['vod_down_from'],$v['vod_down_server'],$v['vod_down_note'],$v['vod_down_url']);
 
-                    $v['detail_link'] = mac_url_vod_detail($v);
+                    // $v['detail_link'] = mac_url_vod_detail($v);
                 }
                 elseif($mid=='2'){
                     $v['detail_link'] = mac_url_art_detail($v);
@@ -93,6 +238,8 @@ class Ajax extends Base
 
         $mid = $this->_param['mid'];
         $wd = $this->_param['wd'];
+        $type_id = $this->_param['tid'];
+        $type = $this->_param['type'];
         $limit = intval($this->_param['limit']);
 
         if( $wd=='' || !in_array($mid,['1','2','3','8','9','11']) ) {
@@ -105,18 +252,29 @@ class Ajax extends Base
         }
         $where = [];
         $where[$pre.'_name|'.$pre.'_en'] = ['like','%'.$wd.'%'];
+        $where[$pre.'_remarks'] = $type == 'single' ? ['like', '%HD%'] : ['not like', '%HD%'];
+        if(!empty($type_id)) {
+            if(in_array($mid, ['1', '2'])){
+                $type_list = model('Type')->getCache('type_list');
+                $type_info = $type_list[$type_id];
+                if(!empty($type_info)) {
+                    $ids = $type_info['type_pid'] == 0 ? $type_info['childids'].','.$type_id : $type_info['type_id'];
+                    $where['type_id'] = ['in', $ids];
+                }
+            }
+        }
         $order = $pre.'_id desc';
-        $field = $pre.'_id as id,'.$pre.'_name as name,'.$pre.'_en as en,'.$pre.'_pic as pic';
+        $field = $pre.'_id,'.$pre.'_name,'.$pre.'_en,'.$pre.'_pic,'.$pre.'_remarks,'.$pre.'_score,'.$pre.'_class,'.$pre.'_content,'.$pre.'_time_add,'.'type_id';
 
         $url = mac_url_search(['wd'=>'mac_wd'],$pre);
 
         $res = model($pre)->listData($where,$order,1,$limit,0,$field);
         if($res['code']==1) {
             foreach ($res['list'] as $k => $v) {
-                $res['list'][$k]['pic'] = mac_url_img($v['pic']);
+                $res['list'][$k]['vod_pic'] = mac_url_img($v['vod_pic']);
+                unset($res['list'][$k]['type'], $res['list'][$k]['type_1']);
             }
         }
-        $res['url'] = $url;
         return json($res);
     }
 

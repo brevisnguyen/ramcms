@@ -4,8 +4,8 @@
     {include file="module/meta"}
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <title>{$obj.art_name} - {$maccms.site_name}</title>
-    <meta name="keywords" content="{$obj.art_name}最新资讯,推荐资讯" />
-    <meta name="description" content="{$obj.art_name}最新资讯,推荐资讯" />
+    <meta name="keywords" content="{$obj.art_name}Tin mới nhất,推荐资讯" />
+    <meta name="description" content="{$obj.art_name}Tin mới nhất,推荐资讯" />
     <link href="{$maccms.path_tpl}css/art.css" rel="stylesheet" type="text/css" />
     {include file="public/include"}
 </head>
@@ -16,7 +16,7 @@
   <div class="ecdiy-zz-lft nav-item ec-bjcolor">
     <ul class="ecborb">
         {maccms:type ids="current" order="asc" by="sort"}
-        <li {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="on"{/if}> <a class="anthology-wrap" href="{:mac_url_type($vo)}"> <i style="background-image: url({$maccms.path_tpl}images/pl{$key}.png);"></i>{$vo.type_name}首页<em></em> </a> </li>
+        <li {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="on"{/if}> <a class="anthology-wrap" href="{:mac_url_type($vo)}"> <i style="background-image: url({$maccms.path_tpl}images/pl{$key}.png);"></i>{$vo.type_name}<em></em> </a> </li>
         {/maccms:type}
     </ul>
 	<div class="ec-ewm">

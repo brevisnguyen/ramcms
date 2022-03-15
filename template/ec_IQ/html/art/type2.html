@@ -32,10 +32,10 @@
                 <h2>最新更新</h2>
                 <div class="subnav-l l">
                     {maccms:type order="asc" by="sort" mid="2" ids="5"}
-                    <a {if condition="($vo.type_id eq $GLOBALS['type_id'])"}class="subnav-hover"{/if} href="{:mac_url_type($vo)}">{$vo.type_name}首页</a>
+                    <a {if condition="($vo.type_id eq $GLOBALS['type_id'])"}class="subnav-hover"{/if} href="{:mac_url_type($vo)}">{$vo.type_name}</a>
                     {/maccms:type}
                     {maccms:type ids="current" order="asc" by="sort"}
-                    <a {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="subnav-hover"{/if} href="{:mac_url_type($vo)}"">{$vo.type_name}首页</a>
+                    <a {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="subnav-hover"{/if} href="{:mac_url_type($vo)}"">{$vo.type_name}</a>
                     {/maccms:type}
                 </div>
             </div>

@@ -2,9 +2,9 @@
 <html>
 <head>
     {include file="module/meta"}
-    <title>{$obj.vod_name}详情介绍-{$obj.vod_name}在线观看-{$obj.vod_name}迅雷下载 - {$maccms.site_name}</title>
-    <meta name="keywords" content="{$obj.vod_name}在线收看,{$obj.vod_name}迅雷下载" />
-    <meta name="description" content="{$obj.vod_name}剧情:{$obj.vod_blurb}" />
+    <title>Chi tiết {$obj.vod_name}-Xem online {$obj.vod_name}-Tải xuống {$obj.vod_name} - {$maccms.site_name}</title>
+    <meta name="keywords" content="Xem online {$obj.vod_name}, Tải xuống {$obj.vod_name}" />
+    <meta name="description" content="Nội dung {$obj.vod_name}:{$obj.vod_blurb}" />
     {include file="public/include"}
 </head>
 <body>
@@ -17,7 +17,7 @@
     </div>
     <div class="s-top-right">
       <div class="s-top-info wow lightSpeedIn">
-          <h1 title="{$obj.vod_name}Chi tiết剧情">{$obj.vod_name}</h1>
+          <h1 title="Chi tiết {$obj.vod_name}">{$obj.vod_name}</h1>
         <div class="item-behind cf">
               <p class="item-desc js-open-wrap">Trạng thái: {$obj.vod_remarks|mac_default=$obj.vod_hits.'lượt xem'}</p>
               <p class="item-desc js-open-wrap">Diễn viên: {$obj.vod_actor|mac_url_create='actor','vod','search'}</p>
@@ -29,7 +29,7 @@
                   <p style="clear:both"></p>
                   <p class="item item-actor">Năm: {$obj.vod_year|mac_url_create='year','vod','search'}</p>
                   <p class="item item-type">Lên sóng: {$obj.vod_year|mac_url_create='year'}</span></p>
-                  <p class="item item-actor">Nguồn: {$obj.vod_state|mac_default='正片'}</span></p>
+                  <p class="item item-actor">Nguồn: {$obj.vod_state|mac_default='Bản chính thức'}</span></p>
               </div>
               <p class="item-desc js-open-wrap">Cập nhật: {$obj.vod_time|date='Y-m-d',###}</p>
               <p class="item-desc js-open-wrap channelname"><span class="desc">Nội dung: </span><span id="cText">{$obj.vod_content|mac_filter_html|mac_substring=56}<a class="hl" href="#desc">&nbsp;Chi tiết&nbsp;&gt;</a></span></p>
@@ -39,32 +39,37 @@
             {$GLOBALS['config']['app']['copyright_notice']}
             {else/}
             <div class="playbtn o_play">
-                <a class="btn btn_primary" href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}"><i class="fa icon-xiangxia1"></i>&nbsp;立即lượt xem</a>
+                <a class="btn btn_primary" href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}"><i class="fa icon-xiangxia1"></i>&nbsp;Xem phim</a>
             </div>
             <div class="playbtn o_bg">
                 <a target="_blank" class="btn btn_wxgzh" href="{:mac_url_vod_down($obj,['sid'=>1,'nid'=>1])}"><i class="fa rbj fa-arrow-down"></i>&nbsp;Tải xuống</a>
             </div>
             {/if}
             <div class="playbtn o_share hidden_xs play_share">
-                <a class="btn btn_share" href="javascript:;"><i class="fa fa-external-link"></i>&nbsp;Chia sẻ</a>
-                <div class="ecfnx fn-panel animated topfadeInUp" style="left: inherit;right: 0;">
-                    <div class="arrow" style="left: 320px;"></div>
+                <a class="btn btn_share" href="javascript:;"><i class="fa fa-external-link"></i>&nbsp;&nbsp;Chia sẻ</a>
+                <div class="ecfnx fn-panel animated topfadeInUp">
+                    <div class="arrow"></div>
                     <div class="modpop-actionhd"></div>
-                    <div class="fn-panel-body cf">
+                    <div class="fn-panel-body cf" style="padding: 0;">
                         <div class="share-panel-bd clear">
-                            <dl class="share-panel-left l">
-                                <div class="bshare-custom icon-medium-plus"><a title="Chia sẻ到QQ空间" class="bshare-qzone"></a><a title="Chia sẻ到QQ好友" class="bshare-qqim"></a><a title="Chia sẻ到新浪微博" class="bshare-sinaminiblog"></a></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
-                                <dt style="position:relative;">
-                                    <input id="videoURL" type="text" class="fn-share-input" value="{$maccms.http_type}{$maccms.site_url}{:mac_url_vod_detail($obj,['sid'=>$param['sid']])}">
-                                    <div class="fn-sharebtn-container">
+                            <div style="width: 100%; padding: 24px 0 16px 0;">
+                                <div style="justify-content: center; margin: 0 auto; display: flex; flex-direction: row; padding-bottom: 12px;" class="bshare-custom icon-medium-plus">
+                                    <a title="Chia sẻ" class="bshare-qzone">
+                                    <a title="Chia sẻ lên QQ" class="bshare-qqim"></a>
+                                    <a title="Chia sẻ" class="bshare-sinaminiblog"></a>
+                                </div>
+                                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                                <div style="justify-content: center; display: flex;">
+                                    <input id="videoURL" type="text" class="fn-share-input" style="width: 290px;" value="{$maccms.http_type}{$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>$param['sid'],'nid'=>$param['nid']])}">
+                                    <div class="fn-sharebtn-container" style="margin-left: -20px;">
                                         <span class="fn-share-code-btn">Copy</span>
                                     </div>
-                                </dt>
-                            </dl>
-                            <dl class="share-panel-right l">
-                                <dt><img class="ecerwiema" src="https://api.pwmqr.com/qrcode/create/?url=http://{$maccms.site_url}{:mac_url_vod_detail($obj,['sid'=>$param['sid']])}"/></dt>
-                                <dd>Quét mã QR để nhập trực tiếp</dd>
-                            </dl>
+                                </div>
+                                <div style="justify-content: center; margin: 0 auto; display: flex; flex-direction: column; padding-top: 12px;">
+                                    <img class="ecerwiema" style="margin: 0 auto;" src="https://api.pwmqr.com/qrcode/create/?url=http://{$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>$param['sid'],'nid'=>$param['nid']])}"/>
+                                    <p style="margin: 0 auto; padding-top: 8px;">Quét mã QR để nhập trực tiếp</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -119,7 +124,7 @@
             <div class="ant-tabsbar">
                 <div class="ant-tabscontent cf">
                     <h2 class="tabs-moduletitle l"><div class="tabs-titlewrap"><a href="JavaScript:;" title="{$vo3.type_name}" class="tabs-maintitle l col3c">lượt xem列表</a></div></h2>
-                    <div class="text_muted r" id="zxdaoxu"><a href="javascript:;" class="font16"><i class="fa icon-zhengli"></i>&nbsp;排序</a></div>
+                    <div class="text_muted r" id="zxdaoxu"><a href="javascript:;" class="font16"><i class="fa icon-zhengli"></i>&nbsp;A-Z</a></div>
                 </div>
             </div>
             <div class="play_source">
@@ -133,7 +138,7 @@
                 <div id="tagContent">
                     {maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
                     <div id="playsx" class='play_list_box {if condition="$key eq 1"}show daoxu{/if}'>
-                        <div class="player_infotip col4c"><i class="fa fa-bell-o"></i>&nbsp;当前资源由{$vo.player_info.show}提供&nbsp;-&nbsp;{$vo.player_info.tip|mac_substring=20|mac_default='在线lượt xem,无需安装lượt xem器'}</div>
+                        <div class="player_infotip col4c"><i class="fa fa-bell-o"></i>&nbsp;Đường truyền hiện tại do [{$vo.player_info.show}] cung cấp&nbsp;-&nbsp;{$vo.player_info.tip|mac_substring=20|mac_default='在线lượt xem,无需安装lượt xem器'}</div>
                         <div class="playlist_notfull">
                             <ul class="content_playlist cf">
                                 {maccms:foreach name="vo.urls" id="vo2" key="key2"}
@@ -149,7 +154,7 @@
         {/if}
         {if condition="$conch['dscms']['pd']['detailart'] eq 1"}
         <div class="wow fadeInUp">
-            <h2 class="link-tile black top20">热度资讯</h2>
+            <h2 class="link-tile black top20">Tin HOT</h2>
             <div class="hotgrow eclist listdh">
                 {maccms:art num="6" type="all" order="desc" by="hits"}
                 {include file="module/art_box"}
@@ -158,7 +163,7 @@
         </div>
         {/if}
         <div class="wow fadeInUp">
-            <h2 class="link-tile black top20">《{$obj.vod_name}》相关影视</h2>
+            <h2 class="link-tile black top20">Phim liên quan &#10094; {$obj.vod_name} &#10095;</h2>
             <div class="hotgrow eclist listdh">
                 {maccms:vod num="6" type="current" order="desc" by="hits"}
                 {include file="module/vod_box"}

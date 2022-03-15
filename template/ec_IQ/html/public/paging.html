@@ -1,9 +1,9 @@
 {if condition="$__PAGING__.record_total gt 0"}
 {if condition="$__PAGING__.record_total gt 10"}
 <div class="mac_pages">
-    <div class="page_tip">共{$__PAGING__.record_total}条数据,当前{$__PAGING__.page_current}/{$__PAGING__.page_total}页</div>
+    <div class="page_tip">Tổng {$__PAGING__.record_total} trang, trang hiện tại {$__PAGING__.page_current}/{$__PAGING__.page_total}</div>
     <div class="page_info">
-        <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=1}" title="首页">首页</a>
+        <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=1}" title="Đầu">Đầu</a>
         <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" title="Trước">Trước</a>
         {maccms:foreach name="$__PAGING__.page_num" id="num"}
         {if condition="$__PAGING__['page_current'] eq $num"}
@@ -13,7 +13,7 @@
         {/if}
         {/maccms:foreach}
         <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}" title="Tiếp">Tiếp</a>
-        <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_total}" title="尾页">尾页</a>
+        <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_total}" title="Cuối">Cuối</a>
     </div>
 </div>
 {/if}

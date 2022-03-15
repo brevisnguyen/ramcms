@@ -15,7 +15,7 @@
   <div class="ecdiy-zz-lft nav-item ec-bjcolor">
     <ul class="ecborb">
         {maccms:type ids="current" order="asc" by="sort"}
-        <li {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="on"{/if}> <a class="anthology-wrap" href="{:mac_url_type($vo)}"> <i style="background-image: url({$maccms.path_tpl}images/pl{$key}.png);"></i>{$vo.type_name}首页<em></em> </a> </li>
+        <li {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="on"{/if}> <a class="anthology-wrap" href="{:mac_url_type($vo)}"> <i style="background-image: url({$maccms.path_tpl}images/pl{$key}.png);"></i>{$vo.type_name}<em></em> </a> </li>
         {/maccms:type}
     </ul>
 	<div class="ec-ewm">

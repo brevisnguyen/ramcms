@@ -8,11 +8,12 @@
  *   http://www.gnu.org/licenses/gpl.html
  *
  * Revision: $Id: jquery.autocomplete.js 15 2009-08-22 10:30:27Z joern.zaefferer $
- */;
+ */
+;
 $.browser = navigator.userAgent;
-(function($) {
+(function ($) {
     $.fn.extend({
-        autocomplete: function(urlOrData, options) {
+        autocomplete: function (urlOrData, options) {
             var isUrl = typeof urlOrData == "string";
             options = $.extend({}, $.Autocompleter.defaults, {
                 url: isUrl ? urlOrData : null,
@@ -21,31 +22,31 @@ $.browser = navigator.userAgent;
                 max: options && !options.scroll ? 10 : 150
             }, options);
             options.highlight = options.highlight ||
-                function(value) {
+                function (value) {
                     return value;
                 };
             options.formatMatch = options.formatMatch || options.formatItem;
-            return this.each(function() {
+            return this.each(function () {
                 new $.Autocompleter(this, options);
             });
         },
-        result: function(handler) {
+        result: function (handler) {
             return this.bind("result", handler);
         },
-        search: function(handler) {
+        search: function (handler) {
             return this.trigger("search", [handler]);
         },
-        flushCache: function() {
+        flushCache: function () {
             return this.trigger("flushCache");
         },
-        setOptions: function(options) {
+        setOptions: function (options) {
             return this.trigger("setOptions", [options]);
         },
-        unautocomplete: function() {
+        unautocomplete: function () {
             return this.trigger("unautocomplete");
         }
     });
-    $.Autocompleter = function(input, options) {
+    $.Autocompleter = function (input, options) {
         var KEY = {
             UP: 38,
             DOWN: 40,
@@ -69,13 +70,13 @@ $.browser = navigator.userAgent;
         };
         var select = $.Autocompleter.Select(options, input, selectCurrent, config);
         var blockSubmit;
-        $.browser.opera && $(input.form).bind("submit.autocomplete", function() {
+        $.browser.opera && $(input.form).bind("submit.autocomplete", function () {
             if (blockSubmit) {
                 blockSubmit = false;
                 return false;
             }
         });
-        $input.bind(($.browser.opera ? "keypress" : "keydown") + ".autocomplete", function(event) {
+        $input.bind(($.browser.opera ? "keypress" : "keydown") + ".autocomplete", function (event) {
             hasFocus = 1;
             lastKeyPressCode = event.keyCode;
             switch (event.keyCode) {
@@ -128,18 +129,18 @@ $.browser = navigator.userAgent;
                     timeout = setTimeout(onChange, options.delay);
                     break;
             }
-        }).focus(function() {
+        }).focus(function () {
             hasFocus++;
-        }).blur(function() {
+        }).blur(function () {
             hasFocus = 0;
             if (!config.mouseDownOnSelect) {
                 hideResults();
             }
-        }).click(function() {
+        }).click(function () {
             if (hasFocus++ > 1 && !select.visible()) {
                 onChange(0, true);
             }
-        }).bind("search", function() {
+        }).bind("search", function () {
             var fn = (arguments.length > 1) ? arguments[1] : null;
 
             function findValueCallback(q, data) {
@@ -155,15 +156,15 @@ $.browser = navigator.userAgent;
                 if (typeof fn == "function") fn(result);
                 else $input.trigger("result", result && [result.data, result.value]);
             }
-            $.each(trimWords($input.val()), function(i, value) {
+            $.each(trimWords($input.val()), function (i, value) {
                 request(value, findValueCallback, findValueCallback);
             });
-        }).bind("flushCache", function() {
+        }).bind("flushCache", function () {
             cache.flush();
-        }).bind("setOptions", function() {
+        }).bind("setOptions", function () {
             $.extend(options, arguments[1]);
             if ("data" in arguments[1]) cache.populate();
-        }).bind("unautocomplete", function() {
+        }).bind("unautocomplete", function () {
             select.unbind();
             $input.unbind();
             $(input.form).unbind(".autocomplete");
@@ -180,7 +181,7 @@ $.browser = navigator.userAgent;
                     var seperator = options.multipleSeparator.length;
                     var cursorAt = $(input).selection().start;
                     var wordAt, progress = 0;
-                    $.each(words, function(i, word) {
+                    $.each(words, function (i, word) {
                         progress += word.length;
                         if (cursorAt <= progress) {
                             wordAt = i;
@@ -198,6 +199,7 @@ $.browser = navigator.userAgent;
             $input.trigger("result", [selected.data, selected.value]);
             return true;
         }
+
         function onChange(crap, skipPrevCheck) {
             if (lastKeyPressCode == KEY.DEL) {
                 select.hide();
@@ -220,10 +222,11 @@ $.browser = navigator.userAgent;
         function trimWords(value) {
             if (!value) return [""];
             if (!options.multiple) return [$.trim(value)];
-            return $.map(value.split(options.multipleSeparator), function(word) {
+            return $.map(value.split(options.multipleSeparator), function (word) {
                 return $.trim(value).length ? $.trim(word) : null;
             });
         }
+
         function lastWord(value) {
             if (!options.multiple) return value;
             var words = trimWords(value);
@@ -236,6 +239,7 @@ $.browser = navigator.userAgent;
             }
             return words[words.length - 1];
         }
+
         function autoFill(q, sValue) {
             if (options.autoFill && (lastWord($input.val()).toLowerCase() == q.toLowerCase()) && lastKeyPressCode != KEY.BACKSPACE) {
                 $input.val($input.val() + sValue.substring(lastWord(previousValue).length));
@@ -254,7 +258,7 @@ $.browser = navigator.userAgent;
             clearTimeout(timeout);
             stopLoading();
             if (options.mustMatch) {
-                $input.search(function(result) {
+                $input.search(function (result) {
                     if (!result) {
                         if (options.multiple) {
                             var words = trimWords($input.val()).slice(0, -1);
@@ -288,7 +292,7 @@ $.browser = navigator.userAgent;
                 var extraParams = {
                     timestamp: +new Date()
                 };
-                $.each(options.extraParams, function(key, param) {
+                $.each(options.extraParams, function (key, param) {
                     extraParams[key] = typeof param == "function" ? param() : param;
                 });
                 $.ajax({
@@ -300,7 +304,7 @@ $.browser = navigator.userAgent;
                         wd: lastWord(term),
                         limit: options.max
                     }, extraParams),
-                    success: function(data) {
+                    success: function (data) {
                         var parsed = options.parse && options.parse(data) || parse(data);
                         cache.add(term, parsed);
                         success(term, parsed);
@@ -347,7 +351,7 @@ $.browser = navigator.userAgent;
         mustMatch: false,
         extraParams: {},
         selectFirst: true,
-        formatItem: function(row) {
+        formatItem: function (row) {
             return row[0];
         },
         formatMatch: null,
@@ -355,13 +359,13 @@ $.browser = navigator.userAgent;
         width: 0,
         multiple: false,
         multipleSeparator: ", ",
-        highlight: function(value, term) {
+        highlight: function (value, term) {
             return value.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + term.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1") + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
         },
         scroll: true,
         scrollHeight: 180
     };
-    $.Autocompleter.Cache = function(options) {
+    $.Autocompleter.Cache = function (options) {
         var data = {};
         var length = 0;
 
@@ -384,6 +388,7 @@ $.browser = navigator.userAgent;
             }
             data[q] = value;
         }
+
         function populate() {
             if (!options.data) return false;
             var stMatchSets = {},
@@ -407,7 +412,7 @@ $.browser = navigator.userAgent;
                     stMatchSets[""].push(row);
                 }
             };
-            $.each(stMatchSets, function(i, value) {
+            $.each(stMatchSets, function (i, value) {
                 options.cacheLength++;
                 add(i, value);
             });
@@ -422,14 +427,14 @@ $.browser = navigator.userAgent;
             flush: flush,
             add: add,
             populate: populate,
-            load: function(q) {
+            load: function (q) {
                 if (!options.cacheLength || !length) return null;
                 if (!options.url && options.matchContains) {
                     var csub = [];
                     for (var k in data) {
                         if (k.length > 0) {
                             var c = data[k];
-                            $.each(c, function(i, x) {
+                            $.each(c, function (i, x) {
                                 if (matchSubset(x.value, q)) {
                                     csub.push(x);
                                 }
@@ -444,7 +449,7 @@ $.browser = navigator.userAgent;
                         var c = data[q.substr(0, i)];
                         if (c) {
                             var csub = [];
-                            $.each(c, function(i, x) {
+                            $.each(c, function (i, x) {
                                 if (matchSubset(x.value, q)) {
                                     csub[csub.length] = x;
                                 }
@@ -457,7 +462,7 @@ $.browser = navigator.userAgent;
             }
         };
     };
-    $.Autocompleter.Select = function(options, input, select, config) {
+    $.Autocompleter.Select = function (options, input, select, config) {
         var CLASSES = {
             ACTIVE: "ac_over"
         };
@@ -469,37 +474,39 @@ $.browser = navigator.userAgent;
         function init() {
             if (!needsInit) return;
             element = $("<div/>").hide().addClass(options.resultsClass).css("position", "absolute").appendTo(document.body);
-            list = $("<ul/>").appendTo(element).mouseover(function(event) {
+            list = $("<ul/>").appendTo(element).mouseover(function (event) {
                 if (target(event).nodeName && target(event).nodeName.toUpperCase() == 'LI') {
                     active = $("li", list).removeClass(CLASSES.ACTIVE).index(target(event));
                     $(target(event)).addClass(CLASSES.ACTIVE);
                 }
-            }).click(function(event) {
+            }).click(function (event) {
                 $(target(event)).addClass(CLASSES.ACTIVE);
                 select();
                 input.focus();
                 return false;
-            }).mousedown(function() {
+            }).mousedown(function () {
                 config.mouseDownOnSelect = true;
-            }).mouseup(function() {
+            }).mouseup(function () {
                 config.mouseDownOnSelect = false;
             });
             if (options.width > 0) element.css("width", options.width);
             needsInit = false;
         }
+
         function target(event) {
             var element = event.target;
             while (element && element.tagName != "LI") element = element.parentNode;
             if (!element) return [];
             return element;
         }
+
         function moveSelect(step) {
             listItems.slice(active, active + 1).removeClass(CLASSES.ACTIVE);
             movePosition(step);
             var activeItem = listItems.slice(active, active + 1).addClass(CLASSES.ACTIVE);
             if (options.scroll) {
                 var offset = 0;
-                listItems.slice(0, active).each(function() {
+                listItems.slice(0, active).each(function () {
                     offset += this.offsetHeight;
                 });
                 if ((offset + activeItem[0].offsetHeight - list.scrollTop()) > list[0].clientHeight) {
@@ -518,9 +525,11 @@ $.browser = navigator.userAgent;
                 active = 0;
             }
         }
+
         function limitNumberOfItems(available) {
             return options.max && options.max < available ? options.max : available;
         }
+
         function fillList() {
             list.empty();
             var max = limitNumberOfItems(data.length);
@@ -539,44 +548,44 @@ $.browser = navigator.userAgent;
             if ($.fn.bgiframe) list.bgiframe();
         }
         return {
-            display: function(d, q) {
+            display: function (d, q) {
                 init();
                 data = d;
                 term = q;
                 fillList();
             },
-            next: function() {
+            next: function () {
                 moveSelect(1);
             },
-            prev: function() {
+            prev: function () {
                 moveSelect(-1);
             },
-            pageUp: function() {
+            pageUp: function () {
                 if (active != 0 && active - 8 < 0) {
                     moveSelect(-active);
                 } else {
                     moveSelect(-8);
                 }
             },
-            pageDown: function() {
+            pageDown: function () {
                 if (active != listItems.size() - 1 && active + 8 > listItems.size()) {
                     moveSelect(listItems.size() - 1 - active);
                 } else {
                     moveSelect(8);
                 }
             },
-            hide: function() {
+            hide: function () {
                 element && element.hide();
                 listItems && listItems.removeClass(CLASSES.ACTIVE);
                 active = -1;
             },
-            visible: function() {
+            visible: function () {
                 return element && element.is(":visible");
             },
-            current: function() {
+            current: function () {
                 return this.visible() && (listItems.filter("." + CLASSES.ACTIVE)[0] || options.selectFirst && listItems[0]);
             },
-            show: function() {
+            show: function () {
                 var offset = $(input).offset();
                 element.css({
                     width: typeof options.width == "string" || options.width > 0 ? options.width : $(input).width(),
@@ -591,7 +600,7 @@ $.browser = navigator.userAgent;
                     });
                     if ($.browser.msie && typeof document.body.style.maxHeight === "undefined") {
                         var listHeight = 0;
-                        listItems.each(function() {
+                        listItems.each(function () {
                             listHeight += this.offsetHeight;
                         });
                         var scrollbarsVisible = listHeight > options.scrollHeight;
@@ -602,21 +611,21 @@ $.browser = navigator.userAgent;
                     }
                 }
             },
-            selected: function() {
+            selected: function () {
                 var selected = listItems && listItems.filter("." + CLASSES.ACTIVE).removeClass(CLASSES.ACTIVE);
                 return selected && selected.length && $.data(selected[0], "ac_data");
             },
-            emptyList: function() {
+            emptyList: function () {
                 list && list.empty();
             },
-            unbind: function() {
+            unbind: function () {
                 element && element.remove();
             }
         };
     };
-    $.fn.selection = function(start, end) {
+    $.fn.selection = function (start, end) {
         if (start !== undefined) {
-            return this.each(function() {
+            return this.each(function () {
                 if (this.createTextRange) {
                     var selRange = this.createTextRange();
                     if (end === undefined || start == end) {

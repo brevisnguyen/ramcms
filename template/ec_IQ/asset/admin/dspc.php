@@ -3,7 +3,7 @@ return array (
   'dscms' => 
   array (
     'isOn' => '0',
-    'slide' => '0',
+    'slide' => '1',
     'module' => 
     array (
       0 => 'index_level',
@@ -21,7 +21,7 @@ return array (
     'indexactor' => '1',
     'gx' => 
     array (
-      'debugging' => '0',
+      'debugging' => '1',
       'zt' => '0',
       'btn' => '1',
       'donghua' => '1',

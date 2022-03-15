@@ -1354,17 +1354,18 @@ function mac_play_list($vod_play_from,$vod_play_url,$vod_play_server,$vod_play_n
         $server_info = $server_list[$server];
         if($player_info['status'] == '1') {
             $sort[] = $player_info['sort'];
-            $res_list[$k + 1] = [
+            $r = [
                 'sid' => $k + 1,
                 'player_info' => $player_info,
-                'server_info' => $server_info,
+                // 'server_info' => $server_info,
                 'from' => $v,
-                'url' => $vod_play_url_list[$k],
+                // 'url' => $vod_play_url_list[$k],
                 'server' => $server,
-                'note' => $vod_play_note_list[$k],
+                // 'note' => $vod_play_note_list[$k],
                 'url_count' => count($urls),
                 'urls' => $urls,
             ];
+            array_push($res_list, $r);
         }
     }
 
@@ -1405,26 +1406,32 @@ function mac_screenshot_list($screenshot)
 }
 
 function mac_play_list_one($url_one, $from_one, $server_one=''){
-    $url_list = array();
+    $url_lists = array();
     $array_url = explode('#',$url_one);
     foreach($array_url as $key=>$val){
         if(empty($val)) continue;
 
+        $url_list = [];
         list($title, $url, $from) = explode('$', $val);
         if ( empty($url) ) {
             $url_list[$key+1]['name'] = lang('the').($key+1).lang('episode');
             $url_list[$key+1]['url'] = $server_one.$title;
         }else{
-            $url_list[$key+1]['name'] = ucfirst(lang('episode')).' '.($key+1);
-            $url_list[$key+1]['url'] = $server_one.$url;
+            // $url_list[$key+1]['name'] = ucfirst(lang('episode')).' '.($key+1);
+            // $url_list[$key+1]['url'] = $server_one.$url;
+            $url_list['name'] = ucfirst(lang('episode')).' '.($key+1);
+            $url_list['url'] = $server_one.$url;
         }
         if(empty($from)){
             $from = $from_one;
         }
-        $url_list[$key+1]['from'] = (string)$from;
-        $url_list[$key+1]['nid'] = $key+1;
+        // $url_list[$key+1]['from'] = (string)$from;
+        // $url_list[$key+1]['nid'] = $key+1;
+        $url_list['from'] = (string)$from;
+        $url_list['nid'] = $key+1;
+        array_push($url_lists, $url_list);
     }
-    return $url_list;
+    return $url_lists;
 }
 
 function mac_filter_words($p)

@@ -5796,7 +5796,6 @@ em {
 .s-top-right .item {
     height: 26px;
     float: left;
-    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-right: 30px

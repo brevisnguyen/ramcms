@@ -141,10 +141,10 @@ if($param[page]>=$data[totalPage]){
     <div class="mac_pages">
         <div class="page_tip">当前{$__PAGING__.page_current}/{$__PAGING__.page_total}页</div>
         <div class="page_info">
-            <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=1}" title="首页">首页</a>
+            <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=1}" title=""></a>
             <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" title="Trước">Trước</a>
             <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}" title="Tiếp">Tiếp</a>
-            <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_total}" title="尾页">尾页</a>
+            <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_total}" title="Cuối">Cuối</a>
         </div>
     </div>
     {/if}
