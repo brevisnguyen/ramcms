@@ -46,7 +46,7 @@ return array (
     'show' => 'DPlayer-H5播放器',
     'des' => 'dplayer.js.org',
     'target' => '_self',
-    'ps' => '1',
+    'ps' => '0',
     'parse' => '',
     'sort' => '906',
     'tip' => '无需安装任何插件',

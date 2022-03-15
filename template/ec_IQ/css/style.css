@@ -29,6 +29,7 @@
 .swiper-wrapper {
     position: relative;
     height: 100% !important;
+    width: 100% !important;
     webkit-transition-property: -webkit-transform, left, top;
     -webkit-transition-duration: 0s;
     -webkit-transform: translate3d(0, 0, 0);
