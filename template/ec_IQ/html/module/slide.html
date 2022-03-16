@@ -30,7 +30,7 @@
             {else}
             <div class="qy-carousel-inner wwp bd">
                 <ul class="qy-carousel-ul">
-                    {maccms:vod num="10" level="9" type="current" order="desc" by="time"}
+                    {maccms:vod num="10" score="9" type="current" order="desc" by="time"}
                     <li class="qy-carousel-li">
                         <a href='{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}'><span class="qy-carousel" style="background-image: url({$vo.vod_pic|mac_url_img});"></span></a>
                     </li>
@@ -145,7 +145,7 @@
     jQuery(".qy-carousel-fixed").slide({
         mainCell:".bd ul",
         effect:"fade",
-        autoPlay:false,
+        autoPlay:true,
         delayTime:500,
     });
 </script>

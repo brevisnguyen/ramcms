@@ -3,11 +3,12 @@
         <a class="aplus-exp" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="{$vo.vod_name}{$conch.dscms.seo.votitle}">
         <div class="ec-jabj eclazy" data-original="{:mac_url_img($vo.vod_pic)}" style="background-image: url({$conch.dscms.gx.lazy1});"></div>
         <div class="pack-bg"></div>
-        <span class="pack-prb"><span>{$vo.vod_remarks|mac_default=$vo.vod_hits.'lượt xem'}</span></span>
+        <!-- <span class="pack-prb"><span>{$vo.vod_class|mac_substring=30}</span></span> -->
         </a>
         <span class="vodlist_top">
             <em class="voddate voddate_year">{$vo.vod_year}</em>
-            <em class="voddate voddate_type">{$vo.vod_class|mac_substring=2}</em>
+            <!-- <em class="voddate voddate_type">{$vo.vod_class|mac_substring=2}</em> -->
+            <em class="voddate voddate_type">{$vo.vod_remarks|mac_default=$vo.vod_score}</em>
         </span>
     </div>
     <div class="pack-infolist">

@@ -152,7 +152,7 @@ if(location.hostname.match()){
             var e=document.getElementById("videoURL");
             e.select();
             document.execCommand("Copy");
-            MAC.Pop.Msg(100,20,'复制成功~快去分享给小伙伴们吧',1000);
+            MAC.Pop.Msg(100,20,'Sao chép thành công. Hãy chia sẻ nó với bạn bè của bạn nhé',1000);
         });
         //解析线路
         var urllin = $("#jxline").html();
