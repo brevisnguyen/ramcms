@@ -26,6 +26,19 @@ return array (
     'tip' => 'M3U8',
     'id' => 'ngm3u8',
   ),
+  'dplayer' => 
+  array (
+    'status' => '1',
+    'from' => 'dplayer',
+    'show' => 'DPlayer-H5播放器',
+    'des' => 'dplayer.js.org',
+    'target' => '_self',
+    'ps' => '0',
+    'parse' => '',
+    'sort' => '908',
+    'tip' => '无需安装任何插件',
+    'id' => 'dplayer',
+  ),
   'videojs' => 
   array (
     'status' => '1',
@@ -38,18 +51,5 @@ return array (
     'sort' => '907',
     'tip' => '无需安装任何插件',
     'id' => 'videojs',
-  ),
-  'dplayer' => 
-  array (
-    'status' => '1',
-    'from' => 'dplayer',
-    'show' => 'DPlayer-H5播放器',
-    'des' => 'dplayer.js.org',
-    'target' => '_self',
-    'ps' => '1',
-    'parse' => '',
-    'sort' => '906',
-    'tip' => '无需安装任何插件',
-    'id' => 'dplayer',
   ),
 );
