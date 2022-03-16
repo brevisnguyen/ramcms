@@ -138,7 +138,7 @@
                 <div id="tagContent">
                     {maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
                     <div id="playsx" class='play_list_box {if condition="$key eq 1"}show daoxu{/if}'>
-                        <div class="player_infotip col4c"><i class="fa fa-bell-o"></i>&nbsp;Đường truyền hiện tại do [{$vo.player_info.show}] cung cấp&nbsp;-&nbsp;{$vo.player_info.tip|mac_substring=20|mac_default='在线lượt xem,无需安装lượt xem器'}</div>
+                        <div class="player_infotip col4c"><i class="fa fa-bell-o"></i>&nbsp;Đường truyền hiện tại do [{$vo.player_info.show}] cung cấp&nbsp;-&nbsp;{$vo.player_info.tip|mac_substring=20|mac_default='Xem trực tuyến, không cần tải về'}</div>
                         <div class="playlist_notfull">
                             <ul class="content_playlist cf">
                                 {maccms:foreach name="vo.urls" id="vo2" key="key2"}

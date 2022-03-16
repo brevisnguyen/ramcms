@@ -60,7 +60,7 @@ return array (
     array (
       'detailart' => '1',
       'jxxlof' => '0',
-      'jxxl' => 'https://vip.ikjiexi.top/?url=,https://jiexi.380k.com/?url=,https://vip.66parse.club/?url=,https://z1.m1907.cn/?jx=',
+      'jxxl' => '',
       'gzh' => '/template/ec_IQ/images/ewm.png',
       'zhifubao' => '/template/ec_IQ/images/ewm.png',
       'weixin' => '/template/ec_IQ/images/ewm.png',
