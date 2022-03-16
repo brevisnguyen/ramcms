@@ -23,7 +23,7 @@ return array (
     array (
       'debugging' => '1',
       'zt' => '0',
-      'btn' => '1',
+      'btn' => '0',
       'donghua' => '1',
       'lazy1' => '/template/ec_IQ/images/load.gif',
       'lazy2' => '/template/ec_IQ/images/ipcbg.gif',
