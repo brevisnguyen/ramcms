@@ -133,7 +133,7 @@ return array (
     'status' => '1',
     'audit' => '0',
     'login' => '0',
-    'verify' => '1',
+    'verify' => '0',
     'pagesize' => '20',
     'timespan' => '3',
   ),

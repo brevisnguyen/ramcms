@@ -69,11 +69,7 @@ class Gbook extends Base
             return ['code'=>1005,'msg'=>lang('frequently')];
         }
 
-        $param['gbook_content']= htmlentities(mac_filter_words($param['gbook_content']));
-        $pattern = '/[^\x00-\x80]/';
-        if(!preg_match($pattern,$param['gbook_content'])){
-            return ['code'=>1005,'msg'=>lang('index/require_cn')];
-        }
+        $param['gbook_content']= mac_filter_words($param['gbook_content']);
 
         $param['gbook_reply'] = '';
 
@@ -85,7 +81,6 @@ class Gbook extends Base
             $param['gbook_name'] = cookie('user_name');
             $param['user_id'] = intval(cookie('user_id'));
         }
-        $param['gbook_name'] = htmlentities($param['gbook_name']);
 
         if($GLOBALS['config']['gbook']['audit'] ==1){
             $param['gbook_status'] = 0;

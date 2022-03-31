@@ -62,11 +62,7 @@ class Comment extends Base
             return ['code'=>1005,'msg'=>lang('frequently')];
         }
 
-        $param['comment_content']= htmlentities(mac_filter_words($param['comment_content']));
-        $pattern = '/[^\x00-\x80]/';
-        if(!preg_match($pattern,$param['comment_content'])){
-            return ['code'=>1005,'msg'=>lang('index/require_cn')];
-        }
+        $param['comment_content']= mac_filter_words($param['comment_content']);
 
         if(!in_array($param['comment_mid'],['1','2','3','8','9','11'])){
             return ['code'=>1006,'msg'=>lang('index/mid_err')];
@@ -79,7 +75,6 @@ class Comment extends Base
             $param['comment_name'] = cookie('user_name');
             $param['user_id'] = intval(cookie('user_id'));
         }
-        $param['comment_name'] = htmlentities($param['comment_name']);
         $param['comment_rid'] = intval($param['comment_rid']);
         $param['comment_pid'] = intval($param['comment_pid']);
         if($GLOBALS['config']['comment']['audit'] ==1){
