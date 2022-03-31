@@ -16,7 +16,7 @@ return array (
     ),
     'zhiboul' => 'http://127.0.0.1/index.php/vod/type/id/zhibo.html',
     'taobaoul' => 'http://demo.dataoke.com/',
-    'logtype' => '1,2,4',
+    'logtype' => '1,2,3,4',
     'hnum' => '2.5',
     'indexactor' => '1',
     'gx' => 
