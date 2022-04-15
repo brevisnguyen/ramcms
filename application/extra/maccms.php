@@ -349,7 +349,7 @@ return array (
   array (
     'vod' => 
     array (
-      'status' => 0,
+      'status' => 1,
       'charge' => '0',
       'pagesize' => '30',
       'imgurl' => 'https://pic.oknguon.com/',

@@ -240,6 +240,25 @@ class Collect extends Base {
             $array_url = [];
             $array_server=[];
             $array_note=[];
+            //Down
+            $down_from = [];
+            $down_url = [];
+            $down_server=[];
+            $down_note=[];
+            //videolist|list播放列表不同
+            if($count=count($video->down->dd)){
+                for($i=0; $i<$count; $i++){
+                    $down_from[$i] = (string)$video->down->dd[$i]['flag'];
+                    $down_url[$i] = $this->vod_xml_replace((string)$video->down->dd[$i]);
+                    $down_server[$i] = 'no';
+                    $down_note[$i] = '';
+                }
+            }else{
+                $down_from[]=(string)$video->dt;
+                $down_url[] ='';
+                $down_server[]='';
+                $down_note[]='';
+            }
             //videolist|list播放列表不同
             if($count=count($video->dl->dd)){
                 for($i=0; $i<$count; $i++){
@@ -256,18 +275,26 @@ class Collect extends Base {
                 $array_note[]='';
             }
 
-            if(strpos(base64_decode($param['param']),'ct=1')!==false){
-                $array_data[$key]['vod_down_from'] = implode('$$$', $array_from);
-                $array_data[$key]['vod_down_url'] = implode('$$$', $array_url);
-                $array_data[$key]['vod_down_server'] = implode('$$$', $array_server);
-                $array_data[$key]['vod_down_note'] = implode('$$$', $array_note);
-            }
-            else{
-                $array_data[$key]['vod_play_from'] = implode('$$$', $array_from);
-                $array_data[$key]['vod_play_url'] = implode('$$$', $array_url);
-                $array_data[$key]['vod_play_server'] = implode('$$$', $array_server);
-                $array_data[$key]['vod_play_note'] = implode('$$$', $array_note);
-            }
+            // if(strpos(base64_decode($param['param']),'ct=1')!==false){
+            //     $array_data[$key]['vod_down_from'] = implode('$$$', $down_from);
+            //     $array_data[$key]['vod_down_url'] = implode('$$$', $down_url);
+            //     $array_data[$key]['vod_down_server'] = implode('$$$', $down_server);
+            //     $array_data[$key]['vod_down_note'] = implode('$$$', $down_note);
+            // }
+            // else{
+            //     $array_data[$key]['vod_play_from'] = implode('$$$', $array_from);
+            //     $array_data[$key]['vod_play_url'] = implode('$$$', $array_url);
+            //     $array_data[$key]['vod_play_server'] = implode('$$$', $array_server);
+            //     $array_data[$key]['vod_play_note'] = implode('$$$', $array_note);
+            // }
+            $array_data[$key]['vod_play_from'] = implode('$$$', $array_from);
+            $array_data[$key]['vod_play_url'] = implode('$$$', $array_url);
+            $array_data[$key]['vod_play_server'] = implode('$$$', $array_server);
+            $array_data[$key]['vod_play_note'] = implode('$$$', $array_note);
+            $array_data[$key]['vod_down_from'] = implode('$$$', $down_from);
+            $array_data[$key]['vod_down_url'] = implode('$$$', $down_url);
+            $array_data[$key]['vod_down_server'] = implode('$$$', $down_server);
+            $array_data[$key]['vod_down_note'] = implode('$$$', $down_note);
 
             $key++;
         }
