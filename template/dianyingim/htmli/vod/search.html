@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Mô tả chi tiết {$obj.vod_name}-Xem trực tuyến {$obj.vod_name}-Tải xuống {$obj.vod_name} - {$maccms.site_name}</title>
+    <title>Kết quả tìm kiếm {$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class} - {$maccms.site_name}</title>
+    <meta name="keywords" content="Kết quả tìm kiếm {$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}" />
+    <meta name="description" content="Kết quả tìm kiếm {$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}" />
+    {include file="public/include"}
+</head>
+<body class="search page">
+{include file="public/head"}
+<main id="main" class="wrapper">
+    <div class="content">
+        <div id="search-content">
+            <form action="{:mac_url('vod/search')}">
+                <div class="search-box">
+                    <input class="search-input ac_wd" id="txtKeywords" type="text" name="wd" autocomplete="off" placeholder="Tìm kiếm">
+                    <div class="search-drop">
+                        <div class="drop-content-items ac_hot none">
+                            <div class="list-item list-item-title"><strong>Mọi người đang tìm kiếm những video này</strong></div>
+                            <div class="search-tag">
+                                <a href="/index.php/vod/search/wd/%E5%8F%98%E5%BD%A2%E9%87%91%E5%88%9A.html" class="hot "><i class="icon-hot"></i>Transformer</a>
+                                <a href="/index.php/vod/search/wd/%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85.html" class="hot "><i class="icon-hot"></i>Naruto</a>
+                                <a href="/index.php/vod/search/wd/%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F.html" class="hot "><i class="icon-hot"></i>The Avengers</a>
+                                <a href="/index.php/vod/search/wd/%E6%88%98%E7%8B%BC.html" class="hot "><i class="icon-hot"></i>War Wolf</a>
+                                <a href="/index.php/vod/search/wd/%E7%BA%A2%E6%B5%B7%E8%A1%8C%E5%8A%A8.html" class=""><i class="icon-hot"></i>Operation Red Sea</a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="search-btn search-go" type="submit"><i class="icon-search"></i></button>
+                    <button class="cancel-btn" type="button">Hủy bỏ</button>
+                </div>
+            </form>
+            <div class="search-stat">
+                <h1></h1>
+                <h2>Tìm "{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}", tới <strong class="mac_total">67574</strong> phim</h2>
+            </div>
+        </div>
+        <div class="module">
+            <div class="module-list">
+                <div class="module-items">
+                    {maccms:vod num="10" paging="yes" pageurl="vod/search" order="desc" by="time"}
+                    <div class="module-search-item">
+                        <div class="video-cover">
+                            <div class="module-item-cover">
+                                <div class="module-item-pic"><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><i class="icon-play"></i></a><img class="lazy lazyload" data-src="{:mac_url_img($vo.vod_pic)}" src="{$maccms.path_tpl}img/loading.png" alt="{$vo.vod_name}">
+                                    <div class="loading"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-info-header"><a class="video-serial" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_remarks|mac_default=$vo.vod_hits}</a>
+                                <h3><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a></h3>
+                                <div class="video-info-aux">
+                                    <a href="javascript:;" title="{$vo.type.type_name|default=$vo.type_1.type_name}" class="tag-link"><span class="video-tag-icon">{$vo.type.type_name|default=$vo.type_1.type_name}</span></a>
+                                    <div class="tag-link">{$vo.vod_year|mac_url_create='year','vod','search'}&nbsp;</div>
+                                    <div class="tag-link">{$vo.vod_area|mac_url_create='area','vod','search'}&nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="video-info-main">
+                                <div class="video-info-items"><span class="video-info-itemtitle">Đạo diễn: </span>
+                                    <div class="video-info-item video-info-actor"><span class="slash">/</span>
+                                        {$vo.vod_director|mac_url_create='director','vod','search','<span class="slash">/</span>'}
+                                    </div>
+                                </div>
+                                <div class="video-info-items"><span class="video-info-itemtitle">Diễn viên chính: </span>
+                                    <div class="video-info-item video-info-actor">
+                                        {$vo.vod_actor|mac_url_create='actor','vod','search','<span class="slash">/</span>'}
+                                    </div>
+                                </div>
+                                <div class="video-info-items"><span class="video-info-itemtitle">Nội dung: </span>
+                                    <div class="video-info-item">{$vo.vod_content|mac_filter_html|mac_substring=100}</div>
+                                </div>
+                            </div>
+                            <div class="video-info-footer">
+                                <a href="{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}" class="btn-important btn-base" title="Xem {$vo.vod_name}"><i class="icon-play"></i><strong>Xem</strong></a>
+                                {if condition="$vo.vod_down_from neq ''"}
+                                <a href="{:mac_url_vod_detail($vo)}" class="btn-aux btn-aux-o btn-base" title="Tải xuống {$vo.vod_name}"><i class="icon-download"></i><strong>Tải xuống</strong></a>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                    {/maccms:vod}
+                </div>
+                <script>
+                    $('.mac_total').html('{$__PAGING__.record_total}');
+                </script>
+                <div class="module-footer">
+                    {include file="public/paging"}
+                </div>
+                <!-- 分页 -->
+
+            </div>
+        </div>
+    </div>
+</main>
+{include file="public/foot"}
+</body>
+</html>
+

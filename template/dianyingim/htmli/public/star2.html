@@ -1,0 +1,20 @@
+
+
+<div id="rating" class="fn-left" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-score="{$obj.vod_score/2|ceil}">
+    <span class="label">Tôi cũng muốn đánh giá video này：</span>
+    <ul class="rating" id="fenshu">
+        <li class="one  {if condition="$obj.vod_score gt 0"}current active{/if}" title="rất tệ" val="1">Rất tệ</li>
+        <li class="two  {if condition="$obj.vod_score gt 2"}current active{/if}" title="tệ" val="2">Tệ</li>
+        <li class="three {if condition="$obj.vod_score gt 4"} current active{/if}" title="tốt" val="3">Tốt</li>
+        <li class="four {if condition="$obj.vod_score gt 6"}active{/if}" title="Đề cử" val="4">Đề cử</li>
+        <li class="five {if condition="$obj.vod_score gt 8"}active{/if}" title="Rất nên xem" val="5">Rất nên xem</li>
+    </ul>
+    <span id="ratewords">{if condition="$obj.vod_score gt 8"}力荐
+{elseif condition="$obj.vod_score gt 6"/}Đề cử
+{elseif condition="$obj.vod_score gt 4"/}Tốt
+{elseif condition="$obj.vod_score gt 2"/}Tệ
+{else /}Rất tệ
+{/if}</span>
+</div>
+<script type="text/javascript" src="{$maccms.path_tpl}js/qireobj.js"></script>
+<script type="text/javascript" src="{$maccms.path_tpl}js/gold.js"></script>

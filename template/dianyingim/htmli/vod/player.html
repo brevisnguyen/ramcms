@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Trình phát iframe</title>
+    <style>*{word-wrap:break-word;outline:none} html,body{width:100%;height:100%;background:#000;color:#fff;}
+    .player_popeom{ width:500px;height:150px; position:absolute;text-align:center; top:50%;left:50%;margin:-75px 0 0 -250px; }
+    .player_popeom a{  padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        border-radius: 6px; color: #fff;  background-color: #5cb85c;  border-color: #4cae4c;  }
+    </style>
+    <script src="{$maccms.path}static/js/jquery.js"></script>
+    <script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+</head>
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+{$player_data}
+{$player_js}
+{if condition="$popedom.code gt 1"/}
+<div class="player_showtry" style="display:none;">
+    <div class="player_box">
+        <div class="player_popeom">
+            {if condition="$obj.vod_points_play eq 0"}
+            <p>Thử hết {$popedom.trysee} phút. Để xem hết video này, bạn cần nâng cấp nhóm thành viên, vui lòng xem sau khi nâng cấp</p>
+            <small>Mẹo: Mua nhóm thành viên VIP, hưởng siêu quyền, cảm ơn bạn đã ủng hộ. </small>
+            <p><a href="{:url('user/index')}" target="_blank">Trung tâm thành viên</a> <a href="{:url('user/upgrade')}" target="_blank">Nâng cấp ngay bây giờ</a></p>
+            {else/}
+            <p>Thử hết {$popedom.trysee} phút，Chi phí xem toàn bộ video này {$obj.vod_points_play} điểm，Vui lòng trả tiền để xem。</p>
+            <small>Mẹo: thanh toán một lần, xem mãi mãi, không trừ tiền nhiều lần, cảm ơn các bạn đã ủng hộ。</small>
+
+            {if condition="$user.group.group_id eq 1"}
+                <p><a href="{:url('user/login')}" target="_blank">Đăng nhập ngay bây giờ</a></p>
+            {else/}
+                <p><a href="{:url('user/buy')}" target="_blank">Nạp tiền ngay bây giờ</a> <a href="javascript:;" onclick="window.parent.MAC.User.BuyPopedom(this)" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}" data-type="4">Xác nhận mua hàng</a></p>
+            {/if}
+            {/if}
+
+        </div>
+    </div>
+</div>
+<script>
+    //方式一本页面计算
+     window.setTimeout(function(){
+     $('.MacPlayer').html( $('.player_showtry').html() );
+     },1000*60*{$popedom.trysee});
+
+    //方式二调用父页面公共函数库
+    //window.parent.MAC.User.PopedomCallBack({$popedom.trysee},$('.player_showtry').html() );
+</script>
+{/if}
+
+
+</body>
+</html>
+

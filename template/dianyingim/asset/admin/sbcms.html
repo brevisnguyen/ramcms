@@ -1,0 +1,230 @@
+{include file="../../../application/admin/view/public/head" /}
+<div class="page-container">
+    <form class="layui-form layui-form-pane" action="">
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">首页</li>
+                <li class="">模板配置</li>
+                <li class="">广告设置</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <blockquote class="layui-elem-quote" style="margin: 20px 0;">感谢你使用电影先生模板，一路陪伴，感恩有你！<br/>
+                    作者最近发现一个名为电影先生（DianYingim.Com）的网站利用我们开源项目从事违法行为，且扬言禁止其他人使用电影先生模板，发现谁用就打到谁关站，我们已向版权部门举报，使用本源码的用户也请举报一下，清除网络毒瘤人人有责。
+                    </blockquote>
+                    <style>.layui-elem-quote b{color:#f73131}</style>
+
+                    <div class="layui-col-md4" style="padding-right: 20px;">
+                        <table class="layui-table">
+                            <thead>
+                            <tr><th colspan="2" scope="col">简介</th></tr>
+                            </thead>
+                            <tbody>
+                            <tr><td>当前版本</td><td><span class="layui-badge">v1.0.1-2021年5月版</span></td></tr>
+                            <tr><td>模板交流QQ群</td><td>872882160</td></tr>
+                            <tr><td>模板作者QQ号</td><td>602524950</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="layui-col-md8">
+                        <table class="layui-table">
+                            <thead>
+                            <tr><th>基础说明</th></tr>
+                            </thead>
+                            <tbody>
+                            <tr><td>1. 主题文件读写权限755</td></tr>
+                            <tr><td>2. 模板bug问题加群反馈免费解决</td></tr>
+                            <tr><td style="color: red;">本源码是一个开源项目禁止倒卖，在不收费的情况下您可以随意转载。</td></tr>
+                            </tbody></table>
+                    </div>
+                </div>
+                <div class="layui-tab-item ">
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">首页logo：</label>
+                        <div class="layui-input-inline w400">
+                            <input type="text" name="dscms[jc][logo1]" placeholder="首页logo" value="{$config['dscms']['jc']['logo1']}" class="layui-input upload-input">
+                        </div>
+                        <div class="layui-input-inline w100">
+                            <button type="button" class="layui-btn layui-btn-primary layui-upload" lay-data="{data:{thumb:0,thumb_class:'dscms[jc][logo1]'}}" id="upload11">选择文件</button>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux"><a href="http://www.uugai.com/" target="_blank" style="color:red">logo在线制作</a></div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">全站logo：</label>
+                        <div class="layui-input-inline w400">
+                            <input type="text" name="dscms[jc][logo2]" placeholder="全站logo" value="{$config['dscms']['jc']['logo2']}" class="layui-input upload-input">
+                        </div>
+                        <div class="layui-input-inline w100">
+                            <button type="button" class="layui-btn layui-btn-primary layui-upload" lay-data="{data:{thumb:0,thumb_class:'dscms[jc][logo2]'}}" id="upload12">选择文件</button>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux"><a href="http://www.uugai.com/" target="_blank" style="color:red">logo在线制作</a></div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">icon图标：</label>
+                        <div class="layui-input-inline w400">
+                            <input type="text" name="dscms[jc][icon]" placeholder="icon图标" value="{$config['dscms']['jc']['icon']}" class="layui-input upload-input">
+                        </div>
+                        <div class="layui-input-inline w100">
+                            <button type="button" class="layui-btn layui-btn-primary layui-upload" lay-data="{data:{thumb:0,thumb_class:'dscms[jc][icon]'}}" id="upload12">选择文件</button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">懒加载图片：</label>
+                        <div class="layui-input-inline w400">
+                            <input type="text" name="dscms[jc][pic]" placeholder="懒加载图片" value="{$config['dscms']['jc']['pic']}" class="layui-input upload-input">
+                        </div>
+                        <div class="layui-input-inline w100">
+                            <button type="button" class="layui-btn layui-btn-primary layui-upload" lay-data="{data:{thumb:0,thumb_class:'dscms[jc][pic]'}}" id="upload13">选择文件</button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">头部提示：</label>
+                        <div class="layui-input-inline w500">
+                            <input name="dscms[jc][gg]" type="text" value="{$config['dscms']['jc']['gg']}" size="60" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">网站偷不左侧提示文字</div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">公告内容：</label>
+                        <div class="layui-input-block">
+                            <textarea name="dscms[jc][txt]" class="layui-textarea" placeholder="填写自定义广告代码">{$config['dscms']['jc']['txt']}</textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">首页底部：</label>
+                        <div class="layui-input-inline w500">
+                            <input name="dscms[jc][zhizhang]" type="text" value="{$config['dscms']['jc']['zhizhang']}" size="60" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">首页底部站长留言</div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">底部声明：</label>
+                        <div class="layui-input-block">
+                            <textarea name="dscms[jc][sm]" class="layui-textarea" placeholder="底部声明">{$config['dscms']['jc']['sm']}</textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">app下载链接：</label>
+                        <div class="layui-input-inline w500">
+                            <input name="dscms[jc][appurl]" type="text" value="{$config['dscms']['jc']['appurl']}" size="60" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">app下载链接</div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
+                <div class="layui-tab-item">
+
+                    <div>计划中下一个版本增加</div>
+
+
+                    <!--
+
+                                        <div class="layui-form-item">
+                        <label class="layui-form-label">电视直播：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="dscms[nav][ivi]" value="0" title="关闭" {if condition="$config['dscms']['nav']['ivi'] neq 1"}checked {/if}>
+                            <input type="radio" name="dscms[nav][ivi]" value="1" title="开启" {if condition="$config['dscms']['nav']['ivi'] eq 1"}checked {/if}>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">自定导航链接：</label>
+                        <div class="layui-input-inline w150">
+                            <input type="text" name="dscms[nav][zdyname1]" placeholder="连接名字" value="{$config['dscms']['nav']['zdyname1']}" class="layui-input">
+                        </div>
+                        <div class="layui-input-inline w300">
+                            <input type="text" name="dscms[nav][zdyurl1]" placeholder="链接地址" value="{$config['dscms']['nav']['zdyurl1']}" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">头部导航栏目自定义链接</div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">明星模块样式：</label>
+                        <div class="layui-input-inline w200">
+                            <select name="dscms[indexactor]">
+                                <option value="0" {if condition="$config['dscms']['indexactor'] eq '0'"}selected {/if}>圆头像</option>
+                                <option value="1" {if condition="$config['dscms']['indexactor'] eq '1'"}selected {/if}>方块头像</option>
+                            </select>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">分类数据展示数量（不同屏幕宽度下显示数量会有变化）</div>
+                    </div>
+                    -->
+
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="layui-form-item center" style="padding-top: 20px;">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit="" lay-filter="formSubmit">保 存</button>
+            </div>
+        </div>
+    </form>
+</div>
+{include file="../../../application/admin/view/public/foot" /}
+<script type="text/javascript">
+    layui.use(['form','upload', 'layer'], function(){
+        // 操作对象
+        var form = layui.form
+            , layer = layui.layer
+            , upload = layui.upload;
+
+        form.on('radio(cache_type)',function(data){
+            $('.row_cache_server').hide();
+            if(data.value=='memcache' || data.value=='redis' || data.value=='memcached'){
+                $('.row_cache_server').show();
+            }
+        });
+        upload.render({
+            elem: '.layui-upload'
+            ,url: "{:url('upload/upload')}?flag=site"
+            ,method: 'post'
+            ,before: function(input) {
+                layer.msg('文件上传中...', {time:3000000});
+            },done: function(res, index, upload) {
+                var obj = this.item;
+                if (res.code == 0) {
+                    layer.msg(res.msg);
+                    return false;
+                }
+                layer.closeAll();
+                var input = $(obj).parent().parent().find('.upload-input');
+                if ($(obj).attr('lay-type') == 'image') {
+                    input.siblings('img').attr('src', res.data.file).show();
+                }
+                input.val(res.data.file);
+
+                if(res.data.thumb_class !=''){
+                    $('.'+ res.data.thumb_class).val(res.data.thumb[0].file);
+                }
+            }
+        });
+        $('.upload-input').hover(function (e){
+            var e = window.event || e;
+            var imgsrc = $(this).val();
+            if(imgsrc.trim()==""){ return; }
+            var left = e.clientX+document.body.scrollLeft+20;
+            var top = e.clientY+document.body.scrollTop+20;
+            $(".showpic").css({left:left,top:top,display:""});
+            if(imgsrc.indexOf('://')<0){ imgsrc = ROOT_PATH + '/' + imgsrc;	} else{ imgsrc = imgsrc.replace('mac:','http:'); }
+            $(".showpic_img").attr("src", imgsrc);
+        },function (e){
+            $(".showpic").css("display","none");
+        });
+
+    });
+</script>
+</body>
+</html>

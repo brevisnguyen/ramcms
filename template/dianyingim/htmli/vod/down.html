@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tải xuống {$obj.vod_name}{$obj['vod_down_list'][$param['sid']]['urls'][$param['nid']]['name']} - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.vod_name}{$obj['vod_down_list'][$param['sid']]['urls'][$param['nid']]['name']}Tải xuống,{$obj.vod_name} tóm tắt" />
+    <meta name="description" content="{$obj.vod_name}{$obj['vod_down_list'][$param['sid']]['urls'][$param['nid']]['name']}Tải xuống,{$obj.vod_name} tóm tắt" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<!--当前位置-->
+<div class="bread-crumb-nav fn-clear">
+    <ul class="bread-crumbs">
+        <li class="home"><a href="{$maccms.path}">Trang đầu</a></li><li><a href="列表页.html">Phim</a></li>
+        <li><a href="{:mac_url_type($obj.type)}">{$obj.type_name}</a></li>
+        <li>{$obj.vod_name}{$obj['vod_down_list'][$param['sid']]['urls'][$param['nid']]['name']}Tải xuống</li>
+        <li class="back"><a href="javascript:MAC.GoBack()">Quay lại trang cuối cùng</a></li>
+    </ul>
+</div>
+<!--播放器-->
+{$player_data}
+{$player_js}
+<div class="ui-box" id="detail-box">
+    <div id="xiazai_box">
+        <h1>Tải xuống - {$obj.vod_name} {$obj.vod_down_list[$param['sid']]['urls'][$param['nid']]['name']}</h1>
+        <p>Kích thước video：xxx MB</p>
+        <a href="#" class="lande" >Tải xuống telecom</a><a href="#" class="huangde" >Tải xuống netcom</a>
+    </div>
+</div>
+<!-- 剧情介绍 -->
+<div class="ui-box marg" id="juqing" >
+    <div class="ui-title">
+        <h3>Tóm tắt</h3>
+    </div>
+    <div class="tjuqing">
+        {$obj.vod_content}
+    </div>
+</div>
+<script>
+    $(function(){
+        //alert(MacPlayer.PlayUrl); //弹出提示显示下载地址
+        //location.href = MacPlayer.PlayUrl;  //转向到下载地址
+        //document.write(MacPlayer.PlayUrl); //输出下载地址
+        $('.lande').attr('href',MacPlayer.PlayUrl);
+        $('.huangde').attr('href',MacPlayer.PlayUrl);
+    });
+</script>
+<span style="display:none" class="mac_ulog_set" alt="Đặt lịch sử duyệt trang xem" data-type="5" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+{include file="public/foot"}
+</body>
+</html>
+
