@@ -218,7 +218,6 @@ class Provide extends Base
 
             if($this->_param['ac']=='videolist' || $this->_param['ac']=='detail'){
                 $tempurl = $this->vod_url_deal($v["vod_play_url"],$v["vod_play_from"],$GLOBALS['config']['api']['vod']['from'],'xml');
-                $downtempurl = $this->vod_url_deal($v["vod_down_url"],$v["vod_down_from"],$GLOBALS['config']['api']['vod']['from'],'xml');
 
                 $xml .= '<pic>'.$v["vod_pic"].'</pic>';
                 $xml .= '<lang>'.$v['vod_lang'].'</lang>';
@@ -230,7 +229,6 @@ class Provide extends Base
                 $xml .= '<director><![CDATA['.$v['vod_director'].']]></director>';
                 $xml .= '<dl>'.$tempurl.'</dl>';
                 $xml .= '<des><![CDATA['.$v['vod_content'].']]></des>';
-                $xml .= '<down>'.$downtempurl.'</down>';
             }
             else {
                 if ($GLOBALS['config']['api']['vod']['from'] != ''){

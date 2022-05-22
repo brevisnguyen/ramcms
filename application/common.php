@@ -1406,32 +1406,26 @@ function mac_screenshot_list($screenshot)
 }
 
 function mac_play_list_one($url_one, $from_one, $server_one=''){
-    $url_lists = array();
+    $url_list = array();
     $array_url = explode('#',$url_one);
     foreach($array_url as $key=>$val){
         if(empty($val)) continue;
 
-        $url_list = [];
         list($title, $url, $from) = explode('$', $val);
         if ( empty($url) ) {
             $url_list[$key+1]['name'] = lang('the').($key+1).lang('episode');
             $url_list[$key+1]['url'] = $server_one.$title;
         }else{
-            // $url_list[$key+1]['name'] = ucfirst(lang('episode')).' '.($key+1);
-            // $url_list[$key+1]['url'] = $server_one.$url;
-            $url_list['name'] = ucfirst(lang('episode')).' '.($key+1);
-            $url_list['url'] = $server_one.$url;
+            $url_list[$key+1]['name'] = $title;
+            $url_list[$key+1]['url'] = $server_one.$url;
         }
         if(empty($from)){
             $from = $from_one;
         }
-        // $url_list[$key+1]['from'] = (string)$from;
-        // $url_list[$key+1]['nid'] = $key+1;
-        $url_list['from'] = (string)$from;
-        $url_list['nid'] = $key+1;
-        array_push($url_lists, $url_list);
+        $url_list[$key+1]['from'] = (string)$from;
+        $url_list[$key+1]['nid'] = $key+1;
     }
-    return $url_lists;
+    return $url_list;
 }
 
 function mac_filter_words($p)

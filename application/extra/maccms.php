@@ -133,7 +133,7 @@ return array (
     'status' => '1',
     'audit' => '0',
     'login' => '0',
-    'verify' => '0',
+    'verify' => '1',
     'pagesize' => '20',
     'timespan' => '3',
   ),
@@ -349,7 +349,7 @@ return array (
   array (
     'vod' => 
     array (
-      'status' => 1,
+      'status' => 0,
       'charge' => '0',
       'pagesize' => '30',
       'imgurl' => 'https://pic.oknguon.com/',
@@ -480,18 +480,18 @@ return array (
   ),
   'rewrite' => 
   array (
-    'suffix_hide' => '1',
+    'suffix_hide' => '0',
     'route_status' => '0',
     'status' => '0',
     'encode_key' => 'abcdefg',
     'encode_len' => '6',
-    'vod_id' => '1',
-    'art_id' => '1',
-    'type_id' => '1',
-    'topic_id' => '1',
+    'vod_id' => '0',
+    'art_id' => '0',
+    'type_id' => '0',
+    'topic_id' => '0',
     'actor_id' => '0',
     'role_id' => '0',
-    'website_id' => '1',
+    'website_id' => '0',
     'route' => 'map   => map/index
 rss/index   => rss/index
 rss/baidu => rss/baidu
