@@ -41,7 +41,7 @@ function stars(r) {
 		$("ul.rating li:lt(" + curnum + ")").addClass("current");
 		$("ul.rating li:eq(" + curnum + ")").addClass("current");
 		$("ul.rating li:gt(" + curnum + ")").removeClass("current");
-		var arr = new Array('很差', '较差', '还行', '推荐', '力荐');
+		var arr = new Array("Rất tệ", "Kém", "Bình thường", "Hay", "Rất hay");
 		$("#ratewords").html(arr[curnum])
 	}
 };

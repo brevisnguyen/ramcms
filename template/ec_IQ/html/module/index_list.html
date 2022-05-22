@@ -1,5 +1,5 @@
 {maccms:type ids="'.$conch['dscms']['logtype'].'" order="asc" by="sort" mid="1" id="vo3"}
-<div class="cf pageconnt palyconnt top20" style="overflow: hidden; visibility: visible; animation-name: fadeInUp;">
+<div class="cf pageconnt palyconnt top20">
     <div class="public wow fadeInUp l">
         <div class="ant-tabsbar">
             <div class="ant-tabscontent cf">
@@ -31,13 +31,8 @@
             {include file="module/vod_box"}
             {/maccms:vod}
         </div>
-        <div id="{$vo3.type_en}4" class="hotgrow eclist listdh" style="display:none">
-            {maccms:vod num="'.($conch['dscms']['hnum']*2+2).'" type="'.$vo3['type_id'].'" order="desc" by="time"}
-            {include file="module/vod_box"}
-            {/maccms:vod}
-        </div>
     </div>
-    <div class="ecmod-wrap r ecright d-none d-xl-block" style="width: 206px;">
+    <div class="ecmod-wrap r ecright" style="width: 206px;">
         <div class="ecmod-title">
             <h3 class="mod-title anthology-wrap col1b">Xếp Hạng
                 <div class="ecrank-enter">

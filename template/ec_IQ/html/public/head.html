@@ -1,66 +1,129 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100 ps-lg-5" style="z-index: 100;">
-    <div class="container-fluid position-relative">
-        <button class="navbar-toggler px-1" style="background-color:rgba(0, 0, 0, 0.5);" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span style="font-size:24px;"><i class="bi bi-list text-light"></i></span>
-        </button>
-        <div class="text-center my-auto d-lg-none">
-            <a class="text-light" href="{:mac_url('label/app')}">
-                <div class="text-center position-relative w-100" style="margin: 0 auto;justify-content: center; position: relative;align-items: center;flex-direction: row;display: flex;">
-                    <span style="font-size:24px;"><i class="bi bi-tv"></i></span>
-                    <span style="font-size:12px;" class="my-auto">&nbsp;APP</span>
-                </div>
-            </a>
+<div class="header">
+    <div class="header-container cf [wap]" id="header-contain">
+        <div class="new-yklogo l">
+            <a class="logo-1edqf" href="{$maccms.path}" title="{$maccms.site_name}"><img
+                    src="{$maccms.site_logo|mac_url_img}" alt="{$maccms.site_name}" /></a>
         </div>
-        <form action="{:mac_url('vod/search')}" method="GET" id="search" name="search" class="my-auto d-lg-none">
-            <div class="input-group d-flex my-auto rounded" style="height: 28px;min-width:200px;overflow: hidden;">
-                <input name="wd" type="text" class="form-control border-0 h-100" style="background-color:rgba(255, 255, 255, 0.3);" placeholder="Tìm tên phim" aria-label="Tìm tên phim" aria-describedby="button-addon2">
-                <button class="btn btn-primary border-0 h-100" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
-            </div>
-        </form>
-        <a class="navbar-brand" href="{$maccms.path}" title="{$maccms.site_name}">
-            <img src="{$maccms.site_logo|mac_url_img}" alt="" width="150px" height="40px" class="d-none d-md-block" style="object-fit: cover; transform: scale(1.2);">
-            <img src="{$conch['dscms']['logo']|mac_url_img}" alt="" width="40px" height="40px" class="d-md-none d-none d-sm-block" style="object-fit: cover; transform: scale(1.2);">
-        </a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav my-auto me-auto">
+        <div class="ecnav-nav l cf">
+            <div class="nav-channel xiaoyinqing l">
                 {maccms:type ids="parent" order="asc" by="sort"}
-                <li class="nav-link border-0 ps-4">
-                    <a href="{:mac_url_type($vo)}" class="text-light fw-bold text-center">{$vo.type_name}</a>
-                </li>
+                <a href="{:mac_url_type($vo)}" class='anthology-wrap nav-link col1'>{$vo.type_name}</a>
                 {/maccms:type}
-            </ul>
-            <div class="d-lg-inline-flex my-auto flex-row me-lg-5">
-                <form action="{:mac_url('vod/search')}" method="GET" id="search" name="search" class="my-auto d-none d-lg-block">
-                    <div class="input-group rounded my-auto pe-3">
-                        <input name="wd" value="{$param.wd}" type="text" class="form-control border-0 text-light" style="background-color:rgba(255, 255, 255, 0.3);" placeholder="Tìm tên phim..." aria-label="Search" aria-describedby="search-addon" />
-                        <button type="submit" id="searchbutton" class="btn btn-primary"><i class="fa icon-sousuo"></i></button>
-                    </div>
-                </form>
-                <div class="ucenter d-lg-inline-flex d-none text-center">
-                    <div class="mac_history my-auto">
-                        <div class="w-100 text-light" style="margin: 0 auto;justify-content: center; position: relative;align-items: center;flex-direction: row;display: flex;">
-                            <span style="font-size:24px;"><i class="bi bi-clock-history my-auto"></i></span>
-                            <span style="font-size:12px;" class="my-auto">&nbsp;Lịch sử</span>
+                {if condition="$conch['dscms']['nav']['zdyname1']" eq false}<a target="_blank"
+                    href="{$conch['dscms']['nav']['zdyurl1']}"
+                    class='anthology-wrap nav-link col1'>{$conch['dscms']['nav']['zdyname1']}</a>{/if}
+            </div>
+        </div>
+        <div class="r cf">
+            <div class="so-home l">
+                <div class="search-input cf">
+                    <form id="search" name="search" method="get" action="{:mac_url('vod/search')}">
+                        <div class="qh-search">
+                            <a href="javascript:;" class="mac-navs-name">Phim</a>
+                            <i class="fa icon-xiangxia2"></i>
                         </div>
-                        <div class="panel_3YBhC mac_history_box animated topfadeInUp bg-light rounded">
-                            <div class="bottom-1orQ7">
-                                <a href="{:mac_url('user/plays')}">Xem tất cả</a>
-                            </div>
+                        <input type="text" name="wd" class="search-input mac_wd l col1b" value="{$param.wd}" placeholder="{$conch['dscms']['gx']['soconet']}" />
+                        <a class="search-hot l col2b" href="{:mac_url('label/rank')}" class="search-right-entry"><i class="header-svgrank fa icon-hot"></i>HOT</a>
+                        <button type="submit" id="searchbutton" class="sllogo l"><i class="fa icon-sousuo blue"></i></button>
+                    </form>
+                </div>
+                <div class="hot-search-list box">
+                    <h5 class="title col04">Đang hot</h5>
+                    {maccms:foreach name=":explode(',',$maccms.search_hot)"}
+                    <a href="{:mac_url('vod/search',['wd'=>$vo])}" class="hot-item">
+                        <span class="order {if condition="$key==0"}loadia0{elseif condition="($key==1) "/}loadia1{elseif condition="($key==2) "/}loadia2 {/if}">{$key+1} </span>
+                        <span class="hot-word">{$vo}</span><span class="tag">HOT</span>
+                    </a>
+                    {/maccms:foreach}
+                </div>
+                <div class="qh-event box rec-list_2b8oe animated topfadeInUp">
+                    <i class="arrow-3XYp7 triangle" style="left: 22px;"></i>
+                    <a href="javascript:;" class="qh-navs-name" value="{:mac_url('art/search')}">Thông tin</a>
+                    <a href="javascript:;" class="qh-navs-name" value="{:mac_url('actor/search')}">Diễn viên</a>
+                    <a href="javascript:;" class="qh-navs-name" value="{:mac_url('vod/search')}">Phim</a>
+                </div>
+            </div>
+            <div class="ucenter l">
+                <div class="handle mac_history">
+                    <a class="col0" href="javascript:;"><span class="fa fa-clock-o" style="font-size:24px;"></span><span class="icon-title">Lịch sử xem</span></a>
+                    <div class="panel_3YBhC mac_history_box box animated topfadeInUp">
+                        <div class="bottom-1orQ7">
+                            <a class="more-button button" href="{:mac_url('user/plays')}">Xem tất cả</a>
                         </div>
                     </div>
                 </div>
-                <div class="ucenter pe-5 d-lg-inline-flex d-none text-center">
-                    <div class="my-auto">
-                        <a class="col0 text-light nav-link" href="{:mac_url('label/app')}">
-                            <div class="text-center position-relative w-100" style="margin: 0 auto;justify-content: center; position: relative;align-items: center;flex-direction: row;display: flex;">
-                                <span style="font-size:24px;"><i class="bi bi-tv"></i></span>
-                                <span style="font-size:12px;" class="my-auto">&nbsp;APP</span>
+            </div>
+            <div class="ucenter l">
+                <div class="handle">
+                    <a class="col0" href="{:mac_url_topic_index()}"><span class="fa fa-bookmark-o"
+                            style="font-size:24px"></span><span class="icon-title">Topic</span></a>
+                </div>
+            </div>
+            <div class="ucenter l">
+                <div class="handle">
+                    <a class="col0" href="{:mac_url('label/app')}"><span class="fa fa-tablet"
+                            style="font-size:24px;"></span><span class="icon-title">APP</span></a>
+                </div>
+            </div>
+            <div class="ucenter l">
+                <div class="login-after">
+                    <a class="avatar mac_ulog" href="{if condition=" $GLOBALS['user']['user_id']" gt
+                        0}{:mac_url('user/index')}{else/}javascript:;{/if}"> <img class="vip-border"
+                        src="{$user.user_id|mac_get_user_portrait}"
+                        onerror="javascript:this.src='/static/images/touxiang.png'" title="{$user.user_name}"
+                        alt="{$user.user_name}" />
+                    </a>
+                    {if condition="$GLOBALS['user']['user_id']" gt 0}
+                    <div id="panel" class="panel-asGkf login-PEtQ box animated topfadeInUp" style="width:378px">
+                        <i class="arrow-3XYp7 triangle"></i>
+                        <div class="content_25Psf">
+                            <div>
+                                <div class="info-Y5T5e">
+                                    <a href="{:mac_url('user/index')}"><img src="{$user.user_id|mac_get_user_portrait}"
+                                            onerror="javascript:this.src='/static/images/touxiang.png'"
+                                            class="vip-border" /></a>
+                                    <a href="{:mac_url('user/index')}" class="link-1zlt5"
+                                        title="{$user.user_name}">{$user.user_name}</a>
+                                    <a href="{:mac_url('user/logout')}" class="exit-login3-1Hc col0b col5b">Đăng xuất</a>
+                                </div>
+                                <div class="list-1IMn">
+                                    <div class="title-4cHX col5">Profile</div>
+                                    <div class="item-yVmpL last-item1MAEV">
+                                        <div class="img-box1Tukq"><i class="fa fa-clock-o blue"></i></div>
+                                        <a href="{:mac_url('user/plays')}" class="text-2jcMn col5b">Phim đã xem</a>
+                                    </div>
+                                    <div class="item-yVmpL last-item1MAEV">
+                                        <div class="img-box1Tukq"><i class="fa fa-heart-o blue"></i></div>
+                                        <a href="{:mac_url('user/favs')}" class="text-2jcMn col5b">Bộ sưu tập</a>
+                                    </div>
+                                    <div class="item-yVmpL last-item1MAEV">
+                                        <div class="img-box1Tukq"><i class="fa icon-kefufill blue"></i></div>
+                                        <a href="{:mac_url('user/info')}" class="text-2jcMn col5b">Bảo mật</a>
+                                    </div>
+                                    <div class="item-yVmpL">
+                                        <div class="img-box1Tukq"><i class="fa icon-account blue"></i></div>
+                                        <a href="{:mac_url('user/upgrade')}" class="text-2jcMn col5b">VIP</a>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
+                    {else/}
+                    <div id="panel" class="panel-asGkf login-PEtQ box col5 animated topfadeInUp" style="width:300px">
+                        <i class="arrow-3XYp7 triangle"></i>
+                        <div class="content_25Psf">
+                            <div class="logout-header">
+                                <div class="text-content">Đăng nhập để tận hưởng</div>
+                            </div>
+                            <div class="text-alink"><i class="fa fa-clock-o blue"></i>Tận hưởng trải nghiệm xem FullHD</div>
+                            <div class="text-alink"><i class="fa icon-crown blue"></i>Đồng bộ đa thiết bị</div>
+                            <div class="text-alink"><i class="fa icon-hot blue"></i>Xem các chương trình HOT</div>
+                            <div class="button-area"><a href="{:mac_url('user/login')}"><button class="button">ĐĂNG NHẬP</button></a></div>
+                        </div>
+                    </div>
+                    {/if}
                 </div>
             </div>
         </div>
     </div>
-</nav>
+</div>

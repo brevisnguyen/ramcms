@@ -457,13 +457,13 @@ var MAC={
             }
 
             html = '<i class="arrow_3-SGO triangle"></i><dl class="rec-list_2b8oe">';
-            html +='<dt><i class="fa fa-trash"></i><a target="_self" href="javascript:void(0)" onclick="MAC.History.Clear();">清空</a></dt>';
+            html +='<dt><i class="fa fa-trash"></i><a target="_self" href="javascript:void(0)" onclick="MAC.History.Clear();">Xóa</a></dt>';
             if(jsondata.length > 0){
                 for($i=0; $i<jsondata.length; $i++){
                     html +='<dd class="even"><a class="albumtitle" href="'+jsondata[$i].link+'" target="video" title="'+jsondata[$i].name+'"><span class="fa fa-play-circle"></span>'+jsondata[$i].name+'</a></dd>';
                 }
             }else{
-                html +='<div class="header-playhistory"><i class="header-playicon"></i><p class="headerpopno-tips">您还没有观看任何视频哦</p></div>';
+                html +='<div class="header-playhistory"><i class="header-playicon"></i><p class="headerpopno-tips">Bạn chưa xem video nào</p></div>';
             }
             html += '</dl>';
             $('.panel_3YBhC').prepend(html);
@@ -503,7 +503,7 @@ var MAC={
         },
         'Clear': function(){
             MAC.Cookie.Del('mac_history');
-            $('.mac_history_box').html('<div class="hx_clear header-playhistory"><i class="header-playicon"></i><p class="headerpopno-tips">已清空播放记录列表哦</p></div>');
+            $('.mac_history_box').html('<div class="hx_clear header-playhistory"><i class="header-playicon"></i><p class="headerpopno-tips">Danh sách phát đã bị xóa</p></div>');
         },
     },
 
@@ -614,7 +614,7 @@ var MAC={
             if(MAC.Cookie.Get('user_id') !=undefined && MAC.Cookie.Get('user_id')!=''){
                 ac= 'ajax_info';
             }
-            MAC.Pop.Show(300,280,'用户登录',maccms.path+'/index.php/user/'+ac,function(r){
+            MAC.Pop.Show(300,280,'Đăng nhập nhanh',maccms.path+'/index.php/user/'+ac,function(r){
                 $('body').off('click', '.login_form_submit');
                 $('body').on('click', '.login_form_submit', function(e){
                     $(this).unbind('click');
@@ -644,7 +644,7 @@ var MAC={
         'BuyPopedom':function(o){
             var $that = $(o);
             if($that.attr("data-id")){
-                if (confirm('您确认购买此条数据访问权限吗？')) {
+                if (confirm('Bạn có chắc chắn muốn mua quyền truy cập dữ liệu này không?')) {
                     MAC.Ajax(maccms.path + '/index.php/user/ajax_buy_popedom.html?id=' + $that.attr("data-id") + '&mid=' + $that.attr("data-mid") + '&sid=' + $that.attr("data-sid") + '&nid=' + $that.attr("data-nid") + '&type=' + $that.attr("data-type"),'get','json','',function(r){
                         $that.addClass('disabled');
                         MAC.Pop.Msg(300, 50, r.msg, 2000);
@@ -698,7 +698,7 @@ var MAC={
                 $(".pop_content").html(r);
                 $callback(r);
             },function(){
-                $(".pop_content").html('加载失败，请刷新...');
+                $(".pop_content").html('Tải không thành công, vui lòng làm mới...');
             });
 
             $('.mac_pop_bg,.mac_pop').show();
@@ -799,12 +799,12 @@ var MAC={
                 if($that.attr("data-id")){
                     var str = $that.html();
                     $('.comment_reply_form').remove();
-                    if (str == '取消回复') {
-                        $that.html('回复');
+                    if (str == 'Hủy trả lời') {
+                        $that.html('Trả lời');
                         return false;
                     }
-                    if (str == '回复') {
-                        $('.comment_reply').html('回复');
+                    if (str == 'Trả lời') {
+                        $('.comment_reply').html('Trả lời');
                     }
                     var html = $('.comment_form').prop("outerHTML");
 
@@ -813,7 +813,7 @@ var MAC={
                     oo.find('input[name="comment_pid"]').val( $that.attr("data-id") );
 
                     $that.parent().after(oo);
-                    $that.html('取消回复');
+                    $that.html('Hủy trả lời');
                 }
             });
 
@@ -828,7 +828,7 @@ var MAC={
                 MAC.Ajax(maccms.path + '/index.php/comment/ajax.html?rid='+$('.mac_comment').attr('data-id')+'&mid='+ $('.mac_comment').attr('data-mid') +'&page='+$page,'get','json','',function(r){
                     $(".mac_comment").html(r);
                 },function(){
-                    $(".mac_comment").html('<a href="javascript:void(0)" onclick="MAC.Comment.Show('+$page+')">评论加载失败，点击我刷新...</a>');
+                    $(".mac_comment").html('<a href="javascript:void(0)" onclick="MAC.Comment.Show('+$page+')">Không tải được nhận xét, nhấn để làm mới...</a>');
                 });
             }
         },
@@ -838,15 +838,15 @@ var MAC={
         'Submit':function($o){
             var form = $o.parents('form');
             if($(form).find(".comment_content").val() == ''){
-                MAC.Pop.Msg(100,20,'请输入您的评论！',1000);
+                MAC.Pop.Msg(100,20,'Vui lòng nhập bình luận của bạn! ',1000);
                 return false;
             }
             if($('.mac_comment').attr('data-mid') == ''){
-                MAC.Pop.Msg(100,20,'模块mid错误！',1000);
+                MAC.Pop.Msg(100,20,'Lỗi module mid!',1000);
                 return false;
             }
             if($('.mac_comment').attr('data-id') == ''){
-                MAC.Pop.Msg(100,20,'关联id错误！',1000);
+                MAC.Pop.Msg(100,20,'ID lỗi !',1000);
                 return false;
             }
             MAC.Ajax(maccms.path + '/index.php/comment/saveData','post','json',$(form).serialize() + '&comment_mid='+ $('.mac_comment').attr('data-mid') + '&comment_rid=' + $('.mac_comment').attr('data-id'),function(r){

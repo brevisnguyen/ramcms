@@ -1,7 +1,7 @@
 {if condition="$__PAGING__.record_total gt 0"}
 {if condition="$__PAGING__.record_total gt 10"}
 <div class="mac_pages">
-    <div class="page_tip">Tổng {$__PAGING__.record_total} trang, trang hiện tại {$__PAGING__.page_current}/{$__PAGING__.page_total}</div>
+    <div class="page_tip">Tổng {$__PAGING__.record_total} mục, trang hiện tại {$__PAGING__.page_current}/{$__PAGING__.page_total}</div>
     <div class="page_info">
         <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=1}" title="Đầu">Đầu</a>
         <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" title="Trước">Trước</a>

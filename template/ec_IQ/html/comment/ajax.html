@@ -1,7 +1,11 @@
     <form class="comment comment_form cmt_form clearfix"  >
         <input type="hidden" name="comment_pid" value="0">
         <div class="input_wrap fl clearfix">
+            {if condition="$GLOBALS['user']['user_id']" gt 1}
             <textarea class="comment_content content col3c" name="comment_content" placeholder="有事没事说两句..."></textarea>
+            {else/}
+            <div class="baffle">Bạn cần<a class="b-btn mac_ulog" href="javascript:;"> đăng nhập </a>để viết bình luận (・ω・)</div>
+            {/if}
             <div class="fl clearfix handlet">
                 <div class="comment_face_panel face"></div>
                 <div class="comment_face_box face-box">
@@ -20,7 +24,11 @@
                     </span>
                     <input class="cmttext" placeholder="Captcha" type="text" id="verify" name="verify" />
                     <img class="mac_verify_img" src="/index.php/verify/index.html?" title="Làm mới mã Captcha">
+                    {if condition="$GLOBALS['user']['user_id']" gt 1}
                     <input class="comment_submit cmtpost button" type="button" value="Nhận xét" />
+                    {else/}
+                    <input class="comment_submit cmtpost button forbid" type="button" value="Nhận xét" />
+                    {/if}
                     <div class="anthology-wrap remaining-w">Có thể nhập <span class="comment_remaining remaining fr" >200 kí tự</span></div>
                 </div>
             </div>
