@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<link rel="shortcut icon" href="/template/default/img/favicon.png" type="image/x-icon" />
+ <title>{$obj.vod_name}Chi tiết-{$obj.vod_name}Xem Trực tuyến-{$obj.vod_name}để tải xuống từ Thunder - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.vod_name}để xem trực tuyến,{$obj.vod_name}để tải xuống từ Thunder" />
+    <meta name="description" content="{$obj.vod_name}plot:{$obj.vod_blurb}" />
+ {include file="public/include"}
+<script src="{$maccms.path}static/js/home.js"></script>
+<link href="{$maccms.path}static/css/home.css" rel="stylesheet" type="text/css" />
+</head>
+<body>{include file="public/head"}
+<div class="list-nav">
+	<span>Vị trí hiện tại：<a href="/">Trang chủ</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;{$obj.vod_name}</span>
+</div>
+<div class="width1200 white">
+   <div class="people">
+	   <div class="left"><img src="{$obj.vod_pic|mac_url_img}"></div>
+	   <div class="right">
+		   <p>tên：{$obj.vod_name}</p>
+		   <p>đánh giá：{$obj.topic_score}</p>
+		   <p>Trạng thái：{if condition="$obj.vod_serial gt 0"}set{$obj.vod_serial}đặt{else/}{$obj.vod_remarks}{/if}</p>	
+		   <p>Loại：{$obj.type.type_name},{$obj.vod_class|mac_url_create='class'}</p>
+		   <p>đạo dieenxx：{$obj.vod_director}</p>
+		   <p>diễn viên：{$obj.vod_actor}</p>
+		   <p>niên đại：{$obj.vod_year}</p>	 
+		   <p>khu vực：{$obj.vod_area}</p>
+		   <p>ngôn ngữ：{$obj.vod_lang}</p> 
+		   <p>Nhãn mác：{$obj.vod_tag}</p>
+		   <p>Thời gian cập nhật：{$obj.vod_time|date='Y-m-d',###}</p>
+	   </div>
+	   <div class="clear"></div>
+	</div>
+</div>	
+ <div class="width1200 white" id="content">
+	   <p class="whitetitle">Giới thiệu cốt truyện</p>
+	   <div class="vod_content">{$obj.vod_content}…</div>
+	   </div>
+	   <div class="clear"></div>
+	   
+<div class="width1200 white" id="content">
+<p class="whitetitle">Quay video</p>
+<div style="margin-left:10px;margin-right:10px;">
+<input type="hidden" name="dijiji" id="dijiji" value="">
+{maccms:foreach name="obj.vod_play_list" id="vo"}
+<h4><div>{$vo.from}</div></h4>
+<hr>
+<div class="playlist wbox {$vo.from}">
+{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+<li>
+<input name="{$vo.from}[]" id="{$vo.from}" type="checkbox" value="{$vo2.name}${$vo2.url}" checked>&nbsp;&nbsp;
+<input id="{$vo.from}0" type=hidden value="{$vo2.name}${$vo2.url}"></input>
+<a title="{$vo2.name}" href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" target="_blank"><font id="ky{$vo.from}0" color="red">{$vo2.name} {$vo2.url}</font></a>
+
+
+
+
+<a href="javascript:;" class="bugs" onclick="MAC.Gbook.Report('Number【{$obj.vod_id}】Tên【{$vo2.name}】không thể xem được, vui lòng kiểm tra và sửa, địa chỉ trang：{$vo2.name}${$vo2.url}')">Tôi muốn báo cáo lỗi</a>
+</li>
+<hr>
+{/maccms:foreach}
+<li><input onclick="c{$vo.from}();" name="{$vo.from}all" id="{$vo.from}all" checked type="checkbox" style="line-height: 21px;">&nbsp;&nbsp;
+<font style="height: 21px;line-height: 21px;color:red;">chọn toàn bộ</font>&nbsp;&nbsp;
+<a class="{$vo.from}all1 ckey" data-clipboard-action="copy" title="Copy link" onclick="{$vo.from}py1();">Copy link</a>
+<span>|</span>
+<a class="{$vo.from}all2 ckey" data-clipboard-action="copy" title="copy name$link" onclick="{$vo.from}py2();">copy name$link</a>
+<span>|</span>
+<a class="{$vo.from}all3 ckey" data-clipboard-action="copy" title="copy name $link $suffix" onclick="{$vo.from}py3();">copy name $link $suffix</a>
+</li>
+<hr>
+<br>
+{/maccms:foreach}
+
+</div>
+</div>
+	   
+   </div>
+       <div class="width1200 white" id="content">
+        <p class="whitetitle">Download video</p>
+        <div style="margin-left:10px;margin-right:10px;">
+            <input type="hidden" name="dijiji" id="dijiji" value="">
+            {maccms:foreach name="obj.vod_down_list" id="vo"}
+            <h4>
+                <div>{$vo.from}</div>
+            </h4>
+            <hr>
+            <div class="playlist wbox {$vo.from}">
+                {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+                <li>
+                    <input name="{$vo.from}[]" id="{$vo.from}" type="checkbox" value="{$vo2.name}${$vo2.url}"
+                        checked>&nbsp;&nbsp;
+                    <input id="{$vo.from}0" type=hidden value="{$vo2.name}${$vo2.url}"></input>
+                    <a title="{$vo2.name}" href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}"
+                        target="_blank">
+                        <font id="ky{$vo.from}0" color="red">{$vo2.name} {$vo2.url}</font>
+                    </a>
+
+
+
+
+                    <a href="javascript:;" class="bugs"
+                        onclick="MAC.Gbook.Report('Number【{$obj.vod_id}】Tên【{$vo2.name}】không thể xem được, vui lòng kiểm tra và sửa, địa chỉ trang：{$vo2.name}${$vo2.url}')">Tôi
+                        muốn báo cáo lỗi</a>
+                </li>
+                <hr>
+                {/maccms:foreach}
+                <li><input onclick="c{$vo.from}();" name="{$vo.from}all" id="{$vo.from}all" checked type="checkbox"
+                        style="line-height: 21px;">&nbsp;&nbsp;
+                    <font style="height: 21px;line-height: 21px;color:red;">chọn toàn bộ</font>&nbsp;&nbsp;
+                    <a class="{$vo.from}all1 ckey" data-clipboard-action="copy" title="Copy link"
+                        onclick="{$vo.from}py1();">Copy link</a>
+                    <span>|</span>
+                    <a class="{$vo.from}all2 ckey" data-clipboard-action="copy" title="copy name$link"
+                        onclick="{$vo.from}py2();">copy name$link</a>
+                    <span>|</span>
+                    <a class="{$vo.from}all3 ckey" data-clipboard-action="copy" title="copy name $link $suffix"
+                        onclick="{$vo.from}py3();">copy name $link $suffix</a>
+                </li>
+                <hr>
+                <br>
+                {/maccms:foreach}
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="clear"></div>
+<div class="width1200 white" style="padding-bottom: 0px;">
+<p class="whitetitle">Bình luận video</p>
+    <div class="mac_comment" data-id="21699" data-mid="1" ></div>
+    <script>
+        $(function(){
+            MAC.Comment.Login = 0;
+            MAC.Comment.Verify = 1;
+            MAC.Comment.Init();
+            MAC.Comment.Show(1);
+        });
+    </script>
+   </div>
+</div>
+<script>
+function {$vo.from}py1(){
+	var a=document.getElementsByName("{$vo.from}[]");
+	var content="";
+	for(var i=0;i<a.length;i++){
+		if(a[i].checked==true || a[i].checked=="checked"){
+			aaa=$("#{$vo.from}"+i).val();
+			temp=aaa.split("$");
+			content=content+temp[1]+"\n";
+		}
+	}
+	
+	console.log(content);
+
+	var clipboard = new ClipboardJS('.{$vo.from}all1', {
+        text: function() {
+            return content;
+        }
+    });
+	
+	alert("Copy-ok");
+}
+function {$vo.from}py2(){
+	var a=document.getElementsByName("{$vo.from}[]");
+	var content="";
+	for(var i=0;i<a.length;i++){
+		if(a[i].checked==true || a[i].checked=="checked"){
+			aaa=$("#{$vo.from}"+i).val();
+			content=content+aaa+"\n";
+		}
+	}
+	
+	console.log(content);
+
+	var clipboard = new ClipboardJS('.{$vo.from}all2', {
+        text: function() {
+            return content;
+        }
+    });
+	
+	alert("Copy-ok");
+}
+function {$vo.from}py3(){
+	var a=document.getElementsByName("{$vo.from}[]");
+	var content="";
+	for(var i=0;i<a.length;i++){
+		if(a[i].checked==true || a[i].checked=="checked"){
+			aaa=$("#{$vo.from}"+i).val();
+			content=content+aaa+"${$vo.from}\n";
+		}
+	}
+	
+	console.log(content);
+
+	var clipboard = new ClipboardJS('.{$vo.from}all3', {
+        text: function() {
+            return content;
+        }
+    });
+	
+	alert("Copy-ok");
+}
+function c{$vo.from}(){
+	var s=document.getElementsByName("{$vo.from}all");
+	check=s[0].checked;
+	a=document.getElementsByName("{$vo.from}[]");
+	if(check){
+		for(var i=0;i<a.length;i++){
+			a[i].checked=true;
+		}
+	}
+	else{
+		for(var i=0;i<a.length;i++){
+			a[i].checked=false;
+		}
+	}
+}
+
+
+
+
+function kym3u8py1(){
+	var a=document.getElementsByName("kym3u8[]");
+	var content="";
+	for(var i=0;i<a.length;i++){
+		if(a[i].checked==true || a[i].checked=="checked"){
+			aaa=$("#kym3u8"+i).val();
+			temp=aaa.split("$");
+			content=content+temp[1]+"\n";
+		}
+	}
+	
+	console.log(content);
+
+	var clipboard = new ClipboardJS('.kym3u8all1', {
+        text: function() {
+            return content;
+        }
+    });
+	
+	alert("Copy-ok");
+}
+function kym3u8py2(){
+	var a=document.getElementsByName("kym3u8[]");
+	var content="";
+	for(var i=0;i<a.length;i++){
+		if(a[i].checked==true || a[i].checked=="checked"){
+			aaa=$("#kym3u8"+i).val();
+			content=content+aaa+"\n";
+		}
+	}
+	
+	console.log(content);
+
+	var clipboard = new ClipboardJS('.kym3u8all2', {
+        text: function() {
+            return content;
+        }
+    });
+	
+	alert("Copy-ok");
+}
+function kym3u8py3(){
+	var a=document.getElementsByName("kym3u8[]");
+	var content="";
+	for(var i=0;i<a.length;i++){
+		if(a[i].checked==true || a[i].checked=="checked"){
+			aaa=$("#kym3u8"+i).val();
+			content=content+aaa+"$kym3u8\n";
+		}
+	}
+	
+	console.log(content);
+
+	var clipboard = new ClipboardJS('.kym3u8all3', {
+        text: function() {
+            return content;
+        }
+    });
+	
+	alert("Copy-ok");
+}
+function ckym3u8(){
+	var s=document.getElementsByName("kym3u8all");
+	check=s[0].checked;
+	a=document.getElementsByName("kym3u8[]");
+	if(check){
+		for(var i=0;i<a.length;i++){
+			a[i].checked=true;
+		}
+	}
+	else{
+		for(var i=0;i<a.length;i++){
+			a[i].checked=false;
+		}
+	}
+}
+
+
+
+
+</script> 
+{include file="public/foot"}
+</body>
+</html>

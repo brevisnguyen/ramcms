@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>订单记录 - 会员中心 -{$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}"/>
+<meta name="description" content="{$maccms.site_description}"/>
+<link href="{$maccms.path_tpl}css/member.css" type="text/css" rel="stylesheet" />
+<script src="{$maccms.path_tpl}js/tab.js" type="text/javascript"></script>
+{include file="public/include" /}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div id="member" class="ec-body-z fn-clear cf">
+	<div class="left">{include file="user/left_title"}</div>
+	<div id="tab" class="right">
+		<div class="user_body">
+			<div class="list cf">
+				<ul class="fn-clear">
+					<li class="cur"><a href="javascript:;">充值记录</a></li>
+				</ul>
+			</div>
+		<table width="100%" style="margin: 10px 0;" border="0" cellspacing="1" cellpadding="0" class="table">
+		  <tr>
+			  <td width="66" height="36" align="center" valign="middle" bgcolor="#f7f7f7">选择</td>
+			  <td width="60" align="center" valign="middle" bgcolor="#f7f7f7">编号</td>
+			  <td width="300" align="center" valign="middle" bgcolor="#f7f7f7">单号</td>
+			  <td width="60" align="center" valign="middle" bgcolor="#f7f7f7">状态</td>
+			  <td width="60" align="center" valign="middle" bgcolor="#f7f7f7">金额</td>
+			  <td width="60" align="center" valign="middle" bgcolor="#f7f7f7">积分</td>
+			  <td width="150" align="center" valign="middle" bgcolor="#f7f7f7">时间</td>
+			  <td width="80" align="center" valign="middle" bgcolor="#f7f7f7">操作</td>
+		  </tr>
+		  {volist name="list" id="vo"}
+			<tr>
+				<td height="36" align="center" valign="middle" bgcolor="#FFFFFF"><input name="ids[]" type="checkbox" value="{$vo.order_id}"></td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF">{$vo.order_id}</td>
+				<td align="left" valign="middle" bgcolor="#FFFFFF" class="pad">{$vo.order_code}</td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF">{if condition="$vo.order_status eq 1"}已支付{else}未支付{/if}</td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF">{$vo.order_price}</td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF">{$vo.order_points}</td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF">{$vo.order_time|mac_day}</td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF">{if condition="$vo.order_status eq 0"}<a href="{:url('user/pay')}?order_code={$vo.order_code}" class="delete">支付</a>{/if}</td>
+			</tr>
+		  {/volist}
+		</table>
+			{include file="user/paging"}
+    </div></div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

@@ -1,0 +1,24 @@
+{maccms:type ids="'.$conch['dscms']['logtype'].'" order="asc" by="sort" mid="1" id="vo3"}
+<div class="public wow fadeInUp">
+    <div class="ant-tabsbar">
+        <div class="ant-tabscontent cf">
+            <h2 class="tabs-moduletitle l">
+                <div class="tabs-titlewrap">
+                    <img src="{$maccms.path_tpl}images/{$vo3.type_id}.png"><a href="{:mac_url_type($vo3,[],'show')}" title="{$vo3.type_name}" class="tabs-maintitle l">{$vo3.type_name}</a><a class="tabs-more" href="{:mac_url_type($vo3,[],'show')}">更多 &gt;</a>
+                </div>
+            </h2>
+            <div class="tabs-nav l">
+                {maccms:type  parent="'.$vo3['type_id'].'" order="asc" by="sort" id="vo4" key="key4"}
+                <a href="{:mac_url_type($vo4,[],'show')}" title="">{$vo4.type_name}</a>
+                {/maccms:type}
+            </div>
+        </div>
+    </div>
+    <div class="hotgrow eclist listdh" {if condition="$conch['dscms']['hnum'] eq 8"}style="white-space: nowrap;"{/if}>
+        {maccms:vod num="'.$conch['dscms']['hnum'].'" type="'.$vo3['type_id'].'" order="desc" by="time"}
+        {include file="module/vod_list"}
+        {/maccms:vod}
+    </div>
+</div>
+{/maccms:type}
+

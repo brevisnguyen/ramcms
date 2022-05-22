@@ -1,0 +1,25 @@
+<div class="mac_report reply_box">
+    <form class="gbook_form">
+        <input type="hidden" name="gbook_rid" value="{$param.id}">
+        <p class="msg_cue">请输入报错内容：</p>
+        <textarea class="gbook_content" name="gbook_content">{$param.name}</textarea>
+        <div class="msg_code cf" style="margin: 10px 0;">
+            {if condition="$gbook.verify eq 1"}
+            <input type="text" name="verify" placeholder="验证码" class="ecyanzhengm ecmamam" maxlength="4">
+			<img class="mac_verify_img" src="/index.php/verify/index.html?" title="看不清楚? 换一张！">
+            {/if}
+            <div class="remaining-w fr">还可输入<span class="gbook_remaining remaining " > </span></div>
+        </div>
+        <div style="text-align: center;">
+            <input type="button" class="ecsubmit gbook_submit submit_btn" value="提交留言">
+        </div>
+
+    </form>
+</div>
+<script>
+    $(function(){
+        MAC.Gbook.Login = {$gbook.login};
+        MAC.Gbook.Verify = {$gbook.verify};
+        MAC.Gbook.Init();
+    });
+</script>

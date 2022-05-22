@@ -1,0 +1,37 @@
+<!--导航-->
+<style>
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #343f51;
+		min-width: 80px;
+		margin-left: -8px;
+		z-index: 999;
+	}
+
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+</style>
+<div class="nav width1200" style="height: 48px;margin:-5px auto;">
+	<div>
+		<ul>
+			<li style="min-width: 80px;"> <a href="{$maccms.path}">YEUPHIM</a></li>
+			{maccms:type ids="parent" flag="vod" order="asc"}
+			<li style="min-width: 100px;">
+				<div class="dropdown"><a href="{:mac_url_type($vo)}" title="{$vo.type_name}">{$vo.type_name}</a>
+					<div class="dropdown-content">
+						<ul>
+							{maccms:type parent="'.$vo['type_id'].'" flag="vod" order="asc" id="vo2" key="key2"}
+							<li style="min-width: 100px;float: none;"><a href="{:mac_url_type($vo2)}"
+									title="{$vo2.type_name}">{$vo2.type_name}</a>
+							</li>
+							{/maccms:type}
+						</ul>
+					</div>
+				</div>
+			</li>
+			{/maccms:type}
+		</ul>
+	</div>
+</div>

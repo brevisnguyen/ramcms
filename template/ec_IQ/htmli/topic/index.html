@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	{include file="module/meta"}
+    <title>专题首页 - 精品专题 - 推荐专题 - {$maccms.site_name}</title>
+    <meta name="keywords" content="电影专题,电视剧专题,综艺专题,动漫专题,推荐专题,专题收录" />
+    <meta name="description" content="本站提供最新最全精品专题数据" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="headtopnull"></div>
+<div class="wwp top40">
+	<div class="recommend-album-list listdh cf" style="height: auto;">
+		{maccms:topic num="25" paging="yes" order="desc" by="time"}
+		{if condition="$conch['dscms']['publiclist'] eq 0"}
+		{include file="module/public_list"}
+		{/if}
+		{if condition="$conch['dscms']['publiclist'] eq 1"}
+		<div class="publist-grid ectopdichid">
+			<div class="entry-media">
+				<a class="ec-jakt eclazy" href="{:mac_url_topic_detail($vo)}" data-original="{$vo.topic_pic|mac_url_img}" style="background-image: url({$conch['dscms']['gx']['lazy2']});"></a>
+			</div>
+			<div class="entry-body">
+				<h2 class="entry-title"><a class="channelname" href="{:mac_url_topic_detail($vo)}" title="{$vo.topic_name}影视专题">{$vo.topic_name}</a></h2>
+				<div class="entry-meta"><i class="fa fa-bookmark-o"></i>该专题拥有<span class="blue">{$vo.topic_rel_vod|explode=',',###|count}</span>部影视</div>
+			</div>
+		</div>
+		{/if}
+		{/maccms:topic}
+	</div>
+	{include file="public/paging"}
+</div>
+{include file="public/foot"}
+</body>
+</html>
+

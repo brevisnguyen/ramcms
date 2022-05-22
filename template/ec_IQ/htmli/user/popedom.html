@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>会员中心 - {$maccms.site_name}</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+{include file="public/include" /}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div id="member" class="ec-body-z fn-clear cf">
+	<div class="left">{include file="user/left_title"}</div>
+	<div id="tab" class="right">
+	  <div class="user_body">
+		<div id="tab">
+			<div class="list cf">
+				<ul class="fn-clear">
+					<li><a href="{:url('user/index')}">基本资料</a></li>
+					<li><a href="{:url('user/info')}">修改信息</a></li>
+					<li class="cur"><a href="javascript:;">我的权限</a></li>
+				</ul>
+			</div>
+			<div id="listCon">
+				<!-- 基本资料 -->
+				<div class="cur">
+					<p><span class="xiang">用户名：</span>{$obj.user_name}</p>
+					<p><span class="xiang">用户组：</span><span class="fen">{$obj.group.group_name}</span></p>
+					<p><span class="xiang">期限：</span><span class="fen">{if condition="$obj.group_id lt 3"}无限期{else} {$obj.user_end_time|mac_day}{/if}</span></p>
+					<p><span class="xiang">权限列表：</span>绿色表示用户有访问权限，灰色表示无访问权限，若你想要提升访问权限可选择升级会员组</p>
+					{volist name="type_tree" id="vo"}
+					<p>
+						<span class="quanxian">{$vo.type_name}</span>
+						{foreach name="$vo.popedom" id="v2"}
+						{if condition="$v2 eq 1"}<span class="you">{$key}</span>{else}<span class="wu">{$key}</span>{/if}
+						{/foreach}
+					</p>
+					{volist name="vo.child" id="child"}
+					<p>
+						<span class="quanxian">{$child.type_name}</span>
+						{foreach name="$child.popedom" id="v2"}
+						{if condition="$v2 eq 1"}<span class="you">{$key}</span>{else}<span class="wu">{$key}</span>{/if}
+						{/foreach}
+					</p>
+					{/volist}
+					{/volist}
+				</div>
+			</div>
+		</div>
+	</div></div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

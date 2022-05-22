@@ -1,0 +1,29 @@
+{if condition="$conch['dscms']['module']['1'] eq index_hto"}
+<div class="index-hotnow wow fadeInUp top20" style="overflow: hidden;">
+    <div class="module-moduleheader cf ecinfolist">
+        <h2><span class="module-maintitle">热播排行</span></h2>
+        {if condition="$conch['dscms']['module']['0'] neq index_level"}
+        <a class="tabs-more col4c" style="margin-left:0" href="javascript:;">今日更新 <span class="orange">{:mac_data_count($obj.type_id,'today','vod')}</span> 部  共 <span class="orange">{:mac_data_count($obj.type_id,'all','vod')} </span>部</a>
+        {/if}
+    </div>
+    <div class="hotgrow" id="hotgrow">
+        {maccms:vod num="8" type="all" order="desc" by="hits"}
+        <div class="pack-ykpack hot{$key}">
+            <div class="pack-packcover coverbox returl">
+                <a class="aplus-exp ecimgbor" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="{$vo.vod_name}" title="{$vo.vod_name}">
+                <div class="ec-jabj eclazy" data-original="{:mac_url_img($vo.vod_pic)}" style="background-image: url({$conch.dscms.gx.lazy1});"></div>
+                <div class="pack-bg"></div>
+                <span class="pack-prt"><span class="pack-packtag" style="background:#{$vo.vod_color};">{$vo.vod_class|mac_substring=2}</span></span><span class="pack-prb"><span>{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}</span></span>
+                </a>
+            </div>
+            <div class="pack-infolist">
+                <div class="pack-title ecinfolist">
+                    <a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="{$vo.vod_name}{$conch.dscms.seo.votitle}">{$vo.vod_name}</a>
+                </div>
+                <div class="pack-subtitle col4c">{$vo.vod_actor|mac_default=$vo.vod_area.$vo.type.type_name|mac_filter_html}</div>
+            </div>
+        </div>
+        {/maccms:vod}
+    </div>
+</div>
+{/if}

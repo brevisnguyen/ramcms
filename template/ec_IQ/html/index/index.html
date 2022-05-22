@@ -7,16 +7,16 @@
     <meta name="description" content="{$maccms.site_description}" />
     {include file="public/include"}
 </head>
-<body class="index">
+<body class="index bg-dark">
 {include file="public/head"}
 {include file="module/slide"}
-<div class="wwp indexboy">
+<div class="indexboy px-lg-5">
     {include file="module/index_level"}
     {include file="module/index_hot"}
     {if condition="$conch['dscms']['viptc'] eq 1"}{$conch['dscms']['aa01']}{/if}
     {include file="module/index_list"}
-    {if condition="$conch['dscms']['viptc'] eq 1"}{$conch['dscms']['aa02']}{/if}
-    {include file="module/index_actor"}
+    <!-- {if condition="$conch['dscms']['viptc'] eq 1"}{$conch['dscms']['aa02']}{/if}
+    {include file="module/index_actor"} -->
 </div>
 {include file="public/foot"}
 </body>

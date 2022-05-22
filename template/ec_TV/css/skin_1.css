@@ -1,0 +1,51 @@
+body {background: #fff;}
+.col1,.col1a{color:hsla(0,0%,100%,.6);}
+.col1b,.col1c,.col1c:hover{color:#666}
+.col2,.col2a,.col2b,.col2c,.blue,.col1:hover,.col3:hover,.active{color:#5bb1fe!important;}
+.col3,.col3a{color: hsla(0,0%,100%,.87);}
+.col3b,.col3c,.col3c:hover,.arrtnews .content p{color: #666}
+.col4,.col4a,.col4b,.col4c,.col4c:hover{color: #999}
+.orange,.loadia1{color: #ff7256}
+.mauve,.loadia0,.loadia3{color: #fc4274}
+.yellow,.loadia2{color: #fcb80a;}
+.button{border:0;background-image: -webkit-linear-gradient(135deg,#00d3ff,#00b7ff);background-image: -o-linear-gradient(135deg,#00d3ff 0,#00b7ff 100%);background-image: linear-gradient(-45deg,#00d3ff,#00b7ff);color:#fff!important;}
+.button:hover,.palyconnt .swiper-slide .actorlist_box:hover,.tabs-nav a:hover{color:#fff!important;background:-webkit-linear-gradient(45deg,#4cccfe,#4de0ff);background:-o-linear-gradient(45deg,#4cccfe,#4de0ff);background:linear-gradient(45deg,#4cccfe,#4de0ff)}
+.box,.mac_results{background-color: #2a2a32;box-shadow: 0 2px 10px 0 rgba(0,0,0,.3);border-radius:4px}
+.coverbox{border-radius:4px;background:#25252b;overflow:hidden}
+.triangle{width:0;height: 0;  border: 6px solid transparent;  border-bottom-color: #2a2a32;}
+body,input,a,.black,.showlist .mod_list_filter .filter_label{color:#000;}
+.ec-footer .law-link,.ec-footer .footer-company .link,.highlight .col1,.highlight .col3a{color:#666}
+.stui-link-pic li a {background-color: #fff!important;border:1px solid #f5f5f5!important;}
+.ec-footer {border-top: 1px solid #f1f1f1;}
+.tabs-nav a,.indexart .hotpack-ykpack,.highlight .so-home,.showlist .mod_list_filter,.mac_pages .page_link,.hot-search-list .hot-item:hover{background-color: #f8f8f8;color: #666;}
+.box, .mac_results,.fn-panel-body,.public-content .count{background-color: #fff;}
+.highlight,.ec-bjcolor{background: #fff}
+.triangle,.ec-allnav .arrow_YxvxT {border-bottom-color: #fff}
+.headtopnull {background-color: #16161a}
+.hi, .showlist .mod_list_filter .current, .mod_list_filter .filter_item:hover {background: #0d9bff;color: #fff!important;}
+.palyconnt .swiper-slide .actorlist_box,.content_playlist li a,.fn-share-input,.playtitle-wrap .desc a,.ecdiy-zz-lft li.on a,.ecdiy-zz-lft li a:hover, .ecdiy-zz-lft li.on a{background-color: #f8f8f8;color:#666}
+.palyconnt .swiper-slide .actorlist_box:hover a {color:#fff!important}
+.play_source_tab,.c-top-main-wrap,.down_list ul li,.ecnote-list li,.layui-tab-title,.post-loop-default .item,.widget_post_thumb ul .item{border-bottom: 1px solid #f1f1f1;}
+.palyconnt .rank-num-box {color: #c1c1c1}
+img.img-cover{height: 340px}
+.playtop, .palytopbj {background: #16161a}
+.ec-top-sum {border: 1px solid #f7f7f7;background: hsla(0,0%,100%,0)}
+.ec-top-sum .top-sum-head {background: #fbfbfb}
+.ivi-left,.member-input,.user_body .jifen-input{background: #f1f1f1}
+.ecnav-list {border-radius: inherit;padding: 20px 0}
+.ec-ewm {border-top: 1px solid #f1f1f1}
+.module-maintitle{color: #000}
+.pop_content a {color: #666!important;}
+.mac_login_form label,.mac_login_form .reg-control {color: #666!important;}
+#tab .list {border-bottom: 2px solid #f1f1f1}
+#member .left{border:1px solid #f6f6f6;border-top:none;border-radius:0 0 3px 3px;background:#fbfbfb}
+#member .left .tou{background:#fbf2ef url(../images/Tapi2.jpg) 0 0 no-repeat}
+.mac_msg_l{border:1px solid #f6f6f6;background:#f1f1f1}
+.mac_msg_l .msg_reply{background:#fff}
+.mac_msg_l .msg_arrow{border-color:transparent #fff transparent transparent}
+.gbookgf{color:#666;background:#fff}
+.mac_msg_r{background:#fbfbfb}
+.public_box {background-color: #fff;border: 1px solid #f1f1f1;}
+.public_box .boxtcon .content {border-top: 1px solid #f1f1f1}
+.common_container {bottom: 0}
+.mac_msg_r .gbook_content,.mac_msg_r .msg_tit,.comment,.hot-search-list .hot-item:hover, .mac_results li:hover,.thunder_url,.coverbox,.ecrrent .ecso_body{background:#f1f1f1}

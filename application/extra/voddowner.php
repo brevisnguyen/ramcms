@@ -4,7 +4,7 @@ return array (
   array (
     'status' => '1',
     'from' => 'http',
-    'show' => 'http下载',
+    'show' => 'Tải xuống http',
     'des' => 'des提示信息',
     'ps' => '0',
     'parse' => '',

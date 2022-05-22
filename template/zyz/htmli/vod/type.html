@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+     <title>{$obj.type_name}数据列表-第{$param.page}页-{$maccms.site_name}</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <meta name="keywords" content="{$obj.type_name}数据列表-第{$param.page}页-{$maccms.site_name}" />
+     <meta name="description" content="{$obj.type_name}数据列表-第{$param.page}页-{$maccms.site_name}" />
+     {include file="public/include"}
+ </head>
+ <body>
+ {include file="public/head"}
+ {include file="public/nav"}
+  <div class="addition-content" style="margin-top: 6px;">
+	<p class="videotitle">
+		<span class="videoName" style="width:370px;">{:lang(video_name)}</span>
+		<span class="region" style="width:200px;">{:lang(region)}</span>
+		<span class="category">{:lang(category)}</span>  
+		<span class="address">{:lang(address)}</span>
+		<span class="time">{:lang(update_time)}</span>  
+	</p>
+<ul class="videoContent">
+{maccms:vod num="50" paging="yes" type="all" order="desc" by="time" }		
+<li>
+<a class="videoName" href="{:mac_url_vod_detail($vo)}" target="_blank" style="width:370px;">{$vo.vod_name}
+<img class="new" src="{$maccms.path_tpl}img/new.gif">
+</a>
+<span class="region" style="width:200px;">{$vo.vod_area}</span>
+<span class="category">{$vo.type.type_name}</span>  
+<a href="{:mac_url_vod_detail($vo)}" class="address">点击进入</a>
+<span class="time">{$vo.vod_time|mac_day=###,'color'}</span>
+</li>
+{/maccms:vod} 
+</ul>
+</div>
+<div class="clear"></div>
+{include file="public/paging"}
+<div class="clear"></div>
+ {include file="public/foot"}
+ </body>
+</html>

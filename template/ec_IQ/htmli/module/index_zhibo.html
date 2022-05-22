@@ -1,0 +1,36 @@
+{if condition="$conch['dscms']['module']['4'] eq index_zhibo"}
+<div class="wow fadeInUp">
+<div class="ant-tabsbar top20">
+    <div class="ant-tabscontent cf">
+        <h2 class="tabs-moduletitle l"><a href="{$conch['dscms']['zhiboul']}" title="直播" class="tabs-maintitle l">直播</a></h2>
+        <div class="tabs-nav l col7">
+            <a class="col2b" href="{$conch['dscms']['zhiboul']}">更多 &gt;</a>
+        </div>
+    </div>
+</div>
+<div class="hotgrow listdh zhiblist">
+<?php
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&tagAll=0&page=1";
+$json=mac_curl_get($url);
+$html=json_decode($json, true);
+$datas=$html[data][datas];
+$data=$html[data];
+for($i=0;$i<16;$i++){?>
+    <div class="pack-ykpack zhib{$i}">
+        <div class="pack-packcover coverbox">
+            <a class="aplus-exp ec-jabj eclazy" href="/index.php/label/zb/id/<?php echo $datas[$i]['profileRoom']?>.html" data-original="<?php echo $datas[$i]['screenshot'];?>" style="background-image: url({$conch['dscms']['gx']['lazy1']});">
+                <div class="pack-bg"></div>
+            </a>
+        </div>
+        <div class="pack-infolist">
+            <div class="pack-title ecinfolist">
+                <a class="channelname" href="/index.php/label/zb/id/<?php echo $datas[$i]['profileRoom']?>.html"><?php echo $datas[$i]['roomName'];?></a>
+            </div>
+            <div class="pack-subtitle col4c">主播:<?php echo $datas[$i]['nick'];?></div>
+        </div>
+    </div>
+<?php }
+?>
+</div>
+</div>
+{/if}

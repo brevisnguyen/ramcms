@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	{include file="module/meta"}
+    <title>{$obj.vod_name}{$obj['vod_down_list'][$param['sid']]['urls'][$param['nid']]['name']}迅雷下载 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.vod_name}{$obj['vod_down_list'][$param['sid']]['urls'][$param['nid']]['name']}迅雷下载,{$obj.vod_name}剧情介绍" />
+    <meta name="description" content="{$obj.vod_name}{$obj['vod_down_list'][$param['sid']]['urls'][$param['nid']]['name']}迅雷下载,{$obj.vod_name}剧情介绍" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div class="ec-body-z search-body cf">
+<div class="ec-left-z l top20" id="list-focus">
+    {notempty name="$obj.vod_down_from"}
+    <script type="text/javascript" src="{$maccms.path_tpl}js/down.js"></script>
+    {maccms:foreach name="obj.vod_down_list" id="vo" key="key"}
+    <div class="pannel cf top20">
+        <div id="downlist_{$key}">
+            <div class="ant-tabscontent cf">
+                <h2 class="tabs-moduletitle l">{$vo.player_info.show}</h2>
+                <div class="tabs-nav r col04">※ 若点击迅雷下载无反应，请手动复制框内下载地址到迅雷软件※ 下载需安装迅雷手机版</div>
+            </div>
+            <div id="playsx" class="down_list {if condition="$key eq 1"}show{/if}">
+            <ul id="downul">
+                {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+                <li><input type="checkbox" name="down_url_list_{$key}" class="style-input down_url" value="{$vo2.url}" file_name="{$vo2.name}" />
+                    <p><strong class="down_part_name"><span class="filename">{$vo2.name}</span><span class="filesize"></span></strong><input type="text" class="thunder_url" value="{$vo2.url}" title="鼠标左键单击可全选后手动复制该条迅雷地址进行分享或其它操作" onclick="this.select()" /></p><span><label class="thunder_down">迅雷下载</label><label class="xiaomi">小米路由</label><a href="{$vo2.url}" class="btn_bd btnd">本地下载</a><!--label class="kk">看看播放</label--></span></li>
+                {/maccms:foreach}
+            </ul>
+            <div class="downtools">
+                <input id="allcheck{$key}" class="style-input" type="checkbox" name="checkall"><em>全选</em><a rel="nofollow" href="javascript:void(0);" target="_self" class="thunder_down_all">迅雷批量下载</a>
+            </div>
+        </div>
+    </div>
+</div>
+    {/maccms:foreach}
+    {else}
+    <div class="wrap">
+        <div>
+            <img src="{$maccms.path_tpl}images/null.png" alt="暂无数据">
+        </div>
+        <p class="top20">暂无下载资源<a class="active" href="{:mac_url('gbook/index')}">点击这里反馈</a></p>
+    </div>
+    {/notempty}
+</div>
+<div class="r ec-right-z top20" id="xihuan">
+    {include file="module/right_list"}
+</div>
+</div>
+{include file="public/foot" wap="wap"}
+</body>
+</html>

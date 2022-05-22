@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <title>{$maccms.site_name}帮助中心Powered by {$maccms.site_name}资源站! - {$maccms.site_name}资源采集</title>
+  <meta name="keywords" content="{$maccms.site_name}采集站,{$maccms.site_name},电影资源网" />
+  <meta name="description" content="{$maccms.site_name}资源站提供最新最快的电影电视剧视频资源采集，每天更新最新的电影,最好看的资源采集,电影、电视剧、最新动作片、最新美剧、韩剧应有尽有！采集电影电视剧影视资源,上{$maccms.site_name}影视资源采集站。" />
+  <link rel="stylesheet" href="{$maccms.path_tpl}static/css/bootstrap.min.css" /> 
+  <link rel="stylesheet" href="{$maccms.path_tpl}static/css/ldg.css" /> 
+ </head> 
+ <body> 
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="lagnav"> 
+   <div class="container"> 
+    <div class="navbar-header"> 
+     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> 
+     <span class="icon-bar"></span> 
+     <span class="icon-bar"></span> <span class="icon-bar"></span>
+     </button> 
+     <a href="/" class="navbar-brand" >返回资源站</a> 
+    </div> 
+    <div id="navbar" class="collapse navbar-collapse"> 
+     <ul class="nav navbar-nav"> 
+      <li class="active"><a href="#wlcome">Home</a></li> 
+      <li><a href="#SeaCms">海洋CMS</a></li> 
+      <li><a href="#MacCms8">苹果CMSV8</a></li> 
+      <li><a href="#MacCms10">苹果CMSV10</a></li> 
+      <li><a href="#FeiFei34">飞飞CMS4.2(老谭)</a></li> 
+      <li><a href="#FeiFei5">飞飞5.0</a></li> 
+      <li><a href="#MaxCms">马克斯CMS</a></li> 
+     <li><a href="#ZanPian">赞片CMS</a></li>
+      <li><a href="#CtCms">赤兔CMS</a></li>
+      <li><a href="#More">问题留言</a></li> 
+     </ul> 
+    </div>
+    <!--/.nav-collapse --> 
+   </div> 
+  </nav> 
+  <div class="container" style="padding-top: 60px;text-align: center;"> 
+   <div id="wlcome"> 
+    <div class="jumbotron"> 
+     <h1>欢迎来到【{$maccms.site_name}资源】帮助中心</h1> 
+     <p class="lead">我们不定期在此更新CMS应用{$maccms.site_name}资源的使用教程，只为给您更好的服务！</p> 
+     <br>
+     <img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/tutu.png">
+    </div> 
+    <div class="alert alert-warning" role="alert"> 
+     <strong>重要提示：</strong>请认真阅读下方的说明！ 
+    </div> 
+    <div class="well"> 
+     <br><span style="color:red;">{$maccms.site_name}综合资源 http://cj.qq.com/api.php/kyyun/vod/at/xml/?ac=list</span><br>
+     <br><span style="color:red;">{$maccms.site_name}m3u8资源 http://cj.qq.com/api.php/kym3u8/vod/at/xml/?ac=list</span><br>
+     <br><span style="color:red;">{$maccms.site_name}m3u8解析 https://api.qq.com/?url=</span><br><br>
+     <p><span style="color:red;">本站图片地址采用本地存储方式，可以调用， 采集的同时，也可以把图片下载到本地（推荐），以免杜绝日后出现类似图片失效的情况。</span></p> 
+    </div> 本站解释权归 
+    <strong>{$maccms.site_name}资源站</strong> 所有，{$maccms.site_name}（{$maccms.site_url}）。 
+   </div> 
+   <div id="SeaCms"> 
+    <div class="jumbotron"> 
+     <h1>SeaCms(海洋CMS)教程</h1> 
+     <p class="lead">本站采集插件已经可以适配海洋CMS，支持M3U8在线播放的采集，快速更新，稳定播放！</p> 
+    </div> 
+    <div class="alert alert-danger" role="alert"> 
+     <strong>警告</strong>海洋cms需要重新绑定分类，否则数据会错乱！请务必将图片同步到本地，图片失效概不负责！ 
+    </div> 
+    <div class="panel panel-default"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何使用快捷菜单采集</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng"> <p class="jiaocheng">请按以下步骤进行：依次点击<span style="color:red;">【采集】-【资源库管理】</span>，然后依次输入<br />资源库名称：<span style="color:red;">{$maccms.site_name}资源</span><br/>{$maccms.site_name}综合资源：<span style="color:red;">http://www.kyzy.tv/api.php/Seayun/vod/at/xml/?ac=list</span><br/>{$maccms.site_name}M3U8资源：<span style="color:red;">http://www.kyzy.tv/api.php/Seam3u8/vod/at/xml/?ac=list</span><br/>点击<span style="color:red;">【增加】</span>按钮即可，具体操作如下图<br/><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/addcaiji.png" alt="海洋添加采集" /></p> 或者在您的快捷菜单中添加<br/><span style="color:red;">{$maccms.site_name}综合资源,admin_reslib.php?ac=list&rid=&url=http://www.kyzy.tv/api.php/Seayun/vod/at/xml/?ac=list</span><br><span style="color:red;">{$maccms.site_name}m3u8资源,admin_reslib.php?ac=list&rid=&url=http://www.kyzy.tv/api.php/Seam3u8/vod/at/xml/?ac=list</span></p> 
+     </div> 
+    </div> 
+	 <div class="panel panel-warning"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">播放暂没有数据？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">有的会员朋友采集资源后，播放片源没有自动选择对应的数据，这种情况通常是因为没有添加对应的播放器导致！<br />需要先再网站后台添加对应的播放器，然后再安装对应的播放器文件，才可以实现播放，以kym3u8的资源为例(还有一个ykyun)<br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/addplayer.png" alt="海洋添加播放来源" /><br />此时因为我们添加了播放器，将不再提示暂没有数据，但是可能依旧不能播放，下载解析包替换<span style="color:red;">js\player</span>目录中的文件即可<a href="/help/seacms.zip">【点击下载】</a></p> 
+     </div> 
+    </div> 
+   </div> 
+    <div id="MacCms8"> 
+    <div class="jumbotron"> 
+      <h1>MacCmsV8(苹果CMS)教程</h1> 
+     <p class="lead">本站采集插件已经可以适配苹果CMS，支持M3U8在线播放的采集，快速更新，稳定播放！</p> 
+    </div> 
+    <div class="alert alert-danger" role="alert"> 
+     <strong>警告</strong>请务必将仔细阅读下方说明且图片同步到本地，图片失效概不负责！ 
+    </div> 
+    <div class="panel panel-default"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何使用快捷菜单采集</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">苹果8.x在您的快捷菜单中添加下面内容<br/><span style="color:red;">{$maccms.site_name}综合资源,?m=collect-list-ac2--hour--xt-1-ct--group--flag-zuixinapicom-apiurl-http://cj.qq.com/api.php/kyyun/vod/at/xml/?ac=list</span><br/><span style="color:red;">{$maccms.site_name}m3u8资源,?m=collect-list-ac2--hour--xt-1-ct--group--flag-zuixinapicom-apiurl-http://cj.qq.com/api.php/kym3u8/vod/at/xml/?ac=list</span><br/>苹果7.x在您的快捷菜单中添加下面一行<br/><span style="color:red;">{$maccms.site_name}综合资源,admin_maccj.php?action=list&xt=1&ct=&rday=&cjflag=zuixinapicom&cjurl=http://cj.qq.com/api.php/kyyun/vod/at/xml/?ac=list</span></p> 
+     </div> 
+    </div> 
+    <div class="panel panel-warning"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何绑定分类</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">首次使用，需要<span style="color:red;">绑定分类</span>，如下图<br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/maccms8.png" alt="绑定分类" /></p> 
+     </div> 
+    </div> 
+    <div class="panel panel-success"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">点击采集提示404？？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">收到很多会员朋友反馈说采集提示404，文件路径：<span style="color:red;">admin_maccj.php</span><br />后分析代码发现是因为网址参数丢失导致<br />请手动修改浏览器的网址，在<span style="color:red;">admin/</span>后面加上<span style="color:red;">index.php?m=admin-index</span>即可正常采集</p> 
+     </div> 
+    </div> 
+    
+   <div class="panel panel-default"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">没有选中播放片源？？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">有的会员朋友采集资源后，播放片源没有自动选择对应的数据，这种情况通常是因为没有添加对应的播放器导致！<br />需要先再网站后台添加对应的播放器，才可以实现播放，以m3u8的资源为例<a href="/help/maccms.zip">【点击下载播放器文件】</a><br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/maccms81.png" alt="苹果添加播放来源" /><br />添加播放器后需要点击右上角的清空缓存，至此，可以愉快的采集和播放了</p> 
+     </div> 
+    </div> 
+    </div>
+ <div id="MacCms10"> 
+    <div class="jumbotron"> 
+      <h1>MacCmsv10(苹果CMS)教程</h1> 
+     <p class="lead">本站采集插件已经可以适配苹果CMSV10，支持M3U8在线播放和云播，快速更新，稳定播放！</p> 
+    </div> 
+    <div class="panel panel-warning"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何使用最新资源网采集？</h3> 
+     </div> 
+     <div class="panel-body"> 
+     <p class="jiaocheng">苹果V10在您的快捷菜单中添加下面内容<br/><span style="color:red;">{$maccms.site_name}综合资源	http://cj.qq.com/api.php/kyyun/vod/at/xml/?ac=list</span><br/><span style="color:red;">{$maccms.site_name}m3u8资源	http://cj.qq.com/api.php/kym3u8/vod/at/xml/?ac=list</span><br/></span><br/>
+<strong>添加方法如下图</strong><br/><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/maccms10.png" alt="打开资源" /></p> 
+     </div> 
+    </div> 
+    
+   <div class="panel panel-default"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">没有选中播放片源？？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">有的会员朋友采集资源后，播放片源没有自动选择对应的数据，这种情况通常是因为没有添加对应的播放器导致！<br />需要先再网站后台添加对应的播放器，才可以实现播放。下载文件解压后按下图操作<a href="/help/maccms10.zip">【下载播放器文件】</a><br/><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/maccms11.png" alt="苹果添加播放来源" /><br />操作完成后点击后台右上角<span style="color:red;">[清缓存]</span>，此时再看数据，已经可以正确的选择播放器并且可正常播放了</p> 
+     </div> 
+    </div> 
+    </div>
+      <div id="FeiFei34"> 
+    <div class="jumbotron"> 
+     <h1>飞飞影视系统4.1教程</h1> 
+     <p class="lead">本站采集插件已经可以适配飞飞影视系统(feifeicms.com)最新版4.1，支持M3U8在线播放资源的采集，快速更新，稳定播放！</p> 
+    </div> 
+    <div class="alert alert-danger" role="alert"> 
+     <strong>警告</strong>请务必将仔细阅读下方说明且图片同步到本地，图片失效概不负责！ 
+    </div> 
+    <div class="panel panel-warning"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何配置安装采集？</h3>  
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">请按以下步骤进行：依次点击<span style="color:red;">【采集】-【添加资源库】</span>，然后依次输入<br />资源库名称：<br /><span style="color:red;">{$maccms.site_name}综合资源：http://cj.qq.com/api.php/kyyunff/vod/at/xml/?ac=list</span><br /><span style="color:red;">{$maccms.site_name}m3u8资源：http://cj.qq.com/api.php/kym3u8ff/vod/at/xml/?ac=list</span><br/> 点击<span style="color:red;">【提交】</span>按钮即可，具体操作如下图<br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/caijiinit.png" alt="添加采集" /><br />首次使用，需要<span style="color:red;">添加播放器</span>，播放器添加教程在下方</p> 
+     </div> 
+    </div> 
+    <div class="panel panel-default"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何增加播放器？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">请按以下步骤进行：依次点击<span style="color:red;">【视频】-【播放器设置】</span>，然后在【添加播放器来源】依次输入<br />播放器名称：<span style="color:red;">kym3u8</span><br/>播放器标志：<span style="color:red;">kym3u8</span><br/>另一个是<br />播放器名称：<span style="color:red;">kyyun</span><br/>播放器标志：<span style="color:red;">kyyun</span><br/>点击<span style="color:red;">【保存按钮】</span>按钮即可（kyyun播放器同理），具体操作如下图<br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/addplayer.png" alt="飞飞添加播放器" /><br />添加播放器后点击右上角【清空缓存】，此时因为我们添加了播放器，后台会自动选中正确的播放片源<br />但是可能依旧不能播放，下载解析包替换<span style="color:red;">Public\player</span>目录中的文件即可<a href="/help/feifei4.1.zip">【点击下载】</a><br/>另因为飞飞默认为云解析，可能不支持我们的资源，需要如下设置<br/><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/playeroption.png" alt="飞飞播放器配置" /></p> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="FeiFei5"> 
+    <div class="jumbotron"> 
+     <h1>飞飞影视系统 5.0教程</h1> 
+     <p class="lead">本站采集插件已经可以适配飞飞影视系统PHP版(PPVOD)完美版，支持M3U8在线播放资源的采集，快速更新，稳定播放！</p> 
+    </div> 
+    <div class="alert alert-info" role="alert"> 
+     <strong><a href="chajian/feifei5.zip">【点此下载】</a></strong>飞飞5.0最新采集插件，支持播放
+    </div> 
+    <div class="alert alert-danger" role="alert"> 
+     <strong>警告</strong>请务必将仔细阅读下方说明且图片同步到本地，图片失效概不负责！ 
+    </div> 
+    <div class="panel panel-warning"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">安装插件后如何采集？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">依次点选【采集管理】&gt;【一键采集视频】 如下图<br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/caijiinit.png" alt="打开资源" /><br />首次使用，需要<span style="color:red;">绑定分类</span>，如下图<br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/bind.png" alt="绑定分类" /></p> 
+     </div> 
+    </div> 
+    <div class="panel panel-default"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何增加m3u8播放器？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">修改<span style="color:red;">Lib/Conf/config.php</span>,在列表最后添加两行：<br/><span style="color:red;">'kym3u8'=&gt; array('36','kym3u8'),</span><br /><span style="color:red;">'kyyun'=&gt; array('37','kyyun'),</span><br />其种36修改成你实际的顺序，按照上一个播放器的id增加就可以。<br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/addplayer.png" alt="飞飞添加播放器" /><br />添加播放器后点击右上角【清空缓存】，此时因为我们添加了播放器，后台会自动选中正确的播放片源<br />但是可能依旧不能播放，下载解析包替换<span style="color:red;">Public\player5.0</span>目录中的文件即可<a href="jiexi/feifei50.zip">【点击下载】</a></p> 
+     </div> 
+    </div> 
+   </div> 
+      <div id="MaxCms"> 
+    <div class="jumbotron"> 
+     <h1>maxcms（马克思CMS）</h1> 
+     <p class="lead">本站采集插件已经可以适配MaxCms4.0，支持M3U8在线播放资源的采集，快速更新，稳定播放！</p> 
+    </div> 
+    <div class="alert alert-info" role="alert"> 
+     <strong><a href="chajian/maxcms.zip">【点此下载】</a></strong>MaxCms4.0最新采集插件，支持播放
+    </div> 
+    <div class="alert alert-danger" role="alert"> 
+     <strong>警告</strong>请务必将仔细阅读下方说明且图片同步到本地，图片失效概不负责！ 
+    </div> 
+    <div class="panel panel-warning"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">安装插件后如何采集？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">如下图这样先添加采集快捷菜单<br /><span style="color:red;">{$maccms.site_name}资源,admin_qq.asp</span><br/><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/caijiinit.png" alt="添加菜单" /><br />首次使用，需要<span style="color:red;">绑定分类</span>，如下图<br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/bind.png" alt="绑定分类" /></p> 
+     </div> 
+    </div> 
+    <div class="panel panel-default"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何增加m3u8播放器？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">第一个，修改<span style="color:red;">admin\imgs\main.js</span>,在列表最后添加两行：<br /><span style="color:red;">	if(str.indexOf(&#x27;kyyun&#x27;)&gt;-1) return &quot;kyyun&quot;<br />	if(str.indexOf(&#x27;kym3u8&#x27;)&gt;-1) return &quot;kym3u8&quot;</span><br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/addplayer.png" alt="maxcms添加播放器" /><br />第二个，修改<span style="color:red;">inc\playerKinds.xml</span>,在列表最后添加两行：<br /><span style="color:red;">&lt;player open=&quot;1&quot; sort=&quot;0&quot; flag=&quot;kyyun&quot; des=&quot;kyyun&quot;&gt;&lt;intro&gt;&lt;![CDATA[无需安装任何插件，即可快速播放]]&gt;&lt;/intro&gt;&lt;/player&gt;</span><br /><span style="color:red;">&lt;player open=&quot;1&quot; sort=&quot;0&quot; flag=&quot;kym3u8&quot; des=&quot;kym3u8&quot;&gt;&lt;intro&gt;&lt;![CDATA[无需安装任何插件，即可快速播放]]&gt;&lt;/intro&gt;&lt;/player&gt;</span><br /><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/addplayer2.png" alt="maxcms添加播放器2" /><br />此时因为我们添加了播放器，后台会自动选中正确的播放片源<br />但是可能依旧不能播放，下载解析包替换<span style="color:red;">player\playdy</span>目录中的文件即可<a href="/help/maxcms.zip">【点击下载】</a></p> 
+     </div> 
+    </div> 
+   </div> 
+  
+   
+     	<div id="ZanPian"> 
+    <div class="jumbotron"> 
+      <h1>ZanPianCms(赞片CMS)V8教程</h1> 
+     <p class="lead">本站采集插件已经可以适配赞片CMS V8，支持M3U8在线播放和云播，快速更新，稳定播放！</p> 
+    </div> 
+    <div class="panel panel-warning"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何使用qq.com资源网采集？</h3> 
+     </div> 
+     <div class="panel-body"> 
+     <p class="jiaocheng">请按照下图打开采集添加界面<br/><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/caijiopen.png" alt="打开添加资源" /><br/>在弹出的窗口中,填写下方的信息<br/><span style="color:red;">{$maccms.site_name} http://cj.qq.com/api.php/kyyun/vod/at/xml/?ac=list</span><br/><span style="color:red;">{$maccms.site_name}m3u8资源 http://cj.qq.com/api.php/kyyun/vod/at/xml/?ac=list</span><br/>
+<strong>添加方法如下图</strong><br/><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/caijiinit.png" alt="打开资源" /><br/>填写完成后点击最下方的<span style="color:red;">[确定]</span>按钮即可</p> 
+     </div> 
+    </div> 
+	   
+   <div class="panel panel-default"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">没有选中播放片源？？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">有的会员朋友采集资源后，播放片源没有自动选择对应的数据，这种情况通常是因为没有添加对应的播放器导致！<br />需要先再网站后台添加对应的播放器，才可以实现播放,具体操作流程如下<br/>先打开播放器添加窗口,操作方式如下图<br/><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/addplayer.png" alt="赞片添加播放来源" /><br/>在弹出的窗口中,填写下方的信息<br/><span style="color:red;">播放器名称和标志:kym3u8
+        <br />M3U8解析地址：https://api.qq.com/?url=</span><br />另一个是<br /><span style="color:red;">播放器名称和标志:kyyun<br />解析地址：留空</span><br/><img class="img-thumbnail" src="{$maccms.path_tpl}static/picture/addplayer2.png" alt="赞片添加播放来源" />
+	  <br/>
+	  <br/>填写完成后点击最下方的<span style="color:red;">[确定]</span>按钮即可<br/>全部操作完成后点击后台右上角<span style="color:red;">[垃圾桶图标](清空缓存)</span><br/>此时再看数据，已经可以正确的选择播放器并且可正常播放了</p> 
+     </div> 
+    </div> 
+    </div>
+	
+	 <div id="CtCms" style="display: block;"> 
+    <div class="jumbotron"> 
+      <h1>CtCms(赤兔CMS)教程</h1> 
+     <p class="lead">本站采集插件已经可以适配赤兔CMS，支持M3U8在线播放和云播，快速更新，稳定播放！</p> 
+    </div> 
+    <div class="panel panel-warning"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何使用超级资源网采集？</h3> 
+     </div> 
+     <div class="panel-body"> 
+     <p class="jiaocheng">第一步，下载所需插件<a href="/help/ctcms.zip">【点击下载】</a><br>采集以前,记得先<span style="color:red;">添加播放器</span><br>采集方法:<span style="color:red;">视频库管理-&gt;视频采集-&gt;超级资源网采集</span></p> 
+     </div> 
+    </div>   
+   <div class="panel panel-default"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">如何添加播放器？？</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">添加方法:<span style="color:red;">视频库管理-&gt;播放器管理</span><br>本站共有两个播放器,请按下面的代码添加<br><span style="color:red;">m3u8资源</span>标志:kym3u8 代码:&lt;iframe src="https://api.qq.com/?url={url}" marginwidth="0" marginheight="0" border="0" scrolling="no" frameborder="0" topmargin="0" width="100%" height="100%"&gt;&lt;/iframe&gt;<br><span style="color:red;">直连资源</span>标志:kyyun 代码:&lt;iframe src="{url}" marginwidth="0" marginheight="0" border="0" scrolling="no" frameborder="0" topmargin="0" width="100%" height="100%"&gt;&lt;/iframe&gt;<br>如果采集后没有选中正确的播放器,请查看下方教程</p> 
+     </div> 
+    </div>
+
+<div class="panel panel-info"> 
+     <div class="panel-heading"> 
+      <h3 class="panel-title">没有选中对应播放器?</h3> 
+     </div> 
+     <div class="panel-body"> 
+      <p class="jiaocheng">赤兔CMS采集后,数据大部分会选中一个ydisk的播放器,用于官方云播<br>如果希望选中自己指定的播放器,需做如下更改<br>文件位置:<span style="color:red;">ctcms\apps\controllers\admin\Caiji.php</span><br>搜索:  <span style="color:red;">if(!empty($purl))</span>,找到如下代码<br></p><pre style="text-align:left;">if($laiy=='kyyun'){
+        $purl_arr[]="kyyun###".$purl;
+      }else{
+        $purl=$purl."&amp;type=".$laiy;
+        $purl_arr[]="ydisk###".$purl;
+      }</pre>新增几行,修改为下方的样子
+      <pre style="text-align:left;">if($laiy=='kyyun'){
+        $purl_arr[]="kyyun###".$purl;
+      }else if($laiy=='kyyun'){
+        $purl_arr[]="kyyun###".$purl;
+      }else if($laiy=='kym3u8'){
+        $purl_arr[]="kym3u8###".$purl;
+      }else{
+        $purl=$purl."&amp;type=".$laiy;
+        $purl_arr[]="ydisk###".$purl;
+      }
+	</pre>
+    这时,采集的数据,即可选中对应的播放器
+    <br>PS:<span style="color:red;">收费高版本可能代码位置稍有不同,修改方法类似</span>
+    <p></p> 
+     </div> 
+    </div> 
+    </div>
+	
+   <div id="More"> 
+    <div class="jumbotron"> 
+     <h1>更多程序，敬请期待</h1> 
+     <p class="lead">更多CMS适配教程正在准备中，不久的将来将会与大家见面</p> 
+    </div> 
+   </div> 
+  </div> 
+  <script src="{$maccms.path_tpl}static/js/jquery.min.js"></script> 
+  <script src="{$maccms.path_tpl}static/js/bootstrap.min.js"></script> 
+  <script src="{$maccms.path_tpl}static/js/ldg.js"></script>  
+ </body>
+</html>

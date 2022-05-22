@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <title>最新{$obj.type_name}-推荐{$obj.type_name}-第{$param.page}页筛选 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="headtopnull"></div>
+<div class="wwp showlist">
+    {include file="public/huya"}
+    <!--高级筛选-->
+    <div class="hotgrow listdh zhiblist top20">
+<?php
+$class=$param['class'];
+if($class=="星秀"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=1663&tagAll=0&page=".$param[page];
+}else if($class=="户外"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2165&tagAll=0&page=".$param[page];
+}else if($class=="二次元"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2633&tagAll=0&page=".$param[page];
+}else if($class=="一起看"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2135&tagAll=0&page=".$param[page];
+}else if($class=="美食"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2752&tagAll=0&page=".$param[page];
+}else if($class=="颜值"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2168&tagAll=0&page=".$param[page];
+}else if($class=="交友"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=4079&tagAll=0&page=".$param[page];
+}else if($class=="体育"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2356&tagAll=0&page=".$param[page];
+}else if($class=="音乐"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=3793&tagAll=0&page=".$param[page];
+}else if($class=="英雄联盟"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=1&tagAll=0&page=".$param[page];
+}else if($class=="LOL云顶之弈"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=5485&tagAll=0&page=".$param[page];
+}else if($class=="DNF"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2&tagAll=0&page=".$param[page];
+}else if($class=="魔兽世界"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=8&tagAll=0&page=".$param[page];
+}else if($class=="炉石传说"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=393&tagAll=0&page=".$param[page];
+}else if($class=="DOTA2"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=7&tagAll=0&page=".$param[page];
+}else if($class=="坦克世界"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=802&tagAll=0&page=".$param[page];
+}else if($class=="CSGO"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=862&tagAll=0&page=".$param[page];
+}else if($class=="魔兽争霸3"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=4615&tagAll=0&page=".$param[page];
+}else if($class=="问道"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=107&tagAll=0&page=".$param[page];
+}else if($class=="使命召唤"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=100137&tagAll=0&page=".$param[page];
+}else if($class=="绝地求生"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2793&tagAll=0&page=".$param[page];
+}else if($class=="主机游戏"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=100032&tagAll=0&page=".$param[page];
+}else if($class=="我的世界"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=1732&tagAll=0&page=".$param[page];
+}else if($class=="方舟"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=1997&tagAll=0&page=".$param[page];
+}else if($class=="怪物猎人"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=3519&tagAll=0&page=".$param[page];
+}else if($class=="逃离塔科夫"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=3493&tagAll=0&page=".$param[page];
+}else if($class=="怀旧游戏"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=100125&tagAll=0&page=".$param[page];
+}else if($class=="骑马与砍杀"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=4783&tagAll=0&page=".$param[page];
+}else if($class=="拾遗记"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=4913&tagAll=0&page=".$param[page];
+}else if($class=="王者荣耀"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2336&tagAll=0&page=".$param[page];
+}else if($class=="和平精英"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=3203&tagAll=0&page=".$param[page];
+}else if($class=="综合手游"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=100029&tagAll=0&page=".$param[page];
+}else if($class=="狼人杀"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=100049&tagAll=0&page=".$param[page];
+}else if($class=="QQ飞车"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2928&tagAll=0&page=".$param[page];
+}else if($class=="CF手游"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2413&tagAll=0&page=".$param[page];
+}else if($class=="跑跑手游"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2620&tagAll=0&page=".$param[page];
+}else if($class=="皇室战争"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2439&tagAll=0&page=".$param[page];
+}else if($class=="火影手游"){
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId=2429&tagAll=0&page=".$param[page];
+}else{
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&tagAll=0&page=".$param[page];
+}
+$json=mac_curl_get($url);
+$html=json_decode($json, true);
+$datas=$html[data][datas];
+$data=$html[data];
+for($i=0;$i<count($datas);$i++){?>
+        <div class="pack-ykpack">
+            <div class="pack-packcover" style="position: relative;">
+                <a class="aplus-exp" href="/index.php/label/zb/id/<?php echo $datas[$i]['profileRoom']?>.html">
+                    <div class="ec-jabj eclazy" data-original="<?php echo $datas[$i]['screenshot'];?>" style="background-image: url({$conch.dscms.gx.lazy1});"></div>
+                    <div class="pack-bg"></div>
+                </a>
+            </div>
+            <div class="pack-infolist">
+                <div class="pack-title ecinfolist">
+                    <a class="channelname" {if condition="$conch['theme']['playlink']['btn'] eq 1"}href="/index.php/label/zb/id/<?php echo $datas[$i]['profileRoom']?>.html"{else/}href="/index.php/label/zb/id/<?php echo $datas[$i]['profileRoom']?>.html"{/if} ><?php echo $datas[$i]['roomName'];?></a>
+                </div>
+                <div class="pack-subtitle col1c">主播:<?php echo $datas[$i]['nick'];?></div>
+            </div>
+        </div>
+<?php }
+?>
+    </div>
+
+<?php
+$__PAGING__[record_total]=$data[totalCount];
+$__PAGING__[page_total]=$data[totalPage];
+$__PAGING__[page_current]=$param[page];
+if($param[page]<=1){
+$__PAGING__[page_prev]=1;
+}else{
+$__PAGING__[page_prev]=$param[page]-1;
+}
+if($param[page]>=$data[totalPage]){
+    $__PAGING__[page_next]=$data[totalPage];
+    }else{
+    $__PAGING__[page_next]=$param[page]+1;
+    }
+    if(isset($param['class']) && $param['class']!==""){
+    $__PAGING__[page_url]='/index.php/vod/type/id/28/class/'.$param['class'].'/page/PAGELINK.html';
+    }else{
+    $__PAGING__[page_url]='/index.php/vod/type/id/28/page/PAGELINK.html';
+    }
+    ?>
+    {if $__PAGING__.page_total>1}
+    <div class="mac_pages">
+        <div class="page_tip">当前{$__PAGING__.page_current}/{$__PAGING__.page_total}页</div>
+        <div class="page_info">
+            <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=1}" title="首页">首页</a>
+            <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" title="上一页">上一页</a>
+            <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}" title="下一页">下一页</a>
+            <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_total}" title="尾页">尾页</a>
+        </div>
+    </div>
+    {/if}
+</div>
+{include file="public/foot"}
+</body>
+</html>

@@ -1,0 +1,18 @@
+{if condition="$conch['dscms']['module']['6'] eq index_topic"}
+<div class="wow fadeInUp">
+<div class="ant-tabsbar">
+    <div class="ant-tabscontent cf">
+        <h2 class="tabs-moduletitle l">
+            <div class="tabs-titlewrap">
+                <img src="{$maccms.path_tpl}images/8.png"><a href="{:mac_url_topic_index()}" title="最新专题" class="tabs-maintitle l">最新专题</a><a class="tabs-more" href="{:mac_url_topic_index()}">更多 &gt;</a>
+            </div>
+        </h2>
+    </div>
+</div>
+<div class="recommend-album-list listdh">
+    {maccms:topic num="5" order="desc" by="time"}
+    {include file="module/public_list"}
+    {/maccms:topic}
+</div>
+</div>
+{/if}

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+     <title>{$obj.art_name} - {$maccms.site_name}</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{$obj.art_name}最新资讯,推荐资讯" />
+<meta name="description" content="{$obj.art_name}最新资讯,推荐资讯" />
+     {include file="public/include"}
+ </head>
+ <style>
+ 	.news-title{
+	font-size: 30px;
+    line-height: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: Arial;
+    font-weight: 700;
+      padding-top: 20px;
+ 	}
+ 	.news-content img{
+ 		max-width: 100%;
+ 	}
+ 	.news-content p{
+ 			font-size: 16px;
+ 			    padding: 5px;
+ 	}
+ </style>
+ <body>
+ {include file="public/head"}
+ {include file="public/nav"}
+<div class="width1200 white" style="text-align: center;">
+   <h1 class="news-title">{$obj.art_name}</h1>		
+   <p class="text-muted">来源：{$obj.art_from}<span class="split-line"></span>人气：{$obj.art_hits}<span class="split-line"></span>更新：{$obj.art_time|date='Y-m-d H:i:s',###}</p>
+   <div class="people">
+	 <div class="news-content">
+	{$obj.art_page_list[$param['page']]['content']} 
+	</div>	
+	   <div class="clear"></div>
+	</div>
+</div>
+<div class="clear"></div>
+{include file="public/paging"}
+<div class="clear"></div>
+ {include file="public/foot"}
+ </body>
+</html>

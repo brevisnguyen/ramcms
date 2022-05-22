@@ -1,0 +1,221 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+
+.addition-content {
+  width: 960px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.addition-content .videotitle {
+  padding:0 20px;
+  height: 48px;
+  line-height: 48px;
+  background: url(../img/listBg_03.jpg) no-repeat center;
+}
+.addition-content .videotitle span {
+  float: left;
+  display: inline-block;
+  text-align: center;
+
+  color: #fff;
+  font-size: 16px;
+}
+.addition-content .videotitle .videoName {
+  width: 470px;
+}
+.clear{clear: both;}
+.addition-content .videotitle .region {
+  width: 100px;
+}
+.addition-content .videotitle .category {
+  width: 100px;
+}
+.addition-content .videotitle .address {
+  width: 100px;
+}
+.addition-content .videotitle .time {
+  width: 150px;
+}
+.addition-content .videoContent li {
+  float: left;
+  width: 920px;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px dotted #c2c2c2;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.kscont{ width: 960px; 
+ 
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: 0 auto; 
+  background: #fff}
+  .kscont .index_list_foot{margin-top: 0px;}
+.videoContent{
+  overflow: hidden;
+  background: #fff;
+}
+.kscont .index_list_foot ol li input[type="text"]{ background:#fff; width:30px;}
+.addition-content .videoContent li:hover{
+  background: #f1f1f1;
+}
+.addition-content .videoContent span,
+.addition-content .videoContent a {
+  float: left;
+  display: inline-block;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+}
+.addition-content .videoContent .videoName {
+  width: 470px;
+  text-align: left;
+  overflow:hidden;
+}
+.addition-content .videoContent .videoName span {
+  height: 22px;
+  width: 22px;
+  color: #fff;
+  background: #00adef;
+  text-align: center;
+  line-height: 22px;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-right: 10px;
+  margin-left: 6px;
+}
+.addition-content .videoContent .videoName .hot {
+  background: orange;
+  color: #fff;
+}
+
+.addition-content .videoContent .region {
+  width: 100px;
+}
+.addition-content .videoContent .category {
+  width: 100px;
+}
+.addition-content .videoContent .address {
+  width: 100px;
+  text-decoration: none;
+  color: #ff9522;
+}
+.addition-content .videoContent .time {
+  width: 150px;
+}
+.addition-content .title {
+  height: 40px;
+  width: 960px;
+  background: url(../img/listBg_03.jpg) no-repeat center;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  color: #fff;
+}
+.addition-content .videoDown {
+  width: 960px;
+  background: #fff;
+  margin-bottom: 20px;
+}
+.addition-content .videoDown .DownList {
+  width: 60%;
+  height: 121px;
+  margin: 0 auto;
+  background: #fff;
+}
+.addition-content .videoDown .DownList li {
+  width: 50%;
+  text-align: center;
+  float: left;
+  margin-top: 40px;
+}
+.addition-content .videoDown .DownList li a {
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: #333333;
+  margin: 0 auto;
+  display: inline-block;
+  background: #fff3ea;
+  border: 1px solid #f9d2b3;
+  font-size: 16px;
+}
+.addition-content .videoDown .DownList li a:hover {
+  background: #cdf1ff;
+  border: 1px solid #00adef;
+}
+.addition-content .videoDown .videoList {
+  width: 920px;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  overflow: auto;
+}
+.addition-content .videoDown .videoList li {
+  width: 228px;
+  float: left;
+  margin-top: 40px;
+  font-size: 16px;
+}
+.addition-content .videoDown .videoList li a {
+  width: 180px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: #333;
+  margin: 0 auto;
+  display: inline-block;
+  background: #fff3ea;
+  border: 1px solid #f9d2b3;
+  font-size: 16px;
+}
+.addition-content .videoDown .videoList li a:hover {
+  background: #cdf1ff;
+  border: 1px solid #00adef;
+}
+
+.cartoon{ width: 1200px; margin: 0 auto; background: #fff;padding-top: 52px;}
+.repor-notice {
+  height: 120px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-contain {
+  width: 1000%;
+  height: 120px;
+  line-height: 120px;
+}
+
+.marquee {
+  float: left;
+  height: 120px;
+  line-height: 120px;
+}
+
+.marquee>ul {
+  list-style: none;
+  overflow: hidden;
+}
+
+.marquee>ul>li {
+  float: left;
+  margin: 0px;
+  color: #333;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.marquee>ul>li ul li{float: left; width: 220px; height: 160px; text-align: left;margin-left: 20px;}
+-.marquee>ul>li ul li:last-child{margin-right: -20px;}
+.marquee>ul>li ul li img{ width: 220px; height: 160px;}
+#demo2>ul>li ul li:first-child{margin-left: 10px;}

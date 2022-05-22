@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>微信充值 - 会员中心 - {$maccms.site_name}</title>
+	<meta name="keywords" content="{$maccms.site_keywords}"/>
+	<meta name="description" content="{$maccms.site_description}"/>
+	{include file="public/include" /}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div id="member" class="ec-body-z fn-clear cf">
+	<div class="left">{include file="user/left_title"}</div>
+	<div id="tab" class="right">
+		<div class="user_body">
+			<div class="list cf">
+				<ul class="fn-clear">
+					<li class="cur"><a href="javascript:;">微信在线充值</a></li>
+				</ul>
+			</div>
+			<form method="post" target="_blank" action="{:url('user/gopay')}">
+				<input type="hidden" name="order_id" value="{$info.order_id}">
+				<input type="hidden" name="order_code" value="{$info.order_code}">
+				<div class="line40">
+					<p><span class="xiang">订单编号：</span>{$order.order_code}</p>
+					<p><span class="xiang">订单金额：</span>{$order.order_price}元</p>
+					<p><img src="{:url('user/qrcode')}?data={$payment.code_url|urlencode}" width="150" height="150"/></p>
+					<p>打开微信，扫码支付</p>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script>
+	function check(){
+		$.get("{:url('user/order_info')}" + '?order_id={$order.order_id}', function(data){
+			if(data.info.order_status == 1){
+				alert('支付完成，即将跳转到会员中心');
+				window.location.href = "{:url('user/index')}";
+			}
+		});
+	}
+	$(function(){
+		setInterval(function(){check()}, 5000);  //5秒查询一次支付是否成功
+	})
+</script>
+{include file="public/foot"}
+</body>
+</html>

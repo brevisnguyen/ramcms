@@ -1,0 +1,9 @@
+<div class="ectopdichid">
+    <a class="ectopica eclazy" href="{:mac_url_topic_detail($vo)}" data-original="{$vo.topic_pic|mac_url_img}" style="background-image: url({$conch['dscms']['gx']['lazy2']});">
+        <div class="ectopicnew">
+            <span class="ectopicspn"><i class="fa fa-bookmark-o"></i>  专题</span>
+            <span class="ectopicspn">—— {if$vo.topic_rel_vod|count!=0}{$vo.topic_rel_vod|explode=',',###|count}个影片{else}{$vo.topic_rel_art|explode=',',###|count}篇文章{/if} ——</span>
+            <span class="ectopicspn channelname">{$vo.topic_name}</span>
+        </div>
+    </a>
+</div>

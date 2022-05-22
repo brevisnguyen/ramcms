@@ -2,12 +2,13 @@
 return array (
   'dscms' => 
   array (
+    'logo' => '/template/ec_IQ/images/logo/small-icon.png',
     'isOn' => '0',
     'slide' => '1',
     'module' => 
     array (
       0 => 'index_level',
-      1 => 'index_hto',
+      1 => 'index_hot',
       2 => 'index_art',
       4 => 'index_zhibo',
       5 => 'index_actor',

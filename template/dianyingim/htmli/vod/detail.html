@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Mô tả chi tiết {$obj.vod_name} - Xem trực tuyến {$obj.vod_name} - Tải xuống {$obj.vod_name} - $maccms.site_name}</title>
-    <meta name="keywords" content="Xem trực tuyến {$obj.vod_name}, Tải xuống {$obj.vod_name}" />
-    <meta name="description" content="Cốt truyện {$obj.vod_name}:{$obj.vod_blurb}" />
+    <title>{$obj.vod_name}Mô tả chi tiết-{$obj.vod_name}Xem trực tuyến-{$obj.vod_name}Tải xuống - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.vod_name}在线收看,{$obj.vod_name}迅雷下载" />
+    <meta name="description" content="{$obj.vod_name}剧情:{$obj.vod_blurb}" />
     {include file="public/include"}
 </head>
 <body class="view page">
@@ -29,7 +29,7 @@
             <div class="video-info">
                 <div class="video-info-header">
                     <h1 class="page-title">{$obj.vod_name}</h1>
-                    <h2 class="video-subtitle" title="Tên phim：{$obj.vod_en}">{$obj.vod_en}</h2>
+                    <h2 class="video-subtitle" title="又名：{$obj.vod_en}">{$obj.vod_en}</h2>
                     <div class="video-info-aux">
                         <a href="{:mac_url_type($obj.type)}" title="{$obj.type.type_name}" class="tag-link">
 						    <span class="video-tag-icon"><i class="icon-cate-dy"></i>{$obj.type.type_name}</span>
@@ -39,7 +39,7 @@
                         <div class="tag-link">{$obj.vod_area|mac_url_create='area','vod','search'}&nbsp;</div>
                         <div class="tag-link">{$obj.vod_lang|mac_url_create='lang'}&nbsp;</div>
                     </div>
-                    <a href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}" class="btn-important btn-large shadow-drop video-info-play" title="{$obj.vod_name}"><i class="icon-play"></i><strong>Bắt đầu xem</strong></a>
+                    <a href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}" class="btn-important btn-large shadow-drop video-info-play" title="{$obj.vod_name}"><i class="icon-play"></i><strong>立即播放</strong></a>
                 </div>
                 <div class="video-info-main">
                     <div class="video-info-items"><span class="video-info-itemtitle">Đạo diễn: </span>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="video-info-items"><span class="video-info-itemtitle">Phát hành: </span>
-                        <div class="video-info-item">{$obj.vod_year|mac_default=$obj.vod_time}({$obj.vod_area})</div>
+                        <div class="video-info-item">{$obj.vod_pubdate|mac_default=$obj.vod_time}({$obj.vod_area})</div>
                     </div>
                     <div class="video-info-items"><span class="video-info-itemtitle">Trạng thái: </span>
                         <div class="video-info-item">{$obj.vod_remarks|mac_default=$obj.vod_hits.'Lượt xem'}</div>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="video-info-footer display">
                     <div class="video-info-share">
-                        <button class="share-btn" data-clipboard-text="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}Tôi đang xem phim của nguon.cc《{$obj.vod_name}》，Đề xuất cho bạn để xem cùng nhau!">Phim hay, chia sẻ với bạn bè<i class="icon-happy"></i></button>
+                        <button class="share-btn" data-clipboard-text="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}我正在电影先生 dianyingxs.com观看《{$obj.vod_name}》，推荐给你一起看！">Phim hay, chia sẻ với bạn bè<i class="icon-happy"></i></button>
                     </div>
                     <a href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}" class="btn-important btn-large shadow-drop" title="Xem {$obj.vod_name}"><i class="icon-play"></i><strong>Xem</strong></a>
 
@@ -187,7 +187,7 @@
         </div>
         <div class="module-list module-lines-list">
             <div class="module-items">
-                {maccms:vod num="16" type="all" order="desc" by="hits"}
+                {maccms:vod num="16" type="'.$obj['type_id'].'" order="desc" by="time"}
                 {include file="assembly/vodlist"}
                 {/maccms:vod}
             </div>
@@ -196,7 +196,7 @@
     <div class="module">
         <div class="module-heading">
             <h2 class="module-title">Gợi ý liên quan</h2>
-            <a class="more" href="{:mac_url_type($obj,['id'=>'type_id'],'show')}" title="Xem thêm">Xem thêm<i class="icon-arrow-right-o"></i></a>
+            <a class="more" href="{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}" title="更多">Xem thêm<i class="icon-arrow-right-o"></i></a>
         </div>
         <div class="module-list module-lines-list">
             <div class="module-items">
@@ -210,7 +210,7 @@
 </main>
 {include file="public/foot"}
 <div class="shortcuts-box"><div id="shortcuts-info"></div></div>
-<span class="mac_ulog_set none" alt="Đặt lịch sử duyệt trang xem" data-type="4" data-mid="1" data-id="67609" data-sid="0" data-nid="0"></span>
+<span class="mac_ulog_set none" alt="设置播放页浏览记录" data-type="4" data-mid="1" data-id="67609" data-sid="0" data-nid="0"></span>
 <span class="mac_hits none" data-mid="1" data-id="67609" data-type="hits"></span>
 </body>
 </html>

@@ -1,0 +1,61 @@
+<!--头部-->
+<div class="width1200 header" style="height: 110px;padding: 0px">
+    <h1><a href="{$maccms.path}"><img style="width: 230px;height: 110px;margin-top:0px;"
+                src="{$maccms.path_tpl}img/logo.png"></a></h1>
+    <div class="header_cet" style="float: left;margin-left: 10px;width: 75%;margin-right:0px;">
+        <div style="width: 720px; height: 60px; margin-bottom: 20px;">
+            <div class="header_submit" style="float: left;">
+                <div class="header_submit_m">
+                    <h3>{:lang(search_title)}</h3>
+                </div>
+                <form id="search" name="search" method="get" action="{:mac_url('vod/search')}"
+                    onsubmit="return qrsearch();">
+                    <div class="header_submit_b">
+                        <input maxlength="10" type="text" name="wd" id="wd" class="input" value="{$param.wd}"
+                            placeholder="{:lang(input_search)}">
+                        <input type="submit" name="search_button" id="search_button" class="submit" value=""
+                            onclick="search();">
+                    </div>
+                </form>
+            </div>
+            <div style="float: left; margin: 30px 0 0 20px;">
+                <a href="javascript:void(0);" style="margin-right: 10px;" onclick="changeLang('vn')">
+                    <img style="width: 25px;height: 25px;" src="{$maccms.path_tpl}img/vn.png" alt="vn">
+                </a>
+                <a href="javascript:void(0);" style="margin-right: 10px;" onclick="changeLang('en')">
+                    <img style="width: 25px;height: 25px;" src="{$maccms.path_tpl}img/en.png" alt="en">
+                </a>
+                <a href="javascript:void(0);" style="margin-right: 10px;" onclick="changeLang('cn')">
+                    <img style="width: 25px;height: 25px;" src="{$maccms.path_tpl}img/cn.png" alt="cn">
+                </a>
+                <script>
+                    function changeLang(lang) {
+                        $.get("{:mac_url('gbook/changlang')}", {"lang":lang}, function (d) {
+                            location.reload();
+                        });
+                    };
+                </script>
+            </div>
+        </div>
+        <div class="header_list" style="width:100%;text-align: left;">
+            <ul>
+                <li>
+                    <p>{:lang(vod_updated_today)}: <span style="color:red;;font-weight: bold;">{:mac_data_count(0,'today','vod')}</span></p>
+                </li>
+                <li>
+                    <p>{:lang(vod_total)}: <span style="color:red;;font-weight: bold;">{:mac_data_count(0,'all','vod')}</span></p>
+                </li>
+                <li>
+                    <p>{:lang(info_total)}: <span style="color:red;;font-weight: bold;">{:mac_data_count(0,'all','art')}</span></p>
+                </li>
+                <li><a href="{:mac_url('gbook/index')}"><span style="color:red;">{:lang(leave_msg)}</span></a></li>
+                <li><a href="{:mac_url('label/help')}"><span style="color:red;">{:lang(build_help)}</span></a></li>
+                <li style="margin-top: -5px;">
+                    <a target="_blank" href="javascript:;">
+                        <img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="xxx交流群" title="xxx交流群">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

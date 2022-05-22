@@ -10,7 +10,7 @@
         <div class="module-item-caption">
             <span>{$vo.vod_year}</span>
             <span class="video-class">{$vo.type.type_name|default=$vo.type_1.type_name}</span>
-            <span>{$vo.vod_tag|default=$vo.vod_class|mac_substring=20}</span>
+            <span>{$vo.vod_tag|default=$vo.vod_class|mac_substring=2}</span>
         </div>
         <div class="module-item-content">
             <div class="module-item-style video-name">
@@ -23,5 +23,5 @@
     <div class="module-item-titlebox">
         <a href="{:mac_url_vod_detail($vo)}" class="module-item-title" title="{$vo.vod_name}">{$vo.vod_name}</a>
     </div>
-    <div class="module-item-text">{$vo.vod_remarks|mac_default=$vo.vod_hits.'Lượt xem'}</div>
+    <div class="module-item-text">{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}</div>
 </div>

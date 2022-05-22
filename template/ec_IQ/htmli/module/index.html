@@ -1,0 +1,9 @@
+{if$__PAGING__.page_total>1}
+<div class="mac_pages">
+    <div class="page_tip">当前{$__PAGING__.page_current}/{$__PAGING__.page_total}页</div>
+    <div class="page_info">
+        <a class='page_link' href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" title="上一页">上一页</a>
+        <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}" title="下一页">下一页</a>
+    </div>
+</div>
+{/if}

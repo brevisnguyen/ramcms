@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <title>最新{$obj.type_name}-推荐{$obj.type_name}-第{$param.page}页筛选 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="headtopnull"></div>
+
+<div style="background-color: #f8f8f8;">
+    <!--高级筛选-->
+    <div class="mod_list_filter wwp">
+        {maccms:vod num="42" paging="yes" type="current" order="desc" by="time"}{/maccms:vod}
+        <div class="filter_line filter_line_0">
+            <span class="filter_label">频道</span>
+            {maccms:type ids="parent" order="asc" by="sort" flag="vod"}
+            <a class="filter_item{if$vo.type_id==$obj.type_id||$vo.type_id==$obj.parent.type_id} current{/if}" href="{:mac_url_type($vo,[],'show')}">{$vo.type_name|mac_filter_html}</a>
+            {/maccms:type}
+        </div>
+        <div class="filter_line filter_line_2">
+            <span class="filter_label">{if$obj.childids||$obj.parent.childids}分类{else}类型{/if}</span>
+            {if$obj.childids||$obj.parent.childids}
+            <a class="filter_item{if$vo.parent.type_id==$obj.parent.type_id} current{/if}" href="{:mac_url_type($obj.parent,['area'=>$param.area,'year'=>$param.year,'class'=>$param.class,'by'=>$param.by],'show')}">全部</a>
+            {else}
+            <a class="filter_item{if$param.class==''} current{/if}" href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>'','by'=>$param.by],'show')}">全部</a>
+            {/if}{if$obj.childids||$obj.parent.childids}
+            {maccms:type ids="current" order="asc" by="sort" flag="vod"}
+            <a class="filter_item{if$vo.type_id==$obj.type_id} current{/if}" href="{:mac_url_type($vo,['area'=>$param.area,'year'=>$param.year,'class'=>$param.class,'by'=>$param.by],'show')}">{$vo.type_name|mac_filter_html}</a>
+            {/maccms:type}
+            {elseif$obj.type_extend.class}
+            {maccms:foreach name=":explode(',',$obj.type_extend.class)"}
+            <a class="filter_item{if$param.class==$vo} current{/if}" href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>$vo],'show')}">{$vo}</a>
+            {/maccms:foreach}
+            {elseif$obj.parent.type_extend.class}
+            <a class="filter_item{if$param.class==''} current{/if}" href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>'','by'=>$param.by],'show')}">全部</a>
+            {maccms:foreach name=":explode(',',$obj.parent.type_extend.class)"}
+            <a class="filter_item{if$param.class==$vo} current{/if}" href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>$vo],'show')}">{$vo}</a>
+            {/maccms:foreach}
+            {else}
+            <a class="filter_item{if$param.class==''} fed-this fed-text-green{/if}" href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>'','by'=>$param.by],'show')}">全部</a>
+            {maccms:foreach name=":explode(',',$maccms.vod_extend_class)"}
+            <a class="filter_item{if$param.class==$vo} current{/if}" href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>$vo],'show')}">{$vo}</a>
+            {/maccms:foreach}
+            {/if}
+        </div>
+        <div class="filter_line filter_line_3">
+            <span class="filter_label">地区</span>
+            <a class="filter_item{if$param.area==''} current{/if}" href="{:mac_url_type($obj,['area'=>'','year'=>$param.year,'class'=>$param.class,'by'=>$param.by],'show')}">全部</a>
+            {if$obj.type_extend.area}
+            {maccms:foreach name=":explode(',',$obj.type_extend.area)"}
+            <a class="filter_item{if$param.area==$vo} current{/if}" href="{:mac_url_type($obj,['area'=>$vo,'year'=>$param.year,'class'=>$param.class,'by'=>$param.by],'show')}">{$vo}</a>
+            {/maccms:foreach}
+            {elseif$obj.parent.type_extend.area}
+            {maccms:foreach name=":explode(',',$obj.parent.type_extend.area)"}
+            <a class="filter_item{if$param.area==$vo} current{/if}" href="{:mac_url_type($obj,['area'=>$vo,'year'=>$param.year,'class'=>$param.class,'by'=>$param.by],'show')}">{$vo}</a>
+            {/maccms:foreach}
+            {else}
+            {maccms:foreach name=":explode(',',$maccms.vod_extend_area)"}
+            <a class="filter_item{if$param.area==$vo} current{/if}" href="{:mac_url_type($obj,['area'=>$vo,'year'=>$param.year,'class'=>$param.class,'by'=>$param.by],'show')}">{$vo}</a>
+            {/maccms:foreach}
+            {/if}
+        </div>
+        <div class="filter_line filter_line_4">
+            <span class="filter_label">年代</span>
+            <a class="filter_item{if$param.year==''} current{/if}" href="{:mac_url_type($obj,['area'=>$param.area,'year'=>'','class'=>$param.class,'by'=>$param.by],'show')}">全部</a>
+            {if$obj.type_extend.year}
+            {maccms:foreach name=":explode(',',$obj.type_extend.year)"}
+            <a class="filter_item{if$param.year==$vo} current{/if}" href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$vo,'class'=>$param.class,'by'=>$param.by],'show')}">{$vo}</a>
+            {/maccms:foreach}
+            {elseif$obj.parent.type_extend.year}
+            {maccms:foreach name=":explode(',',$obj.parent.type_extend.year)"}
+            <a class="filter_item{if$param.year==$vo} current{/if}" href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$vo,'class'=>$param.class,'by'=>$param.by],'show')}">{$vo}</a>
+            {/maccms:foreach}
+            {else}
+            {maccms:foreach name=":explode(',',$maccms.vod_extend_year)"}
+            <a class="filter_item{if$param.year==$vo} current{/if}" href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$vo,'class'=>$param.class,'by'=>$param.by],'show')}">{$vo}</a>
+            {/maccms:foreach}
+            {/if}
+        </div>
+    </div>
+</div>
+<div class="wwp showlist">
+    <div class="hotgrow eclist listdh wow fadeInUp top20" style="white-space: normal;">
+        {maccms:vod num="48" paging="yes" pageurl="vod/show" type="current" order="desc" by="time"}
+        {include file="module/type_list"}
+        {/maccms:vod}
+    </div>
+    {include file="public/paging"}
+</div>
+{include file="public/foot"}
+</body>
+</html>

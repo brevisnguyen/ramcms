@@ -1,0 +1,47 @@
+<div class="wow fadeInUp">
+{if condition="$conch['dscms']['module']['5'] eq index_actor"}
+<div class="ant-tabsbar top20">
+    <div class="ant-tabscontent cf">
+        <h2 class="tabs-moduletitle l"><a href="{:mac_url('actor/index')}" title="荧幕星榜" class="tabs-maintitle l">荧幕星榜</a></h2>
+        <div class="tabs-nav l col7">
+            {maccms:actor num="10" level="1" order="desc" by="hits"}
+            <a class="col2b" href="{$vo|mac_url_actor_detail}" title="">{$vo.actor_name}</a><i class="slash">|</i>
+            {/maccms:actor}
+            <a class="col2b" href="{:mac_url('actor/index')}">更多 &gt;</a>
+        </div>
+    </div>
+</div>
+{if condition="$conch['dscms']['indexactor'] eq 0"}
+<div class="ecmingxbj ec-lf13">
+    <div class="cf ecmingxingbj">
+        {maccms:actor num="10" order="desc" by="hits"}
+        <div class="star-upitem actorhide{$key}">
+            <a title="{$vo.actor_name}{$conch.dscms.seo.actitle}" href="{$vo|mac_url_actor_detail}">
+                <span class="star-upimgbj"></span>
+                <span class="star-upimgbox"><div class="star-up-img ec-jaus eclazy" data-original="{$vo.actor_pic|mac_url_img}" style="background-image: url({$conch.dscms.gx.lazy3});"></div></span>
+                <span class="star-up-name">{$vo.actor_name}</span><span class="star-up-desc col4c"><span> {$vo.actor_up}</span>影响力</span>
+            </a>
+        </div>
+        {/maccms:actor}
+    </div>
+</div>
+{/if}
+{if condition="$conch['dscms']['indexactor'] eq 1"}
+<div class="panda-show">
+    {maccms:actor num="7" order="desc" by="hits"}
+    <div class="swiper-slide rank-item actor{$key}">
+        <a href="{$vo|mac_url_actor_detail}" title="{$vo.actor_name}{$conch.dscms.seo.actitle}" target="_blank">
+            <img src="{$vo.actor_pic|default=$conch.dscms.gx.lazy3}" />
+            <div class="shuffer-line"></div>
+            <div class="stars-info">
+                <div class="name">{$vo.actor_name}</div>
+                <div class="intro">{$vo.actor_birthday|mac_default=$vo.actor_en}</div>
+                <div class="number"><i></i>{$vo.actor_up}</div>
+            </div>
+        </a>
+    </div>
+    {/maccms:actor}
+</div>
+{/if}
+{/if}
+</div>

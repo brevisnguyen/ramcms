@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+	{include file="module/meta"}
+    <title>最新{$obj.type_title}-推荐{$obj.type_title}-第{$param.page}页 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="headtopnull"></div>
+<div class="ec-type-slide">
+	<div class="slideBox wwp">
+		<div class="bd">
+			<div class="qy-carousel-maskl" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
+			<div class="qy-carousel-maskr" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
+			<ul>
+				{maccms:vod num="6" level="9" type="current" order="desc" by="time"}
+				<li style="background-image: url({$vo.vod_pic_slide|mac_url_img});">
+					<a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" target="_blank">
+					<div class="title">
+						<i class="icon"></i>
+						<div class="caption text">{$vo.vod_name}</div>
+						<p class="desc text">[{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}]{$vo.vod_sub}</p>
+					</div>
+					</a>
+				</li>
+				{/maccms:vod}
+			</ul>
+		</div>
+		<div class="hd"><ul>{maccms:vod num="6" level="9" type="current" order="desc" by="time"}<li class="dotList_item"></li>{/maccms:vod}</ul></div>
+		<a class="prev focus_arrow" href="javascript:void(0)"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
+		<a class="next focus_arrow" href="javascript:void(0)"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+	</div>
+</div>
+<script id="jsID" type="text/javascript">jQuery(".slideBox").slide({mainCell:".bd ul",effect:"fade",autoPlay:true,delayTime:700});</script>
+<!--高级筛选-->
+<div class="module_mod">
+<div class="common_container cf wwp">
+    <div class="mod_list_filter">
+	<dl class="fed-col-sx12">
+		<dt>{if$obj.childids||$obj.parent.childids}分类{else}类型{/if}<a class="title" href="{:mac_url_type($obj,['id'=>'1'],'show')}">全部<span class="fa fa-angle-right"></span></a></dt>
+		{if$obj.childids||$obj.parent.childids}
+		{maccms:type num="8" ids="current" order="asc" by="sort" flag="vod"}
+		<dd{if$key>8} class="fed-hide-sm"{/if}><a href="{:mac_url_type($vo,['area'=>$param.area,'year'=>$param.year,'class'=>$param.class],'show')}">{$vo.type_name|mac_filter_html}</a></dd>
+		{/maccms:type}
+		{elseif$obj.type_extend.class}
+		{maccms:foreach name=":explode(',',$obj.type_extend.class)"}
+		<dd{if$key>9} class="fed-hide-sm"{/if}><a href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>$vo],'show')}">{$vo}</a></dd>
+		{/maccms:foreach}
+		{elseif$obj.parent.type_extend.class}
+		{maccms:foreach name=":explode(',',$obj.parent.type_extend.class)"}
+		<dd{if$key>9} class="fed-hide-sm"{/if}><a href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>$vo],'show')}">{$vo}</a></dd>
+		{/maccms:foreach}
+		{else}
+		{maccms:foreach name=":explode(',',$maccms.vod_extend_class)"}
+		<dd{if$key>9} class="fed-hide-sm"{/if}><a href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>$vo],'show')}">{$vo}</a></dd>
+		{/maccms:foreach}
+		{/if}
+	</dl>
+	<div class="homepage_cut_line l"></div>
+	<dl class="fed-col-sx12">
+		<dt>地区<a class="title" href="{:mac_url_type($obj,['id'=>'1'],'show')}">全部<span class="fa fa-angle-right"></span></a></dt>
+		{if$obj.type_extend.area}
+		{maccms:foreach name=":explode(',',$obj.type_extend.area)"}
+		<dd{if$key>9} class="fed-hide-sm"{/if}><a href="{:mac_url_type($obj,['area'=>$vo,'year'=>$param.year,'class'=>$param.class],'show')}">{$vo}</a></dd>
+		{/maccms:foreach}
+		{elseif$obj.parent.type_extend.area}
+		{maccms:foreach name=":explode(',',$obj.parent.type_extend.area)"}
+		<dd{if$key>9} class="fed-hide-sm"{/if}><a href="{:mac_url_type($obj,['area'=>$vo,'year'=>$param.year,'class'=>$param.class],'show')}">{$vo}</a></dd>
+		{/maccms:foreach}
+		{else}
+		{maccms:foreach name=":explode(',',$maccms.vod_extend_area)"}
+		<dd{if$key>9} class="fed-hide-sm"{/if}><a href="{:mac_url_type($obj,['area'=>$vo,'year'=>$param.year,'class'=>$param.class],'show')}">{$vo}</a></dd>
+		{/maccms:foreach}
+		{/if}
+	</dl>
+	<div class="homepage_cut_line l"></div>
+	<dl class="fed-col-sx12">
+		<dt>年代<a class="title" href="{:mac_url_type($obj,['id'=>'1'],'show')}">全部<span class="fa fa-angle-right"></span></a></dt>
+		{if$obj.type_extend.year}
+		{maccms:foreach name=":explode(',',$obj.type_extend.year)"}
+		<dd{if$key>9} class="fed-hide-sm"{/if}><a href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$vo,'class'=>$param.class],'show')}">{$vo}</a></dd>
+		{/maccms:foreach}
+		{elseif$obj.parent.type_extend.year}
+		{maccms:foreach name=":explode(',',$obj.parent.type_extend.year)"}
+		<dd{if$key>9} class="fed-hide-sm"{/if}><a href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$vo,'class'=>$param.class],'show')}">{$vo}</a></dd>
+		{/maccms:foreach}
+		{else}
+		{maccms:foreach name=":explode(',',$maccms.vod_extend_year)"}
+		<dd{if$key>9} class="fed-hide-sm"{/if}><a href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$vo,'class'=>$param.class],'show')}">{$vo}</a></dd>
+		{/maccms:foreach}
+		{/if}
+	</dl>
+</div></div></div> 
+<div class="wwp wow fadeInUp">
+	{include file="module/index_level"}
+	{if$obj.childids}
+	{maccms:type parent="current" order="asc" by="sort" mid="1" id="vo3"}
+	<div>
+		<div class="ant-tabsbar">
+			<div class="ant-tabscontent cf">
+				<h2 class="tabs-moduletitle l"><a href="{:mac_url_type($vo3,[],'show')}" title="{$vo3.type_name}" class="tabs-maintitle l">{$vo3.type_name}</a></h2>
+				<div class="tabs-nav l col7">
+					{maccms:vod num="6" type="'.$vo3['type_id'].'" order="desc" by="hits"}
+					<a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="">{$vo.vod_name}</a><i class="col04 slash">|</i>
+					{/maccms:vod}
+					<a href="{:mac_url_type($vo3,[],'show')}">更多 &gt;</a>
+				</div>
+			</div>
+		</div>
+		<div class="hotgrow eclist listdh">
+			{maccms:vod num="16" type="'.$vo3['type_id'].'" order="desc" by="time"}
+			{include file="module/vod_list"}
+			{/maccms:vod}
+		</div>
+	</div>
+	{/maccms:type}
+	{else}
+	<div>
+		<div class="ant-tabsbar">
+			<div class="ant-tabscontent cf">
+				<h2 class="tabs-moduletitle l"><a href="javascript:;" class="tabs-maintitle l">最新更新</a></h2>
+				<div class="tabs-nav l col7">
+					{maccms:vod num="6" type="current" order="desc" by="hits"}
+					<a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="">{$vo.vod_name}</a><i class="col04 slash">|</i>
+					{/maccms:vod}
+					<a href="{:mac_url_type($obj,['id'=>'1'],'show')}">更多 &gt;</a>
+				</div>
+			</div>
+		</div>
+		<div class="hotgrow eclist listdh">
+			{maccms:vod num="48" type="current" order="desc" by="time"}
+			{include file="module/vod_list"}
+			{/maccms:vod}
+		</div>
+	</div>
+	{/if}
+</div>
+{include file="public/foot"}
+</body>
+</html>

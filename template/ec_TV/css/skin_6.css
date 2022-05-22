@@ -1,0 +1,15 @@
+/*主题组件库*/
+body{background:#16161a;}
+.col1,.col1a,.col1b,.col1c,.col1c:hover{color:hsla(0,0%,100%,.6);}
+.col2,.col2a,.col2b,.col2c,.blue,.col1:hover,.col3:hover,.active,a:hover,.homepage_tab_title:hover,.homepage_normal_tabs a:hover{color:#00cc4c;}
+.col3,.col3a,.col3b,.col3c,.col3c:hover{color: hsla(0,0%,100%,.87);}
+.col4,.col4a,.col4b,.col4c,.col4c:hover{color: hsla(0,0%,100%,.38);}
+.orange,.loadia1{color: #ff7256}
+.mauve,.loadia0,.loadia3{color: #fc4274}
+.yellow,.loadia2{color: #fcb80a;}
+.button{border:0;background-color: #16e07a;background-image: linear-gradient(90deg,#00cc4c,#00d099);color:#fff!important;}
+.button:hover,.palyconnt .swiper-slide .actorlist_box:hover,.tabs-nav a:hover{background-color: #16e07a;background-image: linear-gradient(90deg,#00cc4c,#00d099);}
+.box,.mac_results{background-color: #2a2a32;box-shadow: 0 2px 10px 0 rgba(0,0,0,.3);border-radius:4px}
+.coverbox{border-radius:4px;background:#25252b;overflow:hidden}
+.triangle{width:0;height: 0;  border: 6px solid transparent;  border-bottom-color: #2a2a32;}
+.play_source_tab a.active:after{background:#00cc4c;}

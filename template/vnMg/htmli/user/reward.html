@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>三级分销 - 会员中心 - {$maccms.site_name}</title>
+	<meta name="keywords" content="{$maccms.site_keywords}"/>
+	<meta name="description" content="{$maccms.site_description}"/>
+{include file="public/include" /}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div id="member" class="ec-body-z fn-clear cf">
+	<div class="left">{include file="user/left_title"}</div>
+	<div id="tab" class="right">
+		<div class="user_body">
+		<div id="gong">
+		<div class="list">
+			<ul class="fn-clear">
+				{if condition="$param.level eq ''"}
+				<li class="cur"><a href="javascript:;">一级下线</a></li>
+				{else/}
+				<li><a href="{:url('user/reward')}">一级下线</a></li>
+				{/if}
+				{if condition="$param.level eq '2'"}
+				<li class="cur"><a href="javascript:;">二级下线</a></li>
+				{else/}
+				<li><a href="{:url('user/reward')}?level=2">二级下线</a></li>
+				{/if}
+				{if condition="$param.level eq '3'"}
+				<li class="cur"><a href="javascript:;">三级下线</a></li>
+				{else/}
+				<li><a href="{:url('user/reward')}?level=3">三级下线</a></li>
+				{/if}
+			</ul>
+		</div>
+		<table width="100%" border="0" cellspacing="1" cellpadding="0" class="top20 table">
+		  <tr>
+			<td width="80" align="center" valign="middle" bgcolor="#f7f7f7">编号</td>
+			<td width="100" align="center" valign="middle" bgcolor="#f7f7f7">会员</td>
+			<td width="140" align="center" valign="middle" bgcolor="#f7f7f7">时间</td>
+		  </tr>
+		  <form id="form1" name="form1" method="post">
+			  {volist name="list" id="vo"}
+		  <tr>
+			<td align="center" valign="middle" bgcolor="#FFFFFF">{$vo.user_id}</td>
+			<td align="center" valign="middle" bgcolor="#FFFFFF">{$vo.user_name}</td>
+			<td align="center" valign="middle" bgcolor="#FFFFFF">{$vo.user_reg_time|mac_day}</td>
+		  </tr>
+			  {/volist}
+		  </form>
+		</table>
+			{include file="user/paging"}
+</div>
+    </div>
+</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

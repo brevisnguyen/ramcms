@@ -1,0 +1,46 @@
+{if condition="$conch['dscms']['module']['2'] eq index_art"}
+<div class="ant-tabsbar">
+    {maccms:type ids="5" order="asc" by="sort" id="vo1" key="key1"}
+    <div class="ant-tabscontent cf">
+        <h2 class="tabs-moduletitle l"><a href="{:mac_url_type($vo1)}" title="娱乐资讯" class="tabs-maintitle l">娱乐资讯</a></h2>
+        <div class="tabs-nav l col7">
+            <a class="tabs-more col2" href="javascript:;">今日更新 <span class="gxtag ecorange col1b">{:mac_data_count($obj.type_id,'today','art')}</span> 篇  共 <span class="gxtag ecorange col1b">{:mac_data_count($obj.type_id,'all','art')} </span>篇</a>
+            {maccms:type num="5" parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+            <a class="col2b" href="{:mac_url_type($vo2)}" title="">{$vo2.type_name}</a><i class="slash">|</i>
+            {/maccms:type}
+            <a class="col2b" href="{:mac_url_type($vo1)}">更多 &gt;</a>
+        </div>
+    </div>
+    {/maccms:type}
+</div>
+<div class="indexart">
+    <div class="hotpack-ykpack wow fadeInLeft">
+        {maccms:art num="1" type="current" level="1" order="desc" by="time"}
+        <div class="pack-packcover">
+            <a class="aplus-exp ecimgbor" href="{:mac_url_art_detail($vo)}" title="{$vo.art_name|mac_filter_html}"><img src="{$vo.art_pic|mac_url_img}" style="background-image: url({$conch.dscms.gx.lazy2});" />
+                <div class="pack-bg"></div><span class="pack-prb"><span>{$vo.art_time|date='Y-m-d',###}</span></span>
+            </a>
+        </div>
+        <div class="hotpack-infolist pack-infolist">{$vo.art_name|mac_filter_html}</div>
+        {/maccms:art}
+    </div>
+    <div class="hotgrow wow fadeInRight" id="hotgrow">
+        {maccms:art num="12" type="current" order="desc" by="time"}
+        <div class="pack-ykpack arthide{$key}">
+            <div class="pack-packcover coverbox">
+                <a class="aplus-exp ec-jakt eclazy" href="{:mac_url_art_detail($vo)}" title="{$vo.art_name|mac_filter_html}" data-original="{$vo.art_pic|mac_url_img}" style="background-image: url({$conch['dscms']['gx']['lazy2']});">
+                    <div class="pack-bg"></div>
+                </a>
+                <span class="pack-prb">{$vo.type.type_name}</span>
+            </div>
+            <div class="pack-infolist">
+                <div class="pack-title ecinfolist">
+                    <a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name|mac_filter_html}" class="channelname">{$vo.art_name|mac_filter_html}</a>
+                </div>
+                <div class="pack-subtitle col4c channelname">{$vo.art_time|date='Y-m-d',###}</div>
+            </div>
+        </div>
+        {/maccms:art}
+    </div>
+</div>
+{/if}

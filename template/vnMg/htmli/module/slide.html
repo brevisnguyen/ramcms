@@ -1,0 +1,80 @@
+<div id="block-B" data-focus="" class="qy-carousel-wrap">
+    <div class="qy-carousel">
+        <div class="qy-carousel-fixed">
+            {if condition="$conch['dscms']['slide'] eq 1"}
+            <div class='qy-carousel-inner bd'>
+            {else}
+            <div class='qy-carousel-inner bd wwp'>
+            {/if}
+                <ul class="qy-carousel-ul">
+                    {maccms:vod num="10" level="9" type="current" order="desc" by="time"}
+                    <li class="qy-carousel-li">
+                        <a href='{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}'><span class="qy-carousel" style="background-image: url({$vo.vod_pic_slide|mac_url_img});"></span></a>
+                    </li>
+                    {/maccms:vod}
+                </ul>
+                <div class="qy-carousel-maskl"></div>
+                <div class="qy-carousel-maskr"></div>
+                <div class="qy-carousel-maskbottom"></div>
+            </div>
+            <div class="qy-carousel-con-gray">
+                <div class="qy-carousel-side-panel hd wwp">
+                    <div class="qy-carousel-side-box">
+                        <ul class="qy-carousel-panel-list">
+                            {maccms:vod num="10" level="9" type="current" order="desc" by="time"}
+                            <li class="pagination-item">
+                                <a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" target="_blank" class="pagination-block">
+                                    <p class="pagination-title">{$vo.vod_name}</p>
+                                    <p class="pagination-subname">{$vo.vod_sub}</p>
+                                </a>
+                            </li>
+                            {/maccms:vod}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="typetag wwp cf">
+    {if condition="$maccms.aid eq 1"}
+    <div class="homenavleft l">
+        {maccms:type ids="1,2,3,4" order="asc" by="sort"}
+        <a title="{$vo.type_name}" href="{:mac_url_type($vo)}" target="_blank" class="item"><img src="{$maccms.path_tpl}/images/{$key}.png" class="vicon"><span>{$vo.type_name}</span></a>
+        {/maccms:type}
+        <a href="{$conch['dscms']['nav']['tagurl1']}" target="_blank" class="item"><img src="{$maccms.path_tpl}/images/5.png" class="vicon"><span>{$conch['dscms']['nav']['tag1']}</span></a>
+        <a href="{$conch['dscms']['nav']['tagurl2']}" target="_blank" class="item"><img src="{$maccms.path_tpl}/images/6.png" class="vicon"><span>{$conch['dscms']['nav']['tag2']}</span></a>
+    </div>
+    <div class="bd r">
+        <ul class="infoList">
+            {maccms:art num="6" type="all" level="2" order="desc" by="time"}
+            <li><span class="date ecblue">公告</span><a href="{:mac_url_art_detail($vo)}" target="_blank">{$vo.art_name}</a></li>
+            {/maccms:art}
+        </ul>
+    </div>
+    {else}
+    <div class="homenavleft l swiper-container1"><div class="swiper-wrapper">
+        {if$obj.childids||$obj.parent.childids}
+        {maccms:type num="8" ids="current" order="asc" by="sort" flag="vod"}
+        <a href="{:mac_url_type($vo,['area'=>$param.area,'year'=>$param.year,'class'=>$param.class],'show')}" class="swiper-slide item"><span>{$vo.type_name|mac_filter_html}</span></a>
+        {/maccms:type}
+        {elseif$obj.type_extend.class}
+        {maccms:foreach name=":explode(',',$obj.type_extend.class)"}
+        <a href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>$vo],'show')}" class="swiper-slide item"><span>{$vo}</span></a>
+        {/maccms:foreach}
+        {elseif$obj.parent.type_extend.class}
+        {maccms:foreach name=":explode(',',$obj.parent.type_extend.class)"}
+        <a href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>$vo],'show')}" class="swiper-slide item"><span>{$vo}</span></a>
+        {/maccms:foreach}
+        {else}
+        {maccms:foreach name=":explode(',',$maccms.vod_extend_class)"}
+        <a href="{:mac_url_type($obj,['area'=>$param.area,'year'=>$param.year,'class'=>$vo],'show')}" class="swiper-slide item"><span>{$vo}</span></a>
+        {/maccms:foreach}
+        {/if}
+    </div></div>
+    {/if}
+
+
+
+</div>
+<script type="text/javascript">jQuery(".qy-carousel-fixed").slide({ mainCell:".bd ul",effect:"fold",autoPlay:true });jQuery(".typetag").slide({mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true});</script>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+	{include file="module/meta"}
+	<title>在线播放{$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - 高清资源 - {$maccms.site_name}</title>
+	<meta name="keywords" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍" />
+	<meta name="description" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}免费在线观看,{$obj.vod_name}剧情介绍" />
+	{include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="headtopnull"></div>
+<div class="play-primary">
+	<div style="background:#16161a">
+	<div class="w1180 nex_rkr_btm cf wwp">
+		<div class="ec_detaill l cf">
+			<div class="ui-box" id="detail-box">
+				<div id="bofang_box">
+					<?php
+					$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+					$REQUEST_URI=$_SERVER["REQUEST_URI"];
+					$url=$REQUEST_URI;
+					$url= str_replace("/index.php/label/zb/id/","",$url);
+					$url= str_replace(".html","",$url);
+					?>
+					<iframe id="video" src="https://liveshare.huya.com/iframe/<?php echo $url;?>" allowfullscreen="true" allowtransparency="true" style="height: 100%;width:100%;border:none"></iframe>
+				</div>
+			</div>
+		</div>
+		<div class="ec_detailr r cf anthology-wrap zhbhot">
+			<div class="c-player-episode zhbhot">
+				<div class="c-player-aside-list">
+					<div class="player-aside-list-main">
+						<p style="padding-top: 20px;" class="top-tillist">相关直播列表</p>
+						<?php
+$url="https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&tagAll=0&page=1";
+$json=mac_curl_get($url);
+$html=json_decode($json, true);
+$datas=$html[data][datas];
+$data=$html[data];
+for($i=0;$i<16;$i++){?>
+						<div class="play_vlist cblock player_hint cf"><a href="/index.php/label/zb/id/<?php echo $datas[$i]['profileRoom']?>.html" title="<?php echo $datas[$i]['roomName'];?>">
+							<div class="play_vlist_thumb ec-jakt lazyload" style="background-image: url(<?php echo $datas[$i]['screenshot'];?>)"></div>
+							<div class="play_vlist_text vnow">
+								<p class="play_vlist_title col3"><?php echo $datas[$i]['roomName'];?></p>
+								<p class="play_vlist_now">主播:<?php echo $datas[$i]['nick'];?></p>
+							</div>
+						</a> </div>
+						<?php }
+?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="wwp">
+	<div class="public top20">
+		<div class="ant-tabsbar">
+			<div class="ant-tabscontent cf">
+				<h2 class="tabs-moduletitle l">热播影视</h2>
+				<div class="tabs-nav l col7">
+					<a class="col04" href="{:mac_url_type($obj,['id'=>'1'],'show')}">查看全部 &gt;</a>
+				</div>
+			</div>
+		</div>
+		<div class="hotgrow eclist listdh">
+			{maccms:vod num="16" type="all" order="desc" by="hits"}
+			{include file="module/vod_list"}
+			{/maccms:vod}
+		</div>
+	</div>
+	</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

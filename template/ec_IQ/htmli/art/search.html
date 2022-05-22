@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <title>{$param.wd}搜索结果 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$param.wd}搜索结果" />
+    <meta name="description" content="{$param.wd}搜索结果" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div class="ec-body-z search-body cf">
+    <div class="ec_sojg">搜索" <strong class="blue">{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</strong>" 结果 " <strong class="mac_total blue"></strong>" 篇文章</div>
+    <div class="ec-left-z l" id="list-focus">
+        <div class="layui-tab-item">
+            <div class="ecnav-list ec-bjcolor top20">
+                <ul class="ecnote-list">
+                    {maccms:art num="10" paging="yes" pageurl="art/search" order="desc" by="time"}
+                    <li class="have-img">
+                        <div class="content"> <a class="title anthology-wrap albumtitle" href="{:mac_url_art_detail($vo)}">{$vo.art_name}</a>
+                            <p class="abstract albumtitle">{$vo.art_blurb}</p>
+                            <div class="meta"><a class="nickname ecnote-flbut" href="{:mac_url_type($vo.type)}">{$vo.type.type_name}</a><span><i class="fa icon-attention"></i>阅读：{$vo.art_hits}</span> <span><i class="fa icon-shizhong"></i> 发布：{$vo.art_time|date='Y-m-d',###}</span> </div></div>
+                    </li>
+                    {/maccms:art}
+                </ul>
+            </div>
+        </div>
+        <div class="ui-bar list-page fn-clear">
+            {include file="public/paging"}
+        </div>
+        <script>
+            $('.mac_total').html('{$__PAGING__.record_total}');
+        </script>
+    </div>
+    <div class="r ec-right-z" id="xihuan">
+        {include file="module/right_list"}
+    </div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

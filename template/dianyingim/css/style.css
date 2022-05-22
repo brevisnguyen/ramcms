@@ -29,7 +29,7 @@ input, button, textarea, select {
 body, input, textarea, select, button {
   -webkit-touch-callout: none;
   -webkit-font-smoothing: antialiased;
-  font-family: 'robotoregular', -apple-system-font, BlinkMacSystemFont, helvetica neue, hiragino sans gb, Arial, sans-serif
+  font-family: 'robotoregular', -apple-system-font, BlinkMacSystemFont, helvetica neue, pingfang sc, hiragino sans gb, microsoft yahei ui, microsoft yahei, Arial, sans-serif
 }
 body {
   color: #282828;
@@ -2477,7 +2477,7 @@ input[type=radio], input[type=checkbox] {
 
 .video-info-itemtitle {
 	display: inline-block;
-	min-width: 120px;
+	min-width: 46px;
 	font-weight: 700;
 	color: rgba(0, 0, 0, .51)
 }

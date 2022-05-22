@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html>
+<head>
+	{include file="module/meta"}
+    <title>{$maccms.site_name}</title>
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div class="ec-body-z" style="position: relative;">
+<div id="block-RP" class="top20">
+	<div class="ec-top-star-head">
+		<div class="star-head-right" id="antic">
+			<a href="javascript:;" class="hit-rule"><span class="rule-txt">规则</span><i class="fa icon-question"></i></a>
+		</div>
+	</div>
+	<div class="ec-top-grid">
+		{maccms:actor num="20"  order="desc" by="up"}
+		<div class="ec-top-row odd">
+			<div class="ec-top-col col-p30">
+				<div class="star-box-1">
+					<div class="ec-top-star-item cf">
+						<div class="star-nub No{$key}">{$key}</div>
+						<div class="mod-left">
+							<a href="{$vo|mac_url_actor_detail}" class="mod-img-link">
+							<div class="vodlist_thumb ec-jaus eclazy" data-original="{$vo.actor_pic|mac_url_img}"></div>
+							<div class="icon-tl">
+								<i class="avatar-deco No{$key}"></i>
+							</div>
+							</a>
+						</div>
+						<div class="mod-right">
+							<h3 class="main-title"><a href="{$vo|mac_url_actor_detail}" class="title-link">{$vo.actor_name}</a></h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ec-top-col col-p25 No{$key}">
+	            <span class="infl-icon-box"><i class="infl-icon No{$key}"></i></span><em class="infl-key">影响力：</em><em class="infl-value">{$vo.actor_up}</em>
+			</div>
+			<div class="ec-top-col col-p15">
+				<div class="star-box-4">
+					<a href="{$vo|mac_url_actor_detail}" class="ec-top-star-goto">冲榜</a>
+				</div>
+			</div>
+		</div>
+		{/maccms:actor}
+	</div>
+</div>
+<div id="ecdiv3" class="ecdy">
+  <div class="title ec-palytcji">
+        <div class="rule-top-img"></div><span class="pop_close fa fa-remove rule-txt ecdiv4"></span>
+  </div>
+  <div class="dlTxtList">
+    <span class="rule-con-title">明星影响力榜是什么？</span>
+    <div>
+      <p>明星粉丝影响力榜，是{$maccms.site_name}明星广场频道的排名，是明星粉丝活跃度及对爱豆贡献的排行情况，可以通过点击明星主页小爱心提升榜单排名。（规定时间内不可重复点击）</p>
+      <p>上升最快：影响力排名上升名次最多；新晋入榜：新进入top50且排名最靠前。</p>
+    </div>
+    <span class="rule-con-title">爱豆排名靠前有什么好处？</span>
+    <div>
+      <p>你打榜贡献的影响力决定着你的爱豆能不能获得千万级曝光量的广告位——登上{$maccms.site_name}明星广场首页焦点图</p>
+      <p>每月三榜榜首的明星可以在明星广场页焦点图露出形象一个月</p>
+      <p>每个人在明星粉丝圈的贡献都将影响到排名！{$maccms.site_name}之夜荣耀光环，由你决定。</p>
+      <p>影响力贡献月榜Top前三的粉丝用户，其代表的爱豆将会登上明星广场首页焦点图宣传（Top1时限3天，Top2时限2天，Top3时限1天）</p>
+    </div>
+  </div>
+</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

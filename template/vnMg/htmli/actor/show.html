@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <title>{$maccms.site_name}-明星库</title>
+    <meta name="keywords" content="{$maccms.site_keywords}" />
+    <meta name="description" content="{$maccms.site_description}" />
+    {include file="public/include"}
+</head><body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div style="background-color: #f8f8f8;">
+<div class="ec-body-z mod_list_filter top40">
+    <div class="filter_line filter_line_0">
+        <span class="filter_label">地区</span>
+        <a class='filter_item {if condition="$param['area']==''"} current{/if}' href="{:mac_url('actor/show',['sex'=>$param['sex'],'blood'=>$param['blood'],'starsign'=>$param['starsign'],'letter'=>$param['letter']])}">全部</a>
+        {maccms:foreach name=":explode(',','内地,香港,日本,美国')" id="vo2" key="key2"}
+        <a class='filter_item {if condition="$param['area'] eq $vo2"} current{/if}' href="{:mac_url('actor/show',['area'=>$vo2,'sex'=>$param['sex'],'blood'=>$param['blood'],'starsign'=>$param['starsign'],'letter'=>$param['letter']])}">{$vo2}</a>
+        {/maccms:foreach}
+    </div>
+    <div class="filter_line filter_line_2">
+        <span class="filter_label">字母</span>
+        <a class='filter_item {if condition="$param['letter'] ==''"} current{/if}' href="{:mac_url('actor/show',['area'=>$param['area'],'sex'=>$param['sex'],'blood'=>$param['blood'],'starsign'=>$param['starsign']])}">全部</a>
+        {maccms:foreach name=":explode(',','A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z')" id="vo2" key="key2"}
+        <a class='filter_item {if condition="$param['letter'] eq $vo2"} current{/if}' href="{:mac_url('actor/show',['area'=>$param['area'],'sex'=>$param['sex'],'blood'=>$param['blood'],'starsign'=>$param['starsign'],'letter'=>$vo2])}" >{$vo2}</a>
+        {/maccms:foreach}
+    </div>
+</div>
+</div>
+<div class="ec-body-z ui-box filter-focus showlist">
+<div class="channel-item btop top20">
+    <div class="ant-tabsbar">
+	    <div class="ant-tabscontent cf">
+		    <h2 class="tabs-moduletitle l">
+		    <div class="tabs-titlewrap">
+			    <a href="javascript:;" title="明星列表" class="tabs-maintitle l col3c">明星列表</a>
+		    </div>
+		    </h2>
+	    </div>
+    </div>
+    <div class="box_con cf listdh">
+      <ul>
+        {maccms:actor num="24" paging="yes" pageurl="actor/show" order="desc" by="time"}
+          <li class="l"> <a class="ec-actorimg" href="{$vo|mac_url_actor_detail}"><div class="ec-jaus eclazy" data-original="{$vo.actor_pic|mac_url_img}" style="background-image: url({$conch.dscms.gx.lazy3});"></div></a> <a class="ec-actorname" href="{$vo|mac_url_actor_detail}">
+              <h3 class="tabs-maintitle">{$vo.actor_name}</h3></a>
+          </li>
+        {/maccms:actor}
+      </ul>
+    </div>
+</div>
+  {include file="public/paging"}
+</div>
+{include file="public/foot"}
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>{$obj.art_name} - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.art_name}最新资讯,推荐资讯" />
+    <meta name="description" content="{$obj.art_name}最新资讯,推荐资讯" />
+    <link href="{$maccms.path_tpl}css/art2.css" rel="stylesheet" type="text/css" />
+    {include file="public/include"}
+</head>
+<body style="background:#eee;">
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div class="ec-body-z cf">
+    <div class="bread-crumb-nav fn-clear top20">
+        <ul class="bread-crumbs cf">
+            <li class="home"><a href="{$maccms.path}">首页</a><i class="fa fa-step-forward"></i></li>
+            <li><a href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name}</a><i class="fa fa-step-forward"></i></li>
+            <li><a href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a><i class="fa fa-step-forward"></i></li>
+            <li>{$obj.art_name}</li>
+        </ul>
+    </div>
+    <div class="rat-list cf top20">
+        <div class="rat-list-left">
+            <div class="entry">
+                <div class="entry-head">
+                    <h1 class="entry-title">{$obj.art_name} - {$obj.art_page_list[$param['page']]['title']}</h1>
+                    <div class="entry-info"> 来源于{$obj.art_from}<span class="dot">•</span>发布于{$obj.art_time|date='Y-m-d',###}<span class="dot">•</span>浏览{$obj.art_hits}次</div>
+                </div>
+                <div class="content">{$obj.art_page_list[$param['page']]['content']|mac_url_content_img}</div>
+                {if$__PAGING__.page_total>1}
+                <div class="mac_pages">
+                    <div class="page_tip">当前{$__PAGING__.page_current}/{$__PAGING__.page_total}页</div>
+                    <div class="page_info">
+                        <a class='page_link' href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" title="上一页">上一页</a>
+                        <a class="page_link" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}" title="下一页">下一页</a>
+                    </div>
+                </div>
+                {/if}
+                <div class="entry-footer">
+                    <div class="digg_zan tabs-nav">
+                        <div class="content_detail cf top40"><div class="playbtn o_bg" style="float: none;margin-right: inherit;">
+                            <a target="_blank" style="margin: 0 auto;" class="digg_link btn btn_wxgzh" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-mid="{$maccms.mid}" data-type="up" href="javascript:;"><i class="rbj fa icon-zantong"></i>&nbsp;<em class="digg_num">{$obj.vod_up}{$obj.art_up}{$obj.topic_up}</em></a>
+                        </div></div>
+                    </div>
+                    <div class="entry-bar cf">
+                        <div class="bshare-custom l"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                        <div class="r">本文由网络整理 © 版权归原作者所有</div>
+                    </div>
+                    <div class="entry-page cf">
+                        {assign name="Prev" value="$obj.art_id+1"; /}
+                        {assign name="next" value="$obj.art_id-1"; /}
+                        {maccms:art num="1" ids="'.$Prev.'"}
+                        <div class="entry-page-prev l ec-jakt eclazy" data-original="{$vo.art_pic|mac_url_img}" style="background-image: url({$conch.dscms.gx.lazy2});">
+                            <a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}"><span>{$vo.art_name}</span></a>
+                            <div class="entry-page-info cf">
+                                <span class="pull-left l"><i class="wpcom-icon"></i> 上一篇</span>
+                                <span class="pull-right r">{$vo.art_time|date='Y-m-d',###}</span>
+                            </div>
+                        </div>
+                        {/maccms:art}
+                        {maccms:art num="1" ids="'.$next.'"}
+                        <div class="entry-page-next r ec-jakt eclazy" data-original="{$vo.art_pic|mac_url_img}" style="background-image: url({$conch.dscms.gx.lazy2});">
+                            <a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}" rel="next"><span>{$vo.art_name}</span></a>
+                            <div class="entry-page-info cf">
+                                <span class="pull-right l">下一篇<i class="wpcom-icon"></i></span>
+                                <span class="pull-left r">{$vo.art_time|date='Y-m-d',###}</span>
+                            </div>
+                        </div>
+                        {/maccms:art}
+                    </div>
+                    <h3 class="entry-related-title">猜你喜欢</h3>
+                    <div class="main-list" style="margin-right: -22px;">
+                        <ul class="post-loop-default top10 cf">
+                            {maccms:art num="6" type="current" order="desc" by="time"}
+                            <li class="item">
+                                <div class="item-inner">
+                                    <a class="item-img ec-jakt eclazy" href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}" target="_blank" data-original="{$vo.art_pic|mac_url_img}" style="background-image: url({$conch.dscms.gx.lazy2});"></a>
+                                    <a class="item-category" href="{:mac_url_art_detail($vo)}" target="_blank">{$vo.type.type_name}</a>
+                                    <h3 class="item-title"><a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}" target="_blank">{$vo.art_name}</a></h3>
+                                    <div class="item-meta cf">
+                                        <span class="item-meta-left l">{$vo.art_time|date='Y-m-d',###}</span>
+                                        <span class="item-meta-left r"><i class="fa icon-attention"></i>{$vo.art_hits}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            {/maccms:art}
+                        </ul>
+                    </div>
+                    {if condition="$conch['dscms']['pd']['ratpl'] eq 1"}
+                    <h3 class="entry-related-title">猜你喜欢</h3>
+                    <div class="ui-box marg w1180" id="pinglun" >
+                        <div class="mac_comment" data-id="{$obj.art_id}" data-mid="{$maccms.mid}" ></div>
+                        <script>
+                            $(function(){
+                                MAC.Comment.Login = {$comment.login};
+                                MAC.Comment.Verify = {$comment.verify};
+                                MAC.Comment.Init();
+                                MAC.Comment.Show(1);
+                            });
+                        </script>
+                    </div>
+                    {/if}
+                </div>
+            </div>
+        </div>
+        {include file="module/art_right"}
+    </div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

@@ -1,0 +1,62 @@
+<table border="0" width="100%" bgcolor="#ffffff" style="font-size: 12px" cellspacing="0" cellpadding="0"><tr><td>
+<p align="center">
+<span style="line-height:35px; color:#000000">
+ <b>Địa chỉ thu thập XM：http://api.nguonphim.tv/api.php/provide/vod/at/xml
+ <br>1,jsnĐịa chỉ danh sách video：http://api.nguonphim.tv/api.php/provide/vod/?ac=list
+ <br>2,jsonĐịa chỉ chi tiết video：http://api.nguonphim.tv/api.php/provide/vod/?ac=detail
+  <br>Trịnh trọng đảm bảo: miễn phí trọn đời, nguồn phim ảnh không bao gồm bất cứ quảng cáo gián đoạn , quảng cáo rich medi,
+  <br>chỉ có ba lần quảng cáo hình mờ đèn kéo quân( bảo hành tuyệt đối không ảnh hưởng đến trải nghiệm  người dùng)  </b><br>
+   Nguồn phim - Thêm vào nhóm Telegram：<a target="_blank" href="https://t.me/+2QjNUgCswGI0MDM1="><img border="0" src="/template/inguoni/static/img/qqq.png" alt="Nguồn phim" title="Nguồn phim"></a><br>
+
+  
+</span></td>
+</tr></table>
+<div class="head_box">
+<div class="width1200 header">
+	<div class="header_left"><a href="/"><img src="{$maccms.path_tpl}static/picture/logo.png" alt="{$maccms.site_name}"></a></div>
+    <div class="header_right">
+        <div class="header_submit">
+            <div class="header_submit_b">
+			<form id="search" name="search" method="get" action="{:mac_url('vod/search')}" onSubmit="return qrsearch();">
+                <input type="text" name="wd" class="search-input mac_wd" placeholder="Vui lòng nhập tên phim hoặc diễn viên tại đây"/>
+                <input type="submit" id="searchbutton" class="search-button mac_search" value="tìm kiếm"/>
+            </form>
+            </div>
+        </div>
+        <div class="header_list">
+        	<ul>
+            	<li> Cập nhật hôm nay：<span style="color:red;;font-weight: bold;">{:mac_data_count(0,'today','vod')}</span></li>
+            	<li>Tổng số trên trang web này：<span style="color:red;;font-weight: bold;">{:mac_data_count(0,'all','vod')}</span></li>
+            	<li><a href="{:mac_url('gbook/index')}" target="_blank"><span style="color:red;">yêu cầu phim</span></a></li>
+                <li><a href="/help/" target="_blank"><span style="color:red;font-size: 18px;font-weight: bold;">trợ giúp hướng</span></a></li>
+            </ul>
+        </div>
+        </div>
+
+<div class="header_fl">
+<div class="qq-c"><a target="_blank" href="https://t.me/+2QjNUgCswGI0MDM1"> </a></div>
+	<a target="_blank" href="https://t.me/+2QjNUgCswGI0MDM1"><strong>{$maccms.site_qq}</strong></a></div>
+</div>
+
+<div class="nav">
+	<div class="width1200" >
+        <ul>
+			<li class="yes"><a class="nav-link" href="/" title="trang đầu">trang đầu</a></li>
+            {maccms:type ids="parent" order="asc" by="sort" id="vo2" key="key2"}
+			<li>
+             <div class="dropdown">
+			  <a href="{:mac_url_type($vo2)}" title="{$vo2.type_name}">{$vo2.type_name}</a>
+			  			  <div class="dropdown-content">
+			  	<ul>{maccms:type parent="'.$vo2['type_id'].'" order="asc" by="sort"}
+                                  <li><a href="{:mac_url_type($vo)}" title="{$vo.type_name}">{$vo.type_name}</a></li>{/maccms:type}
+                			    </ul>
+			  </div>
+			  			</div>
+             </li>
+			 {/maccms:type}
+
+        </ul>
+    </div>
+  </div>
+</div><div class="m1938-container">
+<script src="{$maccms.path_ads}top.js"></script></div>

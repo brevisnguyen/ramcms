@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>快播资源站帮助中心</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/ldg.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+    <script src="static/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" id="lagnav">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar"><span class="sr-only">
+			Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="#" onclick="gomain()">快播资源站</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#wlcome">帮助中心首页</a></li>
+                <li><a href="#SeaCms">海洋</a></li>
+                <li><a href="#MacCms">苹果8</a></li>
+                <li><a href="#MacCms10">苹果10</a></li>
+                <li><a href="#FeiFei4">飞飞3.4</a></li>
+                <li><a href="#MaxCms">马克斯</a></li>
+                <li><a href="#CtCms">赤兔</a>
+                <li><a href="#DuoMiCms">多米</a></li>
+                <li><a href="#ZanPianCms">赞片</a></li>
+                <li><a href="#PlayerCacheTime">播放缓存</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container" style="padding-top: 60px;text-align: center;">
+    <div id="wlcome">
+        <div class="jumbotron">
+            <h1>欢迎来到【快播资源站】帮助中心</h1>
+     <p class="lead">我们不定期在此更新CMS应用快播资源的使用教程，只为给您更好的服务！</p> 
+     <br><img class="img-thumbnail" src="static/picture/qmzz.png" alt="全民做站">
+
+
+    </div> 
+    <div class="alert alert-warning" role="alert"> 
+     <strong>重要提示：</strong>请认真阅读下方的说明！ 
+    </div> 
+    <div class="well"> 
+     <p>本站图片地址后期将采用图床样式，可以调用， 采集的同时，也可以把图片下载到本地（推荐），以免杜绝日后出现类似图片失效的情况。</p> 
+       <p>在采集的时候如果出现xml出错，建议你从新再次进入采集列表，就能正常采集了。</p> 
+    </div> 本站解释权归 
+    <strong>快播资源</strong> 版权所有，快播资源网，内容填充 
+    </div>
+	
+    <div id="SeaCms" style="display: none;">
+        <div class="jumbotron">
+            <h1>SeaCms(海洋CMS)教程</h1>
+            <p class="lead">本站采集插件已经可以适配海洋CMS，支持M3U8在线播放，快速更新，稳定播放！</p>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何使用快播资源站采集？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">javascript:;
+                   
+                    <br>请按以下步骤进行：依次点击<span style="color:red;">【采集】-【资源库管理】</span>，然后输入
+                    <br>资源库名称：<span style="color:red;">快播资源站</span>
+                    <br>资源库地址：<span style="color:red;">https://api.qq.com/inc/ldg_sea.php</span>
+                    <br>资源库rem3u8地址：<span style="color:red;">https://api.qq.com/inc/ldg_searem3u8.php</span>
+                    <br>资源库rere地址：<span style="color:red;">https://api.qq.com/inc/ldg_searere.php</span>
+                    <br> 点击<span style="color:red;">【增加】</span>按钮即可，具体操作如下图
+                    <br> <img class="img-thumbnail" src="static/picture/addcaiji.png" alt="海洋添加采集">
+					<br> 请按以下步骤进行：依次点击<span style="color:red;">【首页】-【快捷菜单】</span>，然后输入
+					 <br>  
+					<span style="color:red;">快播全部资源,admin_reslib.php?ac=list&amp;rid=&amp;url=https://api.qq.com/inc/ldg_sea.php</span>
+					 <br>
+					<span style="color:red;">快播资源rem3u8,admin_reslib.php?ac=list&amp;rid=&amp;url=https://api.qq.com/inc/ldg_searem3u8.php</span>
+					 <br>
+					<span style="color:red;">快播资源rere,admin_reslib.php?ac=list&amp;rid=&amp;url=https://api.qq.com/inc/ldg_searere.php</span>
+	<br>点击<span style="color:red;">【修改】</span>按钮,刷新即可</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">播放暂没有数据或无法播放？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+				有的会员朋友采集资源后，播放片源没有自动选择对应的数据，这种情况通常是因为没有添加对应的播放器导致！
+                    <br>需要先再网站后台添加对应的播放器，然后再安装对应的播放器文件，才可以实现播放，以rem3u8播放器为例。<span style="color:red;">（还有一个rere播放器）</span>
+                    <br>请按以下步骤进行：依次点击<span style="color:red;">【系统】-【播放来源管理】</span>
+                    <br>然后依次输入来源名称：<span style="color:red;">rem3u8</span>&nbsp;&nbsp;后缀：<span
+                            style="color:red;">rem3u8</span>
+                    <br> 点击<span style="color:red;">【保存】</span>按钮即可，具体操作如下图
+                    <br><img class="img-thumbnail" src="static/picture/addplayer.png" alt="海洋添加播放来源">
+                    <br>此时因为我们添加了播放器，将不再提示暂没有数据，但是可能依旧不能播放，下载解析包替换<span style="color:red;">js\player</span>目录中的文件即可
+                    <br/><a  href="jiexi/seacms.zip">【8.6及以下版本】</a>||<a href="jiexi/seacms87.zip">【8.7及以上版本】</a>
+                </p>
+			</div>
+      </div> 
+    </div> 
+
+    <div id="MacCms" style="display: none;">
+        <div class="jumbotron">
+            <h1>MacCms8(苹果CMS)教程</h1>
+            <p class="lead">本站采集插件已经可以适配苹果CMS，支持M3U8在线播放，快速更新，稳定播放！</p>
+            
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何使用快播资源站采集？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+                   
+                    <br>请按以下步骤进行：依次点击<span style="color:red;">【首页】-【快捷菜单配置】</span>，然后添加下面内容
+                    <br><span style="color:red;"> 
+				快播资源站,?m=collect-list-ac2--hour--xt-1-ct--group--flag-快播资源站-apiurl-https://api.qq.com/inc/api.php</span>
+                    <br><span style="color:red;">
+				快播资源站（rem3u8）,?m=collect-list-ac2--hour--xt-1-ct--group--flag-快播资源站-apiurl-https://api.qq.com/inc/api_rem3u8.php</span>
+                    <br><span style="color:red;">
+				快播资源站（rere）,?m=collect-list-ac2--hour--xt-1-ct--group--flag-快播资源站-apiurl-https://api.qq.com/inc/api_rere.php</span>
+                    <br>点击<span style="color:red;">【保存】</span>按钮即可，具体操作如下图
+                </p>
+                <p class="jiaocheng">
+                    <img class="img-thumbnail" src="static/picture/caijiinit.png" alt="打开资源"><br>
+                   
+                </p>
+            </div>
+        </div>
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何绑定分类</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">首次使用，需要<span style="color:red;">绑定分类</span>，如下图
+                    <br><img class="img-thumbnail" src="static/picture/bind.png" alt="绑定分类">
+                </p>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">点击采集提示404？？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">收到很多会员朋友反馈说采集提示404，文件路径：<span style="color:red;">admin_maccj.php</span>
+                    <br>后分析代码发现是因为网址参数丢失导致
+                    <br>请手动修改浏览器的网址，在<span style="color:red;">admin/</span>后面加上<span style="color:red;">index.php?m=admin-index</span>即可正常采集
+                </p>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">没有选中播放片源？？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+				有的会员朋友采集资源后，播放片源没有自动选择对应的数据，这种情况通常是因为没有添加对应的播放器导致！
+                    <br>需要先再网站后台添加对应的播放器，才可以实现播放，以rem3u8的资源为例<font color="red">（注意要导入2个文件,另一个是rere）</font><a
+                            href="jiexi/maccms.zip">【点击下载播放器文件】</a>
+                    <br><img class="img-thumbnail" src="static/picture/addplayer.png" alt="苹果添加播放来源">
+                    <br>添加播放器后需要点击右上角的清空缓存，至此，可以愉快的采集和播放了
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">设置自动采集</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+                    执行参数:<span style="color: red">collect-cj-ac2-day-hour-24-xt-1-ct--group--flag-%e7%83%ad%e7%83%ad%e8%b5%84%e6%ba%90%e7%ab%99-apiurl-https://api.qq.com/inc/api.php</span>
+                    <br>设置自动采集请按照图片指引操作
+                    <br/><img class="img-thumbnail" src="static/picture/mac8_auto_cj.png" alt="自动采集1">
+                    <br/><img class="img-thumbnail" src="static/picture/mac8_auto_cj2.png" alt="自动采集2">
+                    <br/><img class="img-thumbnail" src="static/picture/mac8_auto_cj3.png" alt="自动采集3">
+                </p>
+                <p class="jiaocheng">
+                    <span style="color: red">在宝塔上绑定此定时任务</span>
+                    <br/><img class="img-thumbnail" src="static/picture/mac8_auto_cj4.png" alt="自动采集4">
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">播放地址替换？？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+                    因和谐原因，一些域名备案被取消导致用户网站部分视频不可观看，我们会在第一时间替换上新的域名解决此问题
+                    <br/>给用户增加重新替换播放地址的麻烦对此我们深感抱歉!
+                  <br/> UPDATE {pre}vod SET d_playurl=REPLACE(d_playurl, 
+					&#39;原始字符串&#39;, &#39;替换成其他字符串&#39;)
+                    <br/><b style="color: red">
+					！！！请务必将sql语句中的字段填写正确，原始字符与替换字符请按照对应关系填写修改</b>
+                    <br/><img class="img-thumbnail" src="static/picture/pg8.png" alt="苹果8修改播放地址">
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="MacCms10" style="display: none;">
+        <div class="jumbotron">
+            <h1>MacCms10(苹果CMS)教程</h1>
+            <p class="lead">本站采集插件已经可以适配苹果CMSV10，支持M3U8在线播放和云播，快速更新，稳定播放！</p>
+            
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何使用快播资源站采集？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+                    <br>请按以下步骤进行：依次点击<span style="color:red;">【采集】-【自定义资源库】-【添加】</span>，在弹出的对话框中填写：
+                    <br>资源名称：<span style="color:red;">快播资源站</span>，接口地址：<span style="color:red;">https://api.qq.com/inc/api.php</span><font color="#0000FF">【接口地址不能有空格,否则无法采集】</font>
+              <br>接口类型：xml，资源类型：视频
+                    <br>资源名称：<span style="color:red;">快播资源站（rem3u8）</span>，接口地址：<span style="color:red;">https://api.qq.com/inc/api_rem3u8.php</span>
+              <br>接口类型：xml，资源类型：视频
+                    <br>资源名称：<span style="color:red;">快播资源站（rere）</span>，接口地址：<span style="color:red;">https://api.qq.com/inc/api_rere.php</span>
+              <br>接口类型：xml，资源类型：视频
+                    <br>点击<span style="color:red;">【保存】</span>按钮即可，具体操作如下图
+					 <br> <img class="img-thumbnail" src="static/picture/caijiinit.png" alt="打开资源">
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">没有选中播放片源？？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+				有的会员朋友采集资源后，播放片源没有自动选择对应的数据，这种情况通常是因为没有添加对应的播放器导致！
+                    <br>需要先再网站后台添加对应的播放器，才可以实现播放。下载文件解压后按下图操作<a href="./jiexi/maccms10.zip">【下载播放器文件】</a>
+                    <br><img class="img-thumbnail" src="static/picture/addplayer.png" alt="苹果添加播放来源">
+                    <br>操作完成后点击后台右上角<span style="color:red;">[清缓存]</span>，此时再看数据，已经可以正确的选择播放器并且可正常播放了
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">设置自动采集</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+                    设置自动采集请按照图片指引操作
+                    <br/><img class="img-thumbnail" src="static/picture/cj_auto.png" alt="自动采集1">
+                    <br/><img class="img-thumbnail" src="static/picture/cj_auto2.png" alt="自动采集2">
+                    <br/><img class="img-thumbnail" src="static/picture/cj_auto3.png" alt="自动采集3">
+                    <br/><img class="img-thumbnail" src="static/picture/cj_auto4.png" alt="自动采集4">
+                </p>
+                <p class="jiaocheng">
+                    在宝塔上绑定此定时任务
+                    <br/><img class="img-thumbnail" src="static/picture/cj_auto5.png" alt="自动采集5">
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">后台自带解析口，不能播放请清除!!!</h3>
+            </div>
+            <div class="panel-body">
+                <h3 class="panel-title" style="color: red">清除后台自带解析口</h3>
+                    <br/><img class="img-thumbnail" src="static/picture/bfq.png" alt="苹果10">
+                   
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="FeiFei4" style="display: none;">
+        <div class="jumbotron">
+            <h1>飞飞影视系统3.4教程</h1>
+            <p class="lead">本站xml接口适用于飞飞3.4或飞飞4，请站长根据自己的喜好选择使用</p>
+            
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何配置安装采集？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+                <br>请按以下步骤进行：依次点击<span style="color:red;">【采集】-【添加资源库】</span>，然后依次输入
+                <br>资源名称：<span style="color:red;">快播资源站</span>，接口地址：<span style="color:red;">https://api.qq.com/inc/feifei3/</span>
+                <br>资源名称：<span style="color:red;">快播资源站(rem3u8)</span>，接口地址：<span style="color:red;">https://api.qq.com/inc/feifei3rem3u8/</span>
+                <br>资源名称：<span style="color:red;">快播资源站(rere)</span>，接口地址：<span style="color:red;">https://api.qq.com/inc/feifei3rere/</span>
+                    <br> 点击<span style="color:red;">【提交】</span>按钮即可，具体操作如下图
+                    <br><img class="img-thumbnail" src="static/picture/caijiinit.png" alt="添加采集">
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何增加播放器？</h3>
+            </div>
+            <div class="panel-body">
+                <h3 class="panel-title">飞飞3.4</h3>
+                <p class="jiaocheng">请按以下步骤进行：依次点击<span style="color:red;">【视频】-【播放器设置】</span>，然后在【添加播放器来源】依次输入
+                    <br>播放器名称：<span style="color:red;">rem3u8</span>&nbsp;&nbsp;&nbsp;播放器标志：<span style="color:red;">rem3u8</span>
+                  <br>播放器名称：<span style="color:red;">rere</span>&nbsp;&nbsp;&nbsp;播放器标志：<span style="color:red;">rere</span>
+                    <br><img class="img-thumbnail" src="static/picture/addplayer.png" alt="飞飞添加播放器">
+                </p>
+                <h3 class="panel-title">飞飞4.1</h3>
+                <p class="jiaocheng">请按以下步骤进行：依次点击<span style="color:red;">【系统】-【播放来源】</span>，然后在【添加播放器来源】依次输入
+                    <br>播放器名称：<span style="color:red;">rem3u8</span>&nbsp;&nbsp;&nbsp;播放器标志：<span style="color:red;">rem3u8</span>
+                    <br>播放器名称：<span style="color:red;">rere</span>&nbsp;&nbsp;&nbsp;播放器标志：<span style="color:red;">rere</span>
+                    <br> 点击<span style="color:red;">【保存按钮】</span>按钮即可
+                    <br>添加播放器后点击右上角【清空缓存】，此时因为我们添加了播放器，后台会自动选中正确的播放片源
+                    <br>但是可能依旧不能播放，下载解析包替换<span style="color:red;">Public\player</span>目录中的文件即可<a href="jiexi/feifei4.zip">【点击下载】</a>
+                    <br>另因为飞飞默认为云解析，可能不支持我们的资源，需要如下设置
+                    <br><img class="img-thumbnail" src="static/picture/playeroption.png" alt="飞飞播放器配置">
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">自动采集？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">下载压缩包<a href="auto/ff_auto.zip">【点击下载】</a>解压放在网站根目录
+                    <br>里面有linux.php和cfg.php两个文件
+                    <br>linux.php 文件可以自己定义名字，目的就是不让人知道你的文件名字是什么,注意名字不要有符号。
+                    <br>cfg.php的文件名就不要改了，用编辑器打开按照实际内容修改，最好不要用记事本打开
+                    <br>具体操作如下图
+                    <br><img class="img-thumbnail" src="static/picture/ff_auto_cj8.png" alt="飞飞自动采集">
+                    <br><img class="img-thumbnail" src="static/picture/ff_auto_cj5.png" alt="飞飞自动采集1">
+                    <br><span style="color: red">
+				链接地址那里仅仅保留你自己复制的其他多余的请去除(第三个红框处)，若有多个请使用&#39;,&#39;分隔</span>
+                    <br><img class="img-thumbnail" src="static/picture/ff_auto_cj7.png" alt="飞飞自动采集">
+                    <br><span style="color: red">设置好了之后在宝塔上绑定此任务</span>
+                    <br><img class="img-thumbnail" src="static/picture/ff_auto_cj6.png" alt="飞飞自动采集1">
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+    <div id="MaxCms" style="display: none;">
+        <div class="jumbotron">
+            <h1>maxcms（马克思CMS）</h1>
+            <p class="lead">本站采集插件已经可以适配MaxCms4.0，支持M3U8在线播放，快速更新，稳定播放！</p>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何使用快播资源站采集？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">第一步，下载所需插件<a href="chajian/maxcms.zip">【点击下载】</a>，下载完成后上传文件到后台目录（默认为admin）
+                    <br>之后请按以下步骤进行：依次点击<span style="color:red;">【首页】-【快捷菜单】</span>，然后增加一行<br><span style="color:red;">快播资源站,admin_rezy.asp</span>
+                    <br>点击<span style="color:red;">【修改】</span>按钮即可，具体操作如下图
+                    <br><img class="img-thumbnail" src="static/picture/caijiinit.png" alt="添加菜单">
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何增加rem3u8播放器？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">第一个，修改<span style="color:red;">admin\imgs\main.js</span>,在列表最后添加两行：
+                    <br><span style="color:red;">	if(str.indexOf(&#39;rem3u8&#39;)&gt;-1) 
+				return &quot;rem3u8&quot;
+          <br>if(str.indexOf(&#39;rere&#39;)&gt;-1) return &quot;rere&quot;</span>
+                    <br><img class="img-thumbnail" src="static/picture/addplayer.png" alt="maxcms添加播放器">
+                    <br>第二个，修改<span style="color:red;">inc\playerKinds.xml</span>,在列表最后添加两行：
+                    <br><span style="color:red;">&lt;player open=&quot;1&quot; sort=&quot;0&quot; 
+				flag=&quot;rem3u8&quot; 
+				des=&quot;rem3u8&quot;&gt;&lt;intro&gt;&lt;![CDATA[无需安装任何插件，即可快速播放]]&gt;&lt;/intro&gt;&lt;/player&gt;
+          <br>&lt;player open=&quot;1&quot; sort=&quot;0&quot; flag=&quot;rere&quot; 
+				des=&quot;rere&quot;&gt;&lt;intro&gt;&lt;![CDATA[无需安装任何插件，即可快速播放]]&gt;&lt;/intro&gt;&lt;/player&gt;</span>
+                    <br><img class="img-thumbnail" src="static/picture/addplayer2.png" alt="maxcms添加播放器2">
+                    <br>此时因为我们添加了播放器，后台会自动选中正确的播放片源
+                    <br>但是可能依旧不能播放，下载解析包替换<span style="color:red;">player\playdy</span>目录中的文件即可<a
+                            href="jiexi/maxcms.zip">【点击下载】</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="CtCms" style="display: none;">
+        <div class="jumbotron">
+            <h1>CtCms（赤兔CMS）</h1>
+            <p class="lead">本站采集插件拥有<span style="color:red;">[赤兔CMS1.0]</span>和<span style="color:red;">[赤兔CMS2.0]</span>两个版本，支持M3U8在线播放，快速更新，稳定播放！</p>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何使用快播资源站采集？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">第一步，请分别下载所需插件
+                	<br/><a href="chajian/ctcms.zip">【赤兔】</a>
+                    <br/>下载完成后上传文件到网站根目录
+                    <br>采集以前,请<span style="color:red;">添加播放器</span>
+                    <br>采集方法:视频库管理-&gt;视频采集-&gt;快播资源站
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何增加播放器？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">本站共有两个播放器,请复制下面的代码添加
+				 <br><span style="color:red;">rem3u8</span>
+                    代码:&lt;iframe 
+				src=&quot;https://www.rereplayer.com/dp/?url={url}&quot; 
+				marginwidth=&quot;0&quot; marginheight=&quot;0&quot; border=&quot;0&quot; scrolling=&quot;no&quot; 
+				frameborder=&quot;0&quot; topmargin=&quot;0&quot; width=&quot;100%&quot; 
+				height=&quot;100%&quot; allowfullscreen &gt;&lt;/iframe&gt;
+                    <br><span style="color:red;">rere</span>
+                    代码:&lt;iframe 
+				src=&quot;{url}&quot; 
+				marginwidth=&quot;0&quot; marginheight=&quot;0&quot; border=&quot;0&quot; scrolling=&quot;no&quot; 
+				frameborder=&quot;0&quot; topmargin=&quot;0&quot; width=&quot;100%&quot; 
+				height=&quot;100%&quot; allowfullscreen &gt;&lt;/iframe&gt;
+
+                    <br>具体操作,如下图(已rem3u8为例,另一个rere同理):
+                    <br><img class="img-thumbnail" src="static/picture/addplyaer.png" alt="添加播放器">
+                    <br>此时因为我们添加了播放器，后台会自动选中正确的播放片源
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="DuoMiCms" style="display: none;">
+        <div class="jumbotron">
+            <h1>DuoMiCms(多米CMS)教程</h1>
+            <p class="lead">本站采集插件已经可以适配多米CMS，支持M3U8在线播放，快速更新，稳定播放！</p>
+            
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何使用快播资源站采集？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+                <br>请按以下步骤进行：依次点击<span style="color:red;">【采集】-【采集资源库管理】</span>，然后依次输入
+                <br>资源库名称：<span style="color:red;">快播资源站</span>
+                <br>资源库地址：<span style="color:red;">https://api.qq.com/inc/ldg_sea.php</span>
+                <br>资源库地址（rem3u8）：<span style="color:red;">https://api.qq.com/inc/ldg_searem3u8.php</span>
+                <br>资源库地址（rere）：<span style="color:red;">https://api.qq.com/inc/ldg_searere.php</span>
+                <br> 点击<span style="color:red;">【增加】</span>按钮即可，具体操作如下图
+				<br><img class="img-thumbnail" src="static/picture/caijiinit.png" alt="添加采集">
+                    <br>需要采集时,依次点击<span style="color:red;">【采集】-【采集资源库列表】-快播资源站</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">播放暂没有数据或无法播放？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+				有的会员朋友采集资源后，播放片源没有自动选择对应的数据，这种情况通常是因为没有添加对应的播放器导致！
+                    <br>需要先再网站后台添加对应的播放器，然后再安装对应的播放器文件，才可以实现播放。
+                    <br>以rem3u8播放器为例（<span style="color:red;">还有一个rere播放器哟</span>）
+                    <br>请按以下步骤进行：依次点击<span style="color:red;">【全局】-【播放来源】</span>
+                    <br>然后依次输入来源名称：<span style="color:red;">rem3u8</span>&nbsp;&nbsp;后缀：<span
+                            style="color:red;">rem3u8</span>
+                    <br> 点击<span style="color:red;">【保存】</span>按钮,提示成功后点击<span style="color:red;">【更新】</span>即可，具体操作如下图
+                    <br><img class="img-thumbnail" src="static/picture/addplayer.png" alt="添加播放来源">
+                    <br>此时因为我们添加了播放器，将不再提示暂没有数据，但是可能依旧不能播放，下载解析包替换<span style="color:red;">\player\html</span>目录中的文件即可<a
+                            href="jiexi/duomi.zip">【点击下载】</a>
+                </p>
+            </div>
+        </div>
+
+	</div>
+
+
+    <div id="ZanPianCms" style="display: none;">
+        <div class="jumbotron">
+            <h1>ZanPianCMS（赞片CMS）V8</h1>
+            <p class="lead">本站采集插件已经可以适配赞片CMS V8，支持M3U8在线播放，快速更新，稳定播放！</p>
+            
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">如何使用快播资源站采集？</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+                    <br>资源库名称：<span style="color:red;">快播资源站</span>
+                    <br>快播资源网综合资源<span style="color:red;">https://api.qq.com/inc/api.php?ac=list</span>
+                    <br>快播资源网（rem3u8）：<span style="color:red;">https://api.qq.com/inc/api_rem3u8.php?ac=list</span>
+					<br>快播资源网（rere）：<span style="color:red;">https://api.qq.com/inc/api_rere.php?ac=list</span>
+                </p>
+                <p class="jiaocheng">
+                    请按照下图所示打开添加采集页面并添加采集api
+                    <br><img class="img-thumbnail" src="static/picture/caijiopen.png" alt="采集添加引导图">
+                    <br>添加方法如下图
+                    <br><img class="img-thumbnail" src="static/picture/caijiinit.png" alt="采集添加引导">
+                    <br>例子如下图
+                    <br><img class="img-thumbnail" src="static/picture/caijiinit1.png" alt="采集添加引导">
+                </p>
+                填写完成后点击最下方的<b style="color: red">[确定]</b>按钮即可
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">继续添加播放器</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+				有的站长朋友采集资源后，播放片源没有自动选择对应的数据，这种情况通常是因为没有添加对应的播放器导致！
+                    <br> 需要先再网站后台添加对应的播放器，才可以实现播放,具体操作流程如下图:
+                    <br><img class="img-thumbnail" src="static/picture/addplayer.png" alt="添加播放器">
+                    <br/>在弹出的窗口中,填写下方的信息
+                    <br/><b style="color: red">播放器名称和标志:rem3u8<br/>
+				解析地址： //www.rereplayer.com/dp/?url=</b>
+                  <br>解析口前面不加http 是为了跟随网站而定，你网站是有ssl他有跟加上s没有，ssl的就不会加s
+                    <br/>另一个是
+                    <br/><b style="color: red">播放器名称和标志:rere<br/>解析地址：留空</b>
+                    <br/><img class="img-thumbnail" src="static/picture/addplayer2.png" alt="添加播放器">
+                  <br>例子图： 
+                  <br/><img class="img-thumbnail" src="static/picture/addplayer3.png" alt="添加播放器">
+                    <br/>填写完成后点击最下方的<b style="color: red">[确定]</b>按钮即可
+                    <br/>全部操作完成后点击<b style="color: red">[清空缓存]</b>
+                  <br/> 此时再看数据，已经可以正确的选择播放器并且可正常播放了</b>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+  
+
+    <!--播放器加载缓存设置-->
+    <div id="PlayerCacheTime" style="display: none;">
+        <div class="jumbotron">
+            <h1>播放器缓存加载设置</h1>
+            <p class="lead">此引导可为广大站长自由设置播放器缓存加载</p>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">修改播放器缓存参数</h3>
+            </div>
+            <div class="panel-body">
+                <p class="jiaocheng">
+				在网站目录中找到播放器Dplayer文件夹，找到hls.min.js文件并使用编辑器打开
+
+                    <br/><img class="img-thumbnail" src="static/picture/player_js.png" alt="播放器js文件">
+                    <br> 找到需要修改的三个参数并修改,具体操作流程如下图:
+                    <br><img class="img-thumbnail" src="static/picture/up_playercache.png" alt="修改缓存参数">
+                    <br/>填写完成保存
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="static/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/layer.js"></script>
+    <script src="static/js/ldg.js"></script>
+    <script>
+        function gomain() {
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
+
+<span style="display:none"><script language="javascript" src="static/js/click.js" charset="gb2312"></script></span>

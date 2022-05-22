@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <title>{$param.wd}搜索结果 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$param.wd}搜索结果" />
+    <meta name="description" content="{$param.wd}搜索结果" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<style>
+    .qy-actor-search{font-size:0;border-top: 1px solid #222;margin-bottom: 20px;padding-top: 20px}
+    .qy-actor-search .qy-mod-link-wrap{ display: inline-block; padding-right: 20px; vertical-align: top; width: 120px; height: 120px; }
+    .qy-actor-search .ec-jaus { border-radius: 50%; }
+    .qy-actor-search .result-right{ position: relative; display: inline-block; width: 80%; min-height: 101px; vertical-align: top; font-size: 14px; }
+    .qy-actor-search .qy-search-result-tit{ position: relative; margin-bottom: 5px; line-height: 30px; }
+    .qy-actor-search .main-tit { display: inline-block; margin-right: 5px; font-size: 16px; color: #ff6000; vertical-align: top; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .qy-actor-search .tit-more-btn{ float: right; display: inline-block; min-width: 62px; height: 30px; line-height: 30px; padding: 0 12px; text-align: center; font-size: 14px;border-radius: 30px; }
+    .qy-actor-search .qy-search-info{ display: inline-block; width: 50%; margin-bottom: 2px; font-size: 12px; line-height: 20px; vertical-align: top; }
+</style>
+<div class="ec-body-z search-body cf">
+    <div class="ec_sojg">搜索" <strong class="blue">{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</strong>"结果</div>
+    <div class="ec-left-z l" id="list-focus">
+        {maccms:actor num="10" paging="yes" pageurl="actor/search" order="desc" by="time"}
+        <div class="qy-actor-search">
+            <div class="qy-mod-link-wrap">
+                <a title="{$vo.actor_name}" href="{$vo|mac_url_actor_detail}" target="_blank" class="ec-jaus eclazy" data-original="{$vo.actor_pic|mac_url_img}" style="background-image: url({$conch.dscms.gx.lazy3});"></a>
+            </div>
+            <div class="result-right">
+                <h3 class="qy-search-result-tit">
+                    <a target="_blank" href="{$vo|mac_url_actor_detail}" title="{$vo.actor_name}" class="main-tit">{$vo.actor_name}</a>
+                    <a target="_blank" href="{$vo|mac_url_actor_detail}" class="button tit-more-btn">查看详情</a>
+                </h3>
+                <div class="qy-search-info">人气:{$vo.actor_hits}</div>
+                <div class="qy-search-info">生日:{$vo.actor_birthday}</div>
+                <div class="qy-search-info">身高:{$vo.actor_height}</div>
+                <div class="qy-search-info">地区:{$vo.actor_area} </div>
+                <div class="qy-search-info" style="height: 40px;width: 100%;overflow: hidden;">简介:{$vo.actor_content|mac_filter_html|mac_default='暂无简介'}</span>
+                </div>
+            </div>
+        </div>
+        {/maccms:actor}
+        <div class="ui-bar list-page fn-clear">
+            {include file="public/paging"}
+        </div>
+    </div>
+    <div class="r ec-right-z" id="xihuan">
+        {include file="module/right_list"}
+    </div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Cập nhật {$obj.type_title}-Gợi ý {$obj.type_title}-Trang {$param.page} - {$maccms.site_name}</title>
+    <title>最新{$obj.type_title}-推荐{$obj.type_title}-第{$param.page}页 - {$maccms.site_name}</title>
     <meta name="keywords" content="{$obj.type_key}" />
     <meta name="description" content="{$obj.type_des}" />
     {include file="public/include"}
@@ -25,7 +25,7 @@
                     {if condition='$key neq 0'}
                     <div class="space-line-bold"></div>
                     {/if}
-                    <div class="block-box-item"><a class="block-box-content" href="{:mac_url_type($obj,['id'=>'1'],'show')}" title="Xem tất cả {$obj.type_title}"><strong class="title">Thư viện videos</strong></a>
+                    <div class="block-box-item"><a class="block-box-content" href="{:mac_url_type($obj,['id'=>'1'],'show')}" title="查看全部{$obj.type_title}"><strong class="title">Thư viện videos</strong></a>
                         <div class="block-box-bg"><i class="icon-cate-dy"></i></div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
         {/if}
     </div>
     <div class="module-footer module-type">
-        <a href="{:mac_url_type($obj,['id'=>'1'],'show')}" class="load-all" title="Tất cả {$obj.type_title}">Tất cả{$obj.type_title}<i class="icon-arrow-right-o"></i></a>
+        <a href="{:mac_url_type($obj,['id'=>'1'],'show')}" class="load-all" title="全部{$obj.type_title}">Tất cả{$obj.type_title}<i class="icon-arrow-right-o"></i></a>
     </div>
 </main>
 {include file="public/foot"}

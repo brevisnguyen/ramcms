@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+     <title>{$obj.type_name} - {$maccms.site_name}</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	 <meta name="keywords" content="{$obj.type_key}" />
+	<meta name="description" content="{$obj.type_des}" />
+     {include file="public/include"}
+ </head>
+ <body>
+ {include file="public/head"}
+ {include file="public/nav"}
+  <div class="addition-content" style="margin-top: 6px;">
+	<p class="videotitle">
+		<span class="videoName" style="width:370px;">资讯名称</span>
+		<span class="region" style="width:300px;">资讯类别</span>
+			<span class="address">获取地址</span>
+		<span class="time">更新时间</span>  
+	</p>
+<ul class="videoContent">
+{maccms:art num="30" paging="yes" type="current" order="desc" by="time" }		
+<li>
+<a class="videoName" href="{:mac_url_art_detail($vo)}" target="_blank" style="width:370px;">{$vo.art_name}
+<img class="new" src="{$maccms.path_tpl}img/new.gif">
+</a>
+
+<a class="category" style="width:300px;" href="{:mac_url_type($vo.type)}">{$vo.type.type_name}</a>  
+<a href="{:mac_url_art_detail($vo)}" class="address">点击进入</a>
+<span class="time">{$vo.art_time|mac_day=###,'color'}</span>
+</li>
+{/maccms:art} 
+</ul>
+</div>
+<div class="clear"></div>
+{include file="public/paging"}
+<div class="clear"></div>
+ {include file="public/foot"}
+ </body>
+</html>

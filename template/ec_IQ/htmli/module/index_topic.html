@@ -1,0 +1,20 @@
+{if condition="$conch['dscms']['module']['6'] eq index_topic"}
+<div class="wow fadeInUp top20">
+<div class="ant-tabsbar">
+    <div class="ant-tabscontent cf">
+        <h2 class="tabs-moduletitle l"><a href="{:mac_url_topic_index()}" title="最新专题" class="tabs-maintitle l">最新专题</a></h2>
+        <div class="tabs-nav l col7">
+            {maccms:topic num="4" level="1" order="desc" by="time"}
+            <a class="col2b" href="{:mac_url_topic_detail($vo)}" title="">{$vo.topic_name}</a><i class="slash">|</i>
+            {/maccms:topic}
+            <a class="col2b" href="{:mac_url_topic_index()}">更多 &gt;</a>
+        </div>
+    </div>
+</div>
+<div class="recommend-album-list listdh">
+    {maccms:topic num="5" order="desc" by="time"}
+    {include file="module/public_list"}
+    {/maccms:topic}
+</div>
+</div>
+{/if}

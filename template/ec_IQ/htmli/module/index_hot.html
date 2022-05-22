@@ -1,0 +1,28 @@
+{if condition="$conch['dscms']['module']['1'] eq index_hto"}
+<div class="index-hotnow wow fadeInUp" style="overflow: hidden;">
+    <div class="module-moduleheader cf ecinfolist">
+        <h2><span class="module-maintitle col1b">热播排行</span></h2>
+        <div class="tabs-nav l">
+            <a class="tabs-more col2" style="margin-left:0" href="javascript:;">今日更新 <span class="gxtag ecblue col1b">{:mac_data_count($obj.type_id,'today','vod')}</span> 部  共 <span class="gxtag ecblue col1b">{:mac_data_count($obj.type_id,'all','vod')} </span>部</a>
+        </div>
+    </div>
+    <div class="hotgrow listdh" id="hotgrow">
+        {maccms:vod num="8" type="all" order="desc" by="hits"}
+        <div class="pack-ykpack playhid{$key}">
+            <div class="pack-packcover coverbox returl">
+                <a class="aplus-exp ecimgbor ec-jabj eclazy" data-original="{:mac_url_img($vo.vod_pic)}" style="background-image: url({$conch.dscms.gx.lazy1});" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="{$vo.vod_name}" title="{$vo.vod_name}">
+                <div class="pack-bg"></div>
+                </a>
+                <span class="pack-prb">{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}</span>
+            </div>
+            <div class="pack-infolist">
+                <div class="pack-title ecinfolist">
+                    <a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="{$vo.vod_name}{$conch.dscms.seo.votitle}">{$vo.vod_name}</a>
+                </div>
+                <div class="pack-subtitle">{$vo.vod_actor|mac_default=$vo.vod_area.$vo.type.type_name|mac_filter_html}</div>
+            </div>
+        </div>
+        {/maccms:vod}
+    </div>
+</div>
+{/if}

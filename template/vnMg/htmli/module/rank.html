@@ -1,0 +1,22 @@
+<li class='sum-li {if condition="$key==1"}rankblk{/if}'>
+	<div class='ec-top-list-item cf'>
+		<div class="mod-left">
+			<a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" class="mod-img-link ecimgbor"><img src="{:mac_url_img($vo.vod_pic)}" class="mod-img">
+				<div class="icon-tl"><i class="ec-top-sprite rank-nub rank-nub-{$key}">{$key}</i></div>
+			</a>
+		</div>
+		<div class="mod-right">
+			<h3 class="main-title"><a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" class="anthology-wrap title-link">{$vo.vod_name}</a></h3>
+			<p class="sub-des">{$vo.vod_year}年上映</p>
+			<div class="sub-title"><i class="qy-svgicon qy-svgicon-hot fa icon-hotfill"></i><span class="count">{$vo.vod_hits}</span></div>
+		</div>
+	</div>
+	<div class="ec-top-title-item right80">
+		<div class="title-left-box">
+			<i class="title-nub No1 ec-rank{$key}">{$key}</i><a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" class="anthology-wrap title-link">{$vo.vod_name}</a>
+		</div>
+		<div class="title-right-box">
+			<div class="sub-title"><i class="ec-svgicon ec-svgicon-hot fa icon-hotfill"></i><span class="count">{$vo.vod_hits}</span></div>
+		</div>
+	</div>
+</li>

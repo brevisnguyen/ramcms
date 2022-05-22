@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<link rel="shortcut icon" href="/template/default/img/favicon.png" type="image/x-icon" />
+  <title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}kết quả tìm kiếm - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}kết quả tìm kiếm" />
+    <meta name="description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}kết quả tìm kiếm" />
+
+ {include file="public/include"}
+</head>
+<body>{include file="public/head"}
+<div class="container">
+<div class="list-nav">
+	<span>Vị trí hiện tại：<a href="/">Nhà riêng</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}kết quả tìm kiếm</span>
+</div>
+<div class="addition-content">
+	<p class="videotitle">
+		<span class="videoName" style="width:370px;">tiêu đề video</span>
+		<span class="region" style="width:200px;">Khu phim</span>
+		<span class="category">thể loại video</span>  
+		<span class="address">lấy địa chỉ</span>
+		<span class="time">cập nhật thời gian</span>  
+	</p>
+<ul class="videoContent">
+ {maccms:vod num="24" paging="yes" pageurl="vod/search" order="desc" by="time"}
+
+<li>
+<a class="videoName" href="{:mac_url_vod_detail($vo)}" style="width:370px;">{$vo.vod_name}<i>{if condition="$vo.vod_serial gt 0"}第{$vo.vod_serial}set{else/}{$vo.vod_remarks}{/if}</i></a>
+			<span class="region" style="width:200px;">{$vo.vod_area}</span>
+			<span class="category type">{$vo.type.type_name}</span>  
+			<a href="{:mac_url_vod_detail($vo)}" class="address">bấm để vào</a>
+			<span class="time1">{$vo.vod_time|date='Y-m-d',###}</span>
+</li>
+{/maccms:vod}
+</ul>
+</div>
+<div class="clear"></div>
+<div class="kscont">
+	<div class="pages">
+		{include file="public/paging"}
+	</div>  
+</div>
+</div>
+<div class="clear"></div>
+{include file="public/foot"}
+</body>
+</html>

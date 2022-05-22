@@ -56,7 +56,7 @@
                     <div class="video-player-handle">
                         {if condition="$obj.type_id_1 neq 1"}
                         {if$param.nid neq $obj['vod_play_list'][$param['sid']]['url_count']}
-                        <a href="{$obj.player_info.link_next}" class="btn-block-o handle-btn" title="Xem {$obj.vod_name}-{if condition="$obj.type_id_1==2"}Tập {$param.nid}{else /}Bộ sưu tập phát trực tuyến HD{/if}"><i class="icon-next"></i><p class="block-name">Tập tiếp</p></a>
+                        <a href="{$obj.player_info.link_next}" class="btn-block-o handle-btn" title="Xem {$obj.vod_name}-{if condition="$obj.type_id_1==2"}Tập {$param.nid}{else /}Bộ sưu tập phát trực tuyến HD{/if}"><i class="icon-next"></i><p class="block-name">下一集</p></a>
                         {/if}
                         {/if}
                         <div class="drop pc"><span class="btn-block-o handle-btn handle-more" title="Dùng điện thoại và quét"><i class="icon-qrcode"></i>
@@ -162,7 +162,7 @@
             </div>
             <div class="module-list module-lines-list">
                 <div class="module-items">
-                    {maccms:vod num="16" type="all" order="desc" by="hits"}
+                    {maccms:vod num="16" type="'.$obj['type_id'].'" order="desc" by="time"}
                     {include file="assembly/vodlist"}
                     {/maccms:vod}
                 </div>
@@ -171,7 +171,7 @@
         <div class="module">
             <div class="module-heading">
                 <h2 class="module-title">Gợi ý liên quan</h2>
-                <a class="more" href="{:mac_url_type($obj,['id'=>'type_id'],'show')}" title="Thêm">Xem thêm<i class="icon-arrow-right-o"></i></a>
+                <a class="more" href="{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}" title="Thêm">Xem thêm<i class="icon-arrow-right-o"></i></a>
             </div>
             <div class="module-list module-lines-list">
                 <div class="module-items">

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>{$obj.vod_name}剧情介绍--{$maccms.site_name}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="{$obj.type.type_name}{$obj.vod_name}_{$maccms.site_name}" />
+  <meta name="description" content="{$obj.type.type_name}{$obj.vod_name}_{$maccms.site_name}" />
+  <link href="{$maccms.path_tpl}css/layui.css" rel="stylesheet" type="text/css" />
+  <script src="{$maccms.path_tpl}js/clipboard.min.js"></script>
+   <script src="{$maccms.path_tpl}js/layui.js"></script>
+  {include file="public/include"}
+ </head>
+ <body>
+ {include file="public/head"}
+ {include file="public/nav"}
+ <div class="list-nav">
+	<a>{:lang(current_location)}:</a>
+	<a href='{$maccms.path}'>{:lang(home_page)}</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href='{:mac_url_type($obj,[],'type')}'>{$obj.type.type_name}</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;{$obj.vod_name}</div>
+<div class="width1200 white">
+   <p class="whitetitle">名称：{$obj.vod_name}</p>
+   <div class="people">
+	   <div class="left">
+			<img src="{:mac_url_img($obj.vod_pic)}">  
+	   </div>
+	   <div class="right">
+		   <p>类型：<a href="6.html">{$obj.type.type_name}</a></p>
+		   <p>导演：{$obj.vod_director} </p>
+		   <p>演员：{$obj.vod_actor} </p>
+		   <p>地区：{$obj.vod_area}</p>
+		   <p>语言：{$obj.vod_lang}</p>
+		   <p>上映：{$obj.vod_year}</p>
+		   <p>片长：{$obj.vod_duration}</p>
+		   <p>更新时间：{$obj.vod_time|mac_day=###,'color'}</p>
+	   </div>
+	   <div class="clear"></div>
+	</div>
+</div>
+<!-- end 详细信息 -->
+		<div class="width1200 white" id="content">
+	   <p class="whitetitle" style="text-align:left;padding-left:10px;">剧情介绍</p>
+	   <div>{$obj.vod_content|mac_filter_html}</div>
+	   </div>
+	   <div class="clear"></div>
+<!--播放地址-->	   
+<div class="width1200 white" id="content">
+<p class="whitetitle" style="text-align:left;padding-left:10px;margin-bottom: 0;">播放类型</p>
+<div style="margin-left:10px;margin-right:10px;">
+{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+<h4><div style="padding: 15px 0;line-height: 25px;border-bottom: 1px solid #eee;font-size: 16px;">{$vo.player_info.show}</div></h4>
+<div class="playlist wbox">
+<ul style="position: relative;max-height: 358px;overflow: auto;">
+{maccms:foreach name="vo.urls" id="vo2" key="key2"}	
+<li class="text-style">
+<a title="{$vo2.name}" href="javascript:;" class="copy_text">
+<font color="red">{$vo2.name}${$vo2.url}</font></a>
+</li>
+{/maccms:foreach}
+</ul>
+<li class="text-style">
+<a style="cursor:pointer;height: 21px;line-height: 21px;padding: 0 11px;background: white;border: 1px red solid;border-radius: 3px;color: red;display: inline-block;text-decoration: none;font-size: 12px;outline: none;" class="copy_checked" href="javascript:;">复制全部</a>
+<span style="color: #999;float:right;" >tips：点击链接可以复制哦</span>
+</li>
+</div>
+{/maccms:foreach}
+</div>
+</div>
+{include file="public/foot"}
+<style>
+.pull-right{
+	float:right;
+	padding: 0 11px;
+	color: blue;
+	text-decoration: none;
+	font-size: 12px;
+	outline: none;
+	cursor:pointer;
+}
+.text-style{
+	    position: relative;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+</style>
+<script type="text/javascript">	
+	$(".copy_btn").each(function(){
+		var text1 = $(this).attr("data-text");		
+		var clipboard = new Clipboard(this, {
+			text: function() {									
+				return text1;
+			}
+		});
+		clipboard.on('success', function(e) {
+			alert("地址复制成功");
+		});
+	});
+	
+	$(".copy_text").each(function(){
+		var text2 = $(this).text();
+		var clipboard = new Clipboard(this, {
+			text: function() {									
+				return text2;
+			}
+		});
+		clipboard.on('success', function(e) {
+			alert("地址复制成功");
+		});
+	});
+	
+	$(".copy_checked").each(function(){		
+		var checked_url=[];						
+		$(this).parent().parent().find("li").find(".copy_text").each(function(){
+			checked_url.push($(this).text());
+		});	
+		var clipboard = new Clipboard(this, {
+			text: function() {				
+				return checked_url.join('\n');
+			}
+		});
+		clipboard.on('success', function(e) {
+			alert("地址复制成功");
+		});
+	});
+</script>
+ </body>

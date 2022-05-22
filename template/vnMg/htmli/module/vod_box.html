@@ -1,0 +1,16 @@
+<div class="pack-ykpack vodhid{$key}">
+    <div class="pack-packcover ebybj">
+        <a class="aplus-exp" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="{$vo.vod_name}{$conch.dscms.seo.votitle}">
+        <div class="ec-jabj eclazy" data-original="{:mac_url_img($vo.vod_pic)}" style="background-image: url({$conch.dscms.gx.lazy1});"></div>
+        <div class="pack-bg"></div>
+        <span class="pack-prb"><span>{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}</span></span>
+        </a>
+        <span class="pack-prt" style="background:#{$vo.vod_color};">{$vo.vod_class|mac_substring=2}</span>
+    </div>
+    <div class="pack-infolist">
+        <div class="pack-title ecinfolist">
+            <a class="channelname" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="{$vo.vod_name}{$conch.dscms.seo.votitle}">{$vo.vod_name}</a>
+        </div>
+        <div class="pack-subtitle col4c">{$vo.vod_actor|mac_default=$vo.vod_area.$vo.type.type_name|mac_filter_html}</div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>播放记录 - 会员中心 -{$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}"/>
+<meta name="description" content="{$maccms.site_description}"/>
+{include file="public/include" /}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<div class="headtopnull"></div>
+<div id="member" class="ec-body-z fn-clear cf">
+	<div class="left">{include file="user/left_title"}</div>
+	<div id="tab" class="right">
+		<div class="user_body">
+			<div class="list cf">
+				<ul class="fn-clear">
+					<li class="cur"><a href="javascript:;">播放记录</a></li>
+				</ul>
+			</div>
+			<div class="content_detail cf">
+				<div class="playbtn o_play">
+					<a class="btn btn_primary" id="btnClear" href="javascript:;"><i class="fa fa-trash"></i>&nbsp;清空</a>
+				</div>
+			</div>
+		</div>
+		<div class="list-inner-box cf listdh top20">
+			<ul class="list-inner-playhistory">
+				{volist name="list" id="vo"}
+				<li class="video-watch-pc">
+					<div class="listpic ecimgbor ec-jabj eclazy" data-original="{$vo.data.pic}" style="background-image: url({$conch.dscms.gx.lazy1});">
+						<span class="mask-txt">{$vo.data.type.type_name}</span>
+						<span class="mask-bg"></span>
+						<a href="{$vo.data.link}" class="col1 mask-play mask-conti fen"><i class="fa icon-zuobiao"></i>继续看</a>
+						<a href="javascript:;" onclick="delData({$vo.ulog_id})" class="col1 mask-nextplay mask-conti"><i class="fa fa fa-trash"></i>删除</a>
+					</div>
+					<p class="listtxt">
+						<span class="til"><a href="{$vo.data.link}" title="{$vo.data.name}">{$vo.data.name}[{$vo.ulog_sid}号资源]</a></span><span class="watchtxt"><i class="fa icon-attention"></i>观看到<em>第{$vo.ulog_nid}集</em></span>
+					</p>
+				</li>
+				{/volist}
+			</ul>
+		</div>
+		{include file="user/paging" /}
+	</div>
+</div>
+<script>
+	function delData(ids,all){
+		var msg ='删除';
+		if(all==1){
+			msg='清空';
+		}
+		if(confirm('确定要'+msg+'记录吗')){
+			$.post("{:url('user/ulog_del')}",{ids:ids,type:4,all:all},function(data) {
+				if (data.code == '1') {
+					alert('删除成功');
+					location.reload();
+				}else {
+					alert('删除失败：' + data.msg);
+				}
+			}, 'json')
+		}
+	}
+	$("#btnClear").click(function(){
+		delData('',1);
+	});
+</script>
+{include file="public/foot"}
+</body>
+</html>

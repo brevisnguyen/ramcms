@@ -1,0 +1,65 @@
+{if condition="$conch['dscms']['module']['3'] eq index_taobao"}
+<div class="wow fadeInUp top20">
+<div class="ant-tabsbar">
+    <div class="ant-tabscontent cf">
+        <h2 class="tabs-moduletitle l"><a href="{$conch['dscms']['taobaoul']}" title="商品推荐" class="tabs-maintitle l">商品推荐</a></h2>
+        <div class="tabs-nav l col7">
+            <a class="col2b" href="{$conch['dscms']['taobaoul']}">更多 &gt;</a>
+        </div>
+    </div>
+</div>
+<?php
+error_reporting(0);
+ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322)');
+header('Content-Type:text/html;charset=UTF-8');
+$mkcms_dataoke = $conch['dscms']['taobaoul'];
+function get_between($input, $start, $end) {
+  $substr = substr($input, strlen($start)+strpos($input, $start),
+ (strlen($input) - strpos($input, $end))*(-1));
+  return $substr;
+}
+$durl=$mkcms_dataoke."/index.php?r=l&page=1&limit=8";
+$hurl=file_get_contents($durl);
+$json=get_between($hurl,'lsitData=[','var detailUrl=');
+$json=str_replace(";","",$json);
+$json="[".$json;
+$html=json_decode($json, true);
+?>
+<div class="taobaoke listdh" style="margin-bottom: 28px;">
+    <?php foreach ($html as $cc => $dd) { ?>
+    <a target="_blank" class="goods_list ebybj" href="{$conch['dscms']['taobaoul']}index.php?r=l/d&u=587183&id=<?= $dd[id]  ?>&from=dtk">
+        <div class="img ec-jakt eclazy" data-original="<?= $dd[pic]  ?>" style="background-image: url({$conch['dscms']['gx']['lazy2']});"></div>
+        <div class="content">
+            <p class="co_tit"><span class="siz channelname"><i class="tag-tmall" title="天猫"></i><?= $dd[d_title]  ?></span></p>
+            <div class="price cf">
+                <div class="tip"></div>
+                <i class="p">￥</i>
+                <span><?= $dd[jiage]  ?></span>
+                <b class="fr r"><i><?= $dd[quan_jine]  ?></i>元券</b>
+            </div>
+        </div>
+    </a>
+    <?php } ?>
+</div>
+</div>
+<style>
+    .taobaoke .content{padding: 10px;}
+    .taobaoke .goods_list{background-color:#25252b;display:inline-block;box-sizing:border-box;vertical-align:top;width:206.5px;margin-right:16px;border-radius:4px}
+    .taobaoke .img{width:100%;height:206px;border-radius: 4px 4px 0 0;}
+    .taobaoke .siz{color:hsla(0,0%,100%,.87);line-height:22px;font-size:16px;display:block;height:22px}
+    .taobaoke .goods_list .content .co_tit .tag-tmall{background:url(https://cmsstatic.ffquan.cn/images/home/tmall.png?v=2020111432252) center no-repeat;background-size:contain;height:22px;width:15px;float:left;margin:0 5px 0 0}
+    .taobaoke .price{color:#ebba73;font-size:18px;height:35px;line-height:35px;margin:5px 0 0 -4px}
+    .taobaoke .goods_list .content .price b{color:#fc4d52;border:1px solid #fc4d52;line-height:14px;font-size:12px;border-radius:2px;font-weight:400;padding:2px 7px;margin:9px 0;position:relative;min-width:57px;text-align:center;box-sizing:border-box;height:19px}
+    @media (max-width:1789px) and (min-width:1592px){.taobaoke .goods_list{width:178.7px}
+        .taobaoke .img{height:178px}
+    }
+    @media (max-width:1591px) and (min-width:1330px){.taobaoke .goods_list{width:191.6px}
+        .taobaoke .img{height:191px}
+        .taobaoke{overflow:hidden;height:273px}
+    }
+    @media (max-width:1329px){.taobaoke .goods_list{width:176.6px}
+        .taobaoke .img{height:176.6px}
+        .taobaoke{overflow:hidden;height:257px}
+    }
+</style>
+{/if}

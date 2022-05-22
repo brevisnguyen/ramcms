@@ -480,18 +480,18 @@ return array (
   ),
   'rewrite' => 
   array (
-    'suffix_hide' => '0',
+    'suffix_hide' => '1',
     'route_status' => '0',
     'status' => '0',
     'encode_key' => 'abcdefg',
     'encode_len' => '6',
-    'vod_id' => '0',
-    'art_id' => '0',
-    'type_id' => '0',
-    'topic_id' => '0',
+    'vod_id' => '1',
+    'art_id' => '1',
+    'type_id' => '1',
+    'topic_id' => '1',
     'actor_id' => '0',
     'role_id' => '0',
-    'website_id' => '0',
+    'website_id' => '1',
     'route' => 'map   => map/index
 rss/index   => rss/index
 rss/baidu => rss/baidu

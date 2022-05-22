@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <title>{$maccms.site_name}</title>
+    <meta name="keywords" content="{$maccms.site_keywords}" />
+    <meta name="description" content="{$maccms.site_description}" />
+    {include file="public/include"}
+</head>
+<body class="index">
+{include file="public/head"}
+{include file="module/slide"}
+<div class="wwp indexboy">
+    {include file="module/index_level"}
+    {include file="module/index_hot"}
+    {if condition="$conch['dscms']['viptc'] eq 1"}{$conch['dscms']['aa01']}{/if}
+    {include file="module/index_art"}
+    {include file="module/index_taobao"}
+    {include file="module/index_list"}
+    {if condition="$conch['dscms']['viptc'] eq 1"}{$conch['dscms']['aa02']}{/if}
+    {include file="module/index_actor"}
+    {include file="module/index_zhibo"}
+    {include file="module/index_topic"}
+    {if condition="$conch['dscms']['module']['7'] eq index_hezuo"}
+    <div class="ec-link top20 wow fadeInUp">
+        <h2 class="link-tile black col1b">合作伙伴</h2>
+        <div class="stui-pannel_bd listdh">
+            {include file="module/hezuo"}
+        </div>
+    </div>
+    {/if}
+    {include file="module/link"}
+</div>
+{include file="public/foot"}
+</body>
+</html>

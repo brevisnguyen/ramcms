@@ -1,0 +1,19 @@
+<?php $file = 'template/ec_MG/asset/admin/Dscms.php'; $newfile = 'application/admin/controller/Dscms.php'; if (file_exists($newfile)) {} else { copy($file,$newfile); } ?>
+<?php $file = 'template/ec_MG/asset/admin/dspc.php'; $newfile = 'application/extra/dspc.php'; if (file_exists($newfile)) {} else { copy($file,$newfile); } ?>
+<?php $file = 'template/ec_MG/asset/admin/dspccms.html'; $newfile = 'application/admin/view/system/dspccms.html'; if (file_exists($newfile)) {} else { copy($file,$newfile); } ?>
+<?php $conch = file_exists('application/extra/dspc.php') ? require('application/extra/dspc.php') : require(substr($maccms['path_tpl'], strlen($maccms['path'])).'asset/admin/Dscms.php'); ?>
+<link href="{$maccms.path_tpl}css/style.css" rel="stylesheet" type="text/css" />
+<link href="{$maccms.path_tpl}css/skin_{$conch.dscms.gx.zt}.css" rel='stylesheet' type='text/css' id="cssfile">
+<script src="{$maccms.path}static/js/jquery.js"></script>
+<script src="{$maccms.path_tpl}js/jquery.cookie.js"></script>
+<script src="{$maccms.path}static/js/jquery.autocomplete.js"></script>
+<script src="{$maccms.path_tpl}js/jquery.SuperSlide.2.1.3.js"></script>
+<script src="{$maccms.path_tpl}js/lazyload.js"></script>
+<script src="{$maccms.path_tpl}js/swiper.js"></script>
+<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","aid":"{$maccms['aid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+<script src="{$maccms.path_tpl}js/home.js"></script>
+<script src="{$maccms.path_tpl}js/ec.js"></script>
+{if condition="$conch['dscms']['gx']['donghua'] eq 1"}
+<script src="{$maccms.path_tpl}js/wow.min.js"></script>
+<script>if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){new WOW().init();};</script>
+{/if}

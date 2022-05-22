@@ -1,0 +1,30 @@
+<div class="addition-content" style="margin-top: 6px;">
+	<!-- Revive Adserver Asynchronous JS Tag - Generated with Revive Adserver v5.3.1 -->
+<ins data-revive-zoneid="3" data-revive-id="14f566af2e34c0f33de62f630a065c34"></ins>
+<!-- Revive Adserver Asynchronous JS Tag - Generated with Revive Adserver v5.3.1 -->
+<ins data-revive-zoneid="5" data-revive-id="14f566af2e34c0f33de62f630a065c34"></ins>
+<script async src="//localhost:8000/www/delivery/asyncjs.php"></script>
+	<p class="videotitle">
+		<span class="videoName" style="width:370px;">{:lang(video_name)}</span>
+		<span class="region" style="width:200px;">{:lang(region)}</span>
+		<span class="category">{:lang(category)}</span>  
+		<span class="address">{:lang(address)}</span>
+		<span class="time">{:lang(update_time)}</span>
+	</p>
+<ul class="videoContent">
+{maccms:vod num="50" paging="yes" type="all" order="desc" by="time" pageurl="index/index"}		
+<li>
+<a class="videoName" href="{:mac_url_vod_detail($vo)}" target="_blank" style="width:370px;">{$vo.vod_name}
+<img class="new" src="{$maccms.path_tpl}img/new.gif">
+</a>
+<span class="region" style="width:200px;">{$vo.vod_area}</span>
+<span class="category">{$vo.type.type_name}</span>  
+<a href="{:mac_url_vod_detail($vo)}" class="address">点击进入</a>
+<span class="time">{$vo.vod_time|mac_day=###,'color'}</span>
+</li>
+{/maccms:vod} 
+</ul>
+</div>
+<div class="clear"></div>
+{include file="public/paging"}
+<div class="clear"></div>

@@ -1,0 +1,30 @@
+<script src="{$maccms.path}static/js/jquery.imageupload.js"></script>
+<div class="tou">
+    <img class="face jQuery-image-upload" src="{$obj.user_portrait|mac_default='static/images/touxiang.png'|mac_url_img}" alt="会员头像">
+    <p class="anthology-wrap">{$obj.user_name}<p/>
+    <p><a class="button cmtpost" style="display: block;margin: 0 auto;float:none;}">默认会员</a></p>
+</div>
+<ul>
+    <li><a href="{:url('user/index')}">会员首页</a></li>
+    <li><a href="{:url('user/favs')}">我的收藏</a></li>
+    <li><a href="{:url('user/plays')}">播放记录</a></li>
+    <li><a href="{:url('user/buy')}">在线充值</a></li>
+    <li><a href="{:url('user/upgrade')}">升级会员</a></li>
+    <li><a href="{:url('user/orders')}">充值记录</a></li>
+    <li><a href="{:url('user/cash')}">提现记录</a></li>
+    <li><a href="{:url('user/reward')}">三级分销</a></li>
+</ul>
+<script>
+    $(".face").imageUpload({
+        formAction: "{:url('user/portrait')}",
+        inputFileName:'file',
+        browseButtonValue: '修改头像',
+        browseButtonClass:'btn btn-default btn-xs',
+        automaticUpload: true,
+        hideDeleteButton: true,
+        hover:true
+    })
+    $(".face").on("imageUpload.uploadFailed", function (ev, err) {
+        alert(err);
+    });
+</script>

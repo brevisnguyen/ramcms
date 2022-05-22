@@ -1,0 +1,30 @@
+/*主题组件库*/
+.col0{color: hsla(0,0%,100%,.6);}
+.col1,.info-wrap .info a{color: #fff;}
+.col3{color: rgba(255, 255, 255, 0.380392);}
+.active,.blue,.content_playlist li a:hover,.intro-wrap .info-wrap a:hover,#tab .fn-clear .cur a{color:#B22222!important;}
+.col6,.col04{color: #999;}
+.col8{color: #dfdfdf;}
+.col9{color: #18191e;}
+.col10{color: hsla(0,0%,100%,.6);}
+.orange,.loadia1,.ec-rank1{color: #ff7256!important}
+.mauve,.loadia0,.loadia3,.ec-rank2{color: #fc4274!important}
+.yellow,.loadia2,.ec-rank3{color: #fcb80a!important}
+.highlight .col1b,.highlight .qh-search .mac-navs-name,.highlight .qh-search i{color: rgba(0,0,0,.8);}
+.highlight .col0{color: rgba(0,0,0,.4)}
+.highlight .col0:hover {color: rgba(0,0,0,.6);}
+.highlight .triangle,.highlight .logo1{display:none}
+.highlight .logo2{display:block}
+.highlight .so-home{background:rgba(0,0,0,.05)}
+.button{border:0;background:#B22222;background:-webkit-gradient(linear,left top,right top,from(#B22222),to(#CD5C5C));background:-o-linear-gradient(left,#B22222,#FA8072);background:linear-gradient(90deg,#B22222,#CD5C5C);-webkit-box-shadow:0 5px 30px rgba(128,0,0,.3);box-shadow:0 5px 30px rgba(128,0,0,.3);color:#f3f4f7!important}
+.button:hover,.pack-prt,.mac_pages .page_current{background:#B22222!important}
+.palyconnt .swiper-slide .actorlist_box:hover{background:#ff8b33;background:-o-linear-gradient(315deg,#ff5dc3 0,#ff9100 100%);background:linear-gradient(135deg,#ff5dc3,#ff9100);background-repeat:no-repeat}
+.box,.mac_results{background-color:#fff;-webkit-box-shadow:0 2px 6px 0 rgba(0,0,0,.1);z-index:9999;box-shadow:0 2px 10px 0 rgba(0,0,0,.3);border-radius:10px}
+.coverbox{border-radius:4px;background:#25252b;overflow:hidden}
+.triangle{width:0;height:0;border-width:0 18px 18px;border-style:solid;border-color:transparent transparent #fff}
+a:hover,.pack-ykpack:hover a{color:#B22222;text-decoration:none}
+.hot-search-list .hot-item:hover, .mac_results li:hover {color:#B22222}
+.mg-tabs .m-current:after {background: #B22222;background: -webkit-gradient(linear,left top,right top,from(#B22222),to(#00d3ff));background: -o-linear-gradient(left,#B22222 0,#00d3ff 100%);background: linear-gradient(90deg,#B22222,#00d3ff);}
+.ecblue,.qy-scroll-anchor .anchor-txt,.qy-scroll-anchor .anchor-item:hover {background-color: #B22222;}
+#tab .fn-clear .cur a:after {background: #B22222;}
+.header .sllogo{color:#fff;border-radius:20px;cursor:pointer;border:0;width:82px;height:40px;background:#B22222;background:-webkit-gradient(linear,left top,right top,from(#B22222),to(#CD5C5C));background:-o-linear-gradient(left,#B22222 0,#ffa000 100%);background:linear-gradient(90deg,#B22222,#CD5C5C);font-size:15px;line-height:40px;text-align:center}

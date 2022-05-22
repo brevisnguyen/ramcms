@@ -2,7 +2,6 @@
 return array (
   'dscms' => 
   array (
-    'isOn' => '0',
     'slide' => '1',
     'module' => 
     array (
@@ -21,14 +20,14 @@ return array (
     'indexactor' => '1',
     'gx' => 
     array (
-      'debugging' => '1',
+      'debugging' => '0',
       'zt' => '0',
       'btn' => '0',
       'donghua' => '1',
       'lazy1' => '/template/ec_IQ/images/load.gif',
       'lazy2' => '/template/ec_IQ/images/ipcbg.gif',
       'lazy3' => '/template/ec_IQ/images/adminavr.jpeg',
-      'soconet' => 'Tìm tên phim',
+      'soconet' => '短视cms多功能主题',
     ),
     'nav' => 
     array (
@@ -36,12 +35,12 @@ return array (
       'topic' => '1',
       'vip' => '1',
       'ivi' => '1',
-      'zdyname1' => '',
+      'zdyname1' => 'aaa1',
       'zdyurl1' => 'aaa',
       'zdyname2' => 'aaa2',
       'zdyurl2' => 'aaa',
     ),
-    'viptc' => '0',
+    'viptc' => '1',
     'aa01' => '<div style="margin:10px 0;background-color: #f5f5f5;border-radius: 4px;"><a href="#" target="_blank"><img src="/template/ec_IQ/images/1760X140.jpg" style="height: 100%;display: block;border-radius: 4px;width: 100%;"></a></div>',
     'aa02' => '<div style="margin:10px 0;background-color: #f5f5f5;border-radius: 4px;"><a href="#" target="_blank"><img src="/template/ec_IQ/images/1760X140.jpg" style="height: 100%;display: block;border-radius: 4px;width: 100%;"></a></div>',
     'aa03' => '<div style="margin:10px 0;background-color: #f5f5f5;border-radius: 4px;"><a href="#" target="_blank"><img src="/template/ec_IQ/images/1760X140.jpg" style="height: 100%;display: block;border-radius: 4px;width: 100%;"></a></div>',
@@ -53,17 +52,17 @@ return array (
     'public' => '0',
     'seo' => 
     array (
-      'votitle' => ' HD在线播放',
+      'votitle' => '高清在线播放',
       'actitle' => '全部电影作品',
     ),
     'pd' => 
     array (
       'detailart' => '1',
-      'jxxlof' => '0',
-      'jxxl' => '',
+      'jxxlof' => '1',
+      'jxxl' => 'https://vip.ikjiexi.top/?url=,https://jiexi.380k.com/?url=,https://vip.66parse.club/?url=,https://z1.m1907.cn/?jx=',
       'gzh' => '/template/ec_IQ/images/ewm.png',
-      'zhifubao' => '/template/ec_IQ/images/ewm.png',
-      'weixin' => '/template/ec_IQ/images/ewm.png',
+      'zhifubao' => '/template/ec_IQ/images/null.jpg',
+      'weixin' => '/template/ec_IQ/images/null.jpg',
       'anma' => '/template/ec_IQ/images/ewm.png',
       'pingma' => '/template/ec_IQ/images/ewm.png',
       'anul' => '',

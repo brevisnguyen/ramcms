@@ -1,0 +1,11 @@
+{if condition="$conch['dscms']['slide'] eq 0"}
+    {include file="module/slide0"}
+    {if condition="$maccms.aid eq 1"}{include file="module/tag0"}{/if}
+{/if}
+{if condition="$conch['dscms']['slide'] eq 1"}
+    {include file="module/slide1"}
+    {if condition="$maccms.aid eq 1"}{include file="module/tag0"}{/if}
+{/if}
+{if condition="$conch['dscms']['slide'] eq 2"}
+{include file="module/slide2"}
+{/if}

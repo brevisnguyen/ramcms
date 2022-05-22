@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	{include file="module/meta"}
+	<title>vip解析视频解析 - {$maccms.site_name}</title>
+	<meta name="keywords" content="vip视频解析,vip视频在线解析,vip解析,万能vip视频解析,vip视频全能解析,vip视频,手机vip视频解析,手机在线解析vip视频,优酷vip解析,爱奇艺vip解析,腾讯vip解析,乐视vip解析,芒果vip解析,vip音乐解析">
+	<meta name="description" content="{$maccms.site_name}VIP视频免费看，在线解析，vip视频解析，优酷vip解析，爱奇艺vip解析，腾讯vip解析，乐视vip解析，全网影视vip，芒果vip解析方便广大用户VIP视频服务，最新电影最新电视剧在线免费观看">
+	{include file="public/include"}
+</head>
+<body>
+{include file="public/head" wap="wap"}
+<style>
+	.jjjjjx{width:100%;height:699px;background-size:cover;background:url({$maccms.path_tpl}images/index-bg_59f9c.jpg) 50% no-repeat;padding-top:30px}
+	#palybox{border-radius:6px;overflow:hidden;background:#0f1856;width:100%;height:600px}
+	.ecysjz{color:#fff;}
+	.url-box{margin:0 auto;padding-top:20px;width:870px}
+	.url-text{outline: 0;height:44px;float:left;border:6px solid #111;background:#111;color:#3376f3}
+	.form-control{height: 32px;border-radius:6px 0 0 6px;width:637px;padding-left:1px}
+	.url-c{width:100px}
+	.btn-play{width:120px;border-radius:0 6px 6px 0;height:44px;border:none}
+	.col-lg-12 p{line-height:40px}
+</style>
+<div class="headtopnull"></div>
+<div class="jjjjjx">
+	<div class="container-fluid video-box ec-body-z">
+		<div class="container ">
+			<iframe id="palybox" src="//player.bilibili.com/player.html?aid=82766716&bvid=BV1FJ411V7gy&cid=147308234&page=1" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+			<div class="url-box">
+				<div class="input-group cf">
+					<input type="text" onpaste="myFunction()" id="url" class="form-control url-text" aria-label="Text input with segmented button dropdown" placeholder="请粘贴视频网址>ㅂ<ﾉ ☆" title="请复制你想要看的视频网址，粘贴到此处点击播放即可！">
+                    <select class="url-c url-text" title="如发现视频无法正常播放请尝试更换视频线路！" id="jk"></select>
+					<button type="button" class="button btn-play" title="点击开始解析并开始播放" id="ssdi">解析播放</button>
+				</div>
+			</div>
+			<div id="jxurllin" style="display:none">{$conch['dscms']['pd']['jxxl']}</div>
+		</div>
+	</div>
+</div>
+<div class="ec-body-z">
+	<div class="col-lg-12 ec-link top20">
+		<h2 class="link-tile black">使用方法</h2>
+		<p>第 一 步 进入各大视频网站，找到想要观看的视频点击播放，然后复制播放链接（浏览器上的视频地址，app复制分享里面的地址地址）</p>
+		<p>第 二 步 将复制的链接粘贴到本站播放地址，并点击解析播放</p>
+		<p>第 三 步 等待解析完成，即可免费观看VIP视频vip会员</p>
+		<p>友情提示：如果播放失败或者播放缓慢可切换线路尝试</p>
+		<p><a target="_blank" class="button" style="text-align: center;color: #fff;display: block;" href="{:mac_url('label/vip')}">《《点击这里查看图文教程》》</a></p>
+	</div>
+	<div class="ec-link top20">
+		<h2 class="link-tile black">支持网站</h2>
+		<div class="stui-pannel_bd listdh">
+			{include file="module/hezuo"}
+		</div>
+	</div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

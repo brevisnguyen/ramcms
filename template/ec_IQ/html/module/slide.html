@@ -1,153 +1,46 @@
-<div id="block-B" data-focus="" class="qy-carousel-wrap">
-    <div class="qy-carousel">
-        <div class="qy-carousel-fixed">
-            {if condition="$conch['dscms']['slide'] eq 1"}
-            <div class="ec-type-slide" style="height: 670px;">
-                <div class="slideBox wwp">
-                    <div class="bd">
-                        <div class="qy-carousel-maskl" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
-                        <div class="qy-carousel-maskr" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
-                        <ul>
-                            {maccms:vod num="200" type="current" order="desc" by="time"}
-                            {if condition="$vo.vod_pic_slide neq ''"}
-                            <li style="background-image: url({$vo.vod_pic_slide|mac_url_img}); height: 600px;">
-                                <a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" target="_blank">
-                                <div class="title" style="margin: 0 0 140px 100px;">
-                                    <i class="icon"></i>
-                                    <div class="caption text">{$vo.vod_name}</div>
-                                    <p class="desc text">[{$vo.vod_remarks|mac_default=$vo.vod_hits.'lượt xem'}]{$vo.vod_sub}</p>
-                                    <p class="desc text">[{$vo.vod_hits.' lượt xem'}]{$vo.vod_sub}</p>
-                                </div>
-                                </a>
-                            </li>
-                            {/if}
-                            {/maccms:vod}
-                        </ul>
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade" style="z-index: 0;margin-bottom: -72px;" data-bs-ride="carousel" data-bs-interval="false">
+    <div class="carousel-inner rounded-5" style="max-height: 90vh;">
+        {maccms:vod num="20" type="1" order="desc" by="time"}
+        {if condition="$vo.vod_pic_slide neq ''"}
+            <div class="carousel-item">
+                <a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" target="_blank">
+                    <div class="slide-left"></div>
+                    <div class="slide-top"></div>
+                    <img src="{$vo.vod_pic_slide|mac_url_img}" class="d-block w-100" style="object-fit: cover;" alt="{$vo.vod_name}">
+                    <div class="slide-bottom"></div>
+                    <div class="slide-caption d-none d-lg-block">
+                        <h4 class="fst-italic text-wrap fw-bolder pb-3" style="min-width: 180px;max-width: 360px;width:35vw;">{$vo.vod_name}</h5>
+                        <div class="fw-normal lh-lg d-flex">
+                            <span class="px-2"><i class="bi bi-star-fill" style="color: #ff8f00;"></i>&nbsp;{$vo.vod_score}</span>
+                            <span>&#124;</span>
+                            <span class="px-2">{$vo.vod_year}</span>
+                            <span>&#124;</span>
+                            <span class="px-2">{$vo.vod_remarks|mac_default=$vo.vod_hits.' lượt xem'}</span>
+                        </div>
+                        <div class="fw-normal lh-lg d-flex">
+                            <span class="vod-class rounded px-2 h6 lh-1 text-capitalize" style="background-color: rgba(255, 255, 255, 0.08);color: #e0e0e0;">{$vo.vod_class}</span>
+                        </div>
+                        <div class="d-flex pt-4" style="min-width: 180px;max-width: 360px;width:40vw;">
+                            <span class="vod-class rounded px-2 h6 lh-1 text-break" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;line-clamp: 2;-webkit-box-orient: vertical;">{$vo.vod_content}</span>
+                        </div>
                     </div>
-                    <div class="hd"><ul>{maccms:vod num="6" level="9" type="current" order="desc" by="time"}<li class="dotList_item"></li>{/maccms:vod}</ul></div>
-                    <a class="prev focus_arrow" href="javascript:void(0)"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
-                    <a class="next focus_arrow" href="javascript:void(0)"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
-                </div>
+                </a>
             </div>
-            {else}
-            <div class="qy-carousel-inner wwp bd">
-                <ul class="qy-carousel-ul">
-                    {maccms:vod num="10" score="9" type="current" order="desc" by="time"}
-                    <li class="qy-carousel-li">
-                        <a href='{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}'><span class="qy-carousel" style="background-image: url({$vo.vod_pic|mac_url_img});"></span></a>
-                    </li>
-                    {/maccms:vod}
-                </ul>
-                <div class="qy-carousel-maskl" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
-                <div class="qy-carousel-maskr" style="background-image: linear-gradient(270deg, rgb(25, 26, 32) 0%, transparent);"></div>
-                <div class="qy-carousel-maskbottom"></div>
-            </div>
-            {/if}
-        </div>
+        {/if}
+        {/maccms:vod}
+        <script>
+            $(window).on('load', function() {
+                $('.carousel-item').first().addClass('active');
+                $('.vod-class').text;
+            })
+        </script>
     </div>
-    <div class="qy-nav-focus">
-        <div class="qy-nav-wrap wwp returl">
-            <div class="qy-nav-channel">
-                <div class="nav-channel-box">
-                    <div class="homepage_main_tabs_title">
-                        <div class="channel-box-inner"><a href="/index.php/vod/type/id/1.html" target="_blank" class="qy-nav-link"><span class="nav-en">MOVIES</span><span class="nav-name col1">PHIM LẺ</span></a></div>
-                        <div class="homepage_channel_video_wrap">
-                            <a class="homepage_title col4" href="/index.php/vod/type/id/1.html">Xem thêm<span class="fa fa-step-forward"></span></a>
-                            {maccms:vod num="4" type="1" order="desc" by="hits"}
-                            <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col1">{$vo.vod_name}</div></a>
-                            {/maccms:vod}
-                        </div>
-                    </div>
-                    <div class="nav-text-box">
-                        <a href="/index.php/vod/show/area/Trung+Quốc/id/1/year/2021.html" target="_blank" class="nav-text-link col4">Chiếu rạp</a>
-                        <a href="/index.php/vod/show/area/Âu+Mỹ/id/2.html" target="_blank" class="nav-text-link col4">Bom tấn Mỹ</a>
-                    </div>
-                </div>
-                <div class="nav-channel-box">
-                    <div class="homepage_main_tabs_title">
-                        <div class="channel-box-inner"><a href="/index.php/vod/type/id/2.html" target="_blank" class="qy-nav-link"><span class="nav-en">PHIM BỘ</span><span class="nav-name col1">PHIM BỘ</span></a></div>
-                        <div class="homepage_channel_video_wrap">
-                            <a class="homepage_title col4" href="/index.php/vod/type/id/2.html">Xem thêm<span class="fa fa-step-forward"></span></a>
-                            {maccms:vod num="4" type="2" order="desc" by="hits"}
-                            <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col1">{$vo.vod_name}</div></a>
-                            {/maccms:vod}
-                        </div>
-                    </div>
-                    <div class="nav-text-box">
-                        <a href="/index.php/vod/show/area/Trung+Quốc/id/13.html" target="_blank" class="nav-text-link col4">Phim Trung</a>
-                        <a href="/index.php/vod/show/id/2/year/2022.html" target="_blank" class="nav-text-link col4">Mới cập nhật</a>
-                    </div>
-                </div>
-                <div class="nav-channel-box">
-                    <div class="homepage_main_tabs_title">
-                        <div class="channel-box-inner"><a href="/index.php/vod/type/id/3.html" target="_blank" class="qy-nav-link"><span class="nav-en">VARIETY SHOWS</span><span class="nav-name col1">Chương trình thực tế</span></a></div>
-                        <div class="homepage_channel_video_wrap">
-                            <a class="homepage_title col4" href="/index.php/vod/type/id/3.html">Xem thêm<span class="fa fa-step-forward"></span></a>
-                            {maccms:vod num="4" type="3" order="desc" by="hits"}
-                            <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col1">{$vo.vod_name}</div></a>
-                            {/maccms:vod}
-                        </div>
-                    </div>
-                    <div class="nav-text-box">
-                        <a href="/index.php/vod/show/id/3.html" target="_blank" class="nav-text-link col4">Trung-Đài</a>
-                        <a href="/index.php/vod/show/area/Nhật/id/3.html" target="_blank" class="nav-text-link col4">Nhật Bản</a>
-                    </div>
-                </div>
-                <div class="nav-channel-box">
-                    <div class="homepage_main_tabs_title">
-                        <div class="channel-box-inner"><a href="/index.php/vod/type/id/4.html" target="_blank" class="qy-nav-link"><span class="nav-en">ANIME</span><span class="nav-name col1">HOẠT HÌNH</span></a></div>
-                        <div class="homepage_channel_video_wrap">
-                            <a class="homepage_title col4" href="/index.php/vod/type/id/4.html">Xem thêm<span class="fa fa-step-forward"></span></a>
-                            {maccms:vod num="4" type="4" order="desc" by="hits"}
-                            <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col1">{$vo.vod_name}</div></a>
-                            {/maccms:vod}
-                        </div>
-                    </div>
-                    <div class="nav-text-box">
-                        <a href="/index.php/vod/show/area/Nhật/id/4.html" target="_blank" class="nav-text-link col4"></a>
-                        <a href="/index.php/vod/show/id/4.html" target="_blank" class="nav-text-link col4">Anime</a>
-                    </div>
-                </div>
-                <div class="nav-channel-box">
-                    <div class="homepage_main_tabs_title">
-                        <div class="channel-box-inner"><a href="" target="_blank" class="qy-nav-link"><span class="nav-en">DOCUMENTARIES</span><span class="nav-name col1">PHIM TÀI LIỆU</span></a></div>
-                    </div>
-                    <div class="nav-text-box">
-                        <a href="" target="_blank" class="nav-text-link col4">Áp đảo phòng vé</a>
-                        <a href="" target="_blank" class="nav-text-link col4">Khám phá thế giới</a>
-                    </div>
-                </div>
-            </div>
-            <div class="qy-nav-box qy-nav-wide">
-                <div class="qy-nav-list silde1">
-                    <a target="_blank" href="/index.php/vod/show/id/6.html" class="qy-nav-link"><span class="nav-name col1">Hành động</span></a>
-                    <a target="_blank" href="/index.php/vod/show/id/7.html" class="qy-nav-link"><span class="nav-name col1">Hài hước</span></a>
-                </div>
-                <div class="qy-nav-list silde1">
-                    <a target="_blank" href="/index.php/vod/show/id/13.html" class="qy-nav-link"><span class="nav-name col1">Trung Quốc</span></a>
-                    <a target="_blank" href="/index.php/vod/show/id/14.html" class="qy-nav-link"><span class="nav-name col1">Đài Loan</span></a>
-                </div>
-                <div class="qy-nav-list silde1">
-                    <a target="_blank" href="/index.php/vod/show/id/8.html" class="qy-nav-link"><span class="nav-name col1">Tình cảm</span></a>
-                    <a target="_blank" href="/index.php/vod/show/id/15.html" class="qy-nav-link"><span class="nav-name col1">Hàn Quốc</span></a>
-                </div>
-                <div class="qy-nav-list qy-navff silde1">
-                    <a target="_blank" href="/index.php/vod/show/id/9.html" class="qy-nav-link"><span class="nav-name col1">Viễn tưởng</span></a>
-                    <a target="_blank" href="/index.php/vod/show/id/16.html" class="qy-nav-link"><span class="nav-name col1">Âu Mỹ</span></a>
-                </div>
-                <div class="qy-nav-list silde1">
-                    <a target="_blank" href="{:mac_url('actor/index')}" class="qy-nav-link"><span class="nav-name col1">Ngôi Sao</span></a>
-                    <a target="_blank" href="{:mac_url_topic_index()}" class="qy-nav-link"><span class="nav-name col1">Chủ đề nổi bật</span></a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <button class="carousel-control-prev" style="width: 5%;" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span aria-hidden="true"><i class="fa fa-step-backward fs-1" aria-hidden="true"></i></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" style="width: 5%;" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span aria-hidden="true"><i class="fa fa-step-forward fs-1" aria-hidden="true"></i></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
-<script type="text/javascript">
-    jQuery(".qy-carousel-fixed").slide({
-        mainCell:".bd ul",
-        effect:"fade",
-        autoPlay:true,
-        delayTime:500,
-    });
-</script>

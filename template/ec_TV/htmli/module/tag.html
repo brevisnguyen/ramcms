@@ -1,0 +1,151 @@
+<div class="common_container wwp cf">
+    <div class="homepage_homepage_channelnav">
+        <div class="homepage_left_content">
+            <div class="homepage_main_tabs_wrap">
+                <div class="homepage_main_tabs">
+                    <div class="homepage_tab_wrap">
+                        <div class="homepage_main_tabs_title">
+                            <img src="{$maccms.path_tpl}images/2.png" class="homepage_logo" />
+                            <a class="homepage_tab_title aplus_exp aplus_clk" href="/index.php/vod/type/id/2.html">剧集</a>
+                            <span class="homepage_point">&middot;</span>
+                            <div class="homepage_channel_video_wrap">
+                                <div class="homepage_arrow"></div>
+                                <a class="homepage_title col1" href="/index.php/vod/type/id/2.html">更多剧集<span class="fa fa-step-forward" style="margin-left: 5px;font-size: 13px;"></span></a>
+                                {maccms:vod num="4" type="2" order="desc" by="hits"}
+                                <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col3">{$vo.vod_name}</div></a>
+                                {/maccms:vod}
+                            </div>
+                        </div>
+                        <div class="homepage_main_tabs_title">
+                            <img src="{$maccms.path_tpl}images/3.png" class="homepage_logo" />
+                            <a class="homepage_tab_title aplus_exp aplus_clk" href="/index.php/vod/type/id/3.html">综艺</a>
+                            <span class="homepage_point">&middot;</span>
+                            <div class="homepage_channel_video_wrap">
+                                <div class="homepage_arrow"></div>
+                                <a class="homepage_title col1" href="/index.php/vod/type/id/3.html">更多综艺<span class="fa fa-step-forward" style="margin-left: 5px;font-size: 13px;"></span></a>
+                                {maccms:vod num="4" type="3" order="desc" by="hits"}
+                                <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col3">{$vo.vod_name}</div></a>
+                                {/maccms:vod}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="homepage_normal_tabs_wrap">
+                        <div class="homepage_normal_tabs">
+                            <a class="homepage_tab" href="/index.php/vod/show/id/13.html">中国大陆</a>
+                            <a class="homepage_tab" href="/index.php/vod/show/area/香港/id/3.html">中国香港</a>
+                        </div>
+                        <div class="homepage_normal_tabs">
+                            <a class="homepage_tab" href="/index.php/vod/show/id/15/year/2020.html">最新韩剧</a>
+                            <a class="homepage_tab" href="/index.php/vod/show/area/日韩/id/3.html">日韩秀</a>
+                        </div>
+                    </div>
+                    <div class="homepage_cut_line"></div>
+                </div>
+                <div class="homepage_main_tabs">
+                    <div class="homepage_tab_wrap">
+                        <div class="homepage_main_tabs_title">
+                            <img src="{$maccms.path_tpl}images/1.png" class="homepage_logo" />
+                            <a class="homepage_tab_title aplus_exp aplus_clk" href="/index.php/vod/type/id/1.html">电影</a>
+                            <span class="homepage_point">&middot;</span>
+                            <div class="homepage_channel_video_wrap">
+                                <div class="homepage_arrow"></div>
+                                <a class="homepage_title col1" href="/index.php/vod/type/id/1.html">更多电影<span class="fa fa-step-forward" style="margin-left: 5px;font-size: 13px;"></span></a>
+                                {maccms:vod num="4" type="1" order="desc" by="hits"}
+                                <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col3">{$vo.vod_name}</div></a>
+                                {/maccms:vod}
+                            </div>
+                        </div>
+                        <div class="homepage_main_tabs_title">
+                            <img src="{$maccms.path_tpl}images/4.png" class="homepage_logo" />
+                            <a class="homepage_tab_title aplus_exp aplus_clk" href="/index.php/vod/type/id/4.html">动漫</a>
+                            <span class="homepage_point">&middot;</span>
+                            <div class="homepage_channel_video_wrap">
+                                <div class="homepage_arrow"></div>
+                                <a class="homepage_title col1" href="/index.php/vod/type/id/4.html">更多动漫<span class="fa fa-step-forward" style="margin-left: 5px;font-size: 13px;"></span></a>
+                                {maccms:vod num="4" type="4" order="desc" by="hits"}
+                                <a href="{:mac_url_vod_play($vo)}" class="homepage_video_wrap" title="{$vo.vod_name}"><img src="{:mac_url_img($vo.vod_pic)}" class="homepage_video_img" /><div class="homepage_video_title col3">{$vo.vod_name}</div></a>
+                                {/maccms:vod}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="homepage_normal_tabs_wrap">
+                        <div class="homepage_normal_tabs">
+                            <a class="homepage_tab" href="/index.php/vod/show/area/大陆/id/1/year/2020.html">影院新片</a>
+                            <a class="homepage_tab" href="/index.php/vod/show/area/大陆/id/4.html">国漫</a>
+                        </div>
+                        <div class="homepage_normal_tabs">
+                            <a class="homepage_tab" href="/index.php/vod/show/area/美国/id/1.html">欧美大片</a>
+                            <a class="homepage_tab" href="/index.php/vod/show/area/日本/id/4.html">日漫</a>
+                        </div>
+                    </div>
+                    <div class="homepage_cut_line"></div>
+                </div>
+                <div class="homepage_main_tabs">
+                    <div class="homepage_tab_wrap">
+                        <div class="homepage_main_tabs_title">
+                            <img src="{$maccms.path_tpl}images/5.png" class="homepage_logo" />
+                            <a class="homepage_tab_title aplus_exp aplus_clk" href="">福利</a>
+                            <span class="homepage_point">&middot;</span>
+                        </div>
+                        <div class="homepage_main_tabs_title">
+                            <img src="{$maccms.path_tpl}images/6.png" class="homepage_logo" />
+                            <a class="homepage_tab_title aplus_exp aplus_clk" href="">纪录片</a>
+                            <span class="homepage_point">&middot;</span>
+                        </div>
+                    </div>
+                    <div class="homepage_normal_tabs_wrap">
+                        <div class="homepage_normal_tabs">
+                            <a class="homepage_tab" href="">写真</a>
+                            <a class="homepage_tab" href="">大陆</a>
+                        </div>
+                        <div class="homepage_normal_tabs ec_aplus_clk">
+                            <a class="homepage_tab" href="#">主播</a>
+                            <a class="homepage_tab" href="#">美国</a>
+                        </div>
+                    </div>
+                    <div class="homepage_cut_line"></div>
+                </div>
+            </div>
+            <div class="homepage_normal_tabs_wrap rduhide">
+                <div class="homepage_normal_tabs homepage_hide_1">
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/6.html">动作</a>
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/13.html">国剧</a>
+                </div>
+                <div class="homepage_normal_tabs homepage_hide_2">
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/7.html">喜剧</a>
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/14.html">港剧</a>
+                </div>
+                <div class="homepage_normal_tabs homepage_hide_3">
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/8.html">爱情</a>
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/15.html">韩剧</a>
+                </div>
+                <div class="homepage_normal_tabs homepage_hide_4">
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/9.html">科幻</a>
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/16.html">美剧</a>
+                </div>
+                <div class="homepage_normal_tabs homepage_hide_5">
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/10.html">恐怖</a>
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/class/音乐/id/3.html">音乐</a>
+                </div>
+                <div class="homepage_normal_tabs homepage_hide_5">
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/11.html">剧情</a>
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/class/旅游/id/3.html">旅游</a>
+                </div>
+                <div class="homepage_normal_tabs homepage_hide_5">
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/id/12.html">战争</a>
+                    <a class="homepage_tab aplus_exp aplus_clk" href="/index.php/vod/show/class/选秀/id/3.html">选秀</a>
+                </div>
+                <div class="homepage_normal_tabs homepage_hide_5">
+                    <a class="homepage_tab aplus_exp aplus_clk" href="{:mac_url_type($obj,['id'=>'3'],'show')}">情感</a>
+                    <a class="homepage_tab aplus_exp aplus_clk" href="{:mac_url_type($obj,['id'=>'14'],'show')}">游戏</a>
+                </div>
+                <div class="homepage_cut_line"></div>
+            </div>
+        </div>
+        <div class="homepage_opt_wrap">
+            <a href="" class=" aplus_exp aplus_clk"><img src="{$maccms.path_tpl}images/huiyuan.png" /></a>
+            <a href="{:mac_url('label/ivi')}" class="homepage_opt_hide_1 aplus_exp aplus_clk ec_aplus_clk"><img src="{$maccms.path_tpl}images/laifeng.png" /></a>
+            <a href="{:mac_url_type($obj,['id'=>'1'],'show')}" class="homepage_opt_hide_1 aplus_exp aplus_clk"><img src="{$maccms.path_tpl}images/pianku.png" /></a>
+        </div>
+    </div>
+</div>

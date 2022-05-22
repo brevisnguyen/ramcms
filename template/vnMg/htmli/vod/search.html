@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    {include file="module/meta"}
+    <title>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+    <meta name="description" content="{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}搜索结果" />
+    {include file="public/include"}
+</head>
+<body>
+{include file="public/head"}
+<div class="m-search">
+    <div class="sbg"></div>
+    <div class="m-search-case m-tosearch-long">
+        <form id="search" name="search" method="get" action="{:mac_url('vod/search')}">
+            <input type="text" name="wd" value="{$param.wd}" placeholder="{$conch['dscms']['gx']['soconet']}" class="input jq-focus">
+            <button type="submit" id="searchbutton" class="btn"><i class="fa icon-sousuo"></i></button>
+        </form>
+    </div>
+    <div class="m-search-card wwp">
+        <ul class="clearfix">
+            <li class="focus"><a href="{:mac_url('vod/search')}?wd={$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}">视频</a><span class="tips"><strong class="mac_total"></strong></span></li>
+            <li><a href="{:mac_url('art/search')}?wd={$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}">文章</a></li>
+            <li><a href="{:mac_url('actor/search')}?wd={$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}">明星</a></li>
+        </ul>
+        <a href="{:mac_url('label/rank')}" target="_blank" class="hotrank"><i class="fa icon-hot"></i>热搜榜</a>
+    </div>
+</div>
+<div class="wwp cf top40">
+    <div class="ecleft l">
+        <div class="ec-search">
+            <ul>
+                {maccms:vod num="10" paging="yes" pageurl="vod/search" order="desc" by="time"}
+                <li class="padd cf">
+                    <div class="l"><a href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}" title="{$vo.vod_name}{$conch.dscms.seo.votitle}" class="play-img"><div class="ecimgbor ec-jabj eclazy" data-original="{:mac_url_img($vo.vod_pic)}" style="background-image: url({$conch.dscms.gx.lazy1});"></div>
+                        </a></div>
+                    <div class="ecitem-r col1c">
+                        <a class="ecitem-name anthology-wrap" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}">{$vo.vod_name}</a>
+                        <div class="ec-item">
+                            <p class="ec_indezb"><span>状态：</span><span class="author">{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}</span><span>导演：</span>{$vo.vod_director}</p>
+                            <p class="albumtitle"><span>演员：</span>{$vo.vod_actor|mac_default=$vo.vod_area.$vo.type.type_name|mac_filter_html}</p>
+                        </div>
+                        <p class="ecitem-desc weaken">{$vo.vod_blurb}</p>
+                        <div class="content_detail"><div class="playbtn o_play"><a class="btn btn_primary" href="{if condition="$conch['dscms']['gx']['btn'] eq 1"}{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}{else}{:mac_url_vod_detail($vo)}{/if}"><i class="fa icon-xiangxia1"></i>&nbsp;立即播放</a></div></div>
+                    </div>
+                </li>
+                {/maccms:vod}
+            </ul>
+        </div>
+        <div class="ui-bar list-page fn-clear">
+            {include file="public/paging"}
+        </div>
+        <script>
+            $('.mac_total').html('{$__PAGING__.record_total}');
+        </script>
+    </div>
+    <div class="ecright r">
+        {include file="module/right_list"}
+    </div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

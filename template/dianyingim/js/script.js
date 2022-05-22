@@ -110,18 +110,18 @@ $(function () {
         $('.shortcuts-box').hide();
         $('#shortcuts-info').html('');
     });
-    // $(".gbook_submit").click(function () {
-    //     MAC.Ajax(maccms.path + '/index.php/gbook/saveData', 'post', 'json', $('.gbook_form').serialize(), function (r) {
-    //         if (r.code == 1) {
-    //             $(".popup-report").removeClass("open").addClass("none");
-    //         } else {
-    //             if (MAC.Gbook.Verify == 1) {
-    //                 MAC.Verify.Refresh();
-    //             }
-    //             show_tip(r.msg);
-    //         }
-    //     });
-    // });
+    $(".gbook_submit").click(function () {
+        MAC.Ajax(maccms.path + '/index.php/gbook/saveData', 'post', 'json', $('.gbook_form').serialize(), function (r) {
+            if (r.code == 1) {
+                $(".popup-report").removeClass("open").addClass("none");
+            } else {
+                if (MAC.Gbook.Verify == 1) {
+                    MAC.Verify.Refresh();
+                }
+                show_tip(r.msg);
+            }
+        });
+    });
     $(".historyclean").on("click",function(){
         $.cookie("mac_history_dianying",null,{expires:-1,path: '/'});
     });
