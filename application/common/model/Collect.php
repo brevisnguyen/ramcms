@@ -458,7 +458,7 @@ class Collect extends Base {
 
                 $v['vod_name'] = mac_filter_xss($v['vod_name']);
                 $v['type_id_1'] = intval($type_list[$v['type_id']]['type_pid']);
-                $v['vod_en'] = Pinyin::get($v['vod_name']);
+                $v['vod_en'] = Pinyin::make_beautiful_slug($v['vod_name']);
                 $v['vod_letter'] = strtoupper(substr($v['vod_en'],0,1));
                 // 使用资源站的添加时间，更新时间保持当前
                 // https://github.com/magicblack/maccms10/issues/780
@@ -490,11 +490,11 @@ class Collect extends Base {
                 $v['vod_score_all'] = intval($v['vod_score_all']);
                 $v['vod_score_num'] = intval($v['vod_score_num']);
 
-                $v['vod_class'] = mac_txt_merge($v['vod_class'],$v['type_name']);
+                //$v['vod_class'] = mac_txt_merge($v['vod_class'],$v['type_name']);
 
-                $v['vod_actor'] = mac_format_text($v['vod_actor']);
-                $v['vod_director'] = mac_format_text($v['vod_director']);
-                $v['vod_class'] = mac_format_text($v['vod_class']);
+                //$v['vod_actor'] = mac_format_text($v['vod_actor']);
+                //$v['vod_director'] = mac_format_text($v['vod_director']);
+                //$v['vod_class'] = mac_format_text($v['vod_class']);
                 $v['vod_tag'] = mac_format_text($v['vod_tag']);
 
                 $v['vod_plot_name'] = mac_filter_xss((string)$v['vod_plot_name']);
