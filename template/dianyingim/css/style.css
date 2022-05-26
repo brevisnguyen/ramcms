@@ -2477,7 +2477,7 @@ input[type=radio], input[type=checkbox] {
 
 .video-info-itemtitle {
 	display: inline-block;
-	min-width: 46px;
+	min-width: 115px;
 	font-weight: 700;
 	color: rgba(0, 0, 0, .51)
 }
