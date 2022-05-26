@@ -278,7 +278,7 @@ return array (
     array (
     ),
   ),
-  'voddetail/<id>' => 
+  'movies/<id>' => 
   array (
     0 => 'vod/detail',
     1 => 

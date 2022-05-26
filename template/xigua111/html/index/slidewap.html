@@ -1,0 +1,14 @@
+<!--wap轮播图-->
+<div class="indexslider slide_container clearfix mb20 pcyc">
+<ul class="rslides slide slide1" id="slider"> 	
+{maccms:vod num="5" type="all" order="desc" by="time" level="5"}
+<li id="slide1_{$key}" class="" style="display: list-item; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out 0s;">
+<a class="alink" href="{:mac_url_vod_detail($vo)}">
+<img class="lazy" src="{:mac_url_img($vo.vod_pic_slide)}" alt="{$vo.vod_name}">
+<p class="caption"><span class="sltitle">{$vo.vod_name}</span><span class="sldes">{$vo.vod_content|mac_filter_html}</span></p>
+</a>
+</li> 	
+{/maccms:vod}
+</ul><a href="#" class="slide_nav slide1_nav prev">Previous</a><a href="#" class="slide_nav slide1_nav next">Next</a>
+</div>
+<!--wap轮播图 end-->

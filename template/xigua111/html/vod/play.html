@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>《{$obj.vod_name}》{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}_在线观看_{$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.vod_name}在线看,{$obj.vod_name}在线观看,{$obj.vod_name}免费在线,{$obj.vod_name}免费观看" />
+    <meta name="description" content="{$obj.vod_name}在线看,{$obj.vod_name}在线观看,{$obj.vod_name}免费在线,{$obj.vod_name}免费观看" />
+     <script type="text/javascript" src="{$maccms.path_tpl}js/history.js"></script>
+    <script type="text/javascript" src="{$maccms.path_tpl}js/histcooke.js"></script>
+    <script>var sitePath='',play_vid='{$obj.vod_id}',infourl='{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}',infotit='{$obj.vod_name}',playtit='{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}';</script>
+    <script>AddHistory();</script>
+    {include file="public/include"}
+
+    </head>
+  <body>
+	{include file="public/head"}
+	<div class="wrap">
+				<div class="stit mb_none clearfix">
+					<span class="ico gang1"></span>
+					<a href="{$maccms.path}">首页</a>&nbsp;&nbsp;»&nbsp;&nbsp;
+					<a href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a>&nbsp;&nbsp;»&nbsp;&nbsp;{$obj.vod_name}&nbsp;&nbsp;»&nbsp;&nbsp;{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}
+				</div>
+				<div class="row_top">
+					<div class="playerall">
+						<div class="player">
+						{$player_data} {$player_js}
+						</div>
+					</div>
+				</div>
+				
+				<div class="row pc_acmsd">
+					<div class="pfplayer clearfix ">
+					<span class="lh-height">类型：</span>{$obj.vod_class|mac_url_create='class'}
+					<span></span>
+					<span class="lh-height">地区：</span>{$obj.vod_area|mac_url_create='area'}
+					<span></span>
+					<span class="lh-height">年份：</span>{$obj.vod_year|mac_url_create='year'}
+					<div class="dc">
+						<i class="fa fa-backward"></i>
+						<a href="{$obj.player_info.link_pre}">上一集</a>
+						<a href="{$obj.player_info.link_next}">下一集</a>&nbsp;&nbsp;
+						<i class="fa fa-forward"></i>
+					</div>
+				</div>
+			</div>
+		    {include file="vod/desc"}	
+			<div class="row">
+				<div class="ndes" id="pcjq">
+					<div class="ptit">
+					<i class="gang"></i>《{$obj.vod_name}》剧情简介
+				</div>
+				<div class="des_xy">
+					{$obj.vod_content|mac_filter_html}
+				</div>
+				</div>
+			</div>
+			
+				<div class="row">
+			<div class="ndes" id="pcjq">
+				<div class="ptit">
+					<i class="gang"></i>猜你喜欢
+				</div>
+				<div class="channel">
+					<div class="list contentlis clearfix">
+						<ul class="cont1 clearfix">
+							{maccms:vod num="6" type="current" order="desc" by="rnd"}
+							<li>
+								<div class="li_li clearfix">
+									<div class="li_all">
+										<div class="li_img">
+											<a href="{:mac_url_vod_detail($vo)}"><img class="dpic dh" src="{:mac_url_img($vo.vod_pic)}">
+												<span class="rgba1">{if condition="$vo.vod_remarks neq ''"}{$vo.vod_remarks}{elseif condition="$vo.vod_serial gt 0"}第{$vo.vod_serial}集{else /}已完结{/if}</span></a>
+										</div>
+										<div class="li_text">
+											<p class="name">
+												<a href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a>
+											</p>
+											<p class="actor">{$vo.vod_actor|mac_default='内详'}</p>
+										</div>
+										<a class="alink" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"></a>
+									</div>
+								</div>
+							</li>
+							{/maccms:vod}
+						</ul>
+						<ul class="txt-list txt-list-small clearfix">
+							{maccms:vod num="20" type="current" order="desc" by="rnd" start="13"}
+							<li><span>{$key}.</span>
+								<a href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a> {if condition="$vo.vod_remarks neq ''"}{$vo.vod_remarks}{elseif condition="$vo.vod_serial gt 0"}第{$vo.vod_serial}集{else /}已完结{/if}
+							</li>
+							{/maccms:vod}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			</div>
+			<span style="display:none" class="mac_ulog_set" alt="设置内容页浏览记录" data-type="1" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+<span style="display:none" class="mac_history_set" alt="设置History历史记录" data-name="[{$obj.type.type_name}]{$obj.vod_name}" data-pic="{$obj.vod_pic|mac_url_img|mac_url_img}"></span>
+<script type="text/javascript"> 
+var leo_jx_line = [{:jiexiline($muchoConfig['videoapi'])}];
+playerSwitch = function(lineIndex){$("#playleft iframe").attr("src",leo_jx_line[lineIndex] + "{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['url']}");}
+</script>
+			{include file="public/foot"}	
+  </body>
+</html>

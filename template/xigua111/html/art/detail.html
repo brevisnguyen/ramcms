@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{$obj.art_name} - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.art_name}最新资讯,推荐资讯" />
+        <meta name="description" content="{$obj.art_name}最新资讯,推荐资讯" />
+		{include file="public/include"}
+		    <link rel="stylesheet" href="{$maccms.path_tpl}css/stui_block.css" type="text/css" />
+       <link rel="stylesheet" href="{$maccms.path_tpl}css/stui_block_color.css" type="text/css" />
+	</head>
+	<body>
+		{include file="public/head"}	
+		   <div class="wrap">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-lg-wide-15 col-md-wide-2 col-xs-1 padding-0">	
+					{include file="art/head"}	
+				</div>
+				<div class="col-lg-wide-6 col-md-wide-8 col-xs-1 stui-pannel-side">
+					<div class="stui-pannel stui-pannel-bg clearfix">					
+						<div class="stui-pannel-box clearfix">
+							<div class="stui-pannel_bd col-pd clearfix">	
+								<h1 class="news-title">{$obj.art_name}</h1>				
+								<p class="text-muted">来源：网络整理<span class="split-line"></span>人气：{$obj.art_hits}<span class="split-line"></span>更新：{$obj.art_time|date='Y-m-d H:i:s',###}</p>
+								<div class="news-content">
+									{$obj.art_page_list[$param['page']]['content']} 
+									
+								</div>	
+								
+							</div>
+						</div>
+					</div>	
+					{include file="public/paging"}	
+				</div>
+				<div class="col-lg-wide-25 stui-pannel-side hidden-md hidden-sm hidden-xs">	
+					{include file="art/hot"}<!-- 热门资讯 -->
+				</div> 
+	        </div>
+	    </div>
+	      </div>
+		<style type="text/css">
+			.news-title{ margin-bottom: 20px; font-size: 24px; font-weight: bold;}.news-content{font-size: 16px; line-height: 30px;}.news-content img{ max-width: 100%;}.share{ margin-top: 20px;}
+		</style>
+		<span class="mac_hits hits hide" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-type="hits"></span>
+    	<span class="mac_ulog_set hide" data-type="1" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+		{include file="public/foot"}
+	</body>
+</html>

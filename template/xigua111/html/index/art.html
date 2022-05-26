@@ -1,0 +1,29 @@
+	{maccms:type order="asc" by="sort" ids="parent" id="vo1" key="key1" flag="art"}
+<div class="row">
+<div class="channel">
+<div class="menulist clearfix">
+<div class="stit clearfix">
+<a class="more" href="{:mac_url_type($vo1,[],'type')}">更多</a><a class="title" href="{:mac_url_type($vo1,[],'type')}">&nbsp;&nbsp;&nbsp;<font face=" Wingdings" size="+2" color="#FF8C00">&amp;</font>&nbsp;&nbsp;&nbsp;最新资讯</a>
+</div>
+</div>
+<div class="list clearfix">
+<ul>
+ 	{maccms:art num="15" type="'.$vo1['type_id'].'" order="desc" by="time"}
+<li>
+<div class="li_li clearfix">
+<div class="li_text">
+<p class="name">
+<a href="{:mac_url_art_detail($vo)}">{$vo.art_name}</a>
+</p>
+<p class="actor">
+{$vo.art_blurb}
+</p>
+</div>
+</div>
+</li>
+{/maccms:art}
+</ul>
+</div>
+</div>
+</div>
+	{/maccms:type}

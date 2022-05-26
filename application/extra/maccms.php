@@ -28,15 +28,15 @@ return array (
     'install_dir' => '/',
     'site_logo' => 'static/images/logo_1.png',
     'site_waplogo' => 'static/images/logo_1.png',
-    'template_dir' => 'ec_IQ',
-    'html_dir' => 'html',
+    'template_dir' => 'dianyingim',
+    'html_dir' => 'htmli',
     'mob_status' => '1',
     'mob_template_dir' => 'ec_IQ',
     'mob_html_dir' => 'html',
     'site_tj' => '',
     'site_status' => '1',
     'site_close_tip' => 'Trang web đang trong qu&aacute; t&igrave;nh bảo tr&igrave;, mời quay lại sau.',
-    'ads_dir' => 'ads',
+    'ads_dir' => '这是一个开源项目，仅限学习交流使用，严禁利用本源码从事非法行为，如若发现电影先生将打到他关站，哈哈哈。',
     'mob_ads_dir' => 'ads',
   ),
   'app' => 
@@ -481,11 +481,11 @@ return array (
   'rewrite' => 
   array (
     'suffix_hide' => '0',
-    'route_status' => '0',
+    'route_status' => '1',
     'status' => '0',
     'encode_key' => 'abcdefg',
     'encode_len' => '6',
-    'vod_id' => '0',
+    'vod_id' => '1',
     'art_id' => '0',
     'type_id' => '0',
     'topic_id' => '0',
@@ -523,7 +523,7 @@ roleshow/<by?>-<letter?>-<level?>-<order?>-<page?>-<rid?>   => role/show
 
 vodtype/<id>-<page?>   => vod/type
 vodtype/<id>   => vod/type
-voddetail/<id>   => vod/detail
+movies/<id>   => vod/detail
 vodrss-<id>   => vod/rss
 vodplay/<id>-<sid>-<nid>   => vod/play
 voddown/<id>-<sid>-<nid>   => vod/down

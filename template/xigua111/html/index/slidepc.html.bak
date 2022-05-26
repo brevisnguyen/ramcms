@@ -1,0 +1,57 @@
+<div class="recommend_bx">					
+<script type="text/javascript">
+var currentIndex = 0; 
+var scrollDuration = 400;
+var hot_timer = null; 
+</script>
+<div class="recommend_scroll_lst_bx">
+<ul id="scrollBox" class="recommend_scroll_lst">
+ {maccms:vod num="5" type="all" order="desc" by="time" level="0"}
+<li {if condition="$key eq 1"}style="display:block"{else/}style="display:none"{/if}>
+<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"  class="recommend_scroll_lst_tab">					
+<img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}" style="margin-left:-0px;margin-top:-0px;width:279px;height:389px">
+<div class="recommend_scroll_txt_bg"></div>
+<div class="recommend_scroll_txt">{$vo.vod_name}</div>
+</a>
+</li>
+{/maccms:vod}
+
+</ul>
+<ul id="scrollSmallBox" class="recommend_scroll_dot">
+<li class="cur"><a href="javascript:void(0)" onmouseover="clearTimeout(hot_timer);hot_timer=setTimeout(function(){scrollBox(0);},50)" onmouseout="clearTimeout(hot_timer)"></a></li>
+<li><a href="javascript:void(0)" onmouseover="clearTimeout(hot_timer);hot_timer=setTimeout(function(){scrollBox(1);},50)" onmouseout="clearTimeout(hot_timer)"></a></li>
+<li><a href="javascript:void(0)" onmouseover="clearTimeout(hot_timer);hot_timer=setTimeout(function(){scrollBox(2);},50)" onmouseout="clearTimeout(hot_timer)"></a></li>
+<li><a href="javascript:void(0)" onmouseover="clearTimeout(hot_timer);hot_timer=setTimeout(function(){scrollBox(3);},50)" onmouseout="clearTimeout(hot_timer)"></a></li>
+<li><a href="javascript:void(0)" onmouseover="clearTimeout(hot_timer);hot_timer=setTimeout(function(){scrollBox(4);},50)" onmouseout="clearTimeout(hot_timer)"></a></li>
+</ul>
+<a href="javascript:void(0)" style="display: none;" onclick="scrollBox(currentIndex - 1, 500)" class="recommend_scroll_pg_lft"></a>
+<a href="javascript:void(0)" style="display: none;" onclick="scrollBox(currentIndex + 1, 500)" class="recommend_scroll_pg_rgt"></a>
+
+
+</div>
+<ul class="recommend_lst">
+{maccms:vod num="4" type="all" order="desc" by="time" level="0"}	
+<li id="li_0" onmouseover="$(this).addClass('cur')" onmouseout="$(this).removeClass('cur')" class="">
+<a  href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" class="recommend_lst_thumb"> 	
+<img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}" style="margin-left:-0px;margin-top:-0px;width:140px;height:160px">
+</a>
+<div class="recommend_lst_txt">
+<a  href="{:mac_url_vod_detail($vo)}" title="《{$vo.vod_name}》">{$vo.vod_name}</a>
+</div>
+</li>
+{/maccms:vod}	
+</ul>
+<ul class="recommend_lst">
+{maccms:vod num="4" type="all" order="asc" by="time" level="1"}	
+<li id="li_0" onmouseover="$(this).addClass('cur')" onmouseout="$(this).removeClass('cur')" class="">
+<a  href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" class="recommend_lst_thumb"> 	
+<img src="{:mac_url_img($vo.vod_pic)}" alt="{$vo.vod_name}" title="{$vo.vod_name}" style="margin-left:-0px;margin-top:-0px;width:140px;height:160px">
+</a>
+<div class="recommend_lst_txt">
+<a  href="{:mac_url_vod_detail($vo)}" title="《{$vo.vod_name}》">{$vo.vod_name}</a>
+</div>
+</li>
+{/maccms:vod}	
+</ul>
+</div>
+
