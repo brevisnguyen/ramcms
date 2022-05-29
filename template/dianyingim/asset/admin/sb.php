@@ -5,15 +5,15 @@ return array (
     'jc' => 
     array (
       'logo1' => 'template/dianyingim/img/logo_1.png',
-      'logo2' => 'template/dianyingim/img/logo2.png',
-      'icon' => 'template/dianyingim/img/logo.png',
+      'logo2' => 'template/dianyingim/img/logo_2.png',
+      'icon' => 'template/dianyingim/img/icon.png',
       'pic' => 'template/dianyingim/img/loading.png',
-      'gg' => '感谢使用电影先生开源项目',
-      'txt' => '<p>电影先生</p>
-<p>模板交流qq群：872882160</p>
-<p>如遇到任何问题可加作者群反馈</p>
-<p>作者qq群：<a href="https://jq.qq.com/?_wv=1027&k=ctsUKe9L" target="_blank"><strong>点击这里快速加入群聊</strong></a>',
-      'zhizhang' => 'Cảm ơn bạn đã sử dụng mã nguồn này, nếu bạn thích nó, hãy truyền bá nó 😊',
+      'gg' => 'Bạn đang xem phim tại phimplus.xyz',
+      'txt' => '<p>Phim inguon</p>
+<p>Admin phimplus.xyz: @brevis_ng</p>
+<p>Nếu gặp bất cứ vấn đề gì, vui lòng phản hồi cho nhóm tác giả</p>
+<p>Nhóm tele tác giả: <a href="https://t.me/+FPSDDbRPRuozNjZl" target="_blank"><strong>Bấm vào đây để nhanh chóng tham gia trò chuyện nhóm</strong></a>',
+      'zhizhang' => 'Cảm ơn bạn đã xem phim tại phimplus.xyz, chia sẻ để mình có động lực up nhiều phim hay hơn ạ 😊',
       'sm' => 'Tất cả nội dung trên trang web này đến từ các tài nguyên được tham chiếu công khai do các trang web chia sẻ Internet cung cấp và không cung cấp dịch vụ tải lên và lưu trữ tài nguyên video.',
     ),
     'nav' => 

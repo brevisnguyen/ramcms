@@ -1210,7 +1210,16 @@ function mac_filter_xss($str)
 
 function mac_format_text($str)
 {
-    return str_replace(array('/','，','|','、',',,,'),',',$str);
+    if(empty($str)){
+        return "Không xác định";
+    }
+    $str = str_replace(array('/','，','|','、',',,,'),',',$str);
+    $splt_str = explode(',', $str);
+	foreach ($splt_str as &$val) {
+		$val = ucwords(trim($val));
+	}
+    unset($val);
+    return implode(',', $splt_str);
 }
 function mac_format_count($str)
 {
@@ -1649,7 +1658,7 @@ function mac_url_content_img($content)
             }
         }
     }
-    return $content;
+    return htmlspecialchars_decode($content);
 }
 
 function mac_alphaID($in, $to_num=false, $pad_up=false, $passKey='')
@@ -2428,11 +2437,15 @@ function mac_url_create($str,$type='actor',$flag='vod',$ac='search',$sp='&nbsp;'
     }
     $res = [];
     $str = str_replace(array('/','|',',','，'),',',$str);
-    $arr = explode(',',$str);
-    foreach($arr as $k=>$v){
+    $splt_str = explode(',', $str);
+	foreach ($splt_str as &$val) {
+		$val = ucwords(trim($val));
+	}
+    unset($val);
+    foreach($splt_str as $k=>$v){
         $res[$k] = '<a href="'.mac_url($flag.'/'.$ac,[$type=>$v]).'" target="_blank">'.$v.'</a>'.$sp;
     }
-    return implode(', ',$res);
+    return implode('',$res);
 }
 
 function mac_url_search($param=[],$flag='vod')

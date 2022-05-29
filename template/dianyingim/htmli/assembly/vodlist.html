@@ -23,5 +23,5 @@
     <div class="module-item-titlebox">
         <a href="{:mac_url_vod_detail($vo)}" class="module-item-title" title="{$vo.vod_name}">{$vo.vod_name}</a>
     </div>
-    <div class="module-item-text">{$vo.vod_remarks|mac_default=$vo.vod_hits.'播放'}</div>
+    <div class="module-item-text">{$vo.vod_remarks|mac_default='Lượt xem '.$vo.vod_hits}</div>
 </div>

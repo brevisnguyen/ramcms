@@ -742,7 +742,10 @@ input[type=radio], input[type=checkbox] {
 }
 
 #header {
-	position: relative
+	position: relative;
+	background-image: url(../img/dex-ezekiel-IxDPZ-AHfoI-unsplash.jpg);
+	background-position: 50% 15%;
+	background-size: cover;
 }
 
 #footer {
@@ -915,7 +918,10 @@ input[type=radio], input[type=checkbox] {
 }
 
 .grid-item-name {
-	font-weight: 700
+	font-weight: 700;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .grid-more {
@@ -1351,7 +1357,8 @@ input[type=radio], input[type=checkbox] {
 	display: inline-block;
 	position: relative;
 	margin-left: 5px;
-	cursor: pointer
+	cursor: pointer;
+	color: #f3f5f7;
 }
 
 .slogan em {
@@ -1418,7 +1425,17 @@ input[type=radio], input[type=checkbox] {
 .nav-menu-item {
 	padding: 0 11px;
 	float: left;
-	font-size: 16px
+	font-size: 16px;
+	color: #f3f5f7;
+}
+
+.nav-menu-item .nav-link {
+	color: #f3f5f7;
+}
+
+.nav-menu-item :hover{
+	color: #ff2a14;
+	font-weight: 700;
 }
 
 .nav-menu-item-name {
@@ -2425,6 +2442,10 @@ input[type=radio], input[type=checkbox] {
 	color: rgba(0, 0, 0, .68)
 }
 
+.video-info-aux .tag-link a:hover {
+	color: #ff2a14;
+}
+
 .video-info-aux .tag-link:first-child {
 	background: #fef0e5;
 	margin: 0
@@ -2472,7 +2493,6 @@ input[type=radio], input[type=checkbox] {
 .video-info-items:last-child {
 	min-height: 50px;
 	padding: 0;
-	word-break: break-all
 }
 
 .video-info-itemtitle {
@@ -4364,7 +4384,7 @@ input[type=radio], input[type=checkbox] {
 		pointer-events: auto
 	}
 	.module-tab-drop .module-tab-item {
-		width: calc(33.33% - 10px);
+		/* width: calc(33.33% - 10px); */
 		margin: 5px;
 		border-radius: 10px;
 		line-height: 40px;
@@ -5064,4 +5084,20 @@ input[type=radio], input[type=checkbox] {
     display: block;
     position: relative;
     line-height: 16px;
+}
+
+.coral {
+	color: coral;
+}
+.cornflowerblue {
+	color: cornflowerblue;
+}
+.darkcyan {
+	color: darkcyan;
+}
+.violet {
+	color: violet;
+}
+.darkmagenta {
+	color: darkmagenta;
 }

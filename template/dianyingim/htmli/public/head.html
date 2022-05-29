@@ -1,12 +1,11 @@
 {if condition="$maccms.aid eq 1"}
 <header id="header" class="wrapper">
     <div class="nav">
-        <!-- {$sb.dscms.jc.gg} -->
-        <h1 class="slogan">Chúc bạn xem phim vui vẻ<em>+</em></h1>
+        <h1 class="slogan">{$sb.dscms.jc.gg}. Chúc các bạn xem phim vui vẻ<em>+</em></h1>
         <div id="index-nav">
             <ul class="nav-menu-items">
                 <li class="nav-menu-item selected">
-                    <a href="{$maccms.path}" title="{$maccms.site_name}">Trang chủ</a>
+                    <a class="nav-link" href="{$maccms.path}" title="{$maccms.site_name}">Trang chủ</a>
                 </li>
                 {maccms:type ids="parent" order="asc" by="sort"}
                 <li class="nav-menu-item ">
@@ -14,7 +13,7 @@
                 </li>
                 {/maccms:type}
                 <li class="space-line-bold"></li>
-                <li class="nav-menu-item ec-head-app"><a href="{$sb.dscms.jc.appurl}" title="Tải App"><i class="icon-app"></i>APP</a></li>
+                <li class="nav-menu-item ec-head-app"><a class="nav-link" href="{$sb.dscms.jc.appurl}" title="Tải App"><i class="icon-app"></i>APP</a></li>
                 <li class="nav-menu-item drop hide">
 					<span class="nav-menu-icon">
                         <i class="icon-all"></i>
@@ -71,7 +70,7 @@
                                     <a href="" class="playlist historyclean">
                                         <i class="icon-clear"></i>
                                     </a>
-                                    <strong>Sổ phim của tôi</strong>
+                                    <strong>Lịch sử xem</strong>
                                 </li>
                             </ul>
                         </div>
@@ -195,7 +194,7 @@
                                     <a href="" class="playlist historyclean">
                                         <i class="icon-clear"></i>
                                     </a>
-                                    <strong>Sổ phim của tôi</strong>
+                                    <strong>Lịch sử xem</strong>
                                 </li>
                             </ul>
                         </div>

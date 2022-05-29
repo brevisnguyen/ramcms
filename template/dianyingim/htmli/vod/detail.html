@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>{$obj.vod_name}Mô tả chi tiết-{$obj.vod_name}Xem trực tuyến-{$obj.vod_name}Tải xuống - {$maccms.site_name}</title>
-    <meta name="keywords" content="{$obj.vod_name}在线收看,{$obj.vod_name}迅雷下载" />
-    <meta name="description" content="{$obj.vod_name}剧情:{$obj.vod_blurb}" />
+    <title>{$obj.vod_name} | Chi tiết {$obj.vod_name}|Xem trực tuyến {$obj.vod_name}|Tải xuống - {$maccms.site_name}</title>
+    <meta name="keywords" content="Xem phim {$obj.vod_name}, Tải xuống{$obj.vod_name}" />
+    <meta name="description" content="Chi tiết {$obj.vod_name}: {$obj.vod_blurb}" />
     {include file="public/include"}
 </head>
 <body class="view page">
@@ -29,7 +29,7 @@
             <div class="video-info">
                 <div class="video-info-header">
                     <h1 class="page-title">{$obj.vod_name}</h1>
-                    <h2 class="video-subtitle" title="又名：{$obj.vod_en}">{$obj.vod_en}</h2>
+                    <h2 class="video-subtitle" title="{$obj.vod_en}">{$obj.vod_en}</h2>
                     <div class="video-info-aux">
                         <a href="{:mac_url_type($obj.type)}" title="{$obj.type.type_name}" class="tag-link">
 						    <span class="video-tag-icon"><i class="icon-cate-dy"></i>{$obj.type.type_name}</span>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="video-info-items"><span class="video-info-itemtitle">Phát hành: </span>
-                        <div class="video-info-item">{$obj.vod_pubdate|mac_default=$obj.vod_year}({$obj.vod_area})</div>
+                        <div class="video-info-item">{$obj.vod_pubdate|mac_default=$obj.vod_year} ({$obj.vod_area})</div>
                     </div>
                     <div class="video-info-items"><span class="video-info-itemtitle">Trạng thái: </span>
                         <div class="video-info-item">{$obj.vod_remarks|mac_default=$obj.vod_hits.'Lượt xem'}</div>
@@ -130,7 +130,7 @@
                     <div class="scroll-content">
                         {maccms:foreach name="vo.urls" id="vo2" key="key2"}
                         <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" title="{$vo2.name}"><span>
-                        {if condition="$obj.type_id_1 eq 2"}Đầu tiên{$key2}thu thập{else /}{$vo2.name}{/if}
+                        {if condition="$obj.type_id_1 eq 2"}Tập {$key2}{else /}{$vo2.name}{/if}
                         </span></a>
                         {/maccms:foreach}
                     </div>
@@ -161,7 +161,7 @@
                 <div class="module-row-one">
                     {maccms:foreach name="vo.urls" id="vo2" key="key2"}
                     <div class="module-row-info">
-                        <a class="module-row-text copy" href="javascript:;" data-clipboard-text="{$vo2.url}" title="Copy địa chỉ tải xuống của《{$vo2.name}》"><i class="icon-video-file"></i>
+                        <a class="module-row-text copy" href="javascript:;" data-clipboard-text="{$vo2.url}" title="Sao chép địa chỉ tải xuống {$vo2.name}"><i class="icon-video-file"></i>
                             <div class="module-row-title">
                                 <h4>{$vo2.name}</h4>
                                 <p>{$vo2.url}</p>
@@ -169,7 +169,7 @@
                         </a>
                         <div class="module-row-shortcuts">
                             <a class="btn-pc btn-down" href="{$vo2.url}" title="{$vo2.name}"><i class="icon-download"></i><span>Tải xuống</span></a>
-                            <a class="btn-copyurl copy" href="javascript:;" data-clipboard-text="{$vo2.url}" title="Copy địa chỉ《{$vo2.name}》"><i class="icon-url"></i><span class="btn-pc">Sao chép link</span></a>
+                            <a class="btn-copyurl copy" href="javascript:;" data-clipboard-text="{$vo2.url}" title="Sao chép địa chỉ tải xuống {$vo2.name}"><i class="icon-url"></i><span class="btn-pc">Sao chép Link</span></a>
                         </div>
                     </div>
                     {/maccms:foreach}
@@ -193,7 +193,7 @@
             </div>
         </div>
     </div>
-    <div class="module">
+    <div class="module" style="display: none !important;">
         <div class="module-heading">
             <h2 class="module-title">Gợi ý liên quan</h2>
             <a class="more" href="{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}" title="更多">Xem thêm<i class="icon-arrow-right-o"></i></a>
@@ -210,7 +210,7 @@
 </main>
 {include file="public/foot"}
 <div class="shortcuts-box"><div id="shortcuts-info"></div></div>
-<span class="mac_ulog_set none" alt="设置播放页浏览记录" data-type="4" data-mid="1" data-id="67609" data-sid="0" data-nid="0"></span>
+<span class="mac_ulog_set none" alt="Đặt lịch sử duyệt trang" data-type="4" data-mid="1" data-id="67609" data-sid="0" data-nid="0"></span>
 <span class="mac_hits none" data-mid="1" data-id="67609" data-type="hits"></span>
 </body>
 </html>

@@ -521,7 +521,10 @@ class Vod extends Base {
                 $info['vod_pic_screenshot_list'] = mac_screenshot_list($info['vod_pic_screenshot']);
             }
 
-
+            // Content
+            if (!empty($info['vod_content'])) {
+                $info['vod_content'] = htmlspecialchars_decode(($info['vod_content']));
+            }
             //分类
             if (!empty($info['type_id'])) {
                 $type_list = model('Type')->getCache('type_list');
