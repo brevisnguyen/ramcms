@@ -15,13 +15,10 @@ return [
     // 'hostname'        => '27.124.44.16',
     'hostname'        => '127.0.0.1',
     // 数据库名
-    // 'database'        => 'cmsinguon',
-    'database'        => 'vncms',
+    'database'        => 'zackdcms',
     // 用户名
-    // 'username'        => 'cmsinguon',
     'username'        => 'root',
     // 密码
-    // 'password'        => 'FfLNNFFsAfXTn7hr',
     'password'        => '',
     // 端口
     'hostport'        => '3306',
