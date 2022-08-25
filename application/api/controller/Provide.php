@@ -11,10 +11,6 @@ class Provide extends Base
     {
         parent::__construct();
         $this->_param = input('','','trim,urldecode');
-        // 因搜索兼容性问题暂时移除
-//        if(isset($GLOBALS['config']['app']['input_type']) && $GLOBALS['config']['app']['input_type'] == 0 && request()->isPost()){
-//            $this->_param = input('get.');
-//        }
     }
 
     public function index()
@@ -58,6 +54,10 @@ class Provide extends Base
                     $where['type_id'] = $this->_param['t'];
                 }
             }
+            // 支持isend参数，是否完结
+            if (isset($this->_param['isend'])) {
+                $where['vod_isend'] = $this->_param['isend'] == 1 ? 1 : 0;
+            }
             if (!empty($this->_param['h'])) {
                 $todaydate = date('Y-m-d', strtotime('+1 days'));
                 $tommdate = date('Y-m-d H:i:s', strtotime('-' . $this->_param['h'] . ' hours'));
@@ -70,28 +70,64 @@ class Provide extends Base
             if (!empty($this->_param['wd'])) {
                 $where['vod_name'] = ['like', '%' . $this->_param['wd'] . '%'];
             }
-
-            if (empty($GLOBALS['config']['api']['vod']['from']) && !empty($this->_param['from'])) {
+            // 增加年份筛选 https://github.com/magicblack/maccms10/issues/815
+            if (!empty($this->_param['year'])) {
+                $param_year = trim($this->_param['year']);
+                if (strlen($param_year) == 4) {
+                    $year = intval($param_year);
+                } elseif (strlen($param_year) == 9) {
+                    $start = (int)substr($param_year, 0, 4);
+                    $end = (int)substr($param_year, 5, 4);
+                    if ($start > $end) {
+                        $tmp_num = $end;
+                        $end = $start;
+                        $start = $tmp_num;
+                    }
+                    $tmp_arr = [];
+                    $start = max($start, 1900);
+                    $end = min($end, date('Y') + 3);
+                    for ($i = $start; $i <= $end; $i++) {
+                        $tmp_arr[] = $i;
+                    }
+                    $year = join(',', $tmp_arr);
+                }
+                $where['vod_year'] = ['in', explode(',', $year)];
+            }
+            if (empty($GLOBALS['config']['api']['vod']['from']) && !empty($this->_param['from']) && strlen($this->_param['from']) > 2) {
                 $GLOBALS['config']['api']['vod']['from'] = $this->_param['from'];
             }
+            // 采集播放组支持多个播放器
+            // https://github.com/magicblack/maccms10/issues/888
             if (!empty($GLOBALS['config']['api']['vod']['from'])) {
-                $where['vod_play_from'] = ['like', '%' . $GLOBALS['config']['api']['vod']['from'] . '%'];
+                $vod_play_from_list = explode(',', trim($GLOBALS['config']['api']['vod']['from']));
+                $vod_play_from_list = array_unique($vod_play_from_list);
+                $vod_play_from_list = array_filter($vod_play_from_list);
+                if (!empty($vod_play_from_list)) {
+                    $where['vod_play_from'] = ['or'];
+                    foreach ($vod_play_from_list as $vod_play_from) {
+                        array_unshift($where['vod_play_from'], ['like', '%' . trim($vod_play_from) . '%']);
+                    }
+                }
             }
-
             if (!empty($GLOBALS['config']['api']['vod']['datafilter'])) {
                 $where['_string'] .= ' ' . $GLOBALS['config']['api']['vod']['datafilter'];
             }
             if (empty($this->_param['pg'])) {
                 $this->_param['pg'] = 1;
             }
+            $pagesize = $GLOBALS['config']['api']['vod']['pagesize'];
+            if (!empty($this->_param['pagesize']) && $this->_param['pagesize'] > 0) {
+                $pagesize = min((int)$this->_param['pagesize'], 100);
+            }
 
-            $order = 'vod_time desc';
+            $sort_direction = !empty($this->_param['sort_direction']) && $this->_param['sort_direction'] == 'asc' ? 'asc' : 'desc';
+            $order = 'vod_time ' . $sort_direction;
             $field = 'vod_id,vod_name,type_id,"" as type_name,vod_en,vod_time,vod_remarks,vod_play_from,vod_time';
 
             if ($this->_param['ac'] == 'videolist' || $this->_param['ac'] == 'detail') {
                 $field = '*';
             }
-            $res = model('vod')->listData($where, $order, $this->_param['pg'], $GLOBALS['config']['api']['vod']['pagesize'], 0, $field, 0);
+            $res = model('vod')->listData($where, $order, $this->_param['pg'], $pagesize, 0, $field, 0);
 
 
             if ($this->_param['at'] == 'xml') {
@@ -103,6 +139,14 @@ class Provide extends Base
             if($cache_time>0) {
                 Cache::set($cach_name, $html, $cache_time);
             }
+        }
+        // https://github.com/magicblack/maccms10/issues/818 影片的播放量+1
+        if (
+            isset($this->_param['ac']) && $this->_param['ac'] == 'detail' && 
+            !empty($this->_param['ids']) && (int)$this->_param['ids'] == $this->_param['ids'] && 
+            !empty($GLOBALS['config']['api']['vod']['detail_inc_hits'])
+        ) {
+            model('Vod')->fieldData(['vod_id' => (int)$this->_param['ids']], ['vod_hits' => ['inc', 1]]);
         }
         echo $html;
         exit;
@@ -117,7 +161,7 @@ class Provide extends Base
         for ($i=0;$i<$arr2count;$i++){
             if ($arr1count >= $i){
                 if($from!=''){
-                    if($arr2[$i]==$from){
+                    if($arr2[$i]==$from || str_contains($from, $arr2[$i])){
                         $res_xml .=  '<dd flag="'. $arr2[$i] .'"><![CDATA[' . $arr1[$i]. ']]></dd>';
                         $res_json[$arr2[$i]] = $arr1[$i];
                     }
@@ -141,30 +185,29 @@ class Provide extends Base
             $v['vod_time'] = date('Y-m-d H:i:s',$v['vod_time']);
 
             if(substr($v["vod_pic"],0,4)=="mac:"){
-                $v["vod_pic"] = str_replace('mac:','http:',$v["vod_pic"]);
+                $v["vod_pic"] = str_replace('mac:',$this->getImgUrlProtocol('vod'), $v["vod_pic"]);
             }
             elseif(!empty($v["vod_pic"]) && substr($v["vod_pic"],0,4)!="http" && substr($v["vod_pic"],0,2)!="//"){
                 $v["vod_pic"] = $GLOBALS['config']['api']['vod']['imgurl'] . $v["vod_pic"];
             }
 
             if($this->_param['ac']=='videolist' || $this->_param['ac']=='detail'){
-                if ($GLOBALS['config']['api']['vod']['from'] != '') {
+                if ($GLOBALS['config']['api']['vod']['from'] != '' && !str_contains($GLOBALS['config']['api']['vod']['from'], ',')) {
                     $arr_from = explode('$$$',$v['vod_play_from']);
                     $arr_url = explode('$$$',$v['vod_play_url']);
                     $arr_server = explode('$$$',$v['vod_play_server']);
                     $arr_note = explode('$$$',$v['vod_play_note']);
-
                     $key = array_search($GLOBALS['config']['api']['vod']['from'],$arr_from);
-                    $res['list'][$k]['vod_play_from'] = $GLOBALS['config']['api']['vod']['from'];
+                    $key = $key > 0 ? $key : 0;
+                    $res['list'][$k]['vod_play_from'] = $arr_from[$key];
                     $res['list'][$k]['vod_play_url'] = $arr_url[$key];
                     $res['list'][$k]['vod_play_server'] = $arr_server[$key];
                     $res['list'][$k]['vod_play_note'] = $arr_note[$key];
-
                 }
 
             }
             else {
-                if ($GLOBALS['config']['api']['vod']['from'] != '') {
+                if ($GLOBALS['config']['api']['vod']['from'] != '' && !str_contains($GLOBALS['config']['api']['vod']['from'], ',')) {
                     $res['list'][$k]['vod_play_from'] = $GLOBALS['config']['api']['vod']['from'];
                 } else {
                     $res['list'][$k]['vod_play_from'] = str_replace('$$$', ',', $v['vod_play_from']);
@@ -210,7 +253,7 @@ class Provide extends Base
             $xml .= '<name><![CDATA['.$v['vod_name'].']]></name>';
             $xml .= '<type>'.$type_info['type_name'].'</type>';
             if(substr($v["vod_pic"],0,4)=="mac:"){
-                $v["vod_pic"] = str_replace('mac:','http:',$v["vod_pic"]);
+                $v["vod_pic"] = str_replace('mac:',$this->getImgUrlProtocol('vod'), $v["vod_pic"]);
             }
             elseif(!empty($v["vod_pic"]) && substr($v["vod_pic"],0,4)!="http"  && substr($v["vod_pic"],0,2)!="//"){
                 $v["vod_pic"] = $GLOBALS['config']['api']['vod']['imgurl'] . $v["vod_pic"];
@@ -231,7 +274,7 @@ class Provide extends Base
                 $xml .= '<des><![CDATA['.$v['vod_content'].']]></des>';
             }
             else {
-                if ($GLOBALS['config']['api']['vod']['from'] != ''){
+                if ($GLOBALS['config']['api']['vod']['from'] != '' && !str_contains($GLOBALS['config']['api']['vod']['from'], ',')){
                     $xml .= '<dt>' . $GLOBALS['config']['api']['vod']['from'] . '</dt>';
                 }
                 else{
@@ -342,7 +385,7 @@ class Provide extends Base
                 $v['art_time'] = date('Y-m-d H:i:s', $v['art_time']);
 
                 if (substr($v["art_pic"], 0, 4) == "mac:") {
-                    $v["art_pic"] = str_replace('mac:', 'http:', $v["art_pic"]);
+                    $v["art_pic"] = str_replace('mac:', $this->getImgUrlProtocol('art'), $v["art_pic"]);
                 } elseif (!empty($v["art_pic"]) && substr($v["art_pic"], 0, 4) != "http" && substr($v["art_pic"], 0, 2) != "//") {
                     $v["art_pic"] = $GLOBALS['config']['api']['art']['imgurl'] . $v["art_pic"];
                 }
@@ -453,7 +496,7 @@ class Provide extends Base
                 $v['actor_time'] = date('Y-m-d H:i:s', $v['actor_time']);
 
                 if (substr($v["actor_pic"], 0, 4) == "mac:") {
-                    $v["actor_pic"] = str_replace('mac:', 'http:', $v["actor_pic"]);
+                    $v["actor_pic"] = str_replace('mac:', $this->getImgUrlProtocol('actor'), $v["actor_pic"]);
                 } elseif (!empty($v["actor_pic"]) && substr($v["actor_pic"], 0, 4) != "http" && substr($v["actor_pic"], 0, 2) != "//") {
                     $v["actor_pic"] = $GLOBALS['config']['api']['actor']['imgurl'] . $v["actor_pic"];
                 }
@@ -565,7 +608,7 @@ class Provide extends Base
                 $v['vod_director'] = $v['data']['vod_director'];
                 unset($v['data']);
                 if (substr($v["role_pic"], 0, 4) == "mac:") {
-                    $v["role_pic"] = str_replace('mac:', 'http:', $v["role_pic"]);
+                    $v["role_pic"] = str_replace('mac:', $this->getImgUrlProtocol('role'), $v["role_pic"]);
                 } elseif (!empty($v["role_pic"]) && substr($v["role_pic"], 0, 4) != "http" && substr($v["role_pic"], 0, 2) != "//") {
                     $v["role_pic"] = $GLOBALS['config']['api']['role']['imgurl'] . $v["role_pic"];
                 }
@@ -665,7 +708,7 @@ class Provide extends Base
                 $v['website_time'] = date('Y-m-d H:i:s', $v['website_time']);
 
                 if (substr($v["website_pic"], 0, 4) == "mac:") {
-                    $v["website_pic"] = str_replace('mac:', 'http:', $v["website_pic"]);
+                    $v["website_pic"] = str_replace('mac:', $this->getImgUrlProtocol('website'), $v["website_pic"]);
                 } elseif (!empty($v["website_pic"]) && substr($v["website_pic"], 0, 4) != "http" && substr($v["website_pic"], 0, 2) != "//") {
                     $v["website_pic"] = $GLOBALS['config']['api']['website']['imgurl'] . $v["website_pic"];
                 }
@@ -730,5 +773,17 @@ class Provide extends Base
             echo lang('api/auth_err');
             exit;
         }
+    }
+
+    private function getImgUrlProtocol($key)
+    {
+        $default = (isset($GLOBALS['config']['upload']['protocol']) ? $GLOBALS['config']['upload']['protocol'] : 'http') . ':';
+        if (!isset($GLOBALS['config']['api'][$key]['imgurl'])) {
+            return $default;
+        }
+        if (substr($GLOBALS['config']['api'][$key]['imgurl'], 0, 5) == 'https') {
+            return 'https:';
+        }
+        return $default;
     }
 }

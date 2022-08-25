@@ -4,7 +4,7 @@ return array (
   array (
     'status' => '1',
     'from' => 'http',
-    'show' => 'Tải xuống http',
+    'show' => 'http下载',
     'des' => 'des提示信息',
     'ps' => '0',
     'parse' => '',
@@ -19,7 +19,7 @@ return array (
     'show' => 'xunlei下载',
     'des' => 'des提示信息',
     'target' => '_self',
-    'ps' => '1',
+    'ps' => '0',
     'parse' => '',
     'sort' => '90',
     'tip' => 'tip提示信息',

@@ -48,69 +48,9 @@ return array (
     array (
     ),
   ),
-  'rss/index' => 
+  'rss' => 
   array (
     0 => 'rss/index',
-    1 => 
-    array (
-    ),
-    2 => 
-    array (
-    ),
-  ),
-  'rss/baidu' => 
-  array (
-    0 => 'rss/baidu',
-    1 => 
-    array (
-    ),
-    2 => 
-    array (
-    ),
-  ),
-  'rss/google' => 
-  array (
-    0 => 'rss/google',
-    1 => 
-    array (
-    ),
-    2 => 
-    array (
-    ),
-  ),
-  'rss/sogou' => 
-  array (
-    0 => 'rss/sogou',
-    1 => 
-    array (
-    ),
-    2 => 
-    array (
-    ),
-  ),
-  'rss/so' => 
-  array (
-    0 => 'rss/so',
-    1 => 
-    array (
-    ),
-    2 => 
-    array (
-    ),
-  ),
-  'rss/bing' => 
-  array (
-    0 => 'rss/bing',
-    1 => 
-    array (
-    ),
-    2 => 
-    array (
-    ),
-  ),
-  'rss/sm' => 
-  array (
-    0 => 'rss/sm',
     1 => 
     array (
     ),
@@ -278,7 +218,7 @@ return array (
     array (
     ),
   ),
-  'movies/<id>' => 
+  'voddetail/<id>' => 
   array (
     0 => 'vod/detail',
     1 => 

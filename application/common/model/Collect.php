@@ -4,6 +4,7 @@ use think\Db;
 use think\Cache;
 use app\common\util\Pinyin;
 use think\Request;
+use app\common\validate\Vod as VodValidate;
 
 class Collect extends Base {
 
@@ -167,7 +168,7 @@ class Collect extends Base {
         }
         $html = mac_curl_get($url);
         if(empty($html)){
-            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err')];
+            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err') . ', url: ' . $url];
         }
         $html = mac_filter_tags($html);
         $xml = @simplexml_load_string($html);
@@ -214,22 +215,22 @@ class Collect extends Base {
             }
             $array_data[$key]['vod_id'] = (string)$video->id;
             //$array_data[$key]['type_id'] = (string)$video->tid;
-            $array_data[$key]['vod_name'] = mac_filter_xss((string)$video->name);
-            $array_data[$key]['vod_sub'] = mac_filter_xss((string)$video->subname);
-            $array_data[$key]['vod_remarks'] = mac_filter_xss((string)$video->note);
-            $array_data[$key]['type_name'] = mac_filter_xss((string)$video->type);
-            $array_data[$key]['vod_pic'] = mac_filter_xss((string)$video->pic);
-            $array_data[$key]['vod_lang'] = mac_filter_xss((string)$video->lang);
-            $array_data[$key]['vod_area'] = mac_filter_xss((string)$video->area);
-            $array_data[$key]['vod_year'] = mac_filter_xss((string)$video->year);
-            $array_data[$key]['vod_serial'] = mac_filter_xss((string)$video->state);
-            $array_data[$key]['vod_actor'] = mac_filter_xss((string)$video->actor);
-            $array_data[$key]['vod_director'] = mac_filter_xss((string)$video->director);
+            $array_data[$key]['vod_name'] = (string)$video->name;
+            $array_data[$key]['vod_sub'] = (string)$video->subname;
+            $array_data[$key]['vod_remarks'] = (string)$video->note;
+            $array_data[$key]['type_name'] = (string)$video->type;
+            $array_data[$key]['vod_pic'] = (string)$video->pic;
+            $array_data[$key]['vod_lang'] = (string)$video->lang;
+            $array_data[$key]['vod_area'] = (string)$video->area;
+            $array_data[$key]['vod_year'] = (string)$video->year;
+            $array_data[$key]['vod_serial'] = (string)$video->state;
+            $array_data[$key]['vod_actor'] = (string)$video->actor;
+            $array_data[$key]['vod_director'] = (string)$video->director;
             $array_data[$key]['vod_content'] = (string)$video->des;
 
             $array_data[$key]['vod_status'] = 1;
-            $array_data[$key]['vod_type'] = mac_filter_xss($array_data[$key]['list_name']);
-            $array_data[$key]['vod_time'] = mac_filter_xss((string)$video->last);
+            $array_data[$key]['vod_type'] = $array_data[$key]['list_name'];
+            $array_data[$key]['vod_time'] = (string)$video->last;
             $array_data[$key]['vod_total'] = 0;
             $array_data[$key]['vod_isend'] = 1;
             if($array_data[$key]['vod_serial']){
@@ -241,7 +242,7 @@ class Collect extends Base {
             $array_server=[];
             $array_note=[];
             //videolist|list播放列表不同
-            if($count=count($video->dl->dd)){
+            if(isset($video->dl->dd) && $count=count($video->dl->dd)){
                 for($i=0; $i<$count; $i++){
                     $array_from[$i] = (string)$video->dl->dd[$i]['flag'];
                     $array_url[$i] = $this->vod_xml_replace((string)$video->dl->dd[$i]);
@@ -278,7 +279,7 @@ class Collect extends Base {
         if($param['ac'] == 'list'){
             foreach($xml->class->ty as $ty){
                 $array_type[$key]['type_id'] = (string)$ty->attributes()->id;
-                $array_type[$key]['type_name'] = mac_filter_xss((string)$ty);
+                $array_type[$key]['type_name'] = (string)$ty;
                 $key++;
             }
         }
@@ -315,12 +316,12 @@ class Collect extends Base {
         }
         $html = mac_curl_get($url);
         if(empty($html)){
-            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err')];
+            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err') . ', url: ' . $url];
         }
         $html = mac_filter_tags($html);
         $json = json_decode($html,true);
         if(!$json){
-            return ['code'=>1002, 'msg'=>lang('model/collect/json_err') . ': ' . mb_substr($html, 0, 15)];
+            return ['code'=>1002, 'msg'=>lang('model/collect/json_err') . ', url: ' . $url . ', response: ' . mb_substr($html, 0, 15)];
         }
 
         $array_page = [];
@@ -372,7 +373,7 @@ class Collect extends Base {
         if($param['ac'] == 'list'){
             foreach($json['class'] as $k=>$v){
                 $array_type[$key]['type_id'] = $v['type_id'];
-                $array_type[$key]['type_name'] = mac_filter_xss($v['type_name']);
+                $array_type[$key]['type_name'] = $v['type_name'];
                 $key++;
             }
         }
@@ -389,25 +390,26 @@ class Collect extends Base {
      * @param string $flag
      * @return array
      */
-    private function syncImages($pic_status,$pic_url,$flag='vod')
+    private function syncImages($pic_status, $pic_url, $flag = 'vod')
     {
-        $config = (array)config('maccms.upload');
-        if($pic_status == 1){
-            $img_url = model('Image')->down_load($pic_url, $config, $flag);
-            if(substr($img_url,0,7)=='upload/'){
-                $link = MAC_PATH . $img_url;
-            }
-            else{
-                $link = str_replace('mac:', $config['protocol'].':', $img_url);
-            }
-            if ($img_url == $pic_url) {
+        $img_url_downloaded = $pic_url;
+        if ($pic_status == 1) {
+            $config = (array)config('maccms.upload');
+            $img_url_downloaded = model('Image')->down_load($pic_url, $config, $flag);
+            if ($img_url_downloaded == $pic_url) {
+                // 下载失败，显示老图信息
                 $des = '<a href="' . $pic_url . '" target="_blank">' . $pic_url . '</a><font color=red>'.lang('download_err').'!</font>';
             } else {
-                $pic_url = $img_url;
+                // 下载成功，显示新图信息
+                if (str_starts_with($img_url_downloaded, 'upload/')) {
+                    $link = MAC_PATH . $img_url_downloaded;
+                } else {
+                    $link = str_replace('mac:', $config['protocol'] . ':', $img_url_downloaded);
+                }
                 $des = '<a href="' . $link . '" target="_blank">' . $link . '</a><font color=green>'.lang('download_ok').'!</font>';
             }
         }
-        return ['pic'=>$pic_url,'msg'=>$des];
+        return ['pic' => $img_url_downloaded, 'msg' => $des];
     }
 
     public function vod_data($param,$data,$show=1)
@@ -422,6 +424,8 @@ class Collect extends Base {
         $players = config('vodplayer');
         $downers = config('voddowner');
         $vod_search = model('VodSearch');
+        $vod_search_enabled = $vod_search->isCollectEnabled();
+        $vs_max_id_count = $vod_search->maxIdCount;
 
         $type_list = model('Type')->getCache('type_list');
         $filter_arr = explode(',',$config['filter']);
@@ -431,6 +435,8 @@ class Collect extends Base {
         $pse_name = mac_txt_explain($config['namewords'], true);
         $pse_syn = mac_txt_explain($config['thesaurus'], true);
         $pse_player = mac_txt_explain($config['playerwords'], true);
+        $pse_area = mac_txt_explain($config['areawords'], true);
+        $pse_lang = mac_txt_explain($config['langwords'], true);
 
         foreach($data['data'] as $k=>$v){
             $color='red';
@@ -456,16 +462,20 @@ class Collect extends Base {
                     }
                 }
 
-                $v['vod_name'] = mac_filter_xss($v['vod_name']);
                 $v['type_id_1'] = intval($type_list[$v['type_id']]['type_pid']);
-                $v['vod_en'] = Pinyin::make_beautiful_slug($v['vod_name']);
+                $v['vod_en'] = Pinyin::get($v['vod_name']);
                 $v['vod_letter'] = strtoupper(substr($v['vod_en'],0,1));
                 // 使用资源站的添加时间，更新时间保持当前
                 // https://github.com/magicblack/maccms10/issues/780
                 if (empty($v['vod_time_add']) || strlen($v['vod_time_add']) != 10) {
                     $v['vod_time_add'] = time();
                 }
+                // 支持外部自定义修改时间
+                // https://github.com/magicblack/maccms10/issues/862
                 $v['vod_time'] = time();
+                if (!empty($v['vod_time_update']) && strlen($v['vod_time_update']) == 10) {
+                    $v['vod_time'] = (int)$v['vod_time_update'];
+                }
                 $v['vod_status'] = intval($config['status']);
                 $v['vod_lock'] = intval($v['vod_lock']);
                 if(!empty($v['vod_status'])) {
@@ -492,13 +502,13 @@ class Collect extends Base {
 
                 $v['vod_class'] = mac_txt_merge($v['vod_class'],$v['type_name']);
 
-                $v['vod_actor'] = mac_format_text($v['vod_actor']);
-                $v['vod_director'] = mac_format_text($v['vod_director']);
-                $v['vod_class'] = mac_format_text($v['vod_class']);
-                $v['vod_tag'] = mac_format_text($v['vod_tag']);
+                $v['vod_actor'] = mac_format_text($v['vod_actor'], true);
+                $v['vod_director'] = mac_format_text($v['vod_director'], true);
+                $v['vod_class'] = mac_format_text($v['vod_class'], true);
+                $v['vod_tag'] = mac_format_text($v['vod_tag'], true);
 
-                $v['vod_plot_name'] = mac_filter_xss((string)$v['vod_plot_name']);
-                $v['vod_plot_detail'] = mac_filter_xss((string)$v['vod_plot_detail']);
+                $v['vod_plot_name'] = (string)$v['vod_plot_name'];
+                $v['vod_plot_detail'] = (string)$v['vod_plot_detail'];
 
                 if(!empty($v['vod_plot_name'])){
                     $v['vod_plot'] = 1;
@@ -531,7 +541,6 @@ class Collect extends Base {
                 if ($config['psename'] == 1) {
                     $v['vod_name'] = mac_rep_pse_syn($pse_name, $v['vod_name']);
                 }
-                $v['vod_content'] = mac_filter_xss($v['vod_content']);
                 if ($config['psernd'] == 1) {
                     $v['vod_content'] = mac_rep_pse_rnd($pse_rnd, $v['vod_content']);
                 }
@@ -541,13 +550,19 @@ class Collect extends Base {
                 if ($config['pseplayer'] == 1) {
                     $v['vod_play_from'] = mac_rep_pse_syn($pse_player, $v['vod_play_from']);
                 }
+                if ($config['psearea'] == 1) {
+                    $v['vod_area'] = mac_rep_pse_syn($pse_area, $v['vod_area']);
+                }
+                if ($config['pselang'] == 1) {
+                    $v['vod_lang'] = mac_rep_pse_syn($pse_lang, $v['vod_lang']);
+                }
 
                 if(empty($v['vod_blurb'])){
                     $v['vod_blurb'] = mac_substring( strip_tags($v['vod_content']) ,100);
                 }
 
                 $where = [];
-                $where['vod_name'] = $v['vod_name'];
+                $where['vod_name'] = mac_filter_xss($v['vod_name']);
                 $blend=false;
                 if (strpos($config['inrule'], 'b')!==false) {
                     $where['type_id'] = $v['type_id'];
@@ -561,27 +576,32 @@ class Collect extends Base {
                 if (strpos($config['inrule'], 'e')!==false) {
                     $where['vod_lang'] = $v['vod_lang'];
                 }
-                $vod_search_actor = false;
                 $search_actor_id_list = [];
                 if (strpos($config['inrule'], 'f')!==false) {
-                    // $where['vod_actor'] = ['like', mac_like_arr($v['vod_actor']), 'OR'];
-                    $vod_search_actor = true;
-                    $search_actor_id_list = $vod_search->getResultIdList($v['vod_actor'], 'vod_actor', true);
-                    $search_actor_id_list = empty($search_actor_id_list) ? [0] : $search_actor_id_list;
+                    $where['vod_actor'] = ['like', mac_like_arr(mac_filter_xss($v['vod_actor'])), 'OR'];
+                    if ($vod_search_enabled) {
+                        $search_actor_id_list = $vod_search->getResultIdList(mac_filter_xss($v['vod_actor']), 'vod_actor', true);
+                        $search_actor_id_list = empty($search_actor_id_list) ? [0] : $search_actor_id_list;
+                    }
                 }
                 if (strpos($config['inrule'], 'g')!==false) {
-                    $where['vod_director'] = $v['vod_director'];
+                    $where['vod_director'] = mac_filter_xss($v['vod_director']);
                 }
                 if ($config['tag'] == 1) {
-                    $v['vod_tag'] = mac_get_tag($v['vod_name'], $v['vod_content']);
+                    $v['vod_tag'] = mac_filter_xss(mac_get_tag($v['vod_name'], $v['vod_content']));
                 }
 
-                if($vod_search_actor === true && !empty($where['vod_director'])){
+                if(!empty($where['vod_actor']) && !empty($where['vod_director'])){
                     $blend = true;
                     $GLOBALS['blend'] = [
-                        'vod_id' => ['IN', $search_actor_id_list],
-                        'vod_director' => $where['vod_director']
+                        'vod_actor'    => $where['vod_actor'],
+                        'vod_director' => $where['vod_director'],
                     ];
+                    // 结果太大时，筛选更耗时。仅在结果数量较小时，才加入
+                    $GLOBALS['blend']['vod_id'] = null;
+                    if ($vod_search_enabled && count($search_actor_id_list) <= $vs_max_id_count) {
+                        $GLOBALS['blend']['vod_id'] = ['IN', $search_actor_id_list];
+                    }
                     unset($where['vod_actor'],$where['vod_director']);
                 }
 
@@ -677,12 +697,15 @@ class Collect extends Base {
                 else{
                     $info = model('Vod')->where($where)
                         ->where(function($query) {
-                            $query->where('vod_director',$GLOBALS['blend']['vod_director'])
-                                    ->whereOr('vod_id', $GLOBALS['blend']['vod_id']);
+                            $query->where('vod_director',$GLOBALS['blend']['vod_director']);
+                            if (!empty($GLOBALS['blend']['vod_id'])) {
+                                $query->whereOr('vod_id', $GLOBALS['blend']['vod_id']);
+                            } else {
+                                $query->whereOr('vod_actor', $GLOBALS['blend']['vod_actor']);
+                            }
                         })
                         ->find();
                 }
-
 
                 if (!$info) {
                     // 新增
@@ -701,11 +724,12 @@ class Collect extends Base {
                             $v['vod_down_note'] = (string)join('$$$', $collect_filter['down'][$param['filter']]['cj_down_note_arr']);
                         }
                         $tmp = $this->syncImages($config_sync_pic,  $v['vod_pic'], 'vod');
-                        $v['vod_pic'] = mac_filter_xss((string)$tmp['pic']);
+                        $v['vod_pic'] = (string)$tmp['pic'];
                         $msg = $tmp['msg'];
+                        $v = VodValidate::formatDataBeforeDb($v);
                         $vod_id = model('Vod')->insert($v, false, true);
                         if ($vod_id > 0) {
-                            $vod_search->checkAndUpdateTopResults($v + ['vod_id' => $vod_id], true);
+                            $vod_search_enabled && $vod_search->checkAndUpdateTopResults(['vod_id' => $vod_id] + $v, true);
                             $color = 'green';
                             $des = lang('model/collect/add_ok');
                         } else {
@@ -756,6 +780,7 @@ class Collect extends Base {
                                 } elseif (empty($cj_play_from)) {
                                     $des .= lang('model/collect/playfrom_empty');
                                 } elseif (strpos('$$$'.$info['vod_play_from'].'$$$', '$$$'.$cj_play_from.'$$$') === false) {
+                                    // 新类型播放组，加入
                                     $color = 'green';
                                     $des .= lang('model/collect/playgroup_add_ok',[$cj_play_from]);
                                     if(!empty($old_play_from)){
@@ -770,6 +795,7 @@ class Collect extends Base {
                                     $old_play_note .= "" . $cj_play_note;
                                     $ec=true;
                                 }  elseif (!empty($cj_play_url)) {
+                                    // 同类型播放组
                                     $arr1 = explode("$$$", $old_play_url);
                                     $arr2 = explode("$$$", $old_play_from);
                                     $play_key = array_search($cj_play_from, $arr2);
@@ -778,6 +804,7 @@ class Collect extends Base {
                                     } else {
                                         $color = 'green';
                                         $des .= lang('model/collect/playgroup_update_ok',[$cj_play_from]);
+                                        // 根据「地址二更规则」配置，替换或合并
                                         if ($config['urlrole'] == 1) {
                                             $tmp1 = explode('#',$arr1[$play_key]);
                                             $tmp2 = explode('#',$cj_play_url);
@@ -842,6 +869,17 @@ class Collect extends Base {
                                     } else {
                                         $color = 'green';
                                         $des .= lang('model/collect/downgroup_update_ok',[$cj_down_from]);
+                                        // 根据「地址二更规则」配置，替换或合并
+                                        // “采集参数配置--地址二更规则”配置需要对下载地址生效
+                                        // https://github.com/magicblack/maccms10/issues/893
+                                        if ($config['urlrole'] == 1) {
+                                            $tmp1 = explode('#',$arr1[$down_key]);
+                                            $tmp2 = explode('#',$cj_down_url);
+                                            $tmp1 = array_merge($tmp1,$tmp2);
+                                            $tmp1 = array_unique($tmp1);
+                                            $cj_down_url = join('#',$tmp1);
+                                            unset($tmp1,$tmp2);
+                                        }
                                         $arr1[$down_key] = $cj_down_url;
                                         $ec=true;
                                     }
@@ -859,6 +897,11 @@ class Collect extends Base {
 
                         if (strpos(',' . $config['uprule'], 'c')!==false && !empty($v['vod_serial']) && $v['vod_serial']!=$info['vod_serial']) {
                             $update['vod_serial'] = $v['vod_serial'];
+                            // 连载数如果均为整数，则取较大值
+                            // https://github.com/magicblack/maccms10/issues/878
+                            if (floor($v['vod_serial']) == $v['vod_serial'] && floor($info['vod_serial']) == $info['vod_serial']) {
+                                $update['vod_serial'] = max($v['vod_serial'], $info['vod_serial']);
+                            }
                         }
                         if (strpos(',' . $config['uprule'], 'd')!==false && !empty($v['vod_remarks']) && $v['vod_remarks']!=$info['vod_remarks']) {
                             $update['vod_remarks'] = $v['vod_remarks'];
@@ -880,7 +923,7 @@ class Collect extends Base {
                         }
                         if (strpos(',' . $config['uprule'], 'j')!==false && (substr($info["vod_pic"], 0, 4) == "http" || empty($info['vod_pic']) ) && $v['vod_pic']!=$info['vod_pic'] ) {
                             $tmp = $this->syncImages($config_sync_pic, $v['vod_pic'],'vod');
-                            $update['vod_pic'] = mac_filter_xss((string)$tmp['pic']);
+                            $update['vod_pic'] = (string)$tmp['pic'];
                             $msg =$tmp['msg'];
                         }
                         if (strpos(',' . $config['uprule'], 'k')!==false && !empty($v['vod_content']) && $v['vod_content']!=$info['vod_content']) {
@@ -929,6 +972,7 @@ class Collect extends Base {
                             $update['vod_time'] = time();
                             $where = [];
                             $where['vod_id'] = $info['vod_id'];
+                            $update = VodValidate::formatDataBeforeDb($update);
                             $res = model('Vod')->where($where)->update($update);
                             $color = 'green';
                             if ($res === false) {
@@ -1027,7 +1071,7 @@ class Collect extends Base {
         }
         $html = mac_curl_get($url);
         if(empty($html)){
-            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err')];
+            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err') . ', url: ' . $url];
         }
         $html = mac_filter_tags($html);
         $json = json_decode($html,true);
@@ -1064,7 +1108,7 @@ class Collect extends Base {
         if($param['ac'] == 'list'){
             foreach($json['class'] as $k=>$v){
                 $array_type[$key]['type_id'] = $v['type_id'];
-                $array_type[$key]['type_name'] = mac_filter_xss($v['type_name']);
+                $array_type[$key]['type_name'] = $v['type_name'];
                 $key++;
             }
         }
@@ -1194,7 +1238,7 @@ class Collect extends Base {
                 $info = model('Art')->where($where)->find();
                 if (!$info) {
                     $tmp = $this->syncImages($config_sync_pic, $v['art_pic'],'art');
-                    $v['art_pic'] = mac_filter_xss((string)$tmp['pic']);
+                    $v['art_pic'] = (string)$tmp['pic'];
 
                     $msg = $tmp['msg'];
                     $res = model('Art')->insert($v);
@@ -1241,7 +1285,7 @@ class Collect extends Base {
 
                             if(strpos(','.$config['uprule'],'d')!==false && (substr($info["art_pic"], 0, 4) == "http" || empty($info['art_pic']))  && $v['art_pic']!=$info['art_pic'] ){
                                 $tmp = $this->syncImages($config_sync_pic, $v['art_pic'],'art');
-                                $update['art_pic'] = mac_filter_xss((string)$tmp['pic']);
+                                $update['art_pic'] = (string)$tmp['pic'];
                                 $msg =$tmp['msg'];
                             }
                             if(strpos(','.$config['uprule'],'e')!==false && !empty($v['art_tag']) && $v['art_tag']!=$info['art_tag']){
@@ -1354,7 +1398,7 @@ class Collect extends Base {
         }
         $html = mac_curl_get($url);
         if(empty($html)){
-            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err')];
+            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err') . ', url: ' . $url];
         }
         $html = mac_filter_tags($html);
         $json = json_decode($html,true);
@@ -1391,7 +1435,7 @@ class Collect extends Base {
         if($param['ac'] == 'list'){
             foreach($json['class'] as $k=>$v){
                 $array_type[$key]['type_id'] = $v['type_id'];
-                $array_type[$key]['type_name'] = mac_filter_xss($v['type_name']);
+                $array_type[$key]['type_name'] = $v['type_name'];
                 $key++;
             }
         }
@@ -1646,7 +1690,7 @@ class Collect extends Base {
         }
         $html = mac_curl_get($url);
         if(empty($html)){
-            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err')];
+            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err') . ', url: ' . $url];
         }
         $html = mac_filter_tags($html);
         $json = json_decode($html,true);
@@ -1945,7 +1989,7 @@ class Collect extends Base {
         }
         $html = mac_curl_get($url);
         if(empty($html)){
-            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err')];
+            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err') . ', url: ' . $url];
         }
         $html = mac_filter_tags($html);
         $json = json_decode($html,true);
@@ -1982,7 +2026,7 @@ class Collect extends Base {
         if($param['ac'] == 'list'){
             foreach($json['class'] as $k=>$v){
                 $array_type[$key]['type_id'] = $v['type_id'];
-                $array_type[$key]['type_name'] = mac_filter_xss($v['type_name']);
+                $array_type[$key]['type_name'] = $v['type_name'];
                 $key++;
             }
         }
@@ -2235,7 +2279,7 @@ class Collect extends Base {
         }
         $html = mac_curl_get($url);
         if(empty($html)){
-            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err')];
+            return ['code'=>1001, 'msg'=>lang('model/collect/get_html_err') . ', url: ' . $url];
         }
         $html = mac_filter_tags($html);
         $json = json_decode($html,true);
@@ -2379,7 +2423,7 @@ class Collect extends Base {
                         $info = model('Comment')->where($where)->find();
                     }
                     if (!$info) {
-                        $msg = $tmp['msg'];
+                        $msg = isset($tmp['msg']) ? $tmp['msg'] : '';
                         $res = model('Comment')->insert($v);
                         if ($res === false) {
 
@@ -2484,7 +2528,7 @@ class Collect extends Base {
     {
         $result = parse_url($url);
         if (empty($result['host']) || in_array($result['host'], ['127.0.0.1', 'localhost'])) {
-            return ['code' => 1001, 'msg' => lang('model/collect/cjurl_err')];
+            return ['code' => 1001, 'msg' => lang('model/collect/cjurl_err') . ': ' . $url];
         }
         return ['code' => 1];
     }

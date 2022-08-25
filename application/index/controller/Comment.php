@@ -62,7 +62,10 @@ class Comment extends Base
             return ['code'=>1005,'msg'=>lang('frequently')];
         }
 
-        $param['comment_content']= mac_filter_words($param['comment_content']);
+        $param['comment_content']= htmlentities(mac_filter_words($param['comment_content']));
+        // if(!preg_match('/[^\x00-\x80]/',$param['comment_content'])){
+        //     return ['code'=>1005,'msg'=>lang('index/require_cn')];
+        // }
 
         if(!in_array($param['comment_mid'],['1','2','3','8','9','11'])){
             return ['code'=>1006,'msg'=>lang('index/mid_err')];
@@ -74,7 +77,12 @@ class Comment extends Base
         else{
             $param['comment_name'] = cookie('user_name');
             $param['user_id'] = intval(cookie('user_id'));
+            $user_data = model('User')->field('user_nick_name')->where(['user_id' => $param['user_id']])->find();
+            if (!empty($user_data['user_nick_name'])) {
+                $param['comment_name'] = $user_data['user_nick_name'];
+            }
         }
+        $param['comment_name'] = htmlentities(trim($param['comment_name']));
         $param['comment_rid'] = intval($param['comment_rid']);
         $param['comment_pid'] = intval($param['comment_pid']);
         if($GLOBALS['config']['comment']['audit'] ==1){

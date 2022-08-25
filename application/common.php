@@ -11,6 +11,24 @@ use think\View;
 
 error_reporting(E_ERROR | E_PARSE );
 
+
+
+if (!function_exists('str_starts_with')) {
+    function str_starts_with($haystack, $needle) {
+        return (string)$needle !== '' && strncmp($haystack, $needle, strlen($needle)) === 0;
+    }
+}
+if (!function_exists('str_ends_with')) {
+    function str_ends_with($haystack, $needle) {
+        return $needle !== '' && substr($haystack, -strlen($needle)) === (string)$needle;
+    }
+}
+if (!function_exists('str_contains')) {
+    function str_contains($haystack, $needle) {
+        return $needle !== '' && mb_strpos($haystack, $needle) !== false;
+    }
+}
+
 //访问日志记录，根目录创建log目录
 function slog($logs)
 {
@@ -1205,21 +1223,23 @@ function mac_filter_html($str)
 
 function mac_filter_xss($str)
 {
-    return htmlspecialchars(strip_tags(trim($str)), ENT_QUOTES);
+    return trim(htmlspecialchars(strip_tags($str), ENT_QUOTES));
 }
 
-function mac_format_text($str)
-{
-    if(empty($str)){
-        return "Không xác định";
+function mac_restore_htmlfilter($str) {
+    if (stripos($str, '&amp;') !== false) {
+        return htmlspecialchars_decode($str, ENT_QUOTES);
     }
-    $str = str_replace(array('/','，','|','、',',,,'),',',$str);
-    $splt_str = explode(',', $str);
-	foreach ($splt_str as &$val) {
-		$val = ucwords(trim($val));
-	}
-    unset($val);
-    return implode(',', $splt_str);
+    return $str;
+}
+
+function mac_format_text($str, $allow_space = false)
+{
+    $finder = array('/', '，', '|', '、', ',,', ',,,');
+    if ($allow_space === false) {
+        $finder[] = ' ';
+    }
+    return str_replace($finder, ',', $str);
 }
 function mac_format_count($str)
 {
@@ -1363,18 +1383,17 @@ function mac_play_list($vod_play_from,$vod_play_url,$vod_play_server,$vod_play_n
         $server_info = $server_list[$server];
         if($player_info['status'] == '1') {
             $sort[] = $player_info['sort'];
-            $r = [
+            $res_list[$k + 1] = [
                 'sid' => $k + 1,
                 'player_info' => $player_info,
-                // 'server_info' => $server_info,
+                'server_info' => $server_info,
                 'from' => $v,
-                // 'url' => $vod_play_url_list[$k],
+                'url' => $vod_play_url_list[$k],
                 'server' => $server,
-                // 'note' => $vod_play_note_list[$k],
+                'note' => $vod_play_note_list[$k],
                 'url_count' => count($urls),
                 'urls' => $urls,
             ];
-            array_push($res_list, $r);
         }
     }
 
@@ -1658,7 +1677,7 @@ function mac_url_content_img($content)
             }
         }
     }
-    return htmlspecialchars_decode($content);
+    return $content;
 }
 
 function mac_alphaID($in, $to_num=false, $pad_up=false, $passKey='')
@@ -1813,9 +1832,7 @@ function mac_url($model,$param=[],$info=[])
                 if(substr($path,strlen($path)-1,1)=='/'){
                     $path .= 'index';
                 }
-                if(strpos($path,'{md5}')!==false){
-                    $replace_to[] = md5($info['type_id']);
-                }
+                $replace_to[] = md5($info['type_id']);
                 if($param['page'] !=''){
                     $path .= $page_sp . $param['page'];
                 }
@@ -1845,9 +1862,7 @@ function mac_url($model,$param=[],$info=[])
                 if(substr($path,strlen($path)-1,1)=='/'){
                     $path .= 'index';
                 }
-                if(strpos($path,'{md5}')!==false){
-                    $replace_to[] = md5($info['vod_id']);
-                }
+                $replace_to[] = md5($info['vod_id']);
             }
             else{
                 switch($config['rewrite']['vod_id'])
@@ -1878,9 +1893,7 @@ function mac_url($model,$param=[],$info=[])
                 if(substr($path,strlen($path)-1,1)=='/'){
                     $path .= 'index';
                 }
-                if(strpos($path,'{md5}')!==false){
-                    $replace_to[] = md5($info['vod_id']);
-                }
+                $replace_to[] = md5($info['vod_id']);
                 if($config['view']['vod_play'] ==2){
                     $path.= '.'. $config['path']['suffix'];
                     $path .= '?'.$info['vod_id'] . '-' . $param['sid'] . '-' . $param['nid'] ;
@@ -1921,9 +1934,7 @@ function mac_url($model,$param=[],$info=[])
                 if(substr($path,strlen($path)-1,1)=='/'){
                     $path .= 'index';
                 }
-                if(strpos($path,'{md5}')!==false){
-                    $replace_to[] = md5($info['vod_id']);
-                }
+                $replace_to[] = md5($info['vod_id']);
                 if($config['view']['vod_down'] ==2){
                     $path.= '.'. $config['path']['suffix'];
                     $path .= '?'.$info['vod_id'] . '-' . $param['sid'] . '-' . $param['nid'] ;
@@ -1962,10 +1973,8 @@ function mac_url($model,$param=[],$info=[])
                 $path = $config['path' ]['vod_role'];
                 if(substr($path,strlen($path)-1,1)=='/'){
                     $path .= 'index';
-                }
-                if(strpos($path,'{md5}')!==false){
-                    $replace_to[] = md5($info['vod_id']);
-                }
+                }   
+                $replace_to[] = md5($info['vod_id']);
             }
             else{
                 switch($config['rewrite']['vod_id'])
@@ -1994,9 +2003,7 @@ function mac_url($model,$param=[],$info=[])
                 if(substr($path,strlen($path)-1,1)=='/'){
                     $path .= 'index';
                 }
-                if(strpos($path,'{md5}')!==false){
-                    $replace_to[] = md5($info['vod_id']);
-                }
+                $replace_to[] = md5($info['vod_id']);
                 if($param['page']!=''){
                     $path .= $page_sp . $param['page'];
                 }
@@ -2060,9 +2067,7 @@ function mac_url($model,$param=[],$info=[])
                 if(substr($path,strlen($path)-1,1)=='/'){
                     $path .= 'index';
                 }
-                if(strpos($path,'{md5}')!==false){
-                    $replace_to[] = md5($info['art_id']);
-                }
+                $replace_to[] = md5($info['art_id']);
                 if($param['page']>1 || $param['page'] =='PAGELINK'){
                     $path .= $page_sp . $param['page'];
                 }
@@ -2433,16 +2438,24 @@ function mac_url_page($url,$num)
 function mac_url_create($str,$type='actor',$flag='vod',$ac='search',$sp='&nbsp;')
 {
     if(!$str){
-        return 'Không xác định';
+        return '未知';
     }
     $res = [];
-    $str = str_replace(array('/','|',',','，'),',',$str);
-    $splt_str = explode(',', $str);
-	foreach ($splt_str as &$val) {
-		$val = ucwords(trim($val));
-	}
-    unset($val);
-    foreach($splt_str as $k=>$v){
+    // 分割时，中文关键词允许空格分割，英文不用空格（英文名中间是空格分隔的问题）
+    $base_finder = array(' / ', '/', '|', ',', '，', ',,');
+    $str = str_replace($base_finder, ',', $str);
+    $str = trim($str, ',');
+    $arr = [];
+    foreach (explode(',', $str) as $tag) {
+        if (preg_match("/[\x{2E80}-\x{9FFF}]+/u", $tag) && str_contains($tag, ' ')) {
+            foreach (explode(' ', $tag) as $tag_exp) {
+                $arr[] = $tag_exp;
+            }
+        } else {
+            $arr[] = $tag;
+        }
+    }
+    foreach ($arr as $k => $v) {
         $res[$k] = '<a href="'.mac_url($flag.'/'.$ac,[$type=>$v]).'" target="_blank">'.$v.'</a>'.$sp;
     }
     return implode('',$res);
