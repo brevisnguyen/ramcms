@@ -1,16 +1,16 @@
 <?php
 /*
 *当前语言包是系统全局语言包；自定义模块语言包请在模块的lang目录下创建比如 application/admin/lang/显示的时候会优先于全局包
-*全局key：单词可能在系统内任何地方使用
-*模块key：开头  admin/ 、 install/ 、只在模块内使用
-*后台菜单key：开头menu/
-*内部处理key：开头 model/、controller/、只在模块内使用
+*全局key:单词可能在系统内任何地方使用
+*模块key:开头  admin/ 、 install/ 、只在模块内使用
+*后台菜单key:开头menu/
+*内部处理key:开头 model/、controller/、只在模块内使用
 */
 return [
     'lang_ver'=>'3021+',
-    'hello'  => '欢迎使用',
-    'maccms_name'=>'苹果CMS-v10',
-    'maccms_copyright'=>'© MacCMS All Rights Reserved.',
+    'hello'  => 'Xin chào',
+    'maccms_name'=>'RamCMS',
+    'maccms_copyright'=>'©RamCMS All Rights Reserved.',
 
     'vod'=>'video',
     'art'=>',bài văn',
@@ -182,7 +182,7 @@ return [
     'add'=>'thêm',
     'edit'=>'sửa',
     'del'=>'xóa',
-    'del_confirm'=>'xác nhận xóa hay không？',
+    'del_confirm'=>'xác nhận xóa hay không?',
     'del_multi'=>'xóa hàng loạt',
     'del_data'=>'xóa dữ liệu',
     'del_ok'=>'xóa thành công',
@@ -202,13 +202,13 @@ return [
     'lang'=>'ngôn ngữ',
     'sex'=>'giới tính',
     'sum'=>'tổng',
-    'opt'=>'thao tác',
+    'opt'=>'Thao tác',
     'opt_content'=>'nội dung thao tác',
     'name'=>'tên',
-    'height'=>'chiều cao',
-    'weight'=>'cân nặng',
-    'type'=>'loại',
-    'wd'=>'từ khóa',
+    'height'=>'Chiều cao',
+    'weight'=>'Chiều rộng',
+    'type'=>'Loại',
+    'wd'=>'Từ khóa',
     'slide'=>'đoạn phim',
     'param'=>'tham số',
     'base_info'=>'thông tin cơ bản',
@@ -368,8 +368,8 @@ return [
     'check_all'=>'chọn toàn bộ',
     'check_other'=>'chọn khác',
     'pass'=>'mật khẩu',
-    'clear_confirm'=>'xác nhận dữ liệu không？',
-    'audit_confirm'=>'xác nhận duyệt dữ liệu không？',
+    'clear_confirm'=>'xác nhận dữ liệu không?',
+    'audit_confirm'=>'xác nhận duyệt dữ liệu không?',
 
     'clear'=>'xóa',
     'del_auto_keep_min'=>'xóa hết[tự động lưu ID nhỏ nhất]',
@@ -495,95 +495,95 @@ return [
 https://www.baidu.com/123.jpg
     ',
 
-    'menu/index'=>'trang đầu',
-    'menu/welcome'=>'trang chào mừng',
-    'menu/quickmenu'=>'bố trí danh sách tự định nghĩa',
-    'menu/system'=>'hệ thống',
-    'menu/config'=>'bố trí tham số trang web',
-    'menu/configseo'=>'bố trí tham số seo',
-    'menu/configuser'=>'bố trí tham số hội viên',
-    'menu/configcomment'=>'bố trí lời bình luận',
-    'menu/configupload'=>'bố trí tham số phụ kiện đính kèm',
-    'menu/configurl'=>'bố trí địa chỉ URL',
-    'menu/configplay'=>'bố trí tham số máy phát',
-    'menu/configcollect'=>'bố trí tham số thu thập',
-    'menu/configinterface'=>'bố trí thỏa thuận nhập kho',
-    'menu/configapi'=>'bố trí phát API',
-    'menu/configconnect'=>'bố trí đăng nhập hoàn toàn',
-    'menu/configpay'=>'bố trí thanh toán online',
-    'menu/configweixin'=>'bố trí chuyển đổi WECHAT',
-    'menu/configemail'=>'bố trí gửi email',
-    'menu/configsms'=>'Bố trí gửi tin nhắn',
-    'menu/timming'=>'bố trí nhiệm vụ theo giờ',
-    'menu/domain'=>'bố trí quản lí tên miền',
-    'menu/base'=>'cơ sở',
-    'menu/type'=>'quản lý phân loại',
-    'menu/topic'=>'quản lý chủ đề',
-    'menu/link'=>'quản lý liên kết link',
-    'menu/gbook'=>'quản lý lời bình',
-    'menu/comment'=>'quản lý bình luận',
-    'menu/images'=>'quản lý phụ kiện đi kèm',
-    'menu/art'=>'bài viết',
-    'menu/art_data'=>'số liệu bài viết',
-    'menu/art_add'=>'thêm bài viết',
-    'menu/art_data_lock'=>'bài viết đã khóa',
-    'menu/art_data_audit'=>'bài viết chưa duyệt',
-    'menu/art_batch'=>'bài viết thao tác hàng loạt',
-    'menu/art_repeat'=>'số liệu bài viết trùng tên',
-    'menu/vod'=>'video',
-    'menu/server'=>'nhóm máy chủ',
-    'menu/player'=>'máy phát',
-    'menu/downer'=>'máy tải',
-    'menu/vod_data'=>'số liệu video',
-    'menu/vod_add'=>'số liệu video+',
-    'menu/vod_data_url_empty'=>'video không địa chỉ',
-    'menu/vod_data_lock'=>'video đã khóa',
-    'menu/vod_data_audit'=>'video chưa duyệt',
-    'menu/vod_data_points'=>'video cần tích điểm',
-    'menu/vod_data_plot'=>'vai diễn có phân tập',
-    'menu/vod_batch'=>'video thao tác hàng loạt',
-    'menu/vod_repeat'=>'số liệu video trùng tên',
-    'menu/actor'=>'nguồn diễn viên',
-    'menu/role'=>'kho vai diễn',
-    'menu/website'=>'trang mạng',
-    'menu/website_data'=>'dữ liệu trang mạng',
-    'menu/website_add'=>'thêm trang web',
-    'menu/website_data_lock'=>'trang web đã xóa',
-    'menu/website_data_audit'=>'trang web chưa duyệt',
-    'menu/website_batch'=>'trang web thao tác hàng loạt',
-    'menu/website_repeat'=>'số liệu trang mạng trùng tên',
-    'menu/users'=>'người dùng',
-    'menu/admin'=>'người quản lý',
-    'menu/group'=>'nhóm hội viên',
-    'menu/user'=>'hội viên',
-    'menu/card'=>'thẻ nạp tiền',
-    'menu/order'=>'danh sách mua của hội viên',
-    'menu/ulog'=>'thăm hỏi thường nhật',
-    'menu/plog'=>'điểm tích lũy hàng ngày',
-    'menu/cash'=>'ghi chép rút tiền',
-    'menu/templates'=>'bản mẫu',
-    'menu/template'=>'quản lý bản mẫu',
-    'menu/ads'=>'quản lý quảng cáo',
-    'menu/wizard'=>'hướng dẫn nhãn hiệu',
-    'menu/make'=>'tạo',
-    'menu/make_opt'=>'tạo chọn trang',
-    'menu/make_index'=>'tạo trang đầu',
-    'menu/make_index_wap'=>'tạo trang đầu WAP',
-    'menu/make_map'=>'tạo bản đồ',
-    'menu/cjs'=>'thu thập',
-    'menu/union'=>'nguồn dẫn',
-    'menu/collect_timming'=>'tắt máy theo giờ',
-    'menu/collect'=>'tự định nghĩa đầu nối',
-    'menu/cj'=>'quy tắc tự định nghĩa',
-    'menu/db'=>'kho dữ liệu',
-    'menu/database'=>'quản lý kho dữ liệu',
-    'menu/database_sql'=>'câu thực hiện SQL',
-    'menu/database_rep'=>'thay thế hàng loạt số liệu',
-    'menu/database_inspect'=>'kiểm tra sai sót cơ sở dữ liệu',
-    'menu/apps'=>'ứng dụng',
-    'menu/addon'=>'chợ ứng dụng',
-    'menu/urlsend'=>'gửi URL',
-    'menu/safety_file'=>'kiểm tra an toàn file',
+    'menu/index'=>'Homepage',
+    'menu/welcome'=>'Trang chào mừng',
+    'menu/quickmenu'=>'Menu tự định nghĩa',
+    'menu/system'=>'Hệ thống',
+    'menu/config'=>'Cài đặt tham số website',
+    'menu/configseo'=>'Cài đặt tham số SEO',
+    'menu/configuser'=>'Cài đặt thành viên',
+    'menu/configcomment'=>'Cài đặt bình luận',
+    'menu/configupload'=>'Cài đặt tệp đính kèm',
+    'menu/configurl'=>'Cài đặt URL',
+    'menu/configplay'=>'Cài đặt player',
+    'menu/configcollect'=>'Cài đặt Crawls',
+    'menu/configinterface'=>'Cài đặt thỏa thuận nhập kho',
+    'menu/configapi'=>'Cài đặt API',
+    'menu/configconnect'=>'Đăng nhập tích hợp',
+    'menu/configpay'=>'Cài đặt thanh toán online',
+    'menu/configweixin'=>'Cài đặt WECHAT',
+    'menu/configemail'=>'Cài đặt Email',
+    'menu/configsms'=>'Cài đặt gửi tin nhắn',
+    'menu/timming'=>'Nhiệm vụ theo giờ',
+    'menu/domain'=>'Quản lí tên miền',
+    'menu/base'=>'Cài đặt chung',
+    'menu/type'=>'Quản lý danh mục',
+    'menu/topic'=>'Quản lý chủ đề',
+    'menu/link'=>'Quản lý Link',
+    'menu/gbook'=>'Quản lý lời bình',
+    'menu/comment'=>'Quản lý bình luận',
+    'menu/images'=>'Quản lý tệp đính kèm',
+    'menu/art'=>'Bài viết',
+    'menu/art_data'=>'Số liệu bài viết',
+    'menu/art_add'=>'Thêm bài viết',
+    'menu/art_data_lock'=>'Bài viết đã khóa',
+    'menu/art_data_audit'=>'Bài viết chưa duyệt',
+    'menu/art_batch'=>'Thao tác hàng loạt',
+    'menu/art_repeat'=>'Bài viết trùng tên',
+    'menu/vod'=>'Phim',
+    'menu/server'=>'Máy chủ',
+    'menu/player'=>'Player',
+    'menu/downer'=>'Downer',
+    'menu/vod_data'=>'Dữ liệu phim',
+    'menu/vod_add'=>'Thêm bộ phim',
+    'menu/vod_data_url_empty'=>'Phim không địa chỉ',
+    'menu/vod_data_lock'=>'Phim đã khóa',
+    'menu/vod_data_audit'=>'Phim chưa duyệt',
+    'menu/vod_data_points'=>'Phim cần tích điểm',
+    'menu/vod_data_plot'=>'Vai diễn có phân tập',
+    'menu/vod_batch'=>'Thao tác hàng loạt',
+    'menu/vod_repeat'=>'Phim bị trùng tên',
+    'menu/actor'=>'Diễn viên',
+    'menu/role'=>'Vai diễn',
+    'menu/website'=>'Trang web',
+    'menu/website_data'=>'Dữ liệu trang web',
+    'menu/website_add'=>'Thêm trang web',
+    'menu/website_data_lock'=>'Trang web đã xóa',
+    'menu/website_data_audit'=>'Trang web chưa duyệt',
+    'menu/website_batch'=>'Thao tác hàng loạt',
+    'menu/website_repeat'=>'Trang web trùng tên',
+    'menu/users'=>'Người dùng',
+    'menu/admin'=>'Quản lý Admin',
+    'menu/group'=>'Nhóm thành viên',
+    'menu/user'=>'Thành viên',
+    'menu/card'=>'Thẻ nạp tiền',
+    'menu/order'=>'Danh sách mua của thành viên',
+    'menu/ulog'=>'Ghé thăm thường ngày',
+    'menu/plog'=>'Điểm tích lũy hàng ngày',
+    'menu/cash'=>'Ghi chép rút tiền',
+    'menu/templates'=>'Template',
+    'menu/template'=>'Quản lý template',
+    'menu/ads'=>'Quản lý quảng cáo',
+    'menu/wizard'=>'Hướng dẫn sử dụng',
+    'menu/make'=>'Tạo trang',
+    'menu/make_opt'=>'Tạo trang tuỳ chọn',
+    'menu/make_index'=>'Tạo index.html',
+    'menu/make_index_wap'=>'Tạo WAP index',
+    'menu/make_map'=>'Tạo sitemap',
+    'menu/cjs'=>'Thu thập',
+    'menu/union'=>'Nguồn dẫn',
+    'menu/collect_timming'=>'Thu thập theo giờ',
+    'menu/collect'=>'API thu thập',
+    'menu/cj'=>'Quy tắc tự định nghĩa',
+    'menu/db'=>'Cơ sở dũ liệu',
+    'menu/database'=>'Quản lý dữ liệu',
+    'menu/database_sql'=>'Thực hiện lệnh SQL',
+    'menu/database_rep'=>'Thay thế hàng loạt',
+    'menu/database_inspect'=>'Kiểm tra sai sót cơ sở dữ liệu',
+    'menu/apps'=>'Ứng dụng',
+    'menu/addon'=>'Kho ứng dụng',
+    'menu/urlsend'=>'Lâp index URL',
+    'menu/safety_file'=>'Kiểm tra an toàn file',
     'menu/safety_data'=>'kiểm tra an toàn cơ sở dữ liệu',
 
     'model/admin/update_login_err'=>'làm mới thông tin đăng nhập thất bại',
@@ -597,43 +597,43 @@ https://www.baidu.com/123.jpg
     'model/card/update_card_status_err'=>'làm mới trạng thái thẻ nạp tiền thất bại,mời thử lại',
     'model/card/used_card_ok'=>'nạp thành công,tăng tích điểm【%s】',
 
-    'model/cash/not_open'=>'chữ năng rút tiền chưa hoạt động！',
-    'model/cash/min_money_err'=>'số tiền rút thấp nhất！',
-    'model/cash/mush_money_err'=>'rút quá nhiều,tích lũy không đủ！',
+    'model/cash/not_open'=>'chữ năng rút tiền chưa hoạt động!',
+    'model/cash/min_money_err'=>'số tiền rút thấp nhất!',
+    'model/cash/mush_money_err'=>'rút quá nhiều,tích lũy không đủ!',
 
-    'model/collect/flag_err'=>'nhận biết flag sai,mời không yêu cầu phi pháp！',
+    'model/collect/flag_err'=>'nhận biết flag sai,mời không yêu cầu phi pháp!',
     'model/collect/cjurl_err'=>'thu thập liên kết sai hoặc không thể liên kết với bản địa',
-    'model/collect/get_html_err'=>'liên kết cửa API thất bại, thông thường mạng máy chủ không ổn định ,chết IP,cấm dùng hàm số liên quan！',
+    'model/collect/get_html_err'=>'liên kết cửa API thất bại, thông thường mạng máy chủ không ổn định ,chết IP,cấm dùng hàm số liên quan!',
     'model/collect/json_err'=>'mẫu JSON không đúng,không ủng hộ thu thập',
     'model/collect/xml_err'=>'mẫu XML không đúng,không ủng hộ thu thập',
     'model/collect/data_tip1'=>'nhiệm vụ thu thập trang<strong class="green">%s</strong>/<span class="green">%s</span>thu thập địa chỉ&nbsp;%s',
     'model/collect/type_err'=>'phân loại vẫn chưa liên kết,bỏ qua err',
     'model/collect/name_in_filter_err'=>'đang lọc dữ liệu,bỏ qua err',
     'model/collect/name_err'=>'dữ liệu không hoàn chỉnh, bỏ qua err',
-    'model/collect/not_check_add'=>'thao tác dữ liệu không có thêm phần chọn,bỏ qua。',
-    'model/collect/not_check_update'=>'thao tác dữ liệu không có làm mới phần chọn,bỏ qua。',
-    'model/collect/add_ok'=>'thêm mới vào kho,thành công ok。',
-    'model/collect/uprule_empty'=>'không có cài đặt bất kì hạng mục làm mới lần 2 nào, bỏ qua。',
-    'model/collect/data_lock'=>'dữ liệu đã khóa,bỏ qua。',
-    'model/collect/not_need_update'=>'không cần làm mới。',
-    'model/collect/is_over'=>'hoàn thành thu thập dữ liệu。',
-    'model/collect/not_found_rel_vod'=>'chưa tìm thấy video không liên quan ,bỏ qua。',
-    'model/collect/not_found_rel_data'=>'chưa tìm thấy dữ liệu liên quan。',
-    'model/collect/role_data_require'=>'dữ liêu không hoàn chỉnhrole_name,role_actor,vod_name bắt buộc,bỏ qua err。',
-    'model/collect/actor_data_require'=>'dữ liệu không hoàn chỉnh actor_name,actor_sex bắt buộc,bỏ qua err。',
-    'model/collect/comment_data_require'=>'dữ liệu không hoàn chỉnh comment_content,comment_name,rel_name bắt buộc, bỏ qua err。',
-    'model/collect/playurl_same'=>'phát địa chỉ tương đồng,bỏ qua。',
-    'model/collect/playfrom_empty'=>'loại máy phát rỗng,bỏ qua。',
-    'model/collect/downurl_same'=>'tải địa chỉ tương đồng,bỏ qua。',
-    'model/collect/downfrom_empty'=>'loại máy tải là rỗng,bỏ qua。',
+    'model/collect/not_check_add'=>'thao tác dữ liệu không có thêm phần chọn,bỏ qua. ',
+    'model/collect/not_check_update'=>'thao tác dữ liệu không có làm mới phần chọn,bỏ qua. ',
+    'model/collect/add_ok'=>'thêm mới vào kho,thành công ok. ',
+    'model/collect/uprule_empty'=>'không có cài đặt bất kì hạng mục làm mới lần 2 nào, bỏ qua. ',
+    'model/collect/data_lock'=>'dữ liệu đã khóa,bỏ qua. ',
+    'model/collect/not_need_update'=>'không cần làm mới. ',
+    'model/collect/is_over'=>'hoàn thành thu thập dữ liệu. ',
+    'model/collect/not_found_rel_vod'=>'chưa tìm thấy video không liên quan ,bỏ qua. ',
+    'model/collect/not_found_rel_data'=>'chưa tìm thấy dữ liệu liên quan. ',
+    'model/collect/role_data_require'=>'dữ liêu không hoàn chỉnhrole_name,role_actor,vod_name bắt buộc,bỏ qua err. ',
+    'model/collect/actor_data_require'=>'dữ liệu không hoàn chỉnh actor_name,actor_sex bắt buộc,bỏ qua err. ',
+    'model/collect/comment_data_require'=>'dữ liệu không hoàn chỉnh comment_content,comment_name,rel_name bắt buộc, bỏ qua err. ',
+    'model/collect/playurl_same'=>'phát địa chỉ tương đồng,bỏ qua. ',
+    'model/collect/playfrom_empty'=>'loại máy phát rỗng,bỏ qua. ',
+    'model/collect/downurl_same'=>'tải địa chỉ tương đồng,bỏ qua. ',
+    'model/collect/downfrom_empty'=>'loại máy tải là rỗng,bỏ qua. ',
 
-    'model/collect/playgroup_add_ok'=>'nhóm phát (%s)，thêm mới ok。',
-    'model/collect/playgroup_same'=>'nhóm phát(%s), không cần nâng cấp。',
-    'model/collect/playgroup_update_ok'=>'nhóm phát(%s), nâng cấp ok。',
+    'model/collect/playgroup_add_ok'=>'nhóm phát (%s), thêm mới ok. ',
+    'model/collect/playgroup_same'=>'nhóm phát(%s), không cần nâng cấp. ',
+    'model/collect/playgroup_update_ok'=>'nhóm phát(%s), nâng cấp ok. ',
 
-    'model/collect/downgroup_add_ok'=>'nhóm tải (%s), thêm mới ok。',
-    'model/collect/downgroup_same'=>'nhóm tải(%s),không cần nâng cấp。',
-    'model/collect/downgroup_update_ok'=>'nhóm tải (%s),nâng cấp ok。',
+    'model/collect/downgroup_add_ok'=>'nhóm tải (%s), thêm mới ok. ',
+    'model/collect/downgroup_same'=>'nhóm tải(%s),không cần nâng cấp. ',
+    'model/collect/downgroup_update_ok'=>'nhóm tải (%s),nâng cấp ok. ',
 
     'model/group/have_user'=>'dưới nhóm người chơi vẫn có người chơi',
     'model/order/pay_over'=>'đơn đaz thanh toán hết',
@@ -650,7 +650,7 @@ https://www.baidu.com/123.jpg
     'model/user/pass_not_pass2'=>'mật khẩu và mật khẩu xác nhận không giống nhau',
     'model/user/haved_reg'=>'tên người chơi đã được đăng kí,mời nâng cấp',
     'model/user/name_contain'=>'tên người chơi chỉ có thể bao gồm chữ cái và số, xin hãy đổi',
-    'model/user/name_filter'=>'tên người chơi cấm bao gồm kí hiệu như là ：%s , mời làm lại',
+    'model/user/name_filter'=>'tên người chơi cấm bao gồm kí hiệu như là :%s , mời làm lại',
     'model/user/ip_limit'=> 'mỗi IP mỗi ngày hạn chết đăng kí %s lần',
     'model/user/phone_haved'=> 'số điện thoại đã bị sử dụng, mời đổi',
     'model/user/email_haved'=> 'email đã bị sử dụng,mời đổi',
@@ -705,44 +705,44 @@ https://www.baidu.com/123.jpg
     'controller/pay_play_points'=>'xem dữ liệu này,cần thanh toán điểm tích lũy【%s】,xác nhận có thanh toán hay không?',
     'controller/pay_down_points'=>'tải dữ liệu này,cần thanh toán điểm tích lũy【%s】,xác nhận có thanh toán hay không?',
     'controller/in_try_see'=>'nhập vào thử xem mẫu',
-    'controller/charge_data'=>'trang này là thu phí dữ liệu,mời đăng nhập trước rồi hỏi thăm！',
-    'controller/try_see_end'=>'xem thử kết thúc, có phải thanh toán tích điểm [%s]xem dữ liệu hoàn chỉnh,mời nạp tiền trước[%s]！',
-    'controller/not_enough_points'=>'xin lỗi,xem dữ liệu trang này cần tích điểm [%s],bạn vẫn còn dư tích điểm.mời nạp tiền trước[%s]！',
+    'controller/charge_data'=>'trang này là thu phí dữ liệu,mời đăng nhập trước rồi hỏi thăm!',
+    'controller/try_see_end'=>'xem thử kết thúc, có phải thanh toán tích điểm [%s]xem dữ liệu hoàn chỉnh,mời nạp tiền trước[%s]!',
+    'controller/not_enough_points'=>'xin lỗi,xem dữ liệu trang này cần tích điểm [%s],bạn vẫn còn dư tích điểm.mời nạp tiền trước[%s]!',
     'controller/popedom_ok'=>'kiểm tra quyền hạn thông qua',
     'controller/an_error_occurred'=>'phát sinh sai xót',
     'controller/visitor'=>'khách thăm',
-    'controller/get_type_err'=>'nhận phân loại thất bại,mời chọn phân loại khác！',
+    'controller/get_type_err'=>'nhận phân loại thất bại,mời chọn phân loại khác!',
 
     'index/require_login'=>'登sau khi đăng nhập mới có thể yêu cầu lời bình',
     'index/require_content'=>'nội dung không thể để trống',
     'index/require_cn'=>'nội dung phải bao gồm tiếng Trung,mời nhập lại',
     'index/mid_err'=>'mô hình mid sai xót',
     'index/thanks_msg_audit'=>'cảm ơn, chúng tôi sẽ nhanh chóng kiểm duyệt lời bình của bạn!',
-    'index/thanks_msg'=>'cảm ơn lời bình của bạn！',
+    'index/thanks_msg'=>'cảm ơn lời bình của bạn!',
     'index/payment_status'=>'hạng mục chọn thanh toán này vẫn chưa bắt đầu!',
     'index/payment_not'=>'vẫn chưa tìm thấy hạng mục chọn thanh toán!',
-    'index/payment_ok'=>'thanh toán thành công！',
-    'index/haved'=>'bạn đã tham gia qua rồi ！',
-    'index/ok'=>'thao tác thành công！',
+    'index/payment_ok'=>'thanh toán thành công!',
+    'index/haved'=>'bạn đã tham gia qua rồi !',
+    'index/ok'=>'thao tác thành công!',
     'index/pwd_repeat'=>'mời đừng trùng lặp nghiệm chứng!',
     'index/pwd_frequently'=>'mời đừng yêu cầu nhiều lần,mời thử lại sau!',
     'index/pwd_repeat'=>'mời đừng trùng lặp nghiệm chứng!',
     'index/no_login'=>'chưa đăng nhập',
     'index/ulog_fee'=>'thu phí thu dữ liệu cần ghi chép độc lập',
-    'index/buy_popedom1'=>'bạn đã mua qua số liệu này,không cần thanh toán lại,mời thử làm mới lại trang này！',
-    'index/buy_popedom2'=>'xin lỗi,nâng cấp thông tin tích điểm người chơi thất bại,mời thử làm mới lại！',
-    'index/buy_popedom3'=>'xin lỗi,xem dữ liệu trang này cần tích điểm[%s],bạn vẫn còn tích điểm[%s],mời nạp tiền!！',
+    'index/buy_popedom1'=>'bạn đã mua qua số liệu này,không cần thanh toán lại,mời thử làm mới lại trang này!',
+    'index/buy_popedom2'=>'xin lỗi,nâng cấp thông tin tích điểm người chơi thất bại,mời thử làm mới lại!',
+    'index/buy_popedom3'=>'xin lỗi,xem dữ liệu trang này cần tích điểm[%s],bạn vẫn còn tích điểm[%s],mời nạp tiền!!',
     'index/bind_haved'=>'đã liên kết tới tài khoản này',
     'index/bind_ok'=>'liên kết thành công',
     'index/logincallback1'=>'đồng bộ thất bại thông tin đăng kí,mời liên hệ quản lý viên',
     'index/logincallback2'=>'nhận thông tin người chơi bên thứ ba thất bại,mời lặp lại',
     'index/reg_ok'=> 'đăng ký thành công',
     'index/portrait_tip1'=> 'vẫn chưa khởi động công năng tự định nghĩa ảnh đại diện',
-    'index/portrait_no_upload'=> '未chưa tìm thấy văn bản đã tải lên(nguyên nhân:tên biểu có thể sai xót,mặc định tên biểu“file” hoặc“imgdata”)！',
-    'index/portrait_ext'=> 'mẫu tải lên của phi hệ thống cho phép！',
-    'index/upload_err'=>'văn bản tải lên thất bại！',
-    'index/portrait_err'=>'làm mới thông tin ảnh đại diện hội viên thất bại！',
-    'index/portrait_thumb_err'=>'tạo văn bản hình ảnh đại diện thu nhỏ thất bại！',
+    'index/portrait_no_upload'=> '未chưa tìm thấy văn bản đã tải lên(nguyên nhân:tên biểu có thể sai xót,mặc định tên biểu“file” hoặc“imgdata”)!',
+    'index/portrait_ext'=> 'mẫu tải lên của phi hệ thống cho phép!',
+    'index/upload_err'=>'văn bản tải lên thất bại!',
+    'index/portrait_err'=>'làm mới thông tin ảnh đại diện hội viên thất bại!',
+    'index/portrait_thumb_err'=>'tạo văn bản hình ảnh đại diện thu nhỏ thất bại!',
     'index/min_pay'=>'số tiền nạp nhỏ nhất không thể nhỏ hơn %s  tệ',
     'index/order_not'=>'nhận hóa đơn thất bại',
     'index/order_payed'=>'hóa đơn này đã thanh toán thành công',
@@ -763,50 +763,50 @@ https://www.baidu.com/123.jpg
     'admin/index/login/filed_verify'=>'mã xác nhận',
     'admin/index/login/btn_submit'=>'đăng nhập ngay',
     'admin/index/login/tip_declare'=>'免责声明',
-    'admin/index/login/tip_declare_txt'=>'bản trình tự này tăng thu vĩnh viễn miễn phí không bất cứ số liệu trong cài đặt, hãy sử dung và tôn trọng pháp luật địa phương,đối với bản trình tự nội dung thông tin những người chơi trong quá trình sử dụng không chịu bất cứ trách nhiệm nào! tự do!bình đẳng! chia sẻ!tăng thu！',
+    'admin/index/login/tip_declare_txt'=>'bản trình tự này tăng thu vĩnh viễn miễn phí không bất cứ số liệu trong cài đặt, hãy sử dung và tôn trọng pháp luật địa phương,đối với bản trình tự nội dung thông tin những người chơi trong quá trình sử dụng không chịu bất cứ trách nhiệm nào! tự do!bình đẳng! chia sẻ!tăng thu!',
     'admin/index/login/verify_no'=>'mời nhập tên người chơi',
     'admin/index/login/verify_pass'=>'mời nhập mật khẩu',
     'admin/index/login/verify_verify'=>'mời nhập mã xác nhận',
 
-    'admin/index/index/name' =>'đài khống chế siêu cấp',
+    'admin/index/index/name' =>'RamCMS',
     'admin/index/index/menu_switch' =>'mở/đóng hướng dẫn bên trái',
-    'admin/index/index/menu_index' =>'trang đầu mạng',
-    'admin/index/index/menu_lock' =>'thao tác khóa màn hình',
-    'admin/index/index/menu_logout' =>'thoát đăng nhập',
-    'admin/index/index/menu_cache' =>'bộ nhớ đệm cache',
-    'admin/index/index/menu_cache_clear' =>'dọn dẹp bộ nhớ cache',
-    'admin/index/index/menu_welcome' =>'giao diện chào đón',
-    'admin/index/index/menu_opt' =>'thao tác',
+    'admin/index/index/menu_index' =>'Website',
+    'admin/index/index/menu_lock' =>'Khóa màn hình',
+    'admin/index/index/menu_logout' =>'Đăng xuất',
+    'admin/index/index/menu_cache' =>'Bộ nhớ đệm cache',
+    'admin/index/index/menu_cache_clear' =>'Dọn dẹp bộ nhớ cache',
+    'admin/index/index/menu_welcome' =>'Giao diện chào đón',
+    'admin/index/index/menu_opt' =>'Thao tác',
     'admin/index/index/menu_close_all' =>'đóng toàn bộ',
     'admin/index/index/menu_close_other' =>'đóng cái khác',
     'admin/index/index/menu_max' =>'nhiều nhất có thể mở 10 trang nhãn hiệu',
     'admin/index/index/menu_close_empty' =>'cửa sổ không thể đóng@_@',
 
-    'admin/index/quickmenu/name' =>'tự định nghĩa danh sách phím tắt nhanh',
-    'admin/index/quickmenu/tip' =>'yêu cầu mẫu :1 tên danh sách,địa chỉ liên kết danh sách;2.mỗi danh sách phím tắt nhanh mỗi cái chiếm một dòng；<br>
-        1，địa chỉ ủng hộ từ xa,ví dụ :nâng cấp lịch sử nhật kí,//www.baidu.com/<br>
-        2，ủng hộ văn bản cho thêm vào,ví dụ:danh sách văn bản chèn thêm,/application/xxxx.html<br>
-        3，mẫu hệ thống ủng hộ,ví dụ:quản lý văn bản,art/data<br>
-        4，ủng hộ ký hiệu phân cách, ví dụ:ký hiệu phân cách,###',
+    'admin/index/quickmenu/name' =>'Tự định nghĩa danh sách phím tắt nhanh',
+    'admin/index/quickmenu/tip' =>'Mẫu yêu cầu :1 tên danh sách,địa chỉ liên kết danh sách;2.mỗi danh sách phím tắt nhanh mỗi cái chiếm một dòng；<br>
+        1, địa chỉ ủng hộ từ xa,ví dụ :nâng cấp lịch sử nhật kí,//www.baidu.com/<br>
+        2, ủng hộ văn bản cho thêm vào,ví dụ:danh sách văn bản chèn thêm,/application/xxxx.html<br>
+        3, mẫu hệ thống ủng hộ,ví dụ:quản lý văn bản,art/data<br>
+        4, ủng hộ ký hiệu phân cách, ví dụ:ký hiệu phân cách,###',
 
 
-    'admin/index/welcome/filed_os' =>'bối cảnh vận hành',
-    'admin/index/welcome/filed_host' =>'IPmáy chủ/cổng',
-    'admin/index/welcome/filed_php_ver' =>'bảnPHP',
-    'admin/index/welcome/filed_thinkphp_ver' =>'bản THINKPHP',
-    'admin/index/welcome/filed_max_upload' =>'hạn chế tải lên lớn nhất',
-    'admin/index/welcome/filed_date' =>'ngày máy chủ',
-    'admin/index/welcome/filed_ver' =>'bản chương trình',
+    'admin/index/welcome/filed_os' =>'Môi trường cài đặt',
+    'admin/index/welcome/filed_host' =>'Hostname',
+    'admin/index/welcome/filed_php_ver' =>'PHP',
+    'admin/index/welcome/filed_thinkphp_ver' =>'THINKPHP',
+    'admin/index/welcome/filed_max_upload' =>'Tải lên tối đa',
+    'admin/index/welcome/filed_date' =>'Ngày cài đặt',
+    'admin/index/welcome/filed_ver' =>'Phiên bản CMS',
     'admin/index/welcome/filed_license' =>'loại ủy quyền',
     'admin/index/welcome/tip_update_db' =>'kho dữ liệu hiện thị làm  mới',
-    'admin/index/welcome/tip_update_db_txt' =>'hiển thị,phát hiện chỗ này có kịch bản nâng cấp kho dữ liệu?có phải thực hiện thao tác nâng cấp!sau khi thực hiện tự động xóa kịch bản！',
+    'admin/index/welcome/tip_update_db_txt' =>'hiển thị,phát hiện chỗ này có kịch bản nâng cấp kho dữ liệu?có phải thực hiện thao tác nâng cấp!sau khi thực hiện tự động xóa kịch bản!',
     'admin/index/welcome/tip_update_go'=>'【nhấn vào nâng cấp kịch bản kho nâng cấp dữ liệu】',
     'admin/index/welcome/filed_login_num' =>'số lần đăng nhập',
     'admin/index/welcome/filed_last_login_ip' =>'IP đăng nhập lần trước',
     'admin/index/welcome/filed_last_login_time' =>'thời gian đăng nhập lần trước',
-    'admin/index/welcome/tip_warn' =>'mời không sửa văn bản hệ thống,để tránh xảy ra sự cố nâng cấp!bản trình tự không cài đặt bất cứ dữ liệu nào, thêm bất cứ dữ liệu nào đều là hành vi cá nhân! mời tôn trọng luật đã đề ra trước để sử dụng trình tụ, nếu không hậu quả tự chịu trách nhiệm！',
+    'admin/index/welcome/tip_warn' =>'Không sửa văn bản hệ thống để tránh xảy ra sự cố nâng cấp! RamCMS không cài đặt hay thêm bất cứ dữ liệu nào thuộc hành vi cá nhân! Mời tôn trọng luật đã đề ra trước để sử dụng RamCMS, Nếu không hậu quả tự chịu trách nhiệm!',
 
-    'admin/index/quick_tit'=>'↓↓↓tự định nghĩa danh sách tên vùng↓↓↓',
+    'admin/index/quick_tit'=>'Tự định nghĩa danh sách',
     'admin/index/title'=>'trung tâm quản lý hậu đài',
     'admin/index/welcome/title'=>'giao diên chào mừng',
     'admin/index/quickmenu/title'=>'bố trí danh sách phím tắt nhanh',
@@ -821,34 +821,34 @@ https://www.baidu.com/123.jpg
 
 
     'admin/system/config/title'=>'bố trí tham số trang web',
-    'admin/system/config/base'=>'cài đặt cơ bản',
-    'admin/system/config/performance'=>'ưu hóa tính năng',
-    'admin/system/config/parameters'=>'tham số định vị',
-    'admin/system/config/backstage'=>'cài đặt hậu đài',
-    'admin/system/config/site_name'=>'tên trang web',
-    'admin/system/config/site_url'=>'vùng miền trang web',
-    'admin/system/config/site_url_tip'=>'ví dụ：www.test.com,không thêmhttp://',
-    'admin/system/config/site_wapurl'=>'vùng miền trên điện thoại',
-    'admin/system/config/site_wapurl_tip'=>'ví dụ：wap.test.com,không thêmhttp://',
-    'admin/system/config/site_keywords'=>'từ khóa',
-    'admin/system/config/site_description'=>'thông tin miêu tả',
-    'admin/system/config/site_icp'=>'số hồ sơ',
-    'admin/system/config/site_qq'=>'QQchăm sóc',
-    'admin/system/config/site_email'=>'email chăm sóc',
-    'admin/system/config/install_dir'=>'nhật kí cài đặt',
+    'admin/system/config/base'=>'Cài đặt chung',
+    'admin/system/config/performance'=>'Tối ưu hoá',
+    'admin/system/config/parameters'=>'Tham số phụ',
+    'admin/system/config/backstage'=>'Cài đặt cms',
+    'admin/system/config/site_name'=>'Tên trang web',
+    'admin/system/config/site_url'=>'Địa chỉ web',
+    'admin/system/config/site_url_tip'=>'ví dụ:www.test.com,không thêmhttp://',
+    'admin/system/config/site_wapurl'=>'URL điện thoại',
+    'admin/system/config/site_wapurl_tip'=>'ví dụ:wap.test.com,không thêmhttp://',
+    'admin/system/config/site_keywords'=>'Từ khóa',
+    'admin/system/config/site_description'=>'Mô tả',
+    'admin/system/config/site_icp'=>'Số hồ sơ',
+    'admin/system/config/site_qq'=>'Tài khoản QQ',
+    'admin/system/config/site_email'=>'Email',
+    'admin/system/config/install_dir'=>'Nhật kí cài đặt',
 
     'admin/system/config/install_dir_tip'=>'theo mục lục＂/＂,mục lục cấp 2＂/maccms/＂dựa vào đó quảng cáo',
-    'admin/system/config/site_logo'=>'mặc nhận LOGO',
-    'admin/system/config/site_waplogo'=>'LOGO trên trên điện thoại',
-    'admin/system/config/template_dir'=>'bản mẫu trang web',
-    'admin/system/config/site_logo_tip'=>'địa chỉ và đường dẫn hình ảnh',
-    'admin/system/config/html_dir'=>'mục lục bản mẫu',
-    'admin/system/config/mob_status'=>'tự thích ứng điện thoại',
+    'admin/system/config/site_logo'=>'Logo PC',
+    'admin/system/config/site_waplogo'=>'Logo Mobile',
+    'admin/system/config/template_dir'=>'Template',
+    'admin/system/config/site_logo_tip'=>'URL hoặc đường dẫn hình ảnh',
+    'admin/system/config/html_dir'=>'Thư mục html',
+    'admin/system/config/mob_status'=>'Tương thích điện thoại',
     'admin/system/config/mob_status_tip'=>'nhiều tên vùng:hỏi thăm tên miền wap sẽ tự động sử dụng bản điện thoại di động; tên miền đơn:hỏi thăm điện thoại sẽ tự động sử dụng bản điện thoại di động；',
     'admin/system/config/mob_template_dir'=>'bản điện thoại',
     'admin/system/config/mob_one'=>'tên miền đơn',
     'admin/system/config/mob_multiple'=>'đa tên miền',
-    'admin/system/config/site_tj'=>'thống kê mã',
+    'admin/system/config/site_tj'=>'Mã thống kê',
     'admin/system/config/site_status'=>'trạng thái điểm dừng',
     'admin/system/config/site_close_tip'=>'hiển thị đóng',
     'admin/system/config/pathinfo_depr'=>'ký hiệu phân cách PATH',
@@ -889,7 +889,7 @@ https://www.baidu.com/123.jpg
     'admin/system/config/search_timespan'=>'tìm kiếm phân cách',
     'admin/system/config/search_timespan_tip'=>',đơn vị giây,đề nghị cài đặt là 3 giây trở lên',
     'admin/system/config/search_len'=>'tìm kiếm đồ dài tham số',
-    'admin/system/config/search_len_tip'=>'trang tìm kiếm +sàng lọc hạn chế độ dài tham số đơn,mặc nhận 10 chữ ký hiệu,vượt qua xóa tự động。',
+    'admin/system/config/search_len_tip'=>'trang tìm kiếm +sàng lọc hạn chế độ dài tham số đơn,mặc nhận 10 chữ ký hiệu,vượt qua xóa tự động. ',
     'admin/system/config/404'=>'bối cảnh 404',
     'admin/system/config/404_tip'=>'tự định nghĩa bối cảnh 404,bối cảnh đặt ở mục lục public không yêu cầu hậu tố,mặc nhận là jump',
     'admin/system/config/show'=>'bối cảnh sàng lọc đóng mở',
@@ -947,7 +947,7 @@ https://www.baidu.com/123.jpg
     'admin/system/configapi/actor'=>'cài đặt diễn viên API',
     'admin/system/configapi/role'=>'cài đặt vai diễn API',
     'admin/system/configapi/website'=>'cài đặt trang web API',
-    'admin/system/configapi/vod_tip'=>'thông tin biểu thị：<br>
+    'admin/system/configapi/vod_tip'=>'thông tin biểu thị:<br>
                             1,địa chỉ danh sách video/api.php/provide/vod/?ac=list<br>
                             2,địa chỉ chi tiết video/api.php/provide/vod/?ac=detail',
     'admin/system/configapi/status'=>'đóng mở đầu nối',
@@ -969,17 +969,17 @@ https://www.baidu.com/123.jpg
     'admin/system/configapi/from'=>'nhóm phát chỉ định',
     'admin/system/configapi/from_tip'=>'nhóm phát chỉ định ví dụ youku',
     'admin/system/configapi/auth'=>'tên miền ủy quyền',
-    'admin/system/configapi/art_tip'=>'thông tin hiển thị：<br>
+    'admin/system/configapi/art_tip'=>'thông tin hiển thị:<br>
                             1,địa chỉ liệt kê văn bản/api.php/provide/art/?ac=list<br>
                             2,địa chỉ chi tiết văn bản/api.php/provide/art/?ac=detail',
 
-    'admin/system/configapi/actor_tip'=>'thông tin biểu thị：<br>
+    'admin/system/configapi/actor_tip'=>'thông tin biểu thị:<br>
                             1,địa chỉ danh sách diễn viên/api.php/provide/actor/?ac=list<br>
                             2,địa chỉ chi tiết diễn viên/api.php/provide/actor/?ac=detail',
-    'admin/system/configapi/role_tip'=>'thông tin biểu thị：<br>
+    'admin/system/configapi/role_tip'=>'thông tin biểu thị:<br>
                             1,địa chỉ danh sách vai diễn/api.php/provide/role/?ac=list<br>
                             2,địa chỉ chi tiết vai diễn/api.php/provide/role/?ac=detail',
-    'admin/system/configapi/website_tip'=>'thông tin biểu thị：<br>
+    'admin/system/configapi/website_tip'=>'thông tin biểu thị:<br>
                             1,địa chỉ danh sách trang mạng/api.php/provide/website/?ac=list<br>
                             2,địa chỉ chi tiết trang mạng/api.php/provide/website/?ac=detail',
 
@@ -1013,14 +1013,14 @@ https://www.baidu.com/123.jpg
     'admin/system/configcollect/uprule'=>'quy tắc làm mới 2 lần',
     'admin/system/configcollect/filter'=>'lọc số liệu',
     'admin/system/configcollect/urlrole'=>'quy tắc đổi lần 2 địa chỉ',
-    'admin/system/configcollect/urlrole_tip'=>'đia chỉ làm mới lần 2 gặp máy phát cùng loại。',
+    'admin/system/configcollect/urlrole_tip'=>'đia chỉ làm mới lần 2 gặp máy phát cùng loại. ',
     'admin/system/configcollect/content'=>'chi tiết',
     'admin/system/configcollect/playurl'=>'địa chỉ phát',
     'admin/system/configcollect/downurl'=>'địa chỉ tải',
-    'admin/system/configcollect/words_tip'=>'kho từ đồng nghĩa:mỗi hàng một,không để trống hàng, mẫu:trước thay đổi=sau thau đổi,không được phép xuất hiện dấu #。<br>
-                    kho từ tùy cơ:ký hiệu chữ khoảng đoạn 1 đoạn 20 là được,có thể là một câu chuyện cười ngắn,cũng có thể thêm siêu link。<br>
-                    hạng mục công năng ảnh hưởng tính năng thu thập, xin đừng một lần thêm quá nhiều từ.thích hợp phi nguyên tác có lợi trong việc tìm kiếm động cơ thu âm。<br>
-                    không sử dụng công năng kho từ hãy【thu thập cài đặt tham số cấm dùng】。',
+    'admin/system/configcollect/words_tip'=>'kho từ đồng nghĩa:mỗi hàng một,không để trống hàng, mẫu:trước thay đổi=sau thau đổi,không được phép xuất hiện dấu #. <br>
+                    kho từ tùy cơ:ký hiệu chữ khoảng đoạn 1 đoạn 20 là được,có thể là một câu chuyện cười ngắn,cũng có thể thêm siêu link. <br>
+                    hạng mục công năng ảnh hưởng tính năng thu thập, xin đừng một lần thêm quá nhiều từ.thích hợp phi nguyên tác có lợi trong việc tìm kiếm động cơ thu âm. <br>
+                    không sử dụng công năng kho từ hãy【thu thập cài đặt tham số cấm dùng】. ',
     'admin/system/configcollect/vod_namewords'=>'kho từ đồng nghĩa tên video',
     'admin/system/configcollect/vod_thesaurus'=>'kho từ đồng nghĩa chi tiết video',
     'admin/system/configcollect/vod_playerwords'=>'kho từ đồng nghĩa máy phát',
@@ -1053,7 +1053,7 @@ https://www.baidu.com/123.jpg
 
 
     'admin/system/configconnect/title'=>'bố trí đăng nhập trọn vẹn',
-    'admin/system/configconnect/tip'=>'thông tin nhắc nhở：<br>
+    'admin/system/configconnect/tip'=>'thông tin nhắc nhở:<br>
                         1,địa chỉ QQ đăng nhập/index.php/user/oauth/?type=qq<br>
                         2,địa chỉ wechat đăng nhập/index.php/user/oauth/?type=weixin<br>
                         3,địa chỉ callback/index.php/user/logincallback/?type=qq hoặc là  /index.php/user/logincallback/?type=weixin',
@@ -1064,8 +1064,8 @@ https://www.baidu.com/123.jpg
 
 
     'admin/system/configemail/title'=>'bố trí gửi email',
-    'admin/system/configemail/tip'=>'thông tin nhắc nhở：<br>
-                        sau khi sửa mời chọn vào lưu sau đó lại kiểm tra gửi đi. nội dụng ủng hộ ký hiệu {$maccms.***},ký hiệu {$user.***},mã xác nhận {$code},thời gian có hiệu lực {$time}。',
+    'admin/system/configemail/tip'=>'thông tin nhắc nhở:<br>
+                        sau khi sửa mời chọn vào lưu sau đó lại kiểm tra gửi đi. nội dụng ủng hộ ký hiệu {$maccms.***},ký hiệu {$user.***},mã xác nhận {$code},thời gian có hiệu lực {$time}. ',
     'admin/system/configemail/type'=>'phương thức gửi',
     'admin/system/configemail/time'=>'thời hạn có hiệu lực',
     'admin/system/configemail/time_tip'=>'mã xác nhận email bao nhiêu phút sau thất bại',
@@ -1084,11 +1084,11 @@ https://www.baidu.com/123.jpg
 
     'admin/system/configinterface/pass_check'=>'lưu thất bại,an toàn thấy mật khẩu nhập kho phải lớn bằng 16 số!',
     'admin/system/configinterface/title'=>'bố trí nhập kho trạm ngoài',
-    'admin/system/configinterface/tip'=>'thông tin nhắc nhở：<br>
+    'admin/system/configinterface/tip'=>'thông tin nhắc nhở:<br>
                         1.chuyển đổi phân loại mỗi cái chiếm 1 hàng;<br>
                         2.bản địa phân loại trước,thu thập phân loại sau( phim hành động=hành động);<br>
                         3.không để dư thừa hàng trống;<br>
-                        4.Máy phát video, chú thích, địa chỉ，nhóm máy chủ, văn bản phân trang ký hiệu liên kết dữ liệu nhiều trang mạng đều là$$$<br>
+                        4.Máy phát video, chú thích, địa chỉ, nhóm máy chủ, văn bản phân trang ký hiệu liên kết dữ liệu nhiều trang mạng đều là$$$<br>
                         5.địa chỉ cổng nối nhập kho ,video/api.php/receive/vod；văn bản/api.php/receive/art； diễn viên/api.php/receive/actor；vai diễn/api.php/receive/role；trang web/api.php/receive/website；<br>',
     'admin/system/configinterface/status'=>'đóng mở đầu nối',
     'admin/system/configinterface/pass'=>'nhập kho miễn mật khẩu đăng nhập',
@@ -1117,9 +1117,9 @@ https://www.baidu.com/123.jpg
     'admin/system/configpay/card_url_tip'=>'sàn số thẻ bên thứ 3',
 
     'admin/system/configplay/title'=>'bố trí máy phát tham số',
-    'admin/system/configplay/tip'=>'thông tin nhắc nhở：<br>
-                        1，máy phát to nhỏ ủng hộ hai đơn vị pixel và %phần trăm。<br>
-                        2，nếu như giá trị cài đặt không bao gồm bất cứ đơn vị nào, theo quy tắc xử lý 100%。',
+    'admin/system/configplay/tip'=>'thông tin nhắc nhở:<br>
+                        1, máy phát to nhỏ ủng hộ hai đơn vị pixel và %phần trăm. <br>
+                        2, nếu như giá trị cài đặt không bao gồm bất cứ đơn vị nào, theo quy tắc xử lý 100%. ',
 
     'admin/system/configplay/width'=>'độ rộng máy phát',
     'admin/system/configplay/width_tip'=>'ví dụ:540px hoặc 100%',
@@ -1149,7 +1149,7 @@ https://www.baidu.com/123.jpg
 
 
     'admin/system/configweixin/title'=>'bố trí kết nối WECHAT',
-    'admin/system/configweixin/tip'=>'s số công chúng kết nối tên miền,số công chúng tiềm kiếm tên miền,tên miền trang thông thường đống nhất,bởi vì số công chúng xuất hiện vấn đề tên miền, bạn có thể tiến hành độc lập hoặc tiến hành tiếp nhận。<br>
+    'admin/system/configweixin/tip'=>'s số công chúng kết nối tên miền,số công chúng tiềm kiếm tên miền,tên miền trang thông thường đống nhất,bởi vì số công chúng xuất hiện vấn đề tên miền, bạn có thể tiến hành độc lập hoặc tiến hành tiếp nhận. <br>
                     địa chỉ đầu nối/api.php/wechat',
     'admin/system/configweixin/duijie'=>'tên miền tiếp nhận',
     'admin/system/configweixin/duijie_tip'=>'mời bắt đầu là http hoặc https,địa chỉ tiếp nhận của hậu đài số công chúng là 【http://wx.test.com/inc/weixin.php】',
@@ -1178,7 +1178,7 @@ https://www.baidu.com/123.jpg
     'admin/system/configweixin/return_link'=>'quay lại liên kết',
 
     'admin/system/configuser/title'=>'bố trí tham số hội viên',
-    'admin/system/configuser/tip'=>'thông tin nhắc nhở：<br>
+    'admin/system/configuser/tip'=>'thông tin nhắc nhở:<br>
                         1.nếu khởi động công năng xem thử,cửa sổ phát sẽ dùng phương thức bối cảnh động thái iframe tải vào,có thể bị ảnh hưởng nhé; <br>',
     'admin/system/configuser/model'=>'mô đun hội viên',
     'admin/system/configuser/reg_open'=>'đăng kí đóng mở',
@@ -1205,7 +1205,7 @@ https://www.baidu.com/123.jpg
     'admin/system/configuser/reward_ratio2'=>'tỷ lệ hoa hồng cấp2',
     'admin/system/configuser/reward_ratio3'=>'tỷ lệ hoa hồng cấp3',
     'admin/system/configuser/reward_unit'=>'đơn vị phần trăm',
-    'admin/system/configuser/reward_tip'=>'người chơi thanh toán thành công người quảng cáo bán lẻ đều có thể nhận tích điểm tỷ lệ nhất định,hoa hồng không đủ 1 điểm sẽ bỏ qua。',
+    'admin/system/configuser/reward_tip'=>'người chơi thanh toán thành công người quảng cáo bán lẻ đều có thể nhận tích điểm tỷ lệ nhất định,hoa hồng không đủ 1 điểm sẽ bỏ qua. ',
     'admin/system/configuser/cash_status'=>'trạng thái rút tiền',
     'admin/system/configuser/cash_ratio'=>'tỷ lệ hối đoái',
     'admin/system/configuser/cash_ratio_tip'=>'tỷ lệ hối đoái 1 tệ=bao nhiêu tích điểm',
@@ -1232,7 +1232,7 @@ https://www.baidu.com/123.jpg
     'admin/system/configurl/dynamic'=>'mẫu động thái',
     'admin/system/configurl/static'=>'mẫu trạng thái tĩnh',
     'admin/system/configurl/static_one'=>'trạng thái tĩnh mỗi tập một trang',
-    'admin/system/configurl/index'=>'trang đầu',
+    'admin/system/configurl/index'=>'Home',
     'admin/system/configurl/map'=>'bản đồ',
     'admin/system/configurl/search'=>'tìm kiếm',
     'admin/system/configurl/label'=>'tự định nghĩa bối cảnh',
@@ -1249,18 +1249,18 @@ https://www.baidu.com/123.jpg
     'admin/system/configurl/variable'=>'biến số',
     'admin/system/configurl/structure'=>'kết cấu thường dùng',
     'admin/system/configurl/multipage_connector'=>'trình kết nối nhiều trang',
-    'admin/system/configurl/multipage_connector_tip'=>'Ví dụ: dấu phân tách là -, trang thứ hai là loại / index-2.html。',
+    'admin/system/configurl/multipage_connector_tip'=>'Ví dụ: dấu phân tách là -, trang thứ hai là loại / index-2.html. ',
     'admin/system/configurl/common_connector'=>'trình kết nối nhiều trang',
     'admin/system/configurl/file_ext'=>'Phần mở rộng tệp',
     'admin/system/configurl/file_ext_tip'=>'Ví dụ: đề xuất là html',
     'admin/system/configurl/common_ext'=>'Phần mở rộng tệp',
-    'admin/system/configurl/route_tip'=>'Lời khuyên：<br>
+    'admin/system/configurl/route_tip'=>'Lời khuyên:<br>
                         1.Trong các điều kiện động, URL sẽ được tự động ghi lại khi trạng thái định tuyến được bật; <br>
                         2.Một quy tắc định tuyến trên mỗi dòng, được phân tách bằng =>, bên trái là biểu thức định tuyến và bên phải là địa chỉ định tuyến; <br>
-                        3.Địa chỉ định tuyến được cung cấp bởi hệ thống và sẽ không thay đổi về nguyên tắc, chỉ cần điều chỉnh biểu thức định tuyến。<br>
+                        3.Địa chỉ định tuyến được cung cấp bởi hệ thống và sẽ không thay đổi về nguyên tắc, chỉ cần điều chỉnh biểu thức định tuyến. <br>
                         4.Không có thêm dòng trống;<br>
-                        5.Có thể chọn loại ID tùy theo nhu cầu, khi chọn bính âm không được lặp lại bính âm trong dữ liệu, nếu không sẽ gặp khó khăn khi lấy dữ liệu。<br>
-                        6.Dấu phân tách URL hỗ trợ / và -. Các ký hiệu khác không được khuyến khích。',
+                        5.Có thể chọn loại ID tùy theo nhu cầu, khi chọn bính âm không được lặp lại bính âm trong dữ liệu, nếu không sẽ gặp khó khăn khi lấy dữ liệu. <br>
+                        6.Dấu phân tách URL hỗ trợ / và -. Các ký hiệu khác không được khuyến khích. ',
 
     'admin/system/configurl/suffix_hide'=>'Ẩn hậu tố',
     'admin/system/configurl/route_status'=>'trạng thái định tuyến',
@@ -1268,13 +1268,13 @@ https://www.baidu.com/123.jpg
     'admin/system/configurl/route_rule'=>'quy tắc định tuyến',
     'admin/system/configurl/encode_key'=>'KEY được mã hóa',
     'admin/system/configurl/encode_len'=>'độ dài mã hóa',
-    'admin/system/configurl/encode_tip'=>'KEY thay đổi URL cũng sẽ thay đổi. Độ dài chỉ ra rằng độ dài được mã hóa sẽ không nhỏ hơn độ dài số ban đầu。',
+    'admin/system/configurl/encode_tip'=>'KEY thay đổi URL cũng sẽ thay đổi. Độ dài chỉ ra rằng độ dài được mã hóa sẽ không nhỏ hơn độ dài số ban đầu. ',
 
     'admin/system/configupload/title'=>'Cấu hình tham số tệp đính kèm',
-    'admin/system/configupload/tip'=>'Mẹo: Cho dù đó là tải lên cục bộ hay bộ nhớ của bên thứ ba, nó cần được tải lên cục bộ rồi chuyển cho bên thứ ba。<br>
-                        Do đó, thư mục tệp tạm thời của hệ điều hành cục bộ phải có quyền ghi, nếu không quá trình tải tệp lên sẽ không thành công。<br>
-                        Phương pháp sửa đổi thư mục tệp tạm thời PHP tìm kiếm sys_temp_dir trong tệp cấu hình PHP。<br>
-                        Thư mục tệp tạm thời của hệ điều hành hiện tại：',
+    'admin/system/configupload/tip'=>'Mẹo: Cho dù đó là tải lên cục bộ hay bộ nhớ của bên thứ ba, nó cần được tải lên cục bộ rồi chuyển cho bên thứ ba. <br>
+                        Do đó, thư mục tệp tạm thời của hệ điều hành cục bộ phải có quyền ghi, nếu không quá trình tải tệp lên sẽ không thành công. <br>
+                        Phương pháp sửa đổi thư mục tệp tạm thời PHP tìm kiếm sys_temp_dir trong tệp cấu hình PHP. <br>
+                        Thư mục tệp tạm thời của hệ điều hành hiện tại:',
     'admin/system/configupload/write_ok'=>'Kiểm tra ghi vào tệp tạm thời thành công và trạng thái tải lên vẫn bình thường',
     'admin/system/configupload/write_err'=>'Kiểm tra không ghi được vào tệp tạm thời, vui lòng kiểm tra quyền đối với thư mục tệp tạm thời',
     'admin/system/configupload/thumb_tip'=>'Có tự động tạo hình thu nhỏ khi tải ảnh lên hay không',
@@ -1318,8 +1318,8 @@ https://www.baidu.com/123.jpg
     'admin/system/configupload/keep_local_tip'=>'Nếu bạn chọn tải lên điều khiển từ xa, sau khi tải lên hoàn tất, địa phương cũng sẽ giữ một bản sao',
 
     'admin/system/configsms/title'=>'Cấu hình gửi tin nhắn',
-    'admin/system/configsms/tip'=>'Lời khuyên：<br>
-                        Hãy đảm bảo đặt chữ ký SMS và nội dung SMS theo yêu cầu của nhà cung cấp dịch vụ giao diện SMS。<br>',
+    'admin/system/configsms/tip'=>'Lời khuyên:<br>
+                        Hãy đảm bảo đặt chữ ký SMS và nội dung SMS theo yêu cầu của nhà cung cấp dịch vụ giao diện SMS. <br>',
     'admin/system/configsms/type'=>'nhà cung cấp dịch vụ',
     'admin/system/configsms/sign'=>'Chữ ký SMS',
     'admin/system/configsms/tpl_code_reg'=>'số mẫu đăng ký',
@@ -1358,16 +1358,16 @@ https://www.baidu.com/123.jpg
     'admin/addon/name_empty_err'=>'Tên plugin không được để trống',
     'admin/addon/haved_err'=>'Một plugin đã tồn tại',
     'admin/addon/path_err'=>'Yêu cầu thư mục bất hợp pháp',
-    'admin/addon/add_tip'=>'gợi ý：<br>
-                1.Hãy đảm bảo rằng các trình cắm của bên thứ ba tuân thủ các thông số kỹ thuật phát triển chương trình。
-                2.--Vui lòng kiểm tra an toàn trước khi sử dụng để tránh các vấn đề về an toàn。',
+    'admin/addon/add_tip'=>'gợi ý:<br>
+                1.Hãy đảm bảo rằng các trình cắm của bên thứ ba tuân thủ các thông số kỹ thuật phát triển chương trình. 
+                2.--Vui lòng kiểm tra an toàn trước khi sử dụng để tránh các vấn đề về an toàn. ',
 
 
     'admin/admin/title'=>'Quản lý quản trị viên',
     'admin/admin/del_cur_err'=>'Không xóa tài khoản đăng nhập hiện tại',
-    'admin/admin/popedom_tip'=>'gợi ý：<br>
-                    1.Kiểm soát quyền chính xác đối với từng thao tác và quản trị viên có ID người sáng lập là 1 có tất cả các quyền。
-                    2.--Bắt đầu là tùy chọn thao tác nút trong trang。',
+    'admin/admin/popedom_tip'=>'gợi ý:<br>
+                    1.Kiểm soát quyền chính xác đối với từng thao tác và quản trị viên có ID người sáng lập là 1 có tất cả các quyền. 
+                    2.--Bắt đầu là tùy chọn thao tác nút trong trang. ',
 
 
     'admin/art/title'=>'Quản lý bài viết',
@@ -1392,8 +1392,8 @@ https://www.baidu.com/123.jpg
     'admin/vodplayer/api_url_tip'=>'Địa chỉ giao diện độc lập, trọng lượng cao hơn giao diện được thiết lập bởi trình phát toàn cầu',
     'admin/vodplayer/sort_tip'=>'Giá trị càng lớn, thứ hạng càng cao',
     'admin/vodplayer/code_empty'=>'Vui lòng nhập mã',
-    'admin/vodplayer/import_tip'=>'Mẹo：<br>
-                       1.Hãy đảm bảo rằng định dạng tệp nhập là chính xác。',
+    'admin/vodplayer/import_tip'=>'Mẹo:<br>
+                       1.Hãy đảm bảo rằng định dạng tệp nhập là chính xác. ',
 
 
     'admin/timming/title'=>'Quản lý tác vụ đã lên lịch',
@@ -1420,10 +1420,10 @@ https://www.baidu.com/123.jpg
 
 
     'admin/domain/title'=>'Quản trị miền tiêu đề',
-    'admin/domain/help_tip'=>'Mẹo：<br>
-                        1，Chức năng này hỗ trợ hiển thị các mẫu khác nhau và thông tin cấu hình trang web trong cùng một cơ sở dữ liệu với các tên miền khác nhau ở chế độ không tĩnh<br>
-                        2，Số lượng trang web tên miền không giới hạn<br>
-                        3，Định dạng văn bản nhập là: tên miền $ tên trang web $ từ khóa $ mô tả $ mẫu $ thư mục mẫu $ thư mục quảng cáo. Một trang web trên mỗi dòng. Xóa dữ liệu gốc。<br>',
+    'admin/domain/help_tip'=>'Mẹo:<br>
+                        1, Chức năng này hỗ trợ hiển thị các mẫu khác nhau và thông tin cấu hình trang web trong cùng một cơ sở dữ liệu với các tên miền khác nhau ở chế độ không tĩnh<br>
+                        2, Số lượng trang web tên miền không giới hạn<br>
+                        3, Định dạng văn bản nhập là: tên miền $ tên trang web $ từ khóa $ mô tả $ mẫu $ thư mục mẫu $ thư mục quảng cáo. Một trang web trên mỗi dòng. Xóa dữ liệu gốc. <br>',
 
     'admin/domain/title'=>'Quản trị miền tiêu đề',
 
@@ -1505,7 +1505,7 @@ https://www.baidu.com/123.jpg
     'admin/template/php_safe_tip'=>'Mẹo bảo mật, mẫu chứa mã php để cấm chỉnh sửa trong nền',
     'admin/template/call_code'=>'mã cuộc gọi',
     'admin/template/current_dir'=>'đường dẫn hiện tại',
-    'admin/template/name_tip'=>'Tên hậu tố chỉ cho phép html, htm, js, xml; các trang tùy chỉnh bắt đầu bằng label_。',
+    'admin/template/name_tip'=>'Tên hậu tố chỉ cho phép html, htm, js, xml; các trang tùy chỉnh bắt đầu bằng label_. ',
     'admin/template/reverse_order'=>'thứ tự ngược lại',
     'admin/template/positive_order'=>'chuỗi dương',
     'admin/template/filter_search'=>'Lọc các liên kết truy vấn',
@@ -1517,10 +1517,10 @@ https://www.baidu.com/123.jpg
     'admin/cj/publish/title'=>'Quản lý phát hành nội dung',
     'admin/cj/url_list_err'=>'Không lấy được thông tin URL',
     'admin/cj/url_cj_complete'=>'Đã hoàn thành thu thập URL',
-    'admin/cj/content/tip'=>'Thu thập nội dung, tổng cộng【%s】mục, được chia thành các trang%s, mỗi trang thu thập%s mục，%s trang hiện tại',
+    'admin/cj/content/tip'=>'Thu thập nội dung, tổng cộng【%s】mục, được chia thành các trang%s, mỗi trang thu thập%s mục, %s trang hiện tại',
     'admin/cj/content_cj_complete'=>'hoàn thành nội dung thu thập',
     'admin/cj/cj_complete'=>'hoàn thành thu thập',
-    'admin/cj/content_into/tip'=>'Nhập nội dung, tổng cộng【%s】mục, được chia thành các trang%s，mỗi trang thu thập%s mục,%s trang hiện tại',
+    'admin/cj/content_into/tip'=>'Nhập nội dung, tổng cộng【%s】mục, được chia thành các trang%s, mỗi trang thu thập%s mục,%s trang hiện tại',
     'admin/cj/content_into/complete'=>'Đã hoàn thành bộ nhớ nội dung',
     'admin/cj/cj_url'=>'URL bộ sưu tập',
     'admin/cj/cj_content'=>'Thu thập nội dung',
@@ -1555,9 +1555,9 @@ https://www.baidu.com/123.jpg
     'admin/cj/url_must_contain'=>'URL phải chứa',
     'admin/cj/url_not_contain'=>'URL không được chứa',
     'admin/cj/collect_interval'=>'Khoảng thời gian thu thập',
-    'admin/cj/wildcard_prompt'=>'<p>1、Vui lòng đặt các ký tự bắt đầu và kết thúc cho các quy tắc đối sánh và sử dụng "[content]" làm ký tự đại diện cho nội dung cụ thể 。</p>
-                                    <p>2、Quy tắc đối sánh cũng có thể là nội dung cố định, miễn là ký tự đại diện "[content]" không xuất hiện, nó được coi là nội dung cố định。</p>
-                                    <p>3、Định dạng của tùy chọn bộ lọc là "nội dung cần lọc [|] giá trị thay thế", nội dung được lọc hỗ trợ các biểu thức chính quy, một biểu thức trên mỗi dòng。</p>',
+    'admin/cj/wildcard_prompt'=>'<p>1、Vui lòng đặt các ký tự bắt đầu và kết thúc cho các quy tắc đối sánh và sử dụng "[content]" làm ký tự đại diện cho nội dung cụ thể . </p>
+                                    <p>2、Quy tắc đối sánh cũng có thể là nội dung cố định, miễn là ký tự đại diện "[content]" không xuất hiện, nó được coi là nội dung cố định. </p>
+                                    <p>3、Định dạng của tùy chọn bộ lọc là "nội dung cần lọc [|] giá trị thay thế", nội dung được lọc hỗ trợ các biểu thức chính quy, một biểu thức trên mỗi dòng. </p>',
 
 
 
@@ -1570,7 +1570,7 @@ https://www.baidu.com/123.jpg
     'admin/cj/list_all_mode'=>'liệt kê tất cả các mẫu',
     'admin/cj/next_page_mode'=>'Chế độ trang lên và xuống',
     'admin/cj/next_page_rule'=>'Quy tắc trang tiếp theo',
-    'admin/cj/next_page_tip'=>'Vui lòng điền mã vào giữa siêu liên kết trên trang tiếp theo. Ví dụ: <a href="http://www.xxx.com/page_1.html"> Trang tiếp theo </a>, "Quy tắc trang tiếp theo" của anh ấy là "Trang tiếp theo。',
+    'admin/cj/next_page_tip'=>'Vui lòng điền mã vào giữa siêu liên kết trên trang tiếp theo. Ví dụ: <a href="http://www.xxx.com/page_1.html"> Trang tiếp theo </a>, "Quy tắc trang tiếp theo" của anh ấy là "Trang tiếp theo. ',
     'admin/cj/add_group'=>'thêm một nhóm',
 
     'admin/cj/content_page'=>'nội dung phân trang',
@@ -1582,7 +1582,7 @@ https://www.baidu.com/123.jpg
 
 
     'admin/collect/title'=>'Quản lý tài nguyên bộ sưu tập',
-    'admin/collect/load_break'=>'Đang tải vị trí điểm ngắt, vui lòng đợi。。。',
+    'admin/collect/load_break'=>'Đang tải vị trí điểm ngắt, vui lòng đợi. . . ',
     'admin/collect/view_all_resource'=>'Xem tất cả tài nguyên',
     'admin/collect/cj_select'=>'đã chọn',
     'admin/collect/cj_today'=>'chọn ngày hôm nay',
@@ -1595,7 +1595,7 @@ https://www.baidu.com/123.jpg
     'admin/collect/api_type'=>'Loại giao diện',
     'admin/collect/data_type'=>'Loại tài nguyên',
     'admin/collect/data_opt'=>'thao tác dữ liệu',
-    'admin/collect/data_opt_tip'=>'Mẹo: Nếu bạn không muốn thêm dữ liệu vào tài nguyên làm tài nguyên phụ, bạn có thể chỉ chọn Cập nhật。',
+    'admin/collect/data_opt_tip'=>'Mẹo: Nếu bạn không muốn thêm dữ liệu vào tài nguyên làm tài nguyên phụ, bạn có thể chỉ chọn Cập nhật. ',
     'admin/collect/add_update'=>'thêm mới + cập nhật',
     'admin/collect/add'=>'thêm mới',
     'admin/collect/update'=>'cập nhật',
@@ -1612,16 +1612,16 @@ https://www.baidu.com/123.jpg
 
     'admin/group/title'=>'Quản lý nhóm thành viên',
     'admin/group/reg_group_del_err'=>'Không thể xóa nhóm thành viên mặc định đã đăng ký!',
-    'admin/group/help_tip'=>'thông tin giúp đỡ：<br>
+    'admin/group/help_tip'=>'thông tin giúp đỡ:<br>
         1.Khách du lịch và các thành viên bình thường thuộc nhóm thành viên tích hợp sẵn của hệ thống và không thể bị xóa hoặc vô hiệu hóa; <br>2.Vui lòng đặt quyền của từng nhóm thành viên riêng biệt và sẽ không kế thừa các quyền đó;',
     'admin/group/pack_day'=>'gói theo ngày',
     'admin/group/pack_week'=>'gói theo tuần',
     'admin/group/pack_month'=>'gói theo tháng',
     'admin/group/pack_year'=>'gói theo năm',
     'admin/group/popedom'=>'Quyền liên quan',
-    'admin/group/popedom_tip'=>'Mẹo：<br>
-                    1.Trang danh sách, trang nội dung, trang play và trang tải xuống có 4 quyền kiểm soát bạn có thể vào trang hay không, nếu không có quyền bạn sẽ trực tiếp quay lại thông tin nhắc nhở。<br>
-                    2.Quyền dùng thử: Nếu bạn không có quyền truy cập trang chơi hoặc bạn có quyền nhưng cần mua dữ liệu bằng điểm, bạn có thể vào trang đã bật quyền dùng thử。',
+    'admin/group/popedom_tip'=>'Mẹo:<br>
+                    1.Trang danh sách, trang nội dung, trang play và trang tải xuống có 4 quyền kiểm soát bạn có thể vào trang hay không, nếu không có quyền bạn sẽ trực tiếp quay lại thông tin nhắc nhở. <br>
+                    2.Quyền dùng thử: Nếu bạn không có quyền truy cập trang chơi hoặc bạn có quyền nhưng cần mua dữ liệu bằng điểm, bạn có thể vào trang đã bật quyền dùng thử. ',
     'admin/group/popedom_list'=>'Danh sách',
     'admin/group/popedom_detail'=>'trang nội dung',
     'admin/group/popedom_play'=>'trang chơi',
@@ -1631,22 +1631,22 @@ https://www.baidu.com/123.jpg
     'admin/annex/title'=>'Quản lý tệp đính kèm',
     'admin/annex/check'=>'Phát hiện các tệp không hợp lệ',
     'admin/annex/check_complete'=>'Các tệp không hợp lệ đã được dọn dẹp',
-    'admin/annex/info_tip'=>'Tổng số%s dữ liệu， được chia thành%s lần， mỗi phần%s，%sth hiện tại',
+    'admin/annex/info_tip'=>'Tổng số%s dữ liệu,  được chia thành%s lần,  mỗi phần%s, %sth hiện tại',
 
     'admin/annex/init_tip'=>'<strong>Phiên bản khởi tạo dữ liệu đính kèm 1.0</strong><br>
-                            1，Tìm kiếm danh mục, video, bài báo, trang web, diễn viên, vai diễn, thành viên, v.v。<br>
-                            2，Chèn nội dung chứa địa chỉ hình ảnh cục bộ vào bảng đính kèm。<br>
-                            3，Nên thực hiện phiên bản nâng cấp một lần。',
+                            1, Tìm kiếm danh mục, video, bài báo, trang web, diễn viên, vai diễn, thành viên, v.v. <br>
+                            2, Chèn nội dung chứa địa chỉ hình ảnh cục bộ vào bảng đính kèm. <br>
+                            3, Nên thực hiện phiên bản nâng cấp một lần. ',
     'admin/annex/init_data'=>'khởi tạo dữ liệu',
     'admin/annex/dir_model'=>'chế độ thư mục',
     'admin/annex/check_ok'=>'Đã hoàn tất khởi tạo dữ liệu tệp đính kèm',
-    'admin/annex/check_tip1'=>'Đang phát hiện bảng%s ... Tổng số bản ghi%s， được chia thành%s lần, mỗi bản ghi%s，%sth hiện tại',
+    'admin/annex/check_tip1'=>'Đang phát hiện bảng%s ... Tổng số bản ghi%s,  được chia thành%s lần, mỗi bản ghi%s, %sth hiện tại',
     'admin/annex/check_jump'=>'Bảng%s đã được phát hiện, tiếp tục sau...',
 
 
     'admin/images/title'=>'Quản lý hình ảnh',
     'admin/images/sync_complete'=>'Hoạt động đồng bộ hóa hoàn tất!',
-    'admin/images/sync_tip'=>'Tổng số%s phần dữ liệu cần được xử lý，%s phần trên mỗi trang，tổng số%s trang và dữ liệu trên trang%s đang được xử lý',
+    'admin/images/sync_tip'=>'Tổng số%s phần dữ liệu cần được xử lý, %s phần trên mỗi trang, tổng số%s trang và dữ liệu trên trang%s đang được xử lý',
     'admin/images/sync_range'=>'Đồng bộ hóa phạm vi',
     'admin/images/sync_option'=>'Đồng bộ hóa các tùy chọn',
     'admin/images/date'=>'Ngày dữ liệu',
@@ -1657,21 +1657,21 @@ https://www.baidu.com/123.jpg
 
 
     'admin/database/title'=>'quản lý cơ sở dữ liệu',
-    'admin/database/select_export_table'=>'Vui lòng chọn bảng dữ liệu bạn muốn sao lưu！',
-    'admin/database/lock_check'=>'Đã phát hiện thấy tác vụ sao lưu đang diễn ra, vui lòng thử lại sau！！',
-    'admin/database/backup_err'=>'Lỗi sao lưu！',
-    'admin/database/backup_ok'=>'Sao lưu thành công！',
-    'admin/database/select_file'=>'Vui lòng chọn tệp sao lưu bạn muốn khôi phục！',
-    'admin/database/import_ok'=>'Quá trình khôi phục dữ liệu đã hoàn tất！',
-    'admin/database/import_err'=>'Lỗi khôi phục dữ liệu！',
-    'admin/database/file_damage'=>'Tập tin sao lưu có thể bị hỏng, vui lòng kiểm tra！',
-    'admin/database/select_optimize_table'=>'Vui lòng chọn bảng dữ liệu bạn muốn tối ưu hóa！',
-    'admin/database/optimize_ok'=>'Tối ưu hóa bảng dữ liệu đã hoàn tất！',
-    'admin/database/optimize_err'=>'Không thể tối ưu hóa bảng dữ liệu！',
-    'admin/database/select_repair_table'=>'Vui lòng chọn biểu dữ liệu bạn muốn sửa chữa！',
-    'admin/database/repair_ok'=>'Đã sửa chữa xong biểu dữ liệu！',
-    'admin/database/repair_err'=>'Sửa chữa bảng dữ liệu không thành công！',
-    'admin/database/select_del_file'=>'Vui lòng chọn tệp sao lưu bạn muốn xóa！',
+    'admin/database/select_export_table'=>'Vui lòng chọn bảng dữ liệu bạn muốn sao lưu!',
+    'admin/database/lock_check'=>'Đã phát hiện thấy tác vụ sao lưu đang diễn ra, vui lòng thử lại sau!!',
+    'admin/database/backup_err'=>'Lỗi sao lưu!',
+    'admin/database/backup_ok'=>'Sao lưu thành công!',
+    'admin/database/select_file'=>'Vui lòng chọn tệp sao lưu bạn muốn khôi phục!',
+    'admin/database/import_ok'=>'Quá trình khôi phục dữ liệu đã hoàn tất!',
+    'admin/database/import_err'=>'Lỗi khôi phục dữ liệu!',
+    'admin/database/file_damage'=>'Tập tin sao lưu có thể bị hỏng, vui lòng kiểm tra!',
+    'admin/database/select_optimize_table'=>'Vui lòng chọn bảng dữ liệu bạn muốn tối ưu hóa!',
+    'admin/database/optimize_ok'=>'Tối ưu hóa bảng dữ liệu đã hoàn tất!',
+    'admin/database/optimize_err'=>'Không thể tối ưu hóa bảng dữ liệu!',
+    'admin/database/select_repair_table'=>'Vui lòng chọn biểu dữ liệu bạn muốn sửa chữa!',
+    'admin/database/repair_ok'=>'Đã sửa chữa xong biểu dữ liệu!',
+    'admin/database/repair_err'=>'Sửa chữa bảng dữ liệu không thành công!',
+    'admin/database/select_del_file'=>'Vui lòng chọn tệp sao lưu bạn muốn xóa!',
     'admin/database/backup_db'=>'sao luu cơ sở dữ liệu',
     'admin/database/import_db'=>'hoàn nguyên cơ sở dữ liệu',
     'admin/database/optimize_db'=>'tối ưu hóa cơ sở dữ liệu',
@@ -1698,7 +1698,7 @@ https://www.baidu.com/123.jpg
     'admin/database/where'=>'điều kiện thay thế',
 
     'admin/database/sql'=>'thực hiện câu lệnh sql',
-    'admin/database/sql_tip'=>'So sánh các câu thông dụng：<br>
+    'admin/database/sql_tip'=>'So sánh các câu thông dụng:<br>
                         1.Dữ liệu truy vấn
                         SELECT * FROM {pre}vod   Truy vấn tất cả dữ liệu<br>
                         SELECT * FROM {pre}vod WHERE vod_id=1000   Truy vấn dữ liệu ID được chỉ định
@@ -1720,11 +1720,11 @@ https://www.baidu.com/123.jpg
 
     'admin/safety/data_inspect'=>'kiểm tra quản trị an toàn dữ liệu',
     'admin/safety/data_inspect_tip'=>'<strong>kiểm tra quản trị an toàn dữ liệu phiên bản</strong><br>
-                            1，Kiểm tra cấu trúc bảng của bảng phân loại, bảng video, bảng bài viết, bảng thành viên, v.v。<br>
-                            2，Phát hiện các chuỗi đặc biệt bao gồm script,iframe, v.v.。<br>
-                            3，mã sốtreo  sẽ tự động xóa。<br>
-                            4，Không thể đảm bảo xóa 100%, nếu vẫn còn vấn đề, vui lòng nhập phpmyadmin hoặc các công cụ quản lý cơ sở dữ liệu khác để xóa。<br>
-                            5，Nên dọn dẹp nhiều lần cho đến khidữ liệu không còn  có vấn đề gì。',
+                            1, Kiểm tra cấu trúc bảng của bảng phân loại, bảng video, bảng bài viết, bảng thành viên, v.v. <br>
+                            2, Phát hiện các chuỗi đặc biệt bao gồm script,iframe, v.v.. <br>
+                            3, mã sốtreo  sẽ tự động xóa. <br>
+                            4, Không thể đảm bảo xóa 100%, nếu vẫn còn vấn đề, vui lòng nhập phpmyadmin hoặc các công cụ quản lý cơ sở dữ liệu khác để xóa. <br>
+                            5, Nên dọn dẹp nhiều lần cho đến khidữ liệu không còn  có vấn đề gì. ',
     'admin/safety/data_clear_ok'=>'Quá trình dọn dẹp kết thúc, vui lòng thực hiện lại để tránh thiếu dữ liệu',
     'admin/safety/data_check_tip1'=>'Bắt đầu kiểm tra bảng%s...',
     'admin/safety/data_check_tip2'=>'Tổng số%s dữ liệu nguy hiểm đã được phát hiện...',
@@ -1732,11 +1732,11 @@ https://www.baidu.com/123.jpg
     'admin/safety/exec'=>'Xác nhận thực thi',
     'admin/safety/file_inspect'=>'kiểm tra bảo mật tệp',
     'admin/safety/file_inspect_tip'=>'<strong>Phiên bản Phát hiện Bảo mật 3.0</strong><br>
-                            1，tất cả các tập tin trong trang web sẽ được đối chiếu và sàng lọc để kiểm tra。<br>
-                            2，Liệt kê các tệp trong gói gốc so với md5。<br>
-                            3，Liệt kê các tệp mới không có trong gói ban đầu。<br>
-                            4，Nó không thể được đảm bảo là chính xác 100%, nếu bạn có bất kỳ câu hỏi nào, vui lòng báo cáo trên trang web chính thức github。<br>
-                            5，Nên thực hiện nhiều bài kiểm tra và mỗi tệp được liệt kê sẽ được kiểm tra chi tiết。',
+                            1, tất cả các tập tin trong trang web sẽ được đối chiếu và sàng lọc để kiểm tra. <br>
+                            2, Liệt kê các tệp trong gói gốc so với md5. <br>
+                            3, Liệt kê các tệp mới không có trong gói ban đầu. <br>
+                            4, Nó không thể được đảm bảo là chính xác 100%, nếu bạn có bất kỳ câu hỏi nào, vui lòng báo cáo trên trang web chính thức github. <br>
+                            5, Nên thực hiện nhiều bài kiểm tra và mỗi tệp được liệt kê sẽ được kiểm tra chi tiết. ',
     'admin/safety/file_msg1'=>'Không lấy được dữ liệu tệp chính thức, vui lòng thử lại',
     'admin/safety/file_msg2'=>'Không lấy được danh sách tệp cục bộ, vui lòng thử lại',
     'admin/safety/file_msg3'=>'Thêm tập tin',
@@ -1755,13 +1755,13 @@ https://www.baidu.com/123.jpg
     'admin/make/type_tip'=>'Trang danh sách【%s】đang được tạo, với tổng số%s trang, được tạo trong%s lần và%s lần hiện tại',
     'admin/make/type_timming_tip'=>'Sau khi nhiệm vụ đã lên lịch hoàn thành, lần này các trang danh sách%s sẽ được tạo cho từng danh mục, để tránh trang web bị kẹt',
     'admin/make/topicpage_make_complete'=>'Trang danh sách chủ đề được tạo',
-    'admin/make/topic_index_tip'=>'Trang danh sách chủ đề đang được tạo，tổng số%s trang được tạo trong%s lần，%s lần hiện tại',
+    'admin/make/topic_index_tip'=>'Trang danh sách chủ đề đang được tạo, tổng số%s trang được tạo trong%s lần, %s lần hiện tại',
     'admin/make/topic_tip'=>'đang tạo trang nội dung theo chủ đề, tổng số%s',
     'admin/make/topic_make_complete'=>'Trang nội dung chuyên đề được tạo',
     'admin/make/info_make_complete'=>'Trang nội dung được tạo',
     'admin/make/info_make_complete_later_make_type'=>'Trang nội dung được tạo, hãy tiếp tục tạo trang danh mục sau',
     'admin/make/info_make_complete_later'=>'Trang nội dung được tạo, tiếp tục sau',
-    'admin/make/info_tip'=>'Trang nội dung【%s】đang được tạo，tổng số%s mục được tạo，%s lần được tạo，từng%s mục,%s lần hiện tại',
+    'admin/make/info_tip'=>'Trang nội dung【%s】đang được tạo, tổng số%s mục được tạo, %s lần được tạo, từng%s mục,%s lần hiện tại',
     'admin/make/label_tip'=>'Đang tạo các trang tùy chỉnh, tổng số%s trang',
     'admin/make/label_complete'=>'Trang tùy chỉnh được tạo',
     'admin/make/select_type'=>'phân loại lựa chọn',
@@ -1823,7 +1823,7 @@ https://www.baidu.com/123.jpg
     'admin/type/detail_tpl'=>'Mẫu Trang Nội dung',
     'admin/type/play_tpl'=>'mẫu trang chơi',
     'admin/type/down_tpl'=>'tải xuống mẫu trang',
-    'admin/type/tip'=>'Thông tin：<br>
+    'admin/type/tip'=>'Thông tin:<br>
             1,Sau khi thêm một danh mục mới, vui lòng chuyển đến nhóm thành viên người dùng để đặt quyền tương ứng cho từng nhóm, nếu không nó sẽ nhắc không có quyền truy cập',
     'admin/type/parent_type'=>'Gia phả',
     'admin/type/top_type'=>'Phân loại cấp cao',
@@ -1843,7 +1843,7 @@ https://www.baidu.com/123.jpg
     'admin/update/download_err'=>'Không thể tải xuống gói nâng cấp, vui lòng thử lại...',
     'admin/update/download_ok'=>'Tải xuống gói nâng cấp hoàn tất...',
     'admin/update/upgrade_package_processed'=>'Đang xử lý các tệp gói nâng cấp...',
-    'admin/update/upgrade_err'=>'Nâng cấp không thành công, vui lòng kiểm tra thư mục hệ thống và quyền tệp！...',
+    'admin/update/upgrade_err'=>'Nâng cấp không thành công, vui lòng kiểm tra thư mục hệ thống và quyền tệp!...',
     'admin/update/step2_a'=>'Đang tiến hành nâng cấp trực tuyến, bước thứ hai [Nâng cấp dữ liệu], vui lòng đợi......',
     'admin/update/upgrade_sql'=>'Đã tìm thấy tệp kịch bản nâng cấp cơ sở dữ liệu, đang xử lý...',
     'admin/update/no_sql'=>'không tìm thấy tập lệnh nâng cấp cơ sở dữ liệu nào, hãy chuyển đến phần cập nhật bộ đệm dữ liệu sau...',
@@ -1854,20 +1854,20 @@ https://www.baidu.com/123.jpg
     'admin/upload/test_write_ok'=>'Viết thử thành công',
     'admin/upload/test_write_ok'=>'Không thể ghi, vui lòng kiểm tra quyền thư mục tệp tạm thời',
     'admin/upload/not_find_extend'=>'Không tìm thấy thư viện lớp tải lên tiện ích mở rộng của bên thứ ba',
-    'admin/upload/no_input_file'=>'Không tìm thấy tệp đã tải lên (lý do: tên biểu mẫu có thể sai, tên biểu mẫu mặc định là "tệp" hoặc "imgdata")！',
-    'admin/upload/forbidden_ext'=>'Định dạng tải lên được hệ thống cho phép！',
-    'admin/upload/upload_success'=>'Tải lên tệp không thành công！',
-    'admin/upload/upload_faild'=>'Tải lên tệp không thành công！',
-    'admin/upload/make_thumb_faild'=>'Tải lên tệp không thành công！',
-    'admin/upload/upload_safe'=>'Tệp chứa nội dung nguy hiểm！',
+    'admin/upload/no_input_file'=>'Không tìm thấy tệp đã tải lên (lý do: tên biểu mẫu có thể sai, tên biểu mẫu mặc định là "tệp" hoặc "imgdata")!',
+    'admin/upload/forbidden_ext'=>'Định dạng tải lên được hệ thống cho phép!',
+    'admin/upload/upload_success'=>'Tải lên tệp không thành công!',
+    'admin/upload/upload_faild'=>'Tải lên tệp không thành công!',
+    'admin/upload/make_thumb_faild'=>'Tải lên tệp không thành công!',
+    'admin/upload/upload_safe'=>'Tệp chứa nội dung nguy hiểm!',
 
     'admin/urlsend/title'=>'Quản lý đẩy URL',
     'admin/urlsend/no_data'=>'Không có dữ liệu nào được lấy',
-    'admin/urlsend/tip'=>'Tổng số%s phần dữ liệu đang chờ được đẩy，phần dữ liệu này sẽ được đẩy vào các trang%s，trang hiện tại%s',
+    'admin/urlsend/tip'=>'Tổng số%s phần dữ liệu đang chờ được đẩy, phần dữ liệu này sẽ được đẩy vào các trang%s, trang hiện tại%s',
     'admin/urlsend/complete'=>'Đã hoàn thành đẩy dữ liệu',
-    'admin/urlsend/tip2'=>'Các điểm ngắt được ghi lại trong bộ đệm và sẽ biến mất khi bộ đệm được cập nhật。<br>
-            Vui lòng điền vào các mục cấu hình yêu cầu ở trên trước khi bắt đầu đẩy。<br>
-            Tên miền cấu hình trang web hiện tại：',
+    'admin/urlsend/tip2'=>'Các điểm ngắt được ghi lại trong bộ đệm và sẽ biến mất khi bộ đệm được cập nhật. <br>
+            Vui lòng điền vào các mục cấu hình yêu cầu ở trên trước khi bắt đầu đẩy. <br>
+            Tên miền cấu hình trang web hiện tại:',
     'admin/urlsend/send_genre'=>'loại đẩy',
     'admin/urlsend/page_send_num'=>'Đẩy số lượng mỗi trang',
     'admin/urlsend/start_page'=>'số trang bắt đầu',
@@ -1917,105 +1917,105 @@ https://www.baidu.com/123.jpg
     'api/require_comment_name'=>'biệt hiệu bình luận phải err',
     'api/require_comment_name'=>'Nội dung bình luận phải err',
     'api/never'=>'không bao giờ',
-    'api/task_tip_exec'=>'Tác vụ：%s，trạng thái：%s，thời gian thực hiện cuối cùng：%S---đã thực thi',
-    'api/task_tip_jump'=>'Tác vụ：%s，trạng thái：%s，thời gian thực hiện cuối cùng：%S---Bỏ qua',
+    'api/task_tip_exec'=>'Tác vụ:%s, trạng thái:%s, thời gian thực hiện cuối cùng:%S---đã thực thi',
+    'api/task_tip_jump'=>'Tác vụ:%s, trạng thái:%s, thời gian thực hiện cuối cùng:%S---Bỏ qua',
 
 
-    'install/title'=>'Cài đặt hệ thống Apple CMS-V10',
-    'install/header'=>'Cảm ơn bạn đã chọn Apple CMS-V10 để xây dựng một trang web',
-    'install/lang'=>'gói ngôn ngữ [langs]',
-    'install/select_lang'=>'Vui lòng chọn một gói ngôn ngữ[select lang]',
-    'install/lang_tip'=>'Vui lòng chọn gói ngôn ngữ nền theo nhu cầu của riêng bạn',
+    'install/title'=>'Cài đặt hệ thống RamCMS-V10',
+    'install/header'=>'Cảm ơn bạn đã chọn RamCMS để xây dựng trang web',
+    'install/lang'=>'Language',
+    'install/select_lang'=>'Vui lòng chọn ngôn ngữ',
+    'install/lang_tip'=>'Chọn gói ngôn ngữ theo nhu cầu của bạn',
 
-    'install/user_agreement_title'=>'Thỏa thuận Người dùng CMS của Apple áp dụng cho tất cả người dùng',
-    'install/user_agreement'=>' Vui lòng đọc kỹ các điều khoản sau trước khi sử dụng (Apple CMS). Bao gồm các tuyên bố từ chối trách nhiệm miễn trừ hoặc giới hạn trách nhiệm của tác giả và các hạn chế đối với quyền của người dùng. Hành vi cài đặt và sử dụng của bạn sẽ được coi là sự chấp nhận Thỏa thuận Cấp phép Người dùng này và bạn đồng ý bị ràng buộc bởi các điều khoản của Thỏa thuận Cấp phép Người dùng này。 <br /><br />
-                一、Cài đặt và sử dụng： <br />
-                 (Apple CMS) được cung cấp cho bạn mã nguồn mở và miễn phí, đồng thời bạn có thể cài đặt số lượng bản sao không giới hạn. Bạn phải đảm bảo rằng bạn sử dụng phần mềm này mà không tham gia vào các hoạt động bất hợp pháp và không vi phạm các chính sách và quy định liên quan của quốc gia nơi bạn sinh sống。 <br /><br />
-                二、Tuyên bố từ chối trách nhiệm：  <br />
-                KHÔNG CÓ BẢO ĐẢM VỀ BẤT KỲ HÌNH THỨC NÀO, RÕ RÀNG HAY NGỤ Ý, BAO GỒM BẤT KỲ BẢO ĐẢM NÀO VỀ SỰ PHÙ HỢP, KHÔNG XÂM PHẠM SỞ HỮU TRÍ TUỆ HOẶC PHÙ HỢP VỚI MỤC ĐÍCH CỤ THỂ MÀ KHÔNG CÓ PHẦN MỀM。  <br />
-                Trong mọi trường hợp, tác giả sẽ không chịu trách nhiệm về bất kỳ thiệt hại nào phát sinh do việc sử dụng hoặc không thể sử dụng phần mềm này. Tác giả không đảm bảo tính chính xác hoặc đầy đủ của các tài liệu, văn bản, đồ họa, liên kết hoặc các vấn đề khác có trong phần mềm này. Tác giả có thể thực hiện các thay đổi đối với phần mềm này bất kỳ lúc nào mà không cần thông báo。  <br />
-                Phần mềm này không chịu bất kỳ trách nhiệm nào đối với tất cả các vấn đề bản quyền hoặc tranh chấp do dữ liệu thông tin của bên thứ ba và các trình cắm do người dùng tự sản xuất, tải xuống và sử dụng。<br /><br />
-                三、Các ràng buộc và hạn chế quy định trong thỏa thuận：  <br />
-                Không được phép xóa thông tin bản quyền trong mã nguồn của (Apple CMS), và phiên bản được ủy quyền thương mại có thể xóa thông tin bản quyền liên quan của giao diện nền và giao diện nền trước。</br>
-                Việc phát triển bất kỳ phiên bản phái sinh, sửa đổi hoặc bên thứ ba nào để phân phối lại toàn bộ hoặc ở bất kỳ phần nào của (Apple CMS) đều bị cấm。</br></br>
-                <strong>Bản quyền (c) 2020, Apple CMS, Mọi quyền được bảo lưu</strong>。',
+    'install/user_agreement_title'=>'Thỏa thuận người dùng của RamCMS',
+    'install/user_agreement'=>' Vui lòng đọc kỹ các điều khoản sau trước khi sử dụng (RamCMS). Bao gồm các tuyên bố từ chối trách nhiệm miễn trừ hoặc giới hạn trách nhiệm của tác giả và các hạn chế đối với quyền của người dùng. Hành vi cài đặt và sử dụng của bạn sẽ được coi là sự chấp nhận Thỏa thuận Cấp phép Người dùng này và bạn đồng ý bị ràng buộc bởi các điều khoản của Thỏa thuận Cấp phép Người dùng này.  <br /><br />
+                1. Cài đặt và sử dụng <br />
+                 (RamCMS) được cung cấp cho bạn mã nguồn mở và miễn phí, đồng thời bạn có thể cài đặt số lượng bản sao không giới hạn. Bạn phải đảm bảo rằng bạn sử dụng phần mềm này mà không tham gia vào các hoạt động bất hợp pháp và không vi phạm các chính sách và quy định liên quan của quốc gia nơi bạn sinh sống.  <br /><br />
+                2. Tuyên bố từ chối trách nhiệm:  <br />
+                KHÔNG CÓ BẢO ĐẢM VỀ BẤT KỲ HÌNH THỨC NÀO, RÕ RÀNG HAY NGỤ Ý, BAO GỒM BẤT KỲ BẢO ĐẢM NÀO VỀ SỰ PHÙ HỢP, KHÔNG XÂM PHẠM SỞ HỮU TRÍ TUỆ HOẶC PHÙ HỢP VỚI MỤC ĐÍCH CỤ THỂ MÀ KHÔNG CÓ PHẦN MỀM.   <br />
+                Trong mọi trường hợp, tác giả sẽ không chịu trách nhiệm về bất kỳ thiệt hại nào phát sinh do việc sử dụng hoặc không thể sử dụng phần mềm này. Tác giả không đảm bảo tính chính xác hoặc đầy đủ của các tài liệu, văn bản, đồ họa, liên kết hoặc các vấn đề khác có trong phần mềm này. Tác giả có thể thực hiện các thay đổi đối với phần mềm này bất kỳ lúc nào mà không cần thông báo.   <br />
+                Phần mềm này không chịu bất kỳ trách nhiệm nào đối với tất cả các vấn đề bản quyền hoặc tranh chấp do dữ liệu thông tin của bên thứ ba và các trình cắm do người dùng tự sản xuất, tải xuống và sử dụng. <br /><br />
+                3. Các ràng buộc và hạn chế quy định trong thỏa thuận:  <br />
+                Không được phép xóa thông tin bản quyền trong mã nguồn của (RamCMS), và phiên bản được ủy quyền thương mại có thể xóa thông tin bản quyền liên quan của giao diện nền và giao diện nền trước. </br>
+                Việc phát triển bất kỳ phiên bản phái sinh, sửa đổi hoặc bên thứ ba nào để phân phối lại toàn bộ hoặc ở bất kỳ phần nào của (RamCMS) đều bị cấm. </br></br>
+                <strong>Bản quyền (c) 2020, RamCMS, Mọi quyền được bảo lưu</strong>. ',
 
     'install/user_agreement_agree'=>'Đồng ý với thỏa thuận và cài đặt hệ thống',
-    'install/environment_title'=>'Phát hiện môi trường đang chạy',
-    'install/environment_name'=>'Tên môi trường',
+    'install/environment_title'=>'Kiểm tra môi trường cài đặt',
+    'install/environment_name'=>'Tên',
     'install/current_config'=>'Cấu hình hiện tại',
     'install/required_config'=>'Cấu hình bắt buộc',
 
-    'install/dir_file'=>'hư mục/tệp',
-    'install/required_popedom'=>'Yêu cầu quyền',
+    'install/dir_file'=>'Thư mục/tệp',
+    'install/required_popedom'=>'Quyền yêu cầu',
     'install/current_popedom'=>'Quyền hiện tại',
 
-    'install/func_ext'=>'chức năng/phần mở rộng',
-    'install/type'=>'loại',
-    'install/result'=>'kết quả',
+    'install/func_ext'=>'Chức năng/phần mở rộng',
+    'install/type'=>'Loại',
+    'install/result'=>'Kết quả',
     'install/back_step'=>'Quay lại bước trước',
     'install/next_step'=>'Tiến hành bước tiếp theo',
     'install/question'=>'Câu hỏi thường gặp',
     'install/database_config'=>'Cấu hình cơ sở dữ liệu',
 
-    'install/server_address'=>'địa chỉ máy chủ',
+    'install/server_address'=>'DB Host',
     'install/server_address_tip'=>'Địa chỉ máy chủ cơ sở dữ liệu, thường là 127.0.0.1',
-    'install/database_port'=>'cổng cơ sở dữ liệu',
+    'install/database_port'=>'DB Port',
     'install/database_port_tip'=>'Cổng cơ sở dữ liệu hệ thống, thường là 3306',
-    'install/database_name'=>'tên cơ sở dữ liệu',
+    'install/database_name'=>'DB Name',
     'install/database_name_tip'=>'Tên cơ sở dữ liệu hệ thống, phải chứa các chữ cái',
-    'install/database_username'=>'Tài khoản cơ sở dữ liệu',
+    'install/database_username'=>'DB User',
     'install/database_username_tip'=>'Tên người dùng để kết nối với cơ sở dữ liệu',
-    'install/database_pass'=>'mật khẩu cơ sở dữ liệu',
+    'install/database_pass'=>'DB Password',
     'install/database_pass_tip'=>'Mật khẩu để kết nối với cơ sở dữ liệu',
-    'install/database_pre'=>'tiền tố cơ sở dữ liệu',
-    'install/database_pre_tip'=>'Bạn nên sử dụng mặc định, tiền tố cơ sở dữ liệu phải có _',
-    'install/overwrite_database'=>'cơ sở dữ liệu ghi đè',
-    'install/overwrite'=>'ghi đè',
-    'install/not_overwrite'=>'không ghi đè',
+    'install/database_pre'=>'Tiền tố DB',
+    'install/database_pre_tip'=>'Bạn nên sử dụng mặc định, tiền tố phải chứa _',
+    'install/overwrite_database'=>'Ghi đè database',
+    'install/overwrite'=>'Ghi đè',
+    'install/not_overwrite'=>'Ghông ghi đè',
     'install/overwrite_tip'=>'Nếu bạn muốn giữ dữ liệu gốc, vui lòng chọn không ghi đè',
     'install/test_connect'=>'Kiểm tra kết nối cơ sở dữ liệu',
-    'install/test_connect_tip'=>'Vui lòng nhấp vào【Kiểm tra kết nối dữ liệu】và sau đó cài đặt',
-    'install/other_config'=>'các thiết lập khác',
-    'install/admin_name'=>'Tài khoản quản trị viên',
+    'install/test_connect_tip'=>'Vui lòng nhấp vào "Kiểm tra kết nối dữ liệu" và sau đó cài đặt',
+    'install/other_config'=>'Các thiết lập khác',
+    'install/admin_name'=>'Administrator',
     'install/admin_name_tip'=>'Tài khoản quản trị viên ít nhất 4 ký tự',
-    'install/admin_pass'=>'Mật khẩu quản lí',
+    'install/admin_pass'=>'Password',
     'install/admin_pass_tip'=>'Đảm bảo mật khẩu có ít nhất 6 chữ số',
-    'install/init_data'=>'Dữ liệu khởi tạo',
-    'install/create'=>'tạo ra',
-    'install/not_create'=>'không tạo',
+    'install/init_data'=>'Khởi tạo dữ liệu',
+    'install/create'=>'Khởi tạo',
+    'install/not_create'=>'Không khởi tạo',
     'install/create_tip'=>'Có tạo dữ liệu phân loại cơ bản hay không',
     'install/exec'=>'Thực hiện cài đặt ngay bây giờ',
-    'install/submit_tip'=>'Vui lòng nhấp và kết nối thông qua dữ liệu thử nghiệm trước!',
+    'install/submit_tip'=>'Vui lòng nhấp vào kiểm tra kết nối cơ sở dữ liệu trước!',
 
-    'install/environment_failed'=>'Không phát hiện được môi trường, không thể thực hiện bước tiếp theo！',
-    'install/init_err'=>'Thất bại ban đầu！',
-    'install/write_read_err'=>'Không có quyền đọc và ghi！',
+    'install/environment_failed'=>'Không phát hiện được môi trường, không thể thực hiện bước tiếp theo!',
+    'install/init_err'=>'Thất bại ban đầu!',
+    'install/write_read_err'=>'Không có quyền đọc và ghi!',
     'install/not_found'=>',không tồn tại',
-    'install/database_connect_err'=>'Kết nối cơ sở dữ liệu không thành công, vui lòng kiểm tra cấu hình cơ sở dữ liệu！',
-    'install/database_name_haved'=>'Cơ sở dữ liệu đã tồn tại và có thể được cài đặt trực tiếp. Để ghi đè, hãy chọn Ghi đè cơ sở dữ liệu！',
+    'install/database_connect_err'=>'Kết nối cơ sở dữ liệu không thành công, vui lòng kiểm tra cấu hình cơ sở dữ liệu!',
+    'install/database_name_haved'=>'Cơ sở dữ liệu đã tồn tại và có thể được cài đặt trực tiếp. Để ghi đè, hãy chọn Ghi đè cơ sở dữ liệu!',
     'install/database_connect_ok'=>'Kết nối cơ sở dữ liệu thành công',
     'install/access_denied'=>'Truy cập trái phép',
-    'install/please_test_connect'=>'Vui lòng nhấp vào Kiểm tra Kết nối Cơ sở dữ liệu trước！',
-    'install/please_input_admin_name_pass'=>'Vui lòng điền tài khoản quản lý và mật khẩu！',
-    'install/sql_err'=>'Không nhập được cấu trúc bảng SQL, vui lòng kiểm tra xem câu lệnh install.sql có đúng không。',
-    'install/init_data_err'=>'Không thể nhập dữ liệu khởi tạo SQL, vui lòng kiểm tra xem câu lệnh trong initdata.sql có đúng không。',
+    'install/please_test_connect'=>'Vui lòng nhấp vào Kiểm tra Kết nối Cơ sở dữ liệu trước!',
+    'install/please_input_admin_name_pass'=>'Vui lòng điền tài khoản quản lý và mật khẩu!',
+    'install/sql_err'=>'Không nhập được cấu trúc bảng SQL, vui lòng kiểm tra xem câu lệnh install.sql có đúng không. ',
+    'install/init_data_err'=>'Không thể nhập dữ liệu khởi tạo SQL, vui lòng kiểm tra xem câu lệnh trong initdata.sql có đúng không. ',
     'install/admin_err'=>'Tạo tài khoản quản trị viên không thành công',
-    'install/is_ok'=>'Hệ thống được cài đặt thành công, bạn có thể sử dụng Apple CMS để xây dựng trang web',
-    'install/os'=>'hệ điều hành',
-    'install/php'=>'bản php',
+    'install/is_ok'=>'Hệ thống được cài đặt thành công, bạn có thể sử dụng RamCMS để xây dựng trang web',
+    'install/os'=>'Hệ điều hành',
+    'install/php'=>'Phiên bản PHP',
     'install/gd'=>'kho GD',
 
     'install/not_limited'=>'không giới hạn',
     'install/not_installed'=>'chưa cài đặt',
-    'install/read_and_write'=>'đọc viết',
-    'install/not_writable'=>'không thể viết',
-    'install/support'=>'hỗ trợ',
-    'install/not_support'=>'hỗ trợ',
+    'install/read_and_write'=>'Read / Write',
+    'install/not_writable'=>'Không thể viết',
+    'install/support'=>'Hỗ trợ',
+    'install/not_support'=>'Không hỗ trợ',
     'install/class'=>'Loại',
     'install/model'=>'Modun',
-    'install/function'=>'chức năng',
-    'install/config'=>'cấu hình',
+    'install/function'=>'Chức năng',
+    'install/config'=>'Cấu hình',
 
 
     'validate/require_name'=>'Yêu cầu tên',

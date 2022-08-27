@@ -55,7 +55,14 @@ return array (
     'cache_page' => '0',
     'cache_time_page' => '3600',
     'compress' => '0',
+    'input_type' => '1',
+    'ajax_page' => '0',
+    'wall_filter' => '0',
+    'show' => '0',
+    'show_verify' => '0',
     'search' => '1',
+    'search_verify' => '0',
+    'search_len' => '',
     'search_timespan' => '3',
     'search_vod_rule' => 'vod_en|vod_sub',
     'search_art_rule' => 'art_en|art_sub',
@@ -82,8 +89,8 @@ return array (
     'makesize' => '30',
     'admin_login_verify' => '1',
     'editor' => 'Ueditor',
-    'lang' => 'zh-cn',
-    'input_type' => '1',
+    'lang' => 'vi-vn',
+    'vod_search_optimise' => '',
   ),
   'user' => 
   array (
@@ -190,7 +197,7 @@ return array (
   'interface' => 
   array (
     'status' => 0,
-    'pass' => '2RK20D7UKAWWC5RV',
+    'pass' => 'L29LMYKFVHH43XMF',
     'vodtype' => '动作片=动作',
     'arttype' => '头条=头条',
     'actortype' => '',

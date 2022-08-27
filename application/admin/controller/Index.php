@@ -67,7 +67,7 @@ class Index extends Base
             $quickmenu = explode(chr(13),$quickmenu);
         }
         if(!empty($quickmenu)){
-            $menus[1]['sub'][13] = ['name'=>lang('admin/index/quick_tit'), 'url'=>'javascript:void(0);return false;','controller'=>'', 'action'=>'' ];
+            // $menus[1]['sub'][13] = ['name'=>lang('admin/index/quick_tit'), 'url'=>'javascript:void(0);return false;','controller'=>'', 'action'=>'' ];
 
             foreach($quickmenu as $k=>$v){
                 if(empty($v)){

@@ -33,7 +33,7 @@ if(!is_file('./application/data/install/install.lock')) {
     exit;
 }
 if(strpos($_SERVER["SCRIPT_NAME"],'/admin.php')!==false){
-    echo '请将后台入口文件admin.php改名,避免被黑客入侵攻击【Please rename the background entry file admin.php to avoid being hacked】';
+    echo 'Vui lòng đổi tên admin.php thành tên khác để tránh bị hacker dòm ngó!';
     exit;
 }
 if (!@mb_check_encoding($_SERVER['PATH_INFO'], 'utf-8')){

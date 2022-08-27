@@ -279,7 +279,7 @@ class Index extends Controller
     {
         $items = [
             'os'      => [lang('install/os'), lang('install/not_limited'), 'Windows/Unix', PHP_OS, 'ok'],
-            'php'     => [lang('install/php'), '5.5', '5.5及以上', PHP_VERSION, 'ok'],
+            'php'     => [lang('install/php'), '5.5', '>=5.5', PHP_VERSION, 'ok'],
         ];
         if ($items['php'][3] < $items['php'][1]) {
             $items['php'][4] = 'no';
