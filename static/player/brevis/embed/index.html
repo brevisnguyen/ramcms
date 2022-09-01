@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Player support TVC by Brevis</title>
+    <script type="text/javascript" src="/static/player/brevis/embed/js/video.min.js"></script>
+    <script type="text/javascript" src="/static/player/brevis/embed/js/videojs.ads.min.js"></script>
+    <script type="text/javascript" src="/static/player/brevis/embed/js/videojs-preroll-v2.js"></script>
+    <link rel="stylesheet" href="/static/player/brevis/embed/css/video-js.css">
+    <link rel="stylesheet" href="/static/player/brevis/embed/css/videojs-contrib-ads.css">
+    <link rel="stylesheet" href="/static/player/brevis/embed/css/videojs-preroll.css">
+    <style type="text/css">html,body{width:100%;height:100%; padding:0; margin:0;}#videodiv,iframe{width:100%;height:100%;}</style>
+</head>
+<body marginwidth="0" marginheight="0">
+    <div id="videodiv" style="width: 100%;height: 100%;margin: 0;font-size: 0;">
+        <video id="videojs" class="video-js vjs-big-play-centered" controls preload="auto" width="100%" height="100%"></video>
+    </div>
+
+    <script type="text/javascript">
+        var adsVideo = '/static/player/brevis/embed/preload/1s_blank.mp4';
+        var options = {
+            autoplay: false,
+            fluid: true,
+            responsive: true,
+            aspectRatio: '16:9',
+            playbackRates: [0.5, 1, 1.5, 2],
+            sources: [{
+                src: adsVideo,
+                type: 'video/mp4'
+            }]
+        }
+
+        var player = videojs("videojs", options);
+
+        // Phát link embed sau khi TVC kết thúc
+        player.on('ended', function() {
+            let playerDiv = document.getElementById('videodiv');
+            playerDiv.removeChild(document.getElementById('videojs'));
+            let iframe = document.createElement('iframe');
+            iframe.setAttribute('src', parent.MacPlayer.PlayUrl);
+            iframe.setAttribute('border', '0');
+            iframe.setAttribute('marginWidth', '0');
+            iframe.setAttribute('frameSpacing', '0');
+            iframe.setAttribute('marginHeight', '0');
+            iframe.setAttribute('frameBorder', '0');
+            iframe.setAttribute('scrolling', 'no');
+            playerDiv.append(iframe);
+        });
+
+        // TVC
+        player.preroll({
+            src: [{
+                type: 'video/mp4',
+                src: 'https://i9dev.live/storage/i9betads.mp4',
+            }],
+            // URL đích khi người dùng click vào quảng cáo
+            href: 'https://github.com/brevis-ng',
+            target: '_blank',
+            allowSkip: true,
+            skipTime: 1, // Số giây quảng cáo tự động tắt
+            adSign: true,
+            lang: {
+                'skip': 'Bỏ qua',
+                'skip in': 'Bỏ qua trong ',
+                'advertisement': 'Quảng cáo',
+                'video start in': 'Phim sẽ bắt đầu trong: ',
+            }
+        });
+    </script>
+</body>
+</html>

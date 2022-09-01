@@ -10,7 +10,7 @@ return array (
     'ps' => '0',
     'parse' => '',
     'sort' => '910',
-    'tip' => 'Trình phát nhúng iframe',
+    'tip' => 'Trình phát nhúng iframe có hỗ trợ TVC',
     'id' => 'nguon',
   ),
   'ngm3u8' => 
@@ -23,7 +23,7 @@ return array (
     'ps' => '0',
     'parse' => '',
     'sort' => '909',
-    'tip' => 'Trình phát HSL sử dụng DPlayer',
+    'tip' => 'Trình phát HSL sử dụng VideoJS có hỗ trợ TVC',
     'id' => 'ngm3u8',
   ),
   'dplayer' => 

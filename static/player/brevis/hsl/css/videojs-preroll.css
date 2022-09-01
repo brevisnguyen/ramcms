@@ -1,0 +1,62 @@
+/*! @name videojs-preroll-v2 @version 2.0.0 @license MIT */
+.preroll-skip-button {
+    display: block;
+    bottom: 32px;
+    right: 0
+}
+
+.advertisement-box,
+.preroll-skip-button,
+.remaining-time {
+    position: absolute;
+    width: auto;
+    background-color: #000000;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 12px;
+    padding: 10px;
+    z-index: 2
+}
+
+.remaining-time {
+    display: block;
+    bottom: 32px;
+    right: 0
+}
+
+.advertisement-box {
+    display: inline-block;
+    right: auto;
+    bottom: none;
+    left: 0;
+    top: 0;
+    font-style: normal
+}
+
+.preroll-skip-button.enabled {
+    cursor: pointer;
+    color: #fff
+}
+
+.preroll-skip-button.enabled:hover {
+    cursor: pointer;
+    background: #333
+}
+
+.preroll-blocker {
+    display: block;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+
+.vjs-ad-playing div.vjs-control.vjs-playback-rate {
+    display: none
+}
