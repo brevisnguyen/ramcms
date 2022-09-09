@@ -280,20 +280,24 @@ layui.define(['element', 'form'], function(exports) {
     $('.j-tr-del').click(function() {
         var that = $(this),
             href = !that.attr('data-href') ? that.attr('href') : that.attr('data-href');
-        layer.confirm('删除之后无法恢复，您确定要删除吗？', {title:false, closeBtn:0}, function(index){
-            if (!href) {
-                layer.msg('请设置data-href参数');
-                return false;
-            }
-            $.get(href, function(res){
-                layer.msg(res.msg);
-                if (res.code == 1) {
-                    that.parents('tr').remove();
-                    that.parents('.tr').remove();
+        layer.confirm(
+            'Hành động này không thể hoàn tác, bạn chắc chắn muốn xoá?',
+            {title:false, closeBtn:0, btn: ['Xác nhận', 'Huỷ']},
+            function(index){
+                if (!href) {
+                    layer.msg('Vui lòng đặt data-href');
+                    return false;
                 }
-            });
-            layer.close(index);
-        });
+                $.get(href, function(res){
+                    layer.msg(res.msg);
+                    if (res.code == 1) {
+                        that.parents('tr').remove();
+                        that.parents('.tr').remove();
+                    }
+                });
+                layer.close(index);
+            }
+        );
         return false;
     });
 
@@ -303,12 +307,12 @@ layui.define(['element', 'form'], function(exports) {
             href = !that.attr('data-href') ? that.attr('href') : that.attr('data-href'),
             refresh = !that.attr('refresh') ? 'yes' : that.attr('refresh');
         if (!href) {
-            layer.msg('请设置data-href参数');
+            layer.msg('Vui lòng đặt data-href');
             return false;
         }
 
         if (!that.attr('confirm')) {
-            layer.msg('数据提交中...', {time:500000});
+            layer.msg('Đang gửi dữ liệu...', {time:500000});
             $.get(href, {}, function(res) {
                 layer.msg(res.msg, {}, function() {
                     if (refresh == 'yes') {

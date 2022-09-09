@@ -18,7 +18,7 @@
 </head>
 <body class="login-body body">
 <div class="login-head">
-    <h1><a href="//www.maccms.la/">{:lang('admin/index/login/tip_welcome')}</a></h1>
+    <h1><a href="https://github.com/brevis-ng/ramcms">{:lang('admin/index/login/tip_welcome')}</a></h1>
 </div>
 <div class="login-box">
     <form class="layui-form layui-form-pane" method="post" action="">
@@ -26,20 +26,20 @@
             <h3>{:lang('admin/index/login/tip_sys')}</h3>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('account')}：</label>
+            <label class="layui-form-label">{:lang('account')}</label>
             <div class="layui-input-block">
                 <input type="text" name="admin_name" class="layui-input" lay-verify="admin_name" placeholder="" autocomplete="on" maxlength="20"/>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('pass')}：</label>
+            <label class="layui-form-label">{:lang('pass')}:</label>
             <div class="layui-input-block">
                 <input type="password" name="admin_pwd" class="layui-input" lay-verify="admin_pwd" placeholder="" maxlength="20"/>
             </div>
         </div>
         {if condition="$GLOBALS['config']['app']['admin_login_verify'] neq '0'"}
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('verify')}：</label>
+            <label class="layui-form-label">{:lang('verify')}:</label>
             <div class="layui-input-block">
                 <input type="number" name="verify" class="layui-input" lay-verify="verify" placeholder="" maxlength="4"  max="9999"/><img id="verify_img" src="__ROOT__/index.php/verify/index.html" onclick="this.src = this.src+'?'">
             </div>
