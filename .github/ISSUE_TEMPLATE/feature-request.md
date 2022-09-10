@@ -1,13 +1,13 @@
 ---
-name: "🚀🆕 Feature Request"
-about: "Suggest an idea or possible new feature for this project."
+name: "🚀🆕 Yêu cầu tính năng"
+about: "Đề xuất ý tưởng hoặc tính năng mới có thể có cho dự án này."
 title: ""
 labels: "Type: Feature"
-assignees: Josee9988
+assignees: Brevis-ng
 
 ---
 
-# **🚀 Feature Request**
+# **🚀 Yêu cầu tính năng**
 
 ## **Yêu cầu tính năng của bạn có liên quan đến sự cố không? Làm ơn miêu tả.**
 <!-- Mô tả rõ ràng và ngắn gọn về vấn đề là gì. VD: Tôi luôn thất vọng khi [...] -->
