@@ -11,67 +11,67 @@
     <script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","aid":"{$maccms['aid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
 </head>
 <body>
-link标签：<br>
+link标签:<br>
 {maccms:link num="3" start="0" type="all" order="asc" by="sort"}
 {$key}->{$vo.link_id}->{$vo.link_name}<br>
 {/maccms:link}
 <br>
 
-area标签：<br>
+area标签:<br>
 {maccms:area num="4" order="desc"}
 {$key}->{$vo.area_name}<br>
 {/maccms:area}
 <br>
 
-lang标签：<br>
+lang标签:<br>
 {maccms:lang num="4" order="desc"}
 {$key}->{$vo.lang_name}<br>
 {/maccms:lang}
 <br>
 
-area标签：<br>
+area标签:<br>
 {maccms:year num="4" order="desc"}
 {$key}->{$vo.area_name}<br>
 {/maccms:year}
 <br>
 
-class标签：<br>
+class标签:<br>
 {maccms:class num="4" order="desc"}
 {$key}->{$vo.class_name}<br>
 {/maccms:class}
 <br>
 
-version标签：<br>
+version标签:<br>
 {maccms:version num="4" order="desc"}
 {$key}->{$vo.version_name}<br>
 {/maccms:version}
 <br>
 
-state标签：<br>
+state标签:<br>
 {maccms:state num="4" order="desc"}
 {$key}->{$vo.state_name}<br>
 {/maccms:state}
 <br>
 
-letter标签：<br>
+letter标签:<br>
 {maccms:letter num="4" order="desc" by=""}
 {$key}->{$vo.letter_name}<br>
 {/maccms:letter}
 <br>
 
-gbook标签：<br>
+gbook标签:<br>
 {maccms:gbook num="4" paging="no" order="desc" by=""}
 {$key}->{$vo.gbook_name}<br>
 {/maccms:gbook}
 <br>
 
-comment标签：<br>
+comment标签:<br>
 {maccms:comment num="4" paging="yes" order="desc" by=""}
 {$key}->{$vo.comment_name}<br>
 {/maccms:comment}
 <br>
 
-page分页：<br>
+page分页:<br>
 <div class="mac_pages">
     <div class="page_tip">共{$__PAGING__.record_total}条数据,当前{$__PAGING__.page_current}/{$__PAGING__.page_total}页</div>
     <div class="page_info">
@@ -94,27 +94,27 @@ page分页：<br>
 
 <br>
 
-type标签：<br>
+type标签:<br>
 {maccms:type num="4" mid="vod" ids="" order="asc" by="id"}
 {$key}->{$vo.type_name}<br>
 {/maccms:type}
 <br>
 
 
-topic标签：<br>
+topic标签:<br>
 {maccms:topic num="4" paging="no" ids="" level="" order="asc" by="id"}
 {$key}->{$vo.topic_name}<br>
 {/maccms:topic}
 <br>
 
-art标签：<br>
+art标签:<br>
 {maccms:art num="4" paging="no" ids="" type="" topic="" level="" order="asc" by="id"}
 {$key}->{$vo.art_name}<br>
 {/maccms:art}
 <br>
 
 
-vod标签：<br>
+vod标签:<br>
 {maccms:vod num="4" paging="no" ids="" type="" topic="" level="" order="asc" by="id"}
 {$key}->{$vo.vod_name}<br>
 {/maccms:vod}
@@ -122,7 +122,7 @@ vod标签：<br>
 
 
 
-for标签：<br>
+for标签:<br>
 {maccms:for start="1" end="5" comparison="elt" step="1" name="key"}
 {$key}<br>
 {/maccms:for}

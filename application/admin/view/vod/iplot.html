@@ -24,7 +24,7 @@
                     <div id="plot_list" class="contents">
                         {volist name="$vod_plot_list" id="vo"}
                         <div class="layui-form-item" data-i="{$key}">
-                            <label class="layui-form-label">{:lang('admin/vod/plot')}{$key}：</label>
+                            <label class="layui-form-label">{:lang('admin/vod/plot')}{$key}:</label>
                             <div class="layui-input-inline w500"><input type="text" name="vod_plot_name[]" class="layui-input" value="{$vo.name}" placeholder="{:lang('admin/vod/plot_name')}"></div>
                             <div class="layui-input-inline w400 p10"><a href="javascript:void(0)" class="j-editor-clear">{:lang('clear')}</a>&nbsp;<a href="javascript:void(0)" class="j-editor-remove">{:lang('del')}</a>&nbsp;<a href="javascript:void(0)" class="j-editor-up">{:lang('admin/vod/move_up')}</a>&nbsp;<a href="javascript:void(0)" class="j-editor-down">{:lang('admin/vod/move_down')}</a><br></div>
                             <div class="p10 m20"> </div>
@@ -158,7 +158,7 @@
 
         $('.j-plot-add').on('click',function(){
             plot_arr_len++;
-            var tpl='<div class="layui-form-item" data-i="'+plot_arr_len+'"><label class="layui-form-label">{:lang('admin/vod/plot')}'+(plot_arr_len)+'：</label><div class="layui-input-inline w500"><input type="text" name="vod_plot_name[]" class="layui-input" placeholder="{:lang('admin/vod/plot_name')}"></div><div class="layui-input-inline w400 p10"><a href="javascript:void(0)" class="j-editor-clear">{:lang('clear')}</a>&nbsp;<a href="javascript:void(0)" class="j-editor-remove">{:lang('del')}</a>&nbsp;<a href="javascript:void(0)" class="j-editor-up">{:lang('admin/vod/move_up')}</a>&nbsp;<a href="javascript:void(0)" class="j-editor-down">{:lang('admin/vod/move_down')}</a>&nbsp;</div><div class="p10 m20"></div><div class="layui-input-block"><textarea id="vod_plot_detail'+(plot_arr_len)+'" name="vod_plot_detail[]" class="layui-textarea" style="width:99%;height:250px"></textarea></div></div>';
+            var tpl='<div class="layui-form-item" data-i="'+plot_arr_len+'"><label class="layui-form-label">{:lang('admin/vod/plot')}'+(plot_arr_len)+':</label><div class="layui-input-inline w500"><input type="text" name="vod_plot_name[]" class="layui-input" placeholder="{:lang('admin/vod/plot_name')}"></div><div class="layui-input-inline w400 p10"><a href="javascript:void(0)" class="j-editor-clear">{:lang('clear')}</a>&nbsp;<a href="javascript:void(0)" class="j-editor-remove">{:lang('del')}</a>&nbsp;<a href="javascript:void(0)" class="j-editor-up">{:lang('admin/vod/move_up')}</a>&nbsp;<a href="javascript:void(0)" class="j-editor-down">{:lang('admin/vod/move_down')}</a>&nbsp;</div><div class="p10 m20"></div><div class="layui-input-block"><textarea id="vod_plot_detail'+(plot_arr_len)+'" name="vod_plot_detail[]" class="layui-textarea" style="width:99%;height:250px"></textarea></div></div>';
             $("#plot_list").append(tpl);
             ueArray[plot_arr_len] = editor_getEditor( 'vod_plot_detail'+plot_arr_len );
         });

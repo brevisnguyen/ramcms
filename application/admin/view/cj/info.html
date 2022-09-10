@@ -19,13 +19,13 @@
                                 <legend>{:lang('base_info')}</legend>
                             </fieldset>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">{:lang('admin/cj/rule_name')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/rule_name')}:</label>
                                 <div class="layui-input-block" style="width: 60%">
                                     <input type="text" name="data[name]" placeholder="" value="{$data.name}" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">{:lang('admin/cj/page_charset')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/page_charset')}:</label>
                                 <div class="layui-input-block">
                                     <input type="radio" name="data[sourcecharset]" value="GBK" title="GBK" {if condition="$data['sourcecharset'] eq 'GBK'"}checked='checked'{/if}>
                                     <input type="radio" name="data[sourcecharset]" value="UTF-8" title="UTF-8" {if condition="$data['sourcecharset'] eq 'UTF-8'"}checked='checked'{/if}>
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">{:lang('admin/cj/cj_model')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/cj_model')}:</label>
                                 <div class="layui-input-block">
                                     <input type="radio" name="data[mid]" value="1" title="{:lang('vod')}" {if condition="$data['mid'] neq '2'"}checked='checked'{/if}>
                                     <input type="radio" name="data[mid]" value="2" title="{:lang('art')}" {if condition="$data['mid'] eq '2'"}checked='checked'{/if}>
@@ -44,7 +44,7 @@
                                 <legend>{:lang('admin/cj/url_collect')}</legend>
                             </fieldset>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">{:lang('admin/cj/url_type')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/url_type')}:</label>
                                 <div class="layui-input-block">
                                     <input type="radio" name="data[sourcetype]" id="_1" value="1" lay-filter="sourcetype" title="{:lang('admin/cj/sequence_url')}" {if condition="$data['sourcetype'] eq 1"}checked='checked'{/if}>
                                     <input type="radio" name="data[sourcetype]" id="_2" value="2" lay-filter="sourcetype" title="{:lang('admin/cj/multi_url')}" {if condition="$data['sourcetype'] eq 2"}checked='checked'{/if}>
@@ -53,16 +53,16 @@
                             </div>
                             <div id="url_type_1" {if condition="$data['sourcetype'] neq 1"}style="display:none"{/if}>
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">{:lang('admin/cj/cj_url')}：</label>
+                                    <label class="layui-form-label">{:lang('admin/cj/cj_url')}:</label>
                                     <div class="layui-input-inline" style="width: 60%;">
                                         <input type="text" name="urlpage1" id="urlpage_1" placeholder="http://..." value="{$data.urlpage}" class="layui-input">
                                         <div class="layui-form-mid layui-word-aux">
-                                            (如：http://www.phpcms.cn/help/rumen/(*).html,{:lang('use')}(*){:lang('admin/cj/wildcard_tip')}。
+                                            (如:http://www.phpcms.cn/help/rumen/(*).html,{:lang('use')}(*){:lang('admin/cj/wildcard_tip')}。
                                         </div>
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">{:lang('admin/cj/page_num_config')}：</label>
+                                    <label class="layui-form-label">{:lang('admin/cj/page_num_config')}:</label>
                                     <div class="layui-form-mid">{:lang('start')}</div>
                                     <div class="layui-input-inline" style="width: 60px;">
                                         <input type="text" name="data[pagesize_start]" value="{$data.pagesize_start}" class="layui-input">
@@ -82,7 +82,7 @@
                             </div>
                             <!--多个网址-->
                             <div id="url_type_2" class="layui-form-item" {if condition="$data['sourcetype'] neq 2"}style="display:none"{/if}>
-                                <label class="layui-form-label">{:lang('admin/cj/cj_url')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/cj_url')}:</label>
                                 <div class="layui-input-inline" style="width: 60%;">
                                     <textarea class="layui-textarea" name="urlpage2" id="urlpage_2">{$data.urlpage}</textarea>
                                     <div class="layui-form-mid layui-word-aux">
@@ -92,14 +92,14 @@
                             </div>
                             <!--单一网址-->
                             <div id="url_type_3" class="layui-form-item" {if condition="$data['sourcetype'] neq 3"}style="display:none"{/if}>
-                                <label class="layui-form-label">{:lang('admin/cj/cj_url')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/cj_url')}:</label>
                                 <div class="layui-input-inline" style="width: 60%;">
                                     <input type="text" name="urlpage3" id="urlpage_3" placeholder="http://..." value="{$data.urlpage}" class="layui-input">
                                 </div>
                             </div>
 
                             <div class="layui-form-item">
-                                <label class="layui-form-label">{:lang('admin/cj/url_config')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/url_config')}:</label>
                                 <div class="layui-form-mid">{:lang('admin/cj/url_must_contain')}</div>
                                 <div class="layui-input-inline" style="width: 160px;">
                                     <input type="text" name="data[url_contain]" value="{$data.url_contain}" class="layui-input">
@@ -110,7 +110,7 @@
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">{:lang('admin/cj/collect_interval')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/collect_interval')}:</label>
                                 <div class="layui-input-inline">
                                     <textarea name="data[url_start]" class="layui-textarea">{$data.url_start}</textarea>
                                 </div>
@@ -136,14 +136,14 @@
                                         <h2 class="layui-colla-title">{:lang('admin/cj/title_rule')}</h2>
                                         <div class="layui-colla-content layui-show">
                                             <div class="layui-form-item">
-                                                <label class="layui-form-label">{:lang('admin/cj/match_rule')}：</label>
+                                                <label class="layui-form-label">{:lang('admin/cj/match_rule')}:</label>
                                                 <div class="layui-input-inline w300">
                                                     <textarea name="data[title_rule]" id="title_rule" class="layui-textarea">{$data.title_rule}</textarea>
                                                     <div class="layui-form-mid layui-word-aux">
                                                         {:lang('use')}"<a href="javascript:insertText('title_rule', '[内容]')"> [内容] </a>"{:lang('admin/cj/wildcard_tip')}
                                                     </div>
                                                 </div>
-                                                <div class="layui-form-mid">{:lang('admin/cj/filter_rule')}：</div>
+                                                <div class="layui-form-mid">{:lang('admin/cj/filter_rule')}:</div>
                                                 <div class="layui-input-inline w300">
                                                     <textarea name="data[title_html_rule]" id="title_html_rule" class="layui-textarea">{$data.title_html_rule}</textarea>
                                                     <div class="layui-form-mid layui-word-aux">
@@ -158,14 +158,14 @@
                                     <h2 class="layui-colla-title">{:lang('admin/cj/type_rule')}</h2>
                                     <div class="layui-colla-content layui-show">
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label">{:lang('admin/cj/match_rule')}：</label>
+                                            <label class="layui-form-label">{:lang('admin/cj/match_rule')}:</label>
                                             <div class="layui-input-inline w300">
                                                 <textarea name="data[type_rule]" id="type_rule" class="layui-textarea">{$data.type_rule}</textarea>
                                                 <div class="layui-form-mid layui-word-aux">
                                                     {:lang('use')}"<a href="javascript:insertText('content_rule', '[内容]')"> [内容] </a>"{:lang('admin/cj/wildcard_tip')}
                                                 </div>
                                             </div>
-                                            <div class="layui-form-mid">{:lang('admin/cj/filter_rule')}：</div>
+                                            <div class="layui-form-mid">{:lang('admin/cj/filter_rule')}:</div>
                                             <div class="layui-input-inline w300">
                                                 <textarea name="data[type_html_rule]" id="type_html_rule" class="layui-textarea">{$data.type_html_rule}</textarea>
                                                 <div class="layui-form-mid layui-word-aux">
@@ -180,14 +180,14 @@
                                         <h2 class="layui-colla-title">{:lang('admin/cj/content_rule')}</h2>
                                         <div class="layui-colla-content layui-show">
                                             <div class="layui-form-item">
-                                                <label class="layui-form-label">{:lang('admin/cj/match_rule')}：</label>
+                                                <label class="layui-form-label">{:lang('admin/cj/match_rule')}:</label>
                                                 <div class="layui-input-inline w300">
                                                     <textarea name="data[content_rule]" id="content_rule" class="layui-textarea">{$data.content_rule}</textarea>
                                                     <div class="layui-form-mid layui-word-aux">
                                                         {:lang('use')}"<a href="javascript:insertText('content_rule', '[内容]')"> [内容] </a>"{:lang('admin/cj/wildcard_tip')}
                                                     </div>
                                                 </div>
-                                                <div class="layui-form-mid">{:lang('admin/cj/filter_rule')}：</div>
+                                                <div class="layui-form-mid">{:lang('admin/cj/filter_rule')}:</div>
                                                 <div class="layui-input-inline w300">
                                                     <textarea name="data[content_html_rule]" id="content_html_rule" class="layui-textarea">{$data.content_html_rule}</textarea>
                                                     <div class="layui-form-mid layui-word-aux">
@@ -207,14 +207,14 @@
                                             </div>
 
                                             <div class="layui-form-item" id="nextpage" {if condition="$data['content_page_rule'] neq '2'"}style="display:none"{/if}>
-                                                <label class="layui-form-label">{:lang('admin/cj/next_page_rule')}：</label>
+                                                <label class="layui-form-label">{:lang('admin/cj/next_page_rule')}:</label>
                                                 <div class="layui-input-inline w600">
                                                     <input type="text" name="data[content_nextpage]" class="layui-input" value="{$data.content_nextpage}">
                                                     <div class="layui-form-mid layui-word-aux">{:lang('admin/cj/next_page_tip')}</div>
                                                 </div>
                                             </div>
                                             <div class="layui-form-item">
-                                                <label class="layui-form-label">{:lang('admin/cj/match_rule')}：</label>
+                                                <label class="layui-form-label">{:lang('admin/cj/match_rule')}:</label>
                                                 从 <textarea rows="5" cols="40" name="data[content_page_start]" id="content_page_start">{$data.content_page_start}</textarea> {:lang('to')}
                                                 <textarea rows="5" cols="40" name="data[content_page_end]" id="content_page_end">{$data.content_page_end}</textarea>
                                             </div>
@@ -235,18 +235,18 @@
 
                             {volist name="$data.customize_config" id="vo"}
                             <div class="layui-form-item mt10">
-                                <label class="layui-form-label">{:lang('admin/cj/rule_name')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/rule_name')}:</label>
                                 <div class="layui-input-inline"><input type="text" name="data[customize_config][name][]" placeholder="" value="{$vo.name}" class="layui-input"></div>
-                                <div class="layui-form-mid">{:lang('admin/cj/rule_name_en')}：</div>
+                                <div class="layui-form-mid">{:lang('admin/cj/rule_name_en')}:</div>
                                 <div class="layui-input-inline"><input type="text" name="data[customize_config][en_name][]" placeholder="" value="{$vo.en_name}" class="layui-input"></div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">{:lang('admin/cj/match_rule')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/match_rule')}:</label>
                                 <div class="layui-input-inline">
                                     <textarea name="data[customize_config][rule][]" id="role_'+caiji+'" class="layui-textarea">{$vo.rule}</textarea>
                                     <div class="layui-form-mid layui-word-aux">{:lang('use')}"<a href="javascript:insertText('title_rule', '[内容]')"> [内容] </a>"{:lang('admin/cj/wildcard_tip')}    </div>
                                 </div>
-                                <div class="layui-form-mid">{:lang('admin/cj/filter_rule')}：</div>
+                                <div class="layui-form-mid">{:lang('admin/cj/filter_rule')}:</div>
                                 <div class="layui-input-inline">
                                     <textarea name="data[customize_config][html_rule][]" id="content_html_rule_'+caiji+'" class="layui-textarea">{$vo.html_rule}</textarea>
                                     <div class="layui-form-mid layui-word-aux"><a class="layui-btn layui-btn-xs" href="javascript:;" onclick="add_tag('content_html_rule_'+caiji+'')">{:lang('select')}</a></div>
@@ -261,7 +261,7 @@
                         <div class="layui-tab-item">
 
                             <div class="layui-form-item">
-                                <label class="layui-form-label">{:lang('admin/cj/content_page')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/content_page')}:</label>
                                 <div class="layui-input-block">
                                     <input type="radio" name="data[content_page]" value="0" title="{:lang('admin/cj/no_page')}">
                                     <div class="layui-unselect layui-form-radio layui-form-radioed">
@@ -277,7 +277,7 @@
                             </div>
                             <hr>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">{:lang('admin/cj/import_sort')}：</label>
+                                <label class="layui-form-label">{:lang('admin/cj/import_sort')}:</label>
                                 <div class="layui-input-block">
                                     <input type="radio" name="data[coll_order]" value="1" title="{:lang('admin/cj/same_to_site')}">
                                     <div class="layui-unselect layui-form-radio layui-form-radioed">
@@ -359,7 +359,7 @@
 
         //监听折叠
         element.on('collapse(lay_state)', function(data){
-            //layer.msg('展开状态：'+ data.show);
+            //layer.msg('展开状态:'+ data.show);
         });
     });
 
@@ -418,7 +418,7 @@
     var caiji=0;
     function add_caiji()
     {
-        $('#customize_config').append('<div class="layui-form-item mt10"><label class="layui-form-label">{:lang('rule_name')}：</label><div class="layui-input-inline"><input type="text" name="data[customize_config][name][]" placeholder="" value="" class="layui-input"></div><div class="layui-form-mid">{:lang('rule_name_en')}：</div><div class="layui-input-inline"><input type="text" name="data[customize_config][en_name][]" placeholder="" value="" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">{:lang('admin/cj/match_rule')}：</label><div class="layui-input-inline"><textarea name="data[customize_config][rule][]" id="role_'+caiji+'" class="layui-textarea"></textarea><div class="layui-form-mid layui-word-aux">{:lang('use')}"<a href="javascript:insertText(\'title_rule\', \'[内容]\')"> [内容] </a>"{:lang('admin/cj/wildcard_tip')}    </div></div><div class="layui-form-mid">{:lang('admin/cj/filter_rule')}：</div><div class="layui-input-inline"><textarea name="data[customize_config][html_rule][]" id="content_html_rule_'+caiji+'" class="layui-textarea"></textarea><div class="layui-form-mid layui-word-aux"><a class="layui-btn layui-btn-xs" href="javascript:;" onclick="add_tag(\'content_html_rule_'+caiji+'\')">{:lang('select')}</a></div></div></div><hr>');
+        $('#customize_config').append('<div class="layui-form-item mt10"><label class="layui-form-label">{:lang('rule_name')}:</label><div class="layui-input-inline"><input type="text" name="data[customize_config][name][]" placeholder="" value="" class="layui-input"></div><div class="layui-form-mid">{:lang('rule_name_en')}:</div><div class="layui-input-inline"><input type="text" name="data[customize_config][en_name][]" placeholder="" value="" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">{:lang('admin/cj/match_rule')}:</label><div class="layui-input-inline"><textarea name="data[customize_config][rule][]" id="role_'+caiji+'" class="layui-textarea"></textarea><div class="layui-form-mid layui-word-aux">{:lang('use')}"<a href="javascript:insertText(\'title_rule\', \'[内容]\')"> [内容] </a>"{:lang('admin/cj/wildcard_tip')}    </div></div><div class="layui-form-mid">{:lang('admin/cj/filter_rule')}:</div><div class="layui-input-inline"><textarea name="data[customize_config][html_rule][]" id="content_html_rule_'+caiji+'" class="layui-textarea"></textarea><div class="layui-form-mid layui-word-aux"><a class="layui-btn layui-btn-xs" href="javascript:;" onclick="add_tag(\'content_html_rule_'+caiji+'\')">{:lang('select')}</a></div></div></div><hr>');
         caiji++;
     }
 

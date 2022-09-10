@@ -240,7 +240,7 @@ layui.define(['element', 'form'], function(exports) {
                 CKEDITOR.instances[instance].updateElement();
             }
         }
-        layer.msg('数据提交中...',{time:500000});
+        layer.msg('Đang xử lý...',{time:500000});
         $.ajax({
             type: "POST",
             url: _form.attr('action'),
@@ -328,7 +328,7 @@ layui.define(['element', 'form'], function(exports) {
         }
         else {
             layer.confirm(that.attr('confirm'), {title:false, closeBtn:0}, function(index){
-                layer.msg('数据提交中...', {time:500000});
+                layer.msg('Đang xử lý...', {time:500000});
                 $.get(href, {}, function(res) {
                     layer.msg(res.msg, {}, function() {
                         if (refresh == 'yes') {
@@ -421,7 +421,7 @@ layui.define(['element', 'form'], function(exports) {
                     } else {
                         var query = $('#pageListForm').serialize();
                     }
-                    layer.msg('数据提交中...', {time: 500000});
+                    layer.msg('Đang xử lý...', {time: 500000});
                     $.post(href, query, function (res) {
                         layer.msg(res.msg, {}, function () {
                             if (res.code != 0) {

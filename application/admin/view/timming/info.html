@@ -3,27 +3,27 @@
     <form class="layui-form layui-form-pane" method="post" action="">
         <input type="hidden" name="__token__" value="{$Request.token}" />
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('status')}：</label>
+                        <label class="layui-form-label">{:lang('status')}:</label>
                         <div class="layui-input-inline">
                             <input name="status" type="radio" id="rad-1" value="0" title="{:lang('disable')}" {if condition="$info['status'] neq 1"}checked {/if}>
                             <input name="status" type="radio" id="rad-2" value="1" title="{:lang('enable')}" {if condition="$info['status'] eq 1"}checked {/if}>
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('name')}：</label>
+                        <label class="layui-form-label">{:lang('name')}:</label>
                         <div class="layui-input-inline w500">
                             <input type="text" class="layui-input" value="{$info.name}" placeholder="{:lang('admin/timming/unique_id')}" id="name" name="name" {if condition="$info.name neq ''"} readonly="readonly"{/if}>
                         </div>
                         <div class="layui-form-mid layui-word-aux">{:lang('admin/timming/call_method')}/api.php/timming/index?name={$info.name}</div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('remarks')}：</label>
+                        <label class="layui-form-label">{:lang('remarks')}:</label>
                         <div class="layui-input-inline w500">
                             <input type="text" class="layui-input" value="{$info.des}" placeholder="" id="des" name="des">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('admin/timming/exec_file')}：</label>
+                        <label class="layui-form-label">{:lang('admin/timming/exec_file')}:</label>
                         <div class="layui-input-inline w500">
                             <select class="" name="file">
                                 <option value="collect" {if condition="$info['file'] eq 'collect'"}selected{/if}>{:lang('admin/timming/collect')}</option>
@@ -35,14 +35,14 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('admin/timming/attach_param')}：</label>
+                        <label class="layui-form-label">{:lang('admin/timming/attach_param')}:</label>
                         <div class="layui-input-block">
                             <input type="text" class="layui-input" value="{$info.param}" placeholder="{:lang('admin/timming/attach_param_tip')}" id="param" name="param">
                         </div>
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('admin/timming/exec_cycle')}：</label>
+                        <label class="layui-form-label">{:lang('admin/timming/exec_cycle')}:</label>
                         <div class="layui-input-block role-list-form">
                             <input type="checkbox" name="weeks[]" class="layui-checkbox" lay-skin="primary" value="1" title="{:lang('monday')}" {if condition="strpos($info['weeks'],'1')!==false"}checked{/if}>
                             <input type="checkbox" name="weeks[]" class="layui-checkbox" lay-skin="primary" value="2" title="{:lang('tuesday')}" {if condition="strpos($info['weeks'],'2')!==false"}checked{/if}>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('admin/timming/exec_time')}：</label>
+                        <label class="layui-form-label">{:lang('admin/timming/exec_time')}:</label>
                         <div class="layui-input-block role-list-form">
                             <input type="checkbox" name="hours[]" class="layui-checkbox" lay-skin="primary" value="00" title="00" {if condition="strpos($info['hours'],'00')!==false"}checked{/if}>
                             <input type="checkbox" name="hours[]" class="layui-checkbox" lay-skin="primary" value="01" title="01" {if condition="strpos($info['hours'],'01')!==false"}checked{/if}>

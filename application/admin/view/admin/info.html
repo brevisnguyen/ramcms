@@ -4,20 +4,20 @@
         <input id="admin_id" name="admin_id" type="hidden" value="{$info.admin_id}">
         <input type="hidden" name="__token__" value="{$Request.token}" />
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('id')}：</label>
+            <label class="layui-form-label">{:lang('id')}:</label>
             <div class="layui-input-block  ">
                 <input type="text" class="layui-input" value="{$info.admin_name}" placeholder="" id="admin_name" name="admin_name">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('pass')}：</label>
+            <label class="layui-form-label">{:lang('pass')}:</label>
             <div class="layui-input-block">
                 <input type="password" class="layui-input" value="{$info.admin_pwd}" placeholder="" id="admin_pwd" name="admin_pwd">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('status')}：</label>
+            <label class="layui-form-label">{:lang('status')}:</label>
             <div class="layui-input-block">
                     <input name="admin_status" type="radio" id="rad-1" value="0" title="{:lang('disable')}" {if condition="$info['admin_status'] neq 1"}checked {/if}>
                     <input name="admin_status" type="radio" id="rad-2" value="1" title="{:lang('enable')}" {if condition="$info['admin_status'] eq 1"}checked {/if}>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="layui-form-item ">
-            <label class="layui-form-label">{:lang('popedom')}：</label>
+            <label class="layui-form-label">{:lang('popedom')}:</label>
             <div class="layui-input-block">
                 <blockquote class="layui-elem-quote layui-quote-nm">
                     {:lang('admin/admin/popedom_tip')}

@@ -15,14 +15,14 @@
                     </blockquote>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configinterface/status')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configinterface/status')}:</label>
                     <div class="layui-input-block">
                         <input type="radio" name="interface[status]" value="0" title="{:lang('close')}" {if condition="$config['interface']['status'] neq 1"}checked {/if}>
                         <input type="radio" name="interface[status]" value="1" title="{:lang('open')}" {if condition="$config['interface']['status'] eq 1"}checked {/if}>
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configinterface/pass')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configinterface/pass')}:</label>
                     <div class="layui-input-inline w400">
                         <input type="text" name="interface[pass]" placeholder="" value="{$config['interface']['pass']}" class="layui-input">
                     </div>
@@ -30,19 +30,19 @@
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configinterface/vod_type')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configinterface/vod_type')}:</label>
                     <div class="layui-input-inline" style="width:230px;!important;">
                         <textarea name="interface[vodtype]" class="layui-textarea" rows="20" >{$config['interface']['vodtype']|mac_replace_text}</textarea>
                     </div>
-                    <label class="layui-form-label">{:lang('admin/system/configinterface/art_type')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configinterface/art_type')}:</label>
                     <div class="layui-input-inline" style="width:230px;!important;">
                         <textarea name="interface[arttype]" class="layui-textarea" rows="20" >{$config['interface']['arttype']|mac_replace_text}</textarea>
                     </div>
-                    <label class="layui-form-label">{:lang('admin/system/configinterface/actor_type')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configinterface/actor_type')}:</label>
                     <div class="layui-input-inline" style="width:230px;!important;">
                         <textarea name="interface[actortype]" class="layui-textarea" rows="20" >{$config['interface']['actortype']|mac_replace_text}</textarea>
                     </div>
-                    <label class="layui-form-label">{:lang('admin/system/configinterface/website_type')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configinterface/website_type')}:</label>
                     <div class="layui-input-inline" style="width:230px;!important;">
                         <textarea name="interface[websitetype]" class="layui-textarea" rows="20" >{$config['interface']['websitetype']|mac_replace_text}</textarea>
                     </div>

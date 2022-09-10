@@ -20,20 +20,20 @@
                     </fieldset>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('status')}：</label>
+                        <label class="layui-form-label">{:lang('status')}:</label>
                         <div class="layui-input-block">
                             <input type="radio" name="connect[qq][status]" value="0" title="{:lang('close')}" {if condition="$config['connect']['qq']['status'] neq 1"}checked {/if}>
                             <input type="radio" name="connect[qq][status]" value="1" title="{:lang('open')}" {if condition="$config['connect']['qq']['status'] eq 1"}checked {/if}>
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">APP_KEY：</label>
+                        <label class="layui-form-label">APP_KEY:</label>
                         <div class="layui-input-block">
                             <input type="text" name="connect[qq][key]" placeholder="" value="{$config['connect']['qq']['key']}" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">APP_SECRET：</label>
+                        <label class="layui-form-label">APP_SECRET:</label>
                         <div class="layui-input-block">
                             <input type="text" name="connect[qq][secret]" placeholder="" value="{$config['connect']['qq']['secret']}" class="layui-input">
                         </div>
@@ -45,20 +45,20 @@
                     </fieldset>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('status')}：</label>
+                        <label class="layui-form-label">{:lang('status')}:</label>
                         <div class="layui-input-block">
                             <input type="radio" name="connect[weixin][status]" value="0" title="{:lang('close')}" {if condition="$config['connect']['weixin']['status'] neq 1"}checked {/if}>
                             <input type="radio" name="connect[weixin][status]" value="1" title="{:lang('open')}" {if condition="$config['connect']['weixin']['status'] eq 1"}checked {/if}>
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">APP_KEY：</label>
+                        <label class="layui-form-label">APP_KEY:</label>
                         <div class="layui-input-block">
                             <input type="text" name="connect[weixin][key]" placeholder="" value="{$config['connect']['weixin']['key']}" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">APP_SECRET：</label>
+                        <label class="layui-form-label">APP_SECRET:</label>
                         <div class="layui-input-block">
                             <input type="text" name="connect[weixin][secret]" placeholder="" value="{$config['connect']['weixin']['secret']}" class="layui-input">
                         </div>

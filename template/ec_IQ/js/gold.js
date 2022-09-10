@@ -59,7 +59,7 @@ function gold_init(){
 					$.hidediv({});
 				}
 				else {
-					$.showfloatdiv({txt: '数据提交中...', cssname: 'loading'});
+					$.showfloatdiv({txt: 'Đang xử lý...', cssname: 'loading'});
 					$lis.removeClass("active");
 					$("ul.rating li:lt(" + n + ")").addClass("active");
 					$("#ratewords").html($title);

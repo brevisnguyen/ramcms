@@ -4,31 +4,31 @@
     <form class="layui-form layui-form-pane" method="post" action="">
         <input id="link_id" name="link_id" type="hidden" value="{$info.link_id}">
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('name')}：</label>
+            <label class="layui-form-label">{:lang('name')}:</label>
             <div class="layui-input-block">
                 <input type="text" class="layui-input" value="{$info.link_name}" lay-verify="link_name" placeholder="" id="link_name" name="link_name">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('url')}：</label>
+            <label class="layui-form-label">{:lang('url')}:</label>
             <div class="layui-input-block">
                 <input type="text" class="layui-input" value="{$info.link_url}" lay-verify="link_url" placeholder="" id="link_url" name="link_url">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('logo')}：</label>
+            <label class="layui-form-label">{:lang('logo')}:</label>
             <div class="layui-input-block">
                 <input type="text" class="layui-input" value="{$info.link_logo}" placeholder="" id="link_logo" name="link_logo">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('sort')}：</label>
+            <label class="layui-form-label">{:lang('sort')}:</label>
             <div class="layui-input-inline w100">
                 <input type="text" class="layui-input" value="{$info.link_sort}" placeholder="" id="link_sort" name="link_sort">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('genre')}：</label>
+            <label class="layui-form-label">{:lang('genre')}:</label>
             <div class="layui-input-inline">
                 <select class="w100" name="link_type">
                     <option value="0" {if condition="$vo['link_type'] eq 0"}selected {/if}>{:lang('admin/link/text_link')}</option>

@@ -17,7 +17,7 @@
                 </blockquote>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('status')}：</label>
+                    <label class="layui-form-label">{:lang('status')}:</label>
                     <div class="layui-input-block">
                         <input type="radio" name="weixin[status]" value="0" title="{:lang('close')}" {if condition="$config['weixin']['status'] neq 1"}checked {/if}>
                         <input type="radio" name="weixin[status]" value="1" title="{:lang('open')}" {if condition="$config['weixin']['status'] eq 1"}checked {/if}>
@@ -25,43 +25,43 @@
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configweixin/duijie')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configweixin/duijie')}:</label>
                     <div class="layui-input-block">
                         <input type="text" name="weixin[duijie]" placeholder="{:lang('admin/system/configweixin/duijie_tip')}" value="{$config['weixin']['duijie']}" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configweixin/sousuo')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configweixin/sousuo')}:</label>
                     <div class="layui-input-block">
                         <input type="text" name="weixin[sousuo]" placeholder="{:lang('admin/system/configweixin/sousuo_tip')}" value="{$config['weixin']['sousuo']}" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configweixin/token')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configweixin/token')}:</label>
                     <div class="layui-input-block">
                         <input type="text" name="weixin[token]" placeholder="{:lang('admin/system/configweixin/token_tip')}" value="{$config['weixin']['token']}" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configweixin/guanzhu')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configweixin/guanzhu')}:</label>
                     <div class="layui-input-block">
                         <textarea type="text" name="weixin[guanzhu]" placeholder="{:lang('admin/system/configweixin/guanzhu_tip')}" value="" class="layui-textarea">{$config['weixin']['guanzhu']}</textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configweixin/wuziyuan')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configweixin/wuziyuan')}:</label>
                     <div class="layui-input-block">
                         <textarea type="text" name="weixin[wuziyuan]" placeholder="{:lang('admin/system/configweixin/wuziyuan_tip')}" value="" class="layui-textarea">{$config['weixin']['wuziyuan']}</textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configweixin/wuziyuanlink')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configweixin/wuziyuanlink')}:</label>
                     <div class="layui-input-block">
                         <input type="text" name="weixin[wuziyuanlink]" placeholder="{:lang('admin/system/configweixin/wuziyuanlink_tip')}" value="{$config['weixin']['wuziyuanlink']}" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configweixin/pagelink')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configweixin/pagelink')}:</label>
                     <div class="layui-input-block">
                         <input type="radio" name="weixin[bofang]" value="0" title="{:lang('admin/system/configweixin/pagelink_detail')}" {if condition="$config['weixin']['bofang'] neq 1"}checked {/if}>
                         <input type="radio" name="weixin[bofang]" value="1" title="{:lang('admin/system/configweixin/pagelink_play')}" {if condition="$config['weixin']['bofang'] eq 1"}checked {/if}>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/configweixin/msgtype')}：</label>
+                    <label class="layui-form-label">{:lang('admin/system/configweixin/msgtype')}:</label>
                     <div class="layui-input-inline">
                         <input type="radio" name="weixin[msgtype]" value="0" title="{:lang('admin/system/configweixin/msgtype_pic')}" {if condition="$config['weixin']['msgtype'] neq 1"}checked {/if}>
                         <input type="radio" name="weixin[msgtype]" value="1" title="{:lang('admin/system/configweixin/msgtype_font')}" {if condition="$config['weixin']['msgtype'] eq 1"}checked {/if}>
@@ -79,7 +79,7 @@
 
                 <div class="layui-form-item">
                     <label class="layui-form-label">
-                        {:lang('admin/system/configweixin/gjc')}1：</label>
+                        {:lang('admin/system/configweixin/gjc')}1:</label>
                     <div class="layui-input-inline">
                         <input type="text" name="weixin[gjc1]" placeholder="{:lang('admin/system/configweixin/keyword')}" value="{$config['weixin']['gjc1']}" class="layui-input">
                     </div>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">
-                        {:lang('admin/system/configweixin/gjc')}2：</label>
+                        {:lang('admin/system/configweixin/gjc')}2:</label>
                     <div class="layui-input-inline">
                         <input type="text" name="weixin[gjc2]" placeholder="{:lang('admin/system/configweixin/keyword')}" value="{$config['weixin']['gjc2']}" class="layui-input">
                     </div>
@@ -111,7 +111,7 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">
-                        {:lang('admin/system/configweixin/gjc')}3：</label>
+                        {:lang('admin/system/configweixin/gjc')}3:</label>
                     <div class="layui-input-inline">
                         <input type="text" name="weixin[gjc3]" placeholder="{:lang('admin/system/configweixin/keyword')}" value="{$config['weixin']['gjc3']}" class="layui-input">
                     </div>
@@ -127,7 +127,7 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">
-                        {:lang('admin/system/configweixin/gjc')}4：</label>
+                        {:lang('admin/system/configweixin/gjc')}4:</label>
                     <div class="layui-input-inline">
                         <input type="text" name="weixin[gjc4]" placeholder="{:lang('admin/system/configweixin/keyword')}" value="{$config['weixin']['gjc4']}" class="layui-input">
                     </div>

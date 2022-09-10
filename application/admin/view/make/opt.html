@@ -6,7 +6,7 @@
         <form class="layui-form layui-form-pane" method="post" action="" id="form1">
 
             <div class="layui-form-item">
-                <label class="layui-form-label">{:lang('vod')}{:lang('type')}：</label>
+                <label class="layui-form-label">{:lang('vod')}{:lang('type')}:</label>
                 <div class="layui-input-inline">
                     <select name="vodtype[]" multiple style="width:150px;height:150px;" lay-ignore>
                         {volist name="$vod_type_list" id="vo"}
@@ -26,7 +26,7 @@
                     <input type="button" value="{:lang('admin/make/one_today')}" class="layui-btn layui-btn-primary" onclick="post('ac=info&tab=vod&vodtype={$vod_type_ids_today}&ac2=day&jump=1');"/>
                     </div>
                 </div>
-                <label class="layui-form-label">{:lang('art')}{:lang('type')}：</label>
+                <label class="layui-form-label">{:lang('art')}{:lang('type')}:</label>
                 <div class="layui-input-inline">
                     <select name="arttype[]" multiple style="width:150px;height:150px;" lay-ignore>
                         {volist name="$art_type_list" id="vo"}
@@ -52,7 +52,7 @@
 
 
             <div class="layui-form-item">
-                <label class="layui-form-label">{:lang('admin/make/topic_list')}：</label>
+                <label class="layui-form-label">{:lang('admin/make/topic_list')}:</label>
                 <div class="layui-input-inline">
                     <select name="topic[]" multiple style="width:150px;height:150px;" lay-ignore>
                         {volist name="$topic_list" id="vo"}
@@ -67,7 +67,7 @@
                         <input type="button" value="{:lang('admin/make/topic_index')}" class="layui-btn layui-btn-primary" onclick="post('ac=topic_index');"/>
                     </div>
                 </div>
-                <label class="layui-form-label">{:lang('admin/make/label_page')}：</label>
+                <label class="layui-form-label">{:lang('admin/make/label_page')}:</label>
                 <div class="layui-input-inline">
                     <select name="label[]" multiple style="width:150px;height:150px;" lay-ignore>
                         {volist name="$label_list" id="vo"}
@@ -85,7 +85,7 @@
 
             <hr class="layui-bg-gray">
             <div class="layui-form-item">
-                <label class="layui-form-label">SiteMap：</label>
+                <label class="layui-form-label">SiteMap:</label>
                 <div class="layui-input-inline w800">
                     <div class="layui-btn-container">
                         <input type="button" value="{:lang('admin/make/rss')}" class="layui-btn layui-btn-primary" onclick="post('ac=rss&ac2=index');">
@@ -97,7 +97,7 @@
                         <input type="button" value="{:lang('admin/make/sm')}" class="layui-btn layui-btn-primary" onclick="post('ac=rss&ac2=sm');">
                     </div>
                 </div>
-                <label class="layui-form-label">{:lang('admin/make/make_page_num')}：</label>
+                <label class="layui-form-label">{:lang('admin/make/make_page_num')}:</label>
                 <div class="layui-input-inline w200">
                     <input type="text" name="ps" class="layui-input" placeholder="" value="1" />
                 </div>

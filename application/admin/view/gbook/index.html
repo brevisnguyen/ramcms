@@ -61,21 +61,21 @@
                 <td>{if condition="$vo.gbook_rid eq 0"}{:lang('gbook')}{else/}{:lang('report')}{/if}</td>
                 <td>
                     <div class="c-999 f-12">
-                        <u style="cursor:pointer" class="text-primary">{$vo.gbook_name|htmlspecialchars}：</u>
+                        <u style="cursor:pointer" class="text-primary">{$vo.gbook_name|htmlspecialchars}:</u>
                         <time>【{$vo.gbook_time|mac_day='color'}】</time>
-                        <span class="ml-20">ip：【{$vo.gbook_ip|long2ip}】</span>
+                        <span class="ml-20">ip:【{$vo.gbook_ip|long2ip}】</span>
                     </div>
                     <div class="f-12 c-999">
-                        <span class="ml-20">{:lang('status')}：</span>
-                        {:lang('gbook')}：{$vo.gbook_content|htmlspecialchars}
+                        <span class="ml-20">{:lang('status')}:</span>
+                        {:lang('gbook')}:{$vo.gbook_content|htmlspecialchars}
                     </div>
                 </td>
                 <td>
                     <div class="c-999 f-12">
-                        {:lang('reply_time')}：{$vo.gbook_reply_time|mac_day='color'}
+                        {:lang('reply_time')}:{$vo.gbook_reply_time|mac_day='color'}
                     </div>
                     <div class="f-12 c-999">
-                        {:lang('reply')}：{$vo.gbook_reply|htmlspecialchars}
+                        {:lang('reply')}:{$vo.gbook_reply|htmlspecialchars}
                     </div>
                     <div> </div>
                 </td>

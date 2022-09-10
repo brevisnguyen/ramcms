@@ -5,32 +5,32 @@
         <input id="comment_mid" name="comment_mid" type="hidden" value="{$info.comment_mid}">
         <input id="comment_rid" name="comment_rid" type="hidden" value="{$info.comment_rid}">
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('model')}：</label>
+            <label class="layui-form-label">{:lang('model')}:</label>
             <div class="layui-input-inline w80">
                 <input type="text" class="layui-input" value="{$info.comment_mid|mac_get_mid_text}" readonly="readonly">
             </div>
-            <label class="layui-form-label">{:lang('nickname')}：</label>
+            <label class="layui-form-label">{:lang('nickname')}:</label>
             <div class="layui-input-inline w80">
                 <input type="text" class="layui-input" value="{$info.comment_name}" readonly="readonly" name="comment_name" >
             </div>
-            <label class="layui-form-label">{:lang('time')}：</label>
+            <label class="layui-form-label">{:lang('time')}:</label>
             <div class="layui-input-inline w130">
                 <input type="text" class="layui-input" value="{$info.comment_time|date='Y-m-d H:i:s',###}" readonly="readonly">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('up')}：</label>
+            <label class="layui-form-label">{:lang('up')}:</label>
             <div class="layui-input-inline w80">
                 <input type="text" class="layui-input" value="{$info.comment_up}" name="comment_up">
             </div>
-            <label class="layui-form-label">{:lang('hate')}：</label>
+            <label class="layui-form-label">{:lang('hate')}:</label>
             <div class="layui-input-inline w80">
                 <input type="text" class="layui-input" value="{$info.comment_down}" name="comment_down">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('content')}：</label>
+            <label class="layui-form-label">{:lang('content')}:</label>
             <div class="layui-input-block">
                 <textarea type="text" class="layui-textarea" lay-verify="comment_content" placeholder="" name="comment_content">{$info.comment_content}</textarea>
             </div>

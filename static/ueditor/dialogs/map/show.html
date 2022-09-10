@@ -33,7 +33,7 @@
     var markersParam = getParam('markers');
     var markerStylesParam = getParam('markerStyles');
 
-    //创建和初始化地图函数：
+    //创建和初始化地图函数:
     function initMap() {
         // [FF]切换模式后报错
         if (!window.BMap) {
@@ -59,7 +59,7 @@
         }
     }
 
-    //创建地图函数：
+    //创建地图函数:
     function createMap() {
         map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
         var centerArr = centerParam.split(',');
@@ -67,7 +67,7 @@
         map.centerAndZoom(point, parseInt(zoomParam));//设定地图的中心点和坐标并将地图显示在地图容器中
     }
 
-    //地图事件设置函数：
+    //地图事件设置函数:
     function setMapEvent() {
         map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
         map.enableScrollWheelZoom();//启用地图滚轮放大缩小
@@ -75,7 +75,7 @@
         map.enableKeyboard();//启用键盘上下左右键移动地图
     }
 
-    //地图控件添加函数：
+    //地图控件添加函数:
     function addMapControl() {
         //向地图中添加缩放控件
         var ctrl_nav = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE});
