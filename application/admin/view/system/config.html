@@ -157,7 +157,7 @@
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('admin/system/config/popedom_filter')}</label>
+                        <label class="layui-form-label w200">{:lang('admin/system/config/popedom_filter')}</label>
                         <div class="layui-input-inline">
                             <input type="radio" name="app[popedom_filter]" value="0" title="{:lang('close')}" {if condition="$config['app']['popedom_filter'] neq 1"}checked {/if}>
                             <input type="radio" name="app[popedom_filter]" value="1" title="{:lang('open')}" {if condition="$config['app']['popedom_filter'] eq 1"}checked {/if}>
@@ -212,7 +212,7 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/config/cache_time')}</label>
+                    <label class="layui-form-label w200">{:lang('admin/system/config/cache_time')}</label>
                     <div class="layui-input-inline">
                         <input type="text" name="app[cache_time]" placeholder="" value="{$config['app']['cache_time']}" class="layui-input w150" >
                     </div>
@@ -257,7 +257,7 @@
                     </div>
                     <div class="layui-form-mid layui-word-aux">{:lang('admin/system/config/ajax_page_tip')}</div>
                 </div>
-                <div class="layui-form-item">
+                <!-- <div class="layui-form-item">
                     <label class="layui-form-label">{:lang('admin/system/config/wall_filter')}</label>
                     <div class="layui-input-inline w600">
                         <input type="radio" name="app[wall_filter]" value="0" title="{:lang('close')}" {if condition="$config['app']['wall_filter'] neq 1 && $config['app']['wall_filter'] neq 2"}checked {/if}>
@@ -265,7 +265,7 @@
                         <input type="radio" name="app[wall_filter]" value="2" title="{:lang('admin/system/config/wall_blank')}" {if condition="$config['app']['wall_filter'] eq 2"}checked {/if}>
                     </div>
                     <div class="layui-form-mid layui-word-aux">{:lang('admin/system/config/wall_filter_tip')}</div>
-                </div>
+                </div> -->
                 <div class="layui-form-item">
                     <label class="layui-form-label">{:lang('admin/system/config/show')}</label>
                     <div class="layui-input-block">
@@ -302,7 +302,7 @@
                     <div class="layui-form-mid layui-word-aux">{:lang('admin/system/config/search_len_tip')}</div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/config/search_timespan')}</label>
+                    <label class="layui-form-label w300">{:lang('admin/system/config/search_timespan')}</label>
                     <div class="layui-input-inline">
                         <input type="text" name="app[search_timespan]" placeholder="" value="{$config['app']['search_timespan']}" class="layui-input w150">
                     </div>
@@ -311,11 +311,11 @@
 
                 <div class="layui-form-item">
                     <label class="layui-form-label">{:lang('admin/system/config/search_vod_rule')}</label>
-                    <div class="layui-input-inline w600">
+                    <div class="layui-input-inline w900">
                         <input type="checkbox" lay-skin="primary" name="app[search_vod_rule][]" value="vod_name" title="{:lang('name')}" checked disabled>
                         <input type="checkbox" lay-skin="primary" name="app[search_vod_rule][]" value="vod_en" title="{:lang('en')}" {if condition="strpos($config['app']['search_vod_rule'],'vod_en') !==false"}checked {/if}>
                         <input type="checkbox" lay-skin="primary" name="app[search_vod_rule][]" value="vod_sub" title="{:lang('sub')}" {if condition="strpos($config['app']['search_vod_rule'],'vod_sub') !==false"}checked {/if}>
-                        <input type="checkbox" lay-skin="primary" name="app[search_vod_rule][]" value="vod_tag" title="tag" {if condition="strpos($config['app']['search_vod_rule'],'vod_tag') !==false"}checked {/if}>
+                        <input type="checkbox" lay-skin="primary" name="app[search_vod_rule][]" value="vod_tag" title="Tag" {if condition="strpos($config['app']['search_vod_rule'],'vod_tag') !==false"}checked {/if}>
                         <input type="checkbox" lay-skin="primary" name="app[search_vod_rule][]" value="vod_actor" title="{:lang('actor')}" {if condition="strpos($config['app']['search_vod_rule'],'vod_actor') !==false"}checked {/if}>
                         <input type="checkbox" lay-skin="primary" name="app[search_vod_rule][]" value="vod_director" title="{:lang('director')}" {if condition="strpos($config['app']['search_vod_rule'],'vod_director') !==false"}checked {/if}>
                     </div>
@@ -328,7 +328,7 @@
                         <input type="checkbox" lay-skin="primary" name="app[search_art_rule][]" value="art_name" title="{:lang('name')}" checked disabled>
                         <input type="checkbox" lay-skin="primary" name="app[search_art_rule][]" value="art_en" title="{:lang('en')}" {if condition="strpos($config['app']['search_art_rule'],'art_en') !==false"}checked {/if}>
                         <input type="checkbox" lay-skin="primary" name="app[search_art_rule][]" value="art_sub" title="{:lang('sub')}" {if condition="strpos($config['app']['search_art_rule'],'art_sub') !==false"}checked {/if}>
-                        <input type="checkbox" lay-skin="primary" name="app[search_art_rule][]" value="art_tag" title="tag" {if condition="strpos($config['app']['search_art_rule'],'art_tag') !==false"}checked {/if}>
+                        <input type="checkbox" lay-skin="primary" name="app[search_art_rule][]" value="art_tag" title="Tag" {if condition="strpos($config['app']['search_art_rule'],'art_tag') !==false"}checked {/if}>
                     </div>
                     <div class="layui-form-mid layui-word-aux">{:lang('admin/system/config/search_rule_tip')}</div>
                 </div>
@@ -353,20 +353,20 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">{:lang('admin/system/config/copyright_notice')}</label>
+                    <label class="layui-form-label w200">{:lang('admin/system/config/copyright_notice')}</label>
                     <div class="layui-input-inline w500">
                         <input type="text" name="app[copyright_notice]" placeholder="" value="{$config['app']['copyright_notice']}" class="layui-input">
                     </div>
                 </div>
 
-                <div class="layui-form-item">
+                <!-- <div class="layui-form-item">
                     <label class="layui-form-label">{:lang('admin/system/config/browser_junmp')}</label>
                     <div class="layui-input-inline">
                         <input type="radio" name="app[browser_junmp]" value="0" title="{:lang('close')}" {if condition="$config['app']['browser_junmp'] eq 0"}checked {/if}>
                         <input type="radio" name="app[browser_junmp]" value="1" title="{:lang('open')}" {if condition="$config['app']['browser_junmp'] eq 1"}checked {/if}>
                     </div>
                     <div class="layui-form-mid layui-word-aux">{:lang('admin/system/config/browser_junmp_tip')}</div>
-                </div>
+                </div> -->
                 <div class="layui-form-item">
                     <label class="layui-form-label">{:lang('admin/system/config/404')}</label>
                     <div class="layui-input-inline">
@@ -404,15 +404,15 @@
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('admin/system/config/art_extend_class')}</label>
-                        <div class="layui-input-block">
+                        <label class="layui-form-label w200">{:lang('admin/system/config/art_extend_class')}</label>
+                        <div class="layui-input-block pl50">
                             <input type="text" name="app[art_extend_class]" placeholder="" value="{$config['app']['art_extend_class']}" class="layui-input">
                         </div>
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">{:lang('admin/system/config/vod_extend_class')}</label>
-                        <div class="layui-input-block">
+                        <label class="layui-form-label w200">{:lang('admin/system/config/vod_extend_class')}</label>
+                        <div class="layui-input-block pl50">
                             <input type="text" name="app[vod_extend_class]" placeholder="" value="{$config['app']['vod_extend_class']}" class="layui-input">
                         </div>
                     </div>
