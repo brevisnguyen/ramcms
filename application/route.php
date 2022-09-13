@@ -328,7 +328,7 @@ return array (
     array (
     ),
   ),
-  'tim-kiem/<wd?>-<actor?>-<area?>-<by?>-<class?>-<director?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>' => 
+  'tim-kiem/' => 
   array (
     0 => 'vod/search',
     1 => 

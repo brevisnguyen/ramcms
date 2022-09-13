@@ -58,10 +58,11 @@ return array (
     'show_verify' => '0',
     'search' => '1',
     'search_verify' => '0',
-    'search_len' => '',
-    'search_timespan' => '3',
-    'search_vod_rule' => 'vod_en|vod_sub',
+    'search_len' => '30',
+    'search_timespan' => '0',
+    'search_vod_rule' => 'vod_en|vod_actor|vod_director',
     'search_art_rule' => 'art_en|art_sub',
+    'vod_search_optimise' => 'frontend',
     'copyright_status' => '1',
     'copyright_notice' => 'Video tạm thời kh&ocirc;ng c&oacute; sẵn do bị d&iacute;nh bản quyền',
     'page_404' => '404',
@@ -85,7 +86,6 @@ return array (
     'admin_login_verify' => '1',
     'editor' => 'Kindeditor',
     'lang' => 'vi-vn',
-    'vod_search_optimise' => '',
   ),
   'user' => 
   array (
@@ -528,7 +528,7 @@ vodrss-<id>   => vod/rss
 xem-phim/<id>-sv<sid>-tap-<nid>   => vod/play
 tai-phim/<id>-<sid>-<nid>   => vod/down
 the-loai/<id>-<area?>-<by?>-<class?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>   => vod/show
-tim-kiem/<wd?>-<actor?>-<area?>-<by?>-<class?>-<director?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>   => vod/search
+tim-kiem/  => vod/search
 vodplot/<id>-<page?>   => vod/plot
 vodplot/<id>   => vod/plot
 
