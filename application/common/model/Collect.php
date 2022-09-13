@@ -501,7 +501,20 @@ class Collect extends Base {
                 $v['vod_score_all'] = intval($v['vod_score_all']);
                 $v['vod_score_num'] = intval($v['vod_score_num']);
 
+                $v['vod_area'] = mac_format_text($v['vod_area'], true);
+                $v['vod_lang'] = 'Vietsub';
+                $v['vod_version'] = ['HD', '1080P', 'Full HD', '720p'][array_rand(['HD', '1080P', 'Full HD', '720p'], 1)];
                 $v['vod_class'] = mac_txt_merge($v['vod_class'],$v['type_name']);
+
+                if ( $type_list[$v['type_id']]['type_en'] = 'phim-le' ) {
+                    $v['vod_remarks'] = 'Full';
+                    $v['vod_isend'] = 1;
+                } else {
+                    $v['vod_serial'] = 1;
+                }
+
+                $v['vod_director'] = html_entity_decode($v['vod_director'], ENT_QUOTES);
+                $v['vod_actor'] = html_entity_decode($v['vod_actor'], ENT_QUOTES);
 
                 $v['vod_actor'] = mac_format_text($v['vod_actor'], true);
                 $v['vod_director'] = mac_format_text($v['vod_director'], true);
@@ -589,7 +602,8 @@ class Collect extends Base {
                     $where['vod_director'] = mac_filter_xss($v['vod_director']);
                 }
                 if ($config['tag'] == 1) {
-                    $v['vod_tag'] = mac_filter_xss(mac_get_tag($v['vod_name'], $v['vod_content']));
+                    // $v['vod_tag'] = mac_filter_xss(mac_get_tag($v['vod_name'], $v['vod_content']));
+                    $v['vod_tag'] = mac_txt_merge($v['vod_name'], $v['vod_en']);
                 }
 
                 if(!empty($where['vod_actor']) && !empty($where['vod_director'])){

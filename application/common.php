@@ -1235,6 +1235,7 @@ function mac_restore_htmlfilter($str) {
 
 function mac_format_text($str, $allow_space = false)
 {
+    $str = ucwords(trim($str));
     $finder = array('/', '，', '|', '、', ',,', ',,,');
     if ($allow_space === false) {
         $finder[] = ' ';
@@ -1252,18 +1253,24 @@ function mac_txt_merge($txt,$str)
     if(empty($str)){
         return $txt;
     }
-    if($GLOBALS['config']['collect']['vod']['class_filter'] !='0') {
-        if (mb_strlen($str) > 2) {
-            $str = str_replace([lang('slice')], [''], $str);
-        }
-        if (mb_strlen($str) > 2) {
-            $str = str_replace([lang('drama')], [''], $str);
-        }
-    }
+    // if($GLOBALS['config']['collect']['vod']['class_filter'] !='0') {
+    //     if (mb_strlen($str) > 2) {
+    //         $str = str_replace([lang('slice')], [''], $str);
+    //     }
+    //     if (mb_strlen($str) > 2) {
+    //         $str = str_replace([lang('drama')], [''], $str);
+    //     }
+    // }
     $txt = mac_format_text($txt, true);
     $str = mac_format_text($str, true);
     $arr1 = explode(',',$txt);
     $arr2 = explode(',',$str);
+    foreach ( $arr1 as &$c ) {
+        $c = ucwords(trim($c));
+    }
+    foreach ( $arr2 as &$c ) {
+        $c = ucwords(trim($c));
+    }
     $arr = array_merge($arr1,$arr2);
     return join(',',array_unique( array_filter($arr)));
 }
