@@ -27,8 +27,8 @@ return array (
     'install_dir' => '/',
     'site_logo' => 'static/images/logo.jpg',
     'site_waplogo' => 'static/images/logo.jpg',
-    'template_dir' => 'dianyingim',
-    'html_dir' => 'htmli',
+    'template_dir' => 'mooncake',
+    'html_dir' => 'html',
     'mob_status' => '0',
     'site_tj' => 'Mã thống kê website(Google analytics, ...)',
     'site_status' => '1',
@@ -256,12 +256,12 @@ return array (
       'inrule' => ',f,g',
       'uprule' => ',a',
       'filter' => '',
-      'namewords' => '第1季=第一季#第2季=第二季#第3季=第三季#第4季=第四季',
-      'thesaurus' => ' =',
+      'namewords' => '',
+      'thesaurus' => '',
       'playerwords' => '',
       'areawords' => '',
       'langwords' => '',
-      'words' => 'aaa#bbb#ccc#ddd#eee',
+      'words' => '',
     ),
     'art' => 
     array (
@@ -277,7 +277,7 @@ return array (
       'psesyn' => '0',
       'inrule' => ',b',
       'uprule' => ',a,d',
-      'filter' => '无奈的人',
+      'filter' => '',
       'thesaurus' => '',
       'words' => '',
     ),
@@ -293,7 +293,7 @@ return array (
       'psernd' => '0',
       'psesyn' => '0',
       'uprule' => ',a,b,c',
-      'filter' => '无奈的人',
+      'filter' => '',
       'thesaurus' => '',
       'words' => '',
       'inrule' => ',a',
@@ -481,12 +481,12 @@ return array (
   ),
   'rewrite' => 
   array (
-    'suffix_hide' => '0',
-    'route_status' => '0',
-    'status' => '0',
+    'suffix_hide' => '1',
+    'route_status' => '1',
+    'status' => '1',
     'encode_key' => 'abcdefg',
     'encode_len' => '6',
-    'vod_id' => '0',
+    'vod_id' => '1',
     'art_id' => '0',
     'type_id' => '0',
     'topic_id' => '0',
@@ -507,9 +507,9 @@ index-<page?>   => index/index
 gbook-<page?>   => gbook/index
 gbook$   => gbook/index
 
-topic-<page?>   => topic/index
-topic$  => topic/index
-topicdetail-<id>   => topic/detail
+chu-de-<page?>   => topic/index
+chu-de$  => topic/index
+chu-de/<id>   => topic/detail
 
 actor-<page?>   => actor/index
 actor$ => actor/index
@@ -522,26 +522,26 @@ roledetail-<id>   => role/detail
 roleshow/<by?>-<letter?>-<level?>-<order?>-<page?>-<rid?>   => role/show
 
 
-vodtype/<id>-<page?>   => vod/type
-vodtype/<id>   => vod/type
-voddetail/<id>   => vod/detail
+danh-muc/<id>-<page?>   => vod/type
+danh-muc/<id>   => vod/type
+chi-tiet-phim/<id>   => vod/detail
 vodrss-<id>   => vod/rss
-vodplay/<id>-<sid>-<nid>   => vod/play
-voddown/<id>-<sid>-<nid>   => vod/down
-vodshow/<id>-<area?>-<by?>-<class?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>   => vod/show
-vodsearch/<wd?>-<actor?>-<area?>-<by?>-<class?>-<director?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>   => vod/search
+xem-phim/<id>-sv<sid>-tap-<nid>   => vod/play
+tai-phim/<id>-<sid>-<nid>   => vod/down
+the-loai/<id>-<area?>-<by?>-<class?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>   => vod/show
+tim-kiem/<wd?>-<actor?>-<area?>-<by?>-<class?>-<director?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>   => vod/search
 vodplot/<id>-<page?>   => vod/plot
 vodplot/<id>   => vod/plot
 
 
-arttype/<id>-<page?>   => art/type
-arttype/<id>   => art/type
-artshow-<id>   => art/show
-artdetail-<id>-<page?>   => art/detail
-artdetail-<id>   => art/detail
+bai-viet/<id>-<page?>   => art/type
+bai-viet/<id>   => art/type
+bai-viet/show/<id>   => art/show
+bai-viet/chi-tiet/<id>-<page?>   => art/detail
+bai-viet/chi-tiet/<id>   => art/detail
 artrss-<id>-<page>   => art/rss
-artshow/<id>-<by?>-<class?>-<level?>-<letter?>-<order?>-<page?>-<tag?>   => art/show
-artsearch/<wd?>-<by?>-<class?>-<level?>-<letter?>-<order?>-<page?>-<tag?>   => art/search
+bai-viet/loc/<id>-<by?>-<class?>-<level?>-<letter?>-<order?>-<page?>-<tag?>   => art/show
+bai-viet/tim-kiem/<wd?>-<by?>-<class?>-<level?>-<letter?>-<order?>-<page?>-<tag?>   => art/search
 
 label-<file> => label/index
 

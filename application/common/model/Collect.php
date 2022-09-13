@@ -463,7 +463,8 @@ class Collect extends Base {
                 }
 
                 $v['type_id_1'] = intval($type_list[$v['type_id']]['type_pid']);
-                $v['vod_en'] = Pinyin::get($v['vod_name']);
+                $v['vod_en'] = $v['vod_en'];
+                $v['vod_sub'] = Pinyin::slugify($v['vod_name']);
                 $v['vod_letter'] = strtoupper(substr($v['vod_en'],0,1));
                 // 使用资源站的添加时间，更新时间保持当前
                 // https://github.com/magicblack/maccms10/issues/780
@@ -932,9 +933,9 @@ class Collect extends Base {
                         if (strpos(',' . $config['uprule'], 'l')!==false && !empty($v['vod_tag']) && $v['vod_tag']!=$info['vod_tag']) {
                             $update['vod_tag'] = $v['vod_tag'];
                         }
-                        if (strpos(',' . $config['uprule'], 'm')!==false && !empty($v['vod_sub']) && $v['vod_sub']!=$info['vod_sub']) {
-                            $update['vod_sub'] = $v['vod_sub'];
-                        }
+                        // if (strpos(',' . $config['uprule'], 'm')!==false && !empty($v['vod_sub']) && $v['vod_sub']!=$info['vod_sub']) {
+                        //     $update['vod_sub'] = $v['vod_sub'];
+                        // }
                         if (strpos(',' . $config['uprule'], 'n')!==false && !empty($v['vod_class']) && $v['vod_class']!=$info['vod_class']) {
                             $update['vod_class'] = mac_txt_merge($info['vod_class'], $v['vod_class']);
                         }

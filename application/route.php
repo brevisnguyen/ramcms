@@ -148,7 +148,7 @@ return array (
     array (
     ),
   ),
-  'topic-<page?>' => 
+  'chu-de-<page?>' => 
   array (
     0 => 'topic/index',
     1 => 
@@ -158,7 +158,7 @@ return array (
     array (
     ),
   ),
-  'topic$' => 
+  'chu-de$' => 
   array (
     0 => 'topic/index',
     1 => 
@@ -168,7 +168,7 @@ return array (
     array (
     ),
   ),
-  'topicdetail-<id>' => 
+  'chu-de/<id>' => 
   array (
     0 => 'topic/detail',
     1 => 
@@ -258,7 +258,7 @@ return array (
     array (
     ),
   ),
-  'vodtype/<id>-<page?>' => 
+  'danh-muc/<id>-<page?>' => 
   array (
     0 => 'vod/type',
     1 => 
@@ -268,7 +268,7 @@ return array (
     array (
     ),
   ),
-  'vodtype/<id>' => 
+  'danh-muc/<id>' => 
   array (
     0 => 'vod/type',
     1 => 
@@ -278,7 +278,7 @@ return array (
     array (
     ),
   ),
-  'voddetail/<id>' => 
+  'chi-tiet-phim/<id>' => 
   array (
     0 => 'vod/detail',
     1 => 
@@ -298,7 +298,7 @@ return array (
     array (
     ),
   ),
-  'vodplay/<id>-<sid>-<nid>' => 
+  'xem-phim/<id>-sv<sid>-tap-<nid>' => 
   array (
     0 => 'vod/play',
     1 => 
@@ -308,7 +308,7 @@ return array (
     array (
     ),
   ),
-  'voddown/<id>-<sid>-<nid>' => 
+  'tai-phim/<id>-<sid>-<nid>' => 
   array (
     0 => 'vod/down',
     1 => 
@@ -318,7 +318,7 @@ return array (
     array (
     ),
   ),
-  'vodshow/<id>-<area?>-<by?>-<class?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>' => 
+  'the-loai/<id>-<area?>-<by?>-<class?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>' => 
   array (
     0 => 'vod/show',
     1 => 
@@ -328,7 +328,7 @@ return array (
     array (
     ),
   ),
-  'vodsearch/<wd?>-<actor?>-<area?>-<by?>-<class?>-<director?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>' => 
+  'tim-kiem/<wd?>-<actor?>-<area?>-<by?>-<class?>-<director?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>' => 
   array (
     0 => 'vod/search',
     1 => 
@@ -358,7 +358,7 @@ return array (
     array (
     ),
   ),
-  'arttype/<id>-<page?>' => 
+  'bai-viet/<id>-<page?>' => 
   array (
     0 => 'art/type',
     1 => 
@@ -368,7 +368,7 @@ return array (
     array (
     ),
   ),
-  'arttype/<id>' => 
+  'bai-viet/<id>' => 
   array (
     0 => 'art/type',
     1 => 
@@ -378,7 +378,7 @@ return array (
     array (
     ),
   ),
-  'artshow-<id>' => 
+  'bai-viet/show/<id>' => 
   array (
     0 => 'art/show',
     1 => 
@@ -388,7 +388,7 @@ return array (
     array (
     ),
   ),
-  'artdetail-<id>-<page?>' => 
+  'bai-viet/chi-tiet/<id>-<page?>' => 
   array (
     0 => 'art/detail',
     1 => 
@@ -398,7 +398,7 @@ return array (
     array (
     ),
   ),
-  'artdetail-<id>' => 
+  'bai-viet/chi-tiet/<id>' => 
   array (
     0 => 'art/detail',
     1 => 
@@ -418,7 +418,7 @@ return array (
     array (
     ),
   ),
-  'artshow/<id>-<by?>-<class?>-<level?>-<letter?>-<order?>-<page?>-<tag?>' => 
+  'bai-viet/loc/<id>-<by?>-<class?>-<level?>-<letter?>-<order?>-<page?>-<tag?>' => 
   array (
     0 => 'art/show',
     1 => 
@@ -428,7 +428,7 @@ return array (
     array (
     ),
   ),
-  'artsearch/<wd?>-<by?>-<class?>-<level?>-<letter?>-<order?>-<page?>-<tag?>' => 
+  'bai-viet/tim-kiem/<wd?>-<by?>-<class?>-<level?>-<letter?>-<order?>-<page?>-<tag?>' => 
   array (
     0 => 'art/search',
     1 => 

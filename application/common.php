@@ -1260,8 +1260,8 @@ function mac_txt_merge($txt,$str)
             $str = str_replace([lang('drama')], [''], $str);
         }
     }
-    $txt = mac_format_text($txt);
-    $str = mac_format_text($str);
+    $txt = mac_format_text($txt, true);
+    $str = mac_format_text($str, true);
     $arr1 = explode(',',$txt);
     $arr2 = explode(',',$str);
     $arr = array_merge($arr1,$arr2);
@@ -1854,7 +1854,7 @@ function mac_url($model,$param=[],$info=[])
             }
             break;
         case 'vod/detail':
-            $replace_to = [$info['vod_id'],$info['vod_en'],'',
+            $replace_to = [$info['vod_id'],$info['vod_sub'],'',
                 $info['type_id'],$info['type']['type_en'],$info['type_1']['type_id'],$info['type_1']['type_en']
             ];
             if($config['view']['vod_detail'] == 2){
@@ -1868,7 +1868,7 @@ function mac_url($model,$param=[],$info=[])
                 switch($config['rewrite']['vod_id'])
                 {
                     case 1:
-                        $id = $info['vod_en'];
+                        $id = $info['vod_sub'];
                         break;
                     case 2:
                         $id = mac_alphaID($info['vod_id'],false,$config['rewrite']['encode_len'],$config['rewrite']['encode_key']);
@@ -1884,7 +1884,7 @@ function mac_url($model,$param=[],$info=[])
             break;
         case 'vod/play':
             $replace_to = [
-                $info['vod_id'],$info['vod_en'],'',
+                $info['vod_id'],$info['vod_sub'],'',
                 $info['type_id'],$info['type']['type_en'],$info['type_1']['type_id'],$info['type_1']['type_en'],
 
             ];
@@ -1911,7 +1911,7 @@ function mac_url($model,$param=[],$info=[])
                 switch($config['rewrite']['vod_id'])
                 {
                     case 1:
-                        $id = $info['vod_en'];
+                        $id = $info['vod_sub'];
                         break;
                     case 2:
                         $id = mac_alphaID($info['vod_id'],false,$config['rewrite']['encode_len'],$config['rewrite']['encode_key']);
@@ -1926,7 +1926,7 @@ function mac_url($model,$param=[],$info=[])
             break;
         case 'vod/down':
             $replace_to = [
-                $info['vod_id'],$info['vod_en'],'',
+                $info['vod_id'],$info['vod_sub'],'',
                 $info['type_id'],$info['type']['type_en'],$info['type_1']['type_id'],$info['type_1']['type_en']
             ];
             if($config['view']['vod_down'] >= 2){
@@ -1952,7 +1952,7 @@ function mac_url($model,$param=[],$info=[])
                 switch($config['rewrite']['vod_id'])
                 {
                     case 1:
-                        $id = $info['vod_en'];
+                        $id = $info['vod_sub'];
                         break;
                     case 2:
                         $id = mac_alphaID($info['vod_id'],false,$config['rewrite']['encode_len'],$config['rewrite']['encode_key']);
@@ -1966,7 +1966,7 @@ function mac_url($model,$param=[],$info=[])
             $replace_to = array_merge($replace_to,[date('Y',$info['vod_time']),date('m',$info['vod_time']),date('d',$info['vod_time']),$param['sid'],$param['nid']]);
             break;
         case 'vod/role':
-            $replace_to = [$info['vod_id'],$info['vod_en'],'',
+            $replace_to = [$info['vod_id'],$info['vod_sub'],'',
                 $info['type_id'],$info['type']['type_en'],$info['type_1']['type_id'],$info['type_1']['type_en']
             ];
             if($config['view']['vod_role'] == 2){
@@ -1980,7 +1980,7 @@ function mac_url($model,$param=[],$info=[])
                 switch($config['rewrite']['vod_id'])
                 {
                     case 1:
-                        $id = $info['vod_en'];
+                        $id = $info['vod_sub'];
                         break;
                     case 2:
                         $id = mac_alphaID($info['vod_id'],false,$config['rewrite']['encode_len'],$config['rewrite']['encode_key']);
@@ -1995,7 +1995,7 @@ function mac_url($model,$param=[],$info=[])
             break;
         case 'vod/plot':
             $replace_to = [
-                $info['vod_id'],$info['vod_en'],$param['page'],
+                $info['vod_id'],$info['vod_sub'],$param['page'],
                 $info['type_id'],$info['type']['type_en'],$info['type_1']['type_id'],$info['type_1']['type_en']
             ];
             if($config['view']['vod_plot'] == 2){
@@ -2012,7 +2012,7 @@ function mac_url($model,$param=[],$info=[])
                 switch($config['rewrite']['vod_id'])
                 {
                     case 1:
-                        $id = $info['vod_en'];
+                        $id = $info['vod_sub'];
                         break;
                     case 2:
                         $id = mac_alphaID($info['vod_id'],false,$config['rewrite']['encode_len'],$config['rewrite']['encode_key']);
@@ -2260,7 +2260,7 @@ function mac_url($model,$param=[],$info=[])
             break;
         case 'plot/detail':
             $replace_to = [
-                $info['vod_id'],$info['vod_en'],'',
+                $info['vod_id'],$info['vod_sub'],'',
                 $info['type_id'],$info['type']['type_en'],$info['type_1']['type_id'],$info['type_1']['type_en']
             ];
             if($config['view']['plot_detail'] == 2){
@@ -2279,7 +2279,7 @@ function mac_url($model,$param=[],$info=[])
                 switch($config['rewrite']['vod_id'])
                 {
                     case 1:
-                        $id = $info['vod_en'];
+                        $id = $info['vod_sub'];
                         break;
                     case 2:
                         $id = mac_alphaID($info['vod_id'],false,$config['rewrite']['encode_len'],$config['rewrite']['encode_key']);
@@ -2710,7 +2710,7 @@ function mac_label_vod_detail($param)
 {
     $where = [];
     if($GLOBALS['config']['rewrite']['vod_id']==1){
-        $where['vod_en'] = ['eq',$param['id']];
+        $where['vod_sub'] = ['eq',$param['id']];
     }
     else{
         if($GLOBALS['config']['rewrite']['vod_id']==2) {

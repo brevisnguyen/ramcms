@@ -12,4 +12,4 @@ nohup*
 .wepycache
 .well-known
 node_modules/
-template/moon_cake/*
+template/mooncake/*
