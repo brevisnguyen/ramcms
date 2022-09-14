@@ -318,7 +318,7 @@ return array (
     array (
     ),
   ),
-  'the-loai/<id>-<area?>-<by?>-<class?>-<lang?>-<letter?>-<level?>-<order?>-<page?>-<state?>-<tag?>-<year?>' => 
+  'the-loai/<id>/' => 
   array (
     0 => 'vod/show',
     1 => 

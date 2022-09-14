@@ -2445,7 +2445,7 @@ function mac_url_page($url,$num)
 function mac_url_create($str,$type='actor',$flag='vod',$ac='search',$sp='&nbsp;')
 {
     if(!$str){
-        return '未知';
+        return 'Đang cập nhật';
     }
     $res = [];
     // 分割时，中文关键词允许空格分割，英文不用空格（英文名中间是空格分隔的问题）

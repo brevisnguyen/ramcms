@@ -506,7 +506,7 @@ class Collect extends Base {
                 $v['vod_version'] = ['HD', '1080P', 'Full HD', '720p'][array_rand(['HD', '1080P', 'Full HD', '720p'], 1)];
                 $v['vod_class'] = mac_txt_merge($v['vod_class'],$v['type_name']);
 
-                if ( $type_list[$v['type_id']]['type_en'] = 'phim-le' ) {
+                if ( $type_list[$v['type_id']]['type_en'] == 'phim-le' ) {
                     $v['vod_remarks'] = 'Full';
                     $v['vod_isend'] = 1;
                 } else {
