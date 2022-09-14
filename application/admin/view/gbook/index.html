@@ -44,8 +44,8 @@
             <thead>
             <tr>
                 <th width="25"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th width="60">{:lang('id')}</th>
-                <th width="60">{:lang('status')}</th>
+                <th width="30">{:lang('id')}</th>
+                <th width="80">{:lang('status')}</th>
                 <th width="60">{:lang('genre')}</th>
                 <th >{:lang('gbook')}</th>
                 <th >{:lang('report')}</th>
@@ -61,21 +61,21 @@
                 <td>{if condition="$vo.gbook_rid eq 0"}{:lang('gbook')}{else/}{:lang('report')}{/if}</td>
                 <td>
                     <div class="c-999 f-12">
-                        <u style="cursor:pointer" class="text-primary">{$vo.gbook_name|htmlspecialchars}:</u>
-                        <time>【{$vo.gbook_time|mac_day='color'}】</time>
-                        <span class="ml-20">ip:【{$vo.gbook_ip|long2ip}】</span>
+                        <u style="cursor:pointer" class="text-primary">{$vo.gbook_name|htmlspecialchars_decode}:</u>
+                        <time>{$vo.gbook_time|mac_day='color'}</time>
+                        <span class="ml-20">IP: {$vo.gbook_ip|long2ip}</span>
                     </div>
                     <div class="f-12 c-999">
                         <span class="ml-20">{:lang('status')}:</span>
-                        {:lang('gbook')}:{$vo.gbook_content|htmlspecialchars}
+                        {:lang('gbook')}: {$vo.gbook_content|htmlspecialchars}
                     </div>
                 </td>
                 <td>
                     <div class="c-999 f-12">
-                        {:lang('reply_time')}:{$vo.gbook_reply_time|mac_day='color'}
+                        {:lang('reply_time')}: {$vo.gbook_reply_time|mac_day='color'}
                     </div>
                     <div class="f-12 c-999">
-                        {:lang('reply')}:{$vo.gbook_reply|htmlspecialchars}
+                        {:lang('reply')}: {$vo.gbook_reply|htmlspecialchars}
                     </div>
                     <div> </div>
                 </td>
