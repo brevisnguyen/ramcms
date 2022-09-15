@@ -266,37 +266,37 @@ function mac_friend_date($time)
     } else {
         switch ($d) {
             case $d < $atd:
-                $fdate = date('Y'.lang('year').'m'.lang('month').'d'.lang('day'), $time);
+                $fdate = date(lang('day').' d '.lang('month').' m '.lang('year').' Y', $time);
                 break;
             case $d < $td:
-                $fdate = lang('day_after_tomorrow') . date('H:i', $time);
+                $fdate = lang('day_after_tomorrow') . date(' H:i', $time);
                 break;
             case $d < 0:
-                $fdate = lang('tomorrow') . date('H:i', $time);
+                $fdate = lang('tomorrow') . date(' H:i', $time);
                 break;
             case $d < 60:
-                $fdate = $d . lang('seconds_ago');
+                $fdate = $d . ' ' . lang('seconds_ago');
                 break;
             case $d < 3600:
-                $fdate = floor($d / 60) . lang('minutes_ago');
+                $fdate = floor($d / 60) . ' ' . lang('minutes_ago');
                 break;
             case $d < $dd:
-                $fdate = floor($d / 3600) . lang('hours_ago');
+                $fdate = floor($d / 3600) . ' '. lang('hours_ago');
                 break;
             case $d < $yd:
-                $fdate = lang('yesterday') . date('H:i', $time);
+                $fdate = lang('yesterday') . date(' H:i', $time);
                 break;
             case $d < $byd:
-                $fdate = lang('day_before_yesterday') . date('H:i', $time);
+                $fdate = lang('day_before_yesterday') . date(' H:i', $time);
                 break;
             case $d < $md:
-                $fdate = date('m'.lang('month').'d'.lang('day').' H:i', $time);
+                $fdate = date(lang('day').' d '.lang('month').' m'.' H:i', $time);
                 break;
             case $d < $ld:
-                $fdate = date('m'.lang('month').'d'.lang('day'), $time);
+                $fdate = date(lang('month').' m '.lang('day').' d', $time);
                 break;
             default:
-                $fdate = date('Y'.lang('year').'m'.lang('month').'d'.lang('day'), $time);
+                $fdate = date(lang('day').' d '.lang('month').' m '.lang('year').' Y', $time);
                 break;
         }
     }
