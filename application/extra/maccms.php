@@ -68,7 +68,7 @@ return array (
     'page_404' => '404',
     'player_sort' => '1',
     'encrypt' => '0',
-    'search_hot' => 'T&ecirc;n phim, t&ecirc;n diễn vi&ecirc;n, t&ecirc;n scandal n&agrave;o đ&oacute; đang HOT tr&ecirc;n mạng...',
+    'search_hot' => 'Phim đang hot,b&agrave;i viết đang hot,chủ đề đang hot',
     'art_extend_class' => 'Talk Show, Buổi phỏng vấn, T&igrave;nh y&ecirc;u cuộc sống, C&ocirc;ng nghệ, Hội bỉm sữa, Nghiện Phim',
     'vod_extend_class' => 'T&igrave;nh Cảm, H&agrave;nh Động, H&agrave;i Hước, Chiến Tranh, Khoa Học Viễn Tưởng, Dramma, V&otilde; Thuật, Phi&ecirc;u Lưu, Kinh Dị, Kh&aacute;c',
     'vod_extend_state' => 'HD, Trailer, Full',
@@ -84,16 +84,18 @@ return array (
     'pagesize' => '20',
     'makesize' => '30',
     'admin_login_verify' => '1',
-    'editor' => 'Kindeditor',
+    'editor' => 'Ueditor',
     'lang' => 'vi-vn',
   ),
   'user' => 
   array (
     'status' => '1',
-    'reg_open' => '1',
+    'reg_open' => '0',
     'reg_status' => '1',
     'reg_phone_sms' => '0',
     'reg_email_sms' => '0',
+    'email_white_hosts' => '',
+    'email_black_hosts' => '',
     'reg_verify' => '0',
     'login_verify' => '0',
     'reg_points' => '10',
@@ -536,8 +538,8 @@ vodplot/<id>   => vod/plot
 bai-viet/<id>-<page?>   => art/type
 bai-viet/<id>   => art/type
 bai-viet/show/<id>   => art/show
-bai-viet/chi-tiet/<id>-<page?>   => art/detail
-bai-viet/chi-tiet/<id>   => art/detail
+chi-tiet-bai-viet/<id>-<page?>   => art/detail
+chi-tiet-bai-viet/<id>   => art/detail
 artrss-<id>-<page>   => art/rss
 bai-viet/loc/<id>-<by?>-<class?>-<level?>-<letter?>-<order?>-<page?>-<tag?>   => art/show
 bai-viet/tim-kiem/<wd?>-<by?>-<class?>-<level?>-<letter?>-<order?>-<page?>-<tag?>   => art/search

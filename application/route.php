@@ -388,7 +388,7 @@ return array (
     array (
     ),
   ),
-  'bai-viet/chi-tiet/<id>-<page?>' => 
+  'chi-tiet-bai-viet/<id>-<page?>' => 
   array (
     0 => 'art/detail',
     1 => 
@@ -398,7 +398,7 @@ return array (
     array (
     ),
   ),
-  'bai-viet/chi-tiet/<id>' => 
+  'chi-tiet-bai-viet/<id>' => 
   array (
     0 => 'art/detail',
     1 => 
