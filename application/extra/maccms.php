@@ -68,7 +68,7 @@ return array (
     'page_404' => '404',
     'player_sort' => '1',
     'encrypt' => '0',
-    'search_hot' => 'Phim đang hot,b&agrave;i viết đang hot,chủ đề đang hot',
+    'search_hot' => 'Phim đang hot,B&agrave;i viết đang hot,Chủ đề đang hot',
     'art_extend_class' => 'Talk Show, Buổi phỏng vấn, T&igrave;nh y&ecirc;u cuộc sống, C&ocirc;ng nghệ, Hội bỉm sữa, Nghiện Phim',
     'vod_extend_class' => 'T&igrave;nh Cảm, H&agrave;nh Động, H&agrave;i Hước, Chiến Tranh, Khoa Học Viễn Tưởng, Dramma, V&otilde; Thuật, Phi&ecirc;u Lưu, Kinh Dị, Kh&aacute;c',
     'vod_extend_state' => 'HD, Trailer, Full',
