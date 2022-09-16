@@ -7,20 +7,20 @@
             {$filter}
         </blockquote>
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('path')}：</label>
+            <label class="layui-form-label">{:lang('path')}</label>
             <div class="layui-input-block">
                 <input type="text" class="layui-input" value="{$fpath}" placeholder="" id="fpath" name="fpath" readonly="readonly">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('file_name')}：</label>
+            <label class="layui-form-label">{:lang('file_name')}</label>
             <div class="layui-input-block">
                 <input type="text" class="layui-input" value="{$fname}" placeholder="{:lang('admin/template/name_tip')}" id="fname" name="fname" {if condition="$fname neq ''"}readonly="readonly"{/if}>
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">{:lang('content')}：</label>
+            <label class="layui-form-label">{:lang('content')}</label>
             <div class="layui-input-block">
                 <textarea name="fcontent" cols="" rows="" class="layui-textarea"  placeholder="" style="height:550px;">{$fcontent}</textarea>
             </div>

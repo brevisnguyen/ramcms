@@ -143,12 +143,13 @@ return array (
     'thumb_size' => '300x300',
     'thumb_type' => '1',
     'watermark' => '0',
-    'watermark_location' => '7',
-    'watermark_content' => 'test',
+    'watermark_location' => '5',
+    'watermark_content' => 'Brevis',
     'watermark_size' => '40',
-    'watermark_color' => '#FF0000',
-    'protocol' => 'http',
+    'watermark_color' => '#D2001A',
+    'protocol' => 'https',
     'mode' => 'local',
+    'keep_local' => '0',
     'remoteurl' => 'http://img.test.com/',
     'api' => 
     array (
