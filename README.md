@@ -29,4 +29,29 @@ Cài đặt RamCMS thông qua Github
   git clone https://github.com/brevis-ng/vn-cms.git
 ```
 Xoá file ```application\data\install\install.lock ```  và tiến hành cài đặt
+
+Cấu hình Nginx/Apache
+```nginx
+  <IfModule mod_rewrite.c>
+  Options +FollowSymlinks -Multiviews
+  RewriteEngine on
+
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ index.php?/$1 [QSA,PT,L]
+  </IfModule>
+```
+
+```apache
+location / {
+ if (!-e $request_filename) {
+        rewrite ^/index.php(.*)$ /index.php?s=$1 last;
+        rewrite ^/admin.php(.*)$ /admin.php?s=$1 last;
+        rewrite ^/api.php(.*)$ /api.php?s=$1 last;
+        rewrite ^(.*)$ /index.php?s=$1 last;
+        break;
+   }
+}
+```
+
     
