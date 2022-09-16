@@ -1,6 +1,7 @@
 /*后台图标*/
 
-body{background-color:#fff; font-family: Arial,Helvetica,sans-serif;}
+:root {--system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";}
+body{background-color:#fff; font-family: var(--system-ui)}
 .fl{float:left;}
 .fr{float:right;}
 .nobg{background-color:transparent!important}
