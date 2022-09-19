@@ -116,7 +116,7 @@ return [
     'browser_jump'=>'nếu như trình duyệt không tự động nhảy,mời chọn ở đây',
     'filed_empty'=>'mời nhập nội dung',
     'page_auto'=>'trang tự động',
-    'param_err'=>'tham số sai',
+    'param_err'=>'Lỗi tham số',
     'name_empty'=>'mời nhập tên',
     'pass_empty'=>',mời nhập mật khẩu',
     'pass_err'=>'mật khẩu sai',

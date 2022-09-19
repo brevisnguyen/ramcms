@@ -90,7 +90,7 @@ return array (
   'user' => 
   array (
     'status' => '1',
-    'reg_open' => '0',
+    'reg_open' => '1',
     'reg_status' => '1',
     'reg_phone_sms' => '0',
     'reg_email_sms' => '0',
