@@ -63,7 +63,7 @@ class Index extends Controller
                 $param = input();
 
                 if(!in_array($param['lang'],$langs)) {
-                    $param['lang'] = 'zh-cn';
+                    $param['lang'] = 'vi-vn';
                 }
                 $lang = Lang::range($param['lang']);
                 Lang::load('./application/lang/'.$lang.'.php',$lang);
