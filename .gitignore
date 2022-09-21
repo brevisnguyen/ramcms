@@ -13,3 +13,6 @@ nohup*
 .well-known
 node_modules/
 template/mooncake/*
+/upload
+ophim.html
+ophim.css

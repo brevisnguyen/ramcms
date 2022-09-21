@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Player support TVC by Brevis</title>
+    <script type="text/javascript" src="/static/player/brevis/artplayer/artplayer.js"></script>
+    <script type="text/javascript" src="/static/player/brevis/artplayer/artplayer-plugin-ads.js"></script>
+    <script type="text/javascript" src="/static/player/brevis/artplayer/hls.min.js"></script>
+    <style type="text/css">html,body{width:100%;height:100%; padding:0; margin:0;}#videodiv,iframe{width:100%;height:100%;}</style>
+</head>
+<body marginwidth="0" marginheight="0">
+    <div id="videodiv" class="artplayer-app"></div>
+
+    <script type="text/javascript">
+
+        var video_type = '';
+        if( parent.MacPlayer.PlayUrl.indexOf('.m3u8') >- 1 ){
+            video_type = 'hls';
+        } else {
+            video_type = 'embed';
+        }
+
+        var art = new Artplayer({
+            container: '.artplayer-app',
+            url: video_type == 'hls' ? parent.MacPlayer.PlayUrl : '/static/player/brevis/artplayer/1s_blank.mp4',
+            title: parent.player_aaaa.vod_data.vod_name,
+            poster: parent.player_aaaa.vod_data.vod_poster != "" ? parent.player_aaaa.vod_data.vod_poster : parent.player_aaaa.vod_data.vod_pic,
+            volume: 0.5,
+            isLive: false,
+            muted: false,
+            autoplay: true,
+            pip: true,
+            autoSize: false,
+            autoMini: true,
+            screenshot: true,
+            setting: true,
+            loop: true,
+            flip: true,
+            playbackRate: true,
+            aspectRatio: true,
+            fullscreen: true,
+            fullscreenWeb: true,
+            subtitleOffset: true,
+            miniProgressBar: true,
+            mutex: true,
+            backdrop: true,
+            playsInline: true,
+            autoPlayback: true,
+            airplay: true,
+            theme: '#23ade5',
+            lang: navigator.language.toLowerCase(),
+            whitelist: ['*'],
+            moreVideoAttr: {
+                crossOrigin: 'anonymous',
+            },
+            settings: [
+                {
+                    width: 200,
+                    html: 'Subtitle',
+                    tooltip: 'Bilingual',
+                    icon: '<img width="22" heigth="22" src="/static/player/brevis/artplayer/subtitle.svg">',
+                    selector: [
+                        {
+                            html: 'Display',
+                            tooltip: 'Show',
+                            switch: true,
+                            onSwitch: function (item) {
+                                item.tooltip = item.switch ? 'Hide' : 'Show';
+                                art.subtitle.show = !item.switch;
+                                return !item.switch;
+                            },
+                        },
+                        {
+                            default: true,
+                            html: 'Bilingual',
+                            url: '/assets/sample/subtitle.srt',
+                        },
+                        {
+                            html: 'Chinese',
+                            url: '/assets/sample/subtitle.cn.srt',
+                        },
+                        {
+                            html: 'Japanese',
+                            url: '/assets/sample/subtitle.jp.srt',
+                        },
+                    ],
+                    onSelect: function (item) {
+                        art.subtitle.switch(item.url, {
+                            name: item.html,
+                        });
+                        return item.html;
+                    },
+                },
+                {
+                    html: 'Switcher',
+                    icon: '<img width="22" heigth="22" src="/static/player/brevis/artplayer/state.svg">',
+                    tooltip: 'OFF',
+                    switch: false,
+                    onSwitch: function (item) {
+                        item.tooltip = item.switch ? 'OFF' : 'ON';
+                        console.info('You clicked on the custom switch', item.switch);
+                        return !item.switch;
+                    },
+                },
+                {
+                    html: 'Slider',
+                    icon: '<img width="22" heigth="22" src="/static/player/brevis/artplayer/state.svg">',
+                    tooltip: '5x',
+                    range: [5, 1, 10, 0.1],
+                    onRange: function (item) {
+                        return item.range + 'x';
+                    },
+                },
+            ],
+            contextmenu: [
+                {
+                    html: 'Custom menu',
+                    click: function (contextmenu) {
+                        console.info('You clicked on the custom menu');
+                        contextmenu.show = false;
+                    },
+                },
+            ],
+            subtitle: {
+                url: '/assets/sample/subtitle.srt',
+                type: 'srt',
+                style: {
+                    color: '#fe9200',
+                    fontSize: '20px',
+                },
+                encoding: 'utf-8',
+            },
+            controls: [
+                {
+                    position: 'right',
+                    html: 'Control',
+                    tooltip: 'Control Tooltip',
+                    click: function () {
+                        console.info('You clicked on the custom control');
+                    },
+                },
+            ],
+            icons: {
+                loading: '<img src="/static/player/brevis/artplayer/ploading.gif">',
+                state: '<img width="150" heigth="150" src="/static/player/brevis/artplayer/state.svg">',
+                indicator: '<img width="16" heigth="16" src="/static/player/brevis/artplayer/indicator.svg">',
+            },
+            customType: {
+                m3u8: function (video, url) {
+                    if (Hls.isSupported()) {
+                        const hls = new Hls();
+                        hls.loadSource(url);
+                        hls.attachMedia(video);
+                    } else {
+                        const canPlay = video.canPlayType('application/vnd.apple.mpegurl');
+                        if (canPlay === 'probably' || canPlay == 'maybe') {
+                            video.src = url;
+                        } else {
+                            art.notice.show = 'Does not support playback of m3u8';
+                        }
+                    }
+                },
+            },
+            plugins: [
+                artplayerPluginAds({
+                    video: 'https://i9dev.live/storage/i9betads.mp4',
+                    url: 'https://github.com/brevis-ng',
+                    playDuration: 5,
+                    totalDuration: 20,
+                    muted: false,
+                    i18n: {
+                        close: 'Close Ads',
+                        countdown: '%s seconds',
+                        detail: 'Check Detail',
+                        canBeClosed: 'Ads can be closed after %s seconds',
+                    },
+                }),
+            ],
+        });
+    </script>
+</body>
+</html>
