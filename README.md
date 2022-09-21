@@ -30,6 +30,9 @@ Cài đặt RamCMS thông qua Github
 ```
 Xoá file ```application\data\install\install.lock ```  và tiến hành cài đặt
 
+PHP version
+```Yêu cầu PHP >= 7.4```
+
 Cấu hình Nginx/Apache
 ```nginx
   <IfModule mod_rewrite.c>
