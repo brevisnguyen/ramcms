@@ -62,7 +62,7 @@ body{background-color:#fff; font-family: var(--system-ui)}
 
 /*登录面板*/
 .login-body {background-color:#f5f5f5;}
-.login-head a{color:#fff;!important;}
+.login-head a{color:#fff!important;}
 .login-body .login-box h3{color:#444;font-size:22px;font-weight:100;text-align:center}
 .login-head{position:fixed;left:0;top:0;width:80%;height:60px;line-height:60px;background:#000;padding:0 10%;}
 .login-head h1{color:#fff;font-size:20px;font-weight:600}
