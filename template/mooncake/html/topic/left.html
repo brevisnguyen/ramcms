@@ -1,0 +1,18 @@
+<div class="macplus-pannel macplus-pannel-bg clearfix">
+	<div class="macplus-pannel-box">
+		<div class="macplus-pannel_hd">
+			<div class="macplus-pannel__head clearfix">
+				<span class="more text-muted pull-right">Tổng&nbsp;<span class="text-green">{$obj.vod_list|count}</span>&nbsp; phim</span>
+				<h3 class="title">Phim trong Topic {$obj.topic_name}</h3>
+			</div>
+		</div>
+		<div class="macplus-pannel_bd">
+			<ul class="macplus-vodlist__bd clearfix">
+				{maccms:foreach name="$obj.vod_list"}
+				<li class="col-md-5 col-sm-4 col-xs-3">
+					{include file="index/vod_img"}
+				</li>
+				{/maccms:foreach}
+			</ul>
+		</div>
+	</div>

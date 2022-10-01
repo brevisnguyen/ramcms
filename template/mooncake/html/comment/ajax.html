@@ -1,0 +1,81 @@
+	<form class="comment_form">
+		<input type="hidden" name="comment_pid" value="0">
+		<ul class="gbook-form clearfix">
+			<li class="col-xs-1"><textarea class="form-control comment_content" name="comment_content"
+					placeholder="Nói một từ là được..."></textarea></li>
+			<li class="{if$comment.verify==1}col-xs-1 col-md-wide-55{else /}col-xs-wide-7 col-md-wide-7{/if}">
+				<p class="form-control font-12">Note: Bạn có thể nhập <span class="comment_remaining remaining">200</span> từ</p>
+			</li>
+			{if$comment.verify==1}
+			<li class="col-xs-wide-4 col-md-wide-15"><input type="text" name="verify" class="mac_verify form-control"
+					placeholder="Mã xác nhận"></li>
+			<li class="col-xs-wide-3 col-md-wide-15"><img class="mac_verify_img" src="{:mac_url('verify/index')}"
+					data-role="{:mac_url('verify/index')}" title="Lấy mã khác" onClick="this.src=this.src+'?'" /></li>
+			{/if}
+			<li class="col-xs-wide-3 {if$comment.verify==1}col-md-wide-15{else /}col-md-wide-3{/if}"><input
+					class="btn btn-primary comment_submit" type="button" value="Gửi"></li>
+		</ul>
+	</form>
+	{maccms:comment num="5" paging="yes" order="desc" by="id"}{/maccms:comment}
+	<div class="macplus-comm-wrap{if$__PAGING__.page_total<1} top-line{/if}">
+		{if$__PAGING__.page_total<1}<p class="text-center">Chưa có bình luận nào, hãy nói gì đó!</p>{/if}
+			{maccms:foreach name="__LIST__" id="vo"}
+			<li class="macplus-comm-item top-line">
+				<img class="macplus-comm-roun" src="{php} echo mac_get_user_portrait($vo['user_id']); {/php}" />
+				<div class="macplus-comm-head">
+					<strong class="macplus-comm-line">{$vo.comment_name}</strong>
+					<span class="macplus-comm-tips">{$vo.comment_time|date='Y-m-d H:i:s',###}</span>
+				</div>
+				<div class="macplus-comm-cont">
+					{$vo.comment_content|mac_em_replace}
+					<div class="macplus-comm-right">
+						<a class="comment_report" data-id="{$vo.comment_id}" href="javascript:;">Báo cáo</a>
+						<a class="digg_link" data-id="{$vo.comment_id}" data-mid="4" data-type="up"
+							href="javascript:;">Like (<em class="digg_num icon-num">{$vo.comment_up}</em>)</a>
+						<a class="digg_link" data-id="{$vo.comment_id}" data-mid="4" data-type="down"
+							href="javascript:;">Dislike (<em class="digg_num icon-num">{$vo.comment_down}</em>)</a>
+						<a class="comment_reply" data-id="{$vo.comment_id}" href="javascript:;">Trả lời</a>
+					</div>
+					{maccms:foreach name="$vo.sub" id="child"}
+					<div class="macplus-comm-item macplus-comm-hui">
+						<img class="macplus-comm-roun" src="{php} echo mac_get_user_portrait($child['user_id']); {/php}" />
+						<div class="macplus-comm-head">
+							<strong class="macplus-comm-line">{$child.comment_name}</strong>
+							<span class="macplus-comm-tips">{$child.comment_time|date='Y-m-d H:i:s',###}</span>
+						</div>
+						<div class="macplus-comm-cont">
+							{$child.comment_content|mac_em_replace}
+							<div class="macplus-comm-right">
+								<a class="comment_report" data-id="{$child.comment_id}" href="javascript:;">Báo cáo</a>
+								<a class="digg_link" data-id="{$child.comment_id}" data-mid="4" data-type="up"
+									href="javascript:;">Like (<em class="digg_num icon-num">{$child.comment_up}</em>)</a>
+								<a class="digg_link" data-id="{$child.comment_id}" data-mid="4" data-type="down"
+									href="javascript:;">Dislike (<em class="digg_num icon-num">{$child.comment_down}</em>)</a>
+							</div>
+						</div>
+					</div>
+					{/maccms:foreach}
+				</div>
+			</li>
+			{/maccms:foreach}
+
+	</div>
+	{if$__PAGING__.page_total>1}
+	<div class="macplus-page text-center clearfix">
+		<ul class="macplus-page_info">
+			<li><a class="page_link" href="javascript:void(0);" onclick="MAC.Comment.Show(1)" title="Home">Home</a></li>
+			<li><a class="page_link" href="javascript:void(0);" onclick="MAC.Comment.Show('{$__PAGING__.page_prev}')" title="Trang trước">Previous</a></li>
+			<li class="active visible-xs"><span class="num">{$__PAGING__.page_current}/{$__PAGING__.page_total}</span></li>
+			{maccms:foreach name="$__PAGING__.page_num" id="num"}
+			{if condition="$__PAGING__['page_current'] eq $num"}
+			<li class="hidden-xs active"><a class="page_link page_current" href="javascript:;" title="Trang {$num}">{$num}</a>
+			</li>
+			{else}
+			<li class="hidden-xs"><a class="page_link" href="javascript:void(0)" onclick="MAC.Comment.Show('{$num}')" title="Trang {$num}">{$num}</a></li>
+			{/if}
+			{/maccms:foreach}
+			<li><a class="page_link" href="javascript:void(0)" onclick="MAC.Comment.Show('{$__PAGING__.page_next}')" title="Trang tiếp">Next</a></li>
+			<li><a class="page_link" href="javascript:void(0)" onclick="MAC.Comment.Show('{$__PAGING__.page_total}')"title="Cuối cùng">Last</a></li>
+		</ul>
+		{/if}
+	</div>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>Tài khoản - {$maccms.site_name}</title>
+	<meta name="keywords" content="Tài khoản, {$maccms.site_keywords}" />
+	<meta name="description" content="{$maccms.site_description}" />
+	{include file="user/include"}
+</head>
+
+<body id="uindex">
+	{include file="user/header"}
+	<div id="member" class="fn-clear">
+		{include file="user/left"}
+		<div id="right">
+			<div class="m-nav">
+				<a href="javascript:MAC.GoBack()" class="btn-left"><i class="iconfont ico-right">&#xe625;</i></a>
+				<span class="mb-title">Cập nhật</span>
+			</div>
+			<div class="co-right co-right-bg">
+				<h2>Thông tin</h2>
+				<div id="tab">
+					<div class="list">
+						<ul class="fn-clear">
+							<li><a href="{:mac_url('user/ajax_info')}">Thông tin cơ bản</a></li>
+							<li class="cur">Cập nhật</li>
+						</ul>
+					</div>
+					<div id="listCon">
+						<div class="cur">
+							<form id="fm" name="fm" method="post" action="" >
+								<p><span class="xiang">Thành viên</span>{$obj.user_name}</p>
+								<p><span class="xiang">Biệt danh</span><input type="text" name="user_nick_name" class="member-input" value="" placeholder="Nhập biệt danh"></p>
+								<p><span class="xiang">Mật khẩu cũ</span><input type="password" name="user_pwd" class="member-input" placeholder="Nhập mật khẩu cũ"></p>
+								<p><span class="xiang">Mật khẩu mới</span><input type="password" name="user_pwd1" class="member-input" placeholder="Nhập mật khẩu mới"></p>
+								<p><span class="xiang">Nhập lại mật khẩu</span><input type="password" name="user_pwd2" class="member-input" placeholder="Xác nhận lại mật khẩu"></p>
+								<p><span class="xiang">Email</span><input type="text" name="user_email" class="member-input wt-input" value="" placeholder="Nhập email của bạn"><a class="bind-a" href="{:mac_url('user/bind')}?ac=email">Liên kết Emai</a></p>
+								<p><span class="xiang">Số điện thoại</span><input type="text" name="user_phone" class="member-input wt-input" value="" placeholder="Nhập số điện thoại"><a class="bind-a" href="{:mac_url('user/bind')}?ac=phone">Liên kết SĐT</a></p>
+								<p><span class="xiang">Câu hỏi bảo mật</span><input type="text" name="user_question" class="member-input" value="" placeholder="Nhập câu hỏi bảo mật"></p>
+								<p><span class="xiang">Câu trả lời</span><input type="text" name="user_answer" class="member-input" value="" placeholder="Nhập câu trả lời cho câu hỏi bảo mật"></p>
+								<p><input type="button" id="btn_submit" class="search-button" value="Lưu"><span class="wjmm"><a href="{:mac_url('user/findpass')}">Quên mật khẩu?</a></span></p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+
+		$('.btn_unbind').click(function(){
+			var ac = $(this).attr('ac');
+			if(ac!='email' && ac!='phone'){
+				alert('Lỗi tham số');
+			}
+			if(confirm('Hành động này không thể hoàn tác, bạn có xác nhận?')) {
+				$.ajax({
+					url: "{:url('user/unbind')}",
+					type: "post",
+					dataType: "json",
+					data: {ac: ac},
+					beforeSend: function () {
+						//开启loading
+					},
+					success: function (r) {
+						alert(r.msg);
+						if(r.code==1){
+							location.href="{:url('user/info')}";
+						}
+					},
+					complete: function () {
+						//结束loading
+					}
+				});
+			}
+		});
+		$("#btn_submit").click(function() {
+			var data = $("#fm").serialize();
+			$.ajax({
+				url: "{:url('user/info')}",
+				type: "post",
+				dataType: "json",
+				data: data,
+				beforeSend: function () {
+					//开启loading
+					//$(".loading_box").css("display","block");
+					$("#btn_submit").css("background","#fd6a6a").val("loading...");
+				},
+				success: function (r) {
+					alert(r.msg);
+					if(r.code==1){
+						location.href="{:url('user/info')}";
+					}
+				},
+				complete: function () {
+					//结束loading
+					//$(".loading_box").css("display","none");
+					$("#btn_submit").css("background","#fa4646").val("Gửi");
+				}
+			});
+		});
+	</script>
+	{include file="user/footer"}
+</body>
+
+</html>

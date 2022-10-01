@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		{include file="index/seokey"}
+		{include file="index/include"}
+	</head>
+
+	<body id="ostem">
+		<div id="artcon_page">
+			{include file="index/header"}
+
+			<div class="container">
+				<!-- Lọc -->
+				<div class="art_nav_row hidden_xs">
+					<div class="art_navlist">
+						<ul class="clearfix">
+							{maccms:type mid="2" order="asc" by="sort"}
+							<li {if condition="($vo.type_id eq $GLOBALS['type_id'])"}class="active"{/if}>
+								<a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+							</li>
+							{/maccms:type}
+						</ul>
+						<div class="wx_ewm hidden_xs">
+							<p>Chia sẻ</p>
+							<p><img class="wx_img" src="{$maccms.path_tpl}asset/img/ewm.jpg"></p>
+						</div>
+					</div>
+				</div>
+				<!-- END Lọc -->
+				<div class="art_list_row">
+					<div class="pannel article_box">
+						<header class="article_header">
+							<h1 class="article_title">{$obj.art_name}</h1>
+							<div class="article_meta">
+								<span class="item">{$obj.type.type_name}</span>
+								<span class="item">{$obj.art_time|date='Y-m-d H:i',###}</span>
+								<span class="item hidden_xs">{$obj.type.type_name}</span>
+								<span class="item hidden_xs">{$obj.art_hits} lượt xem</span>
+							</div>
+						</header>
+						<article class="article_content">
+							<div>{$obj.art_page_list[$param['page']]['content']}</div>
+						</article>
+						<div class="art_zan_box">
+							<div class="art_tbsm_m text_center">
+								<div class="bdsharebuttonbox" data-tag="share_1" data-name="{$obj.art_name}"></div>
+							</div>
+						</div>
+					</div>
+					<div class="pannel art_pren_list clearfix">
+						{if ($obj['art_id'] - 1) egt 1}
+						{maccms:art ids="'.($obj['art_id'] - 1).'"}
+						<a class="art_prev" href="{:mac_url_art_detail($vo)}"><span>Bài trước</span>
+							<div class="art_name_prev">{$vo.art_name}</div>
+						</a>
+						{/maccms:art}
+						{/if}
+						{if ($obj['art_id'] + 1) egt 1}
+						{maccms:art ids="'.($obj['art_id'] + 1).'" type="'.$obj['type_id'].'"}
+						<a class="art_next" href="{:mac_url_art_detail($vo)}"><span>Bài tiếp</span>
+							<div class="art_name_next">{$vo.art_name}</div>
+						</a>
+						{/maccms:art}
+						{/if}
+					</div>
+					<!-- Bình luận -->
+					<div class="pannel clearfix" id="pinglun">
+						<div class="pannel_head clearfix">
+							<h3 class="title">Bình luận</h3>
+						</div>
+					</div>
+					<!-- END Bình luận -->
+				</div>
+				<!-- Sliderbar -->
+				<div class="art_sider_row">
+					<div class="pannel clearfix">
+						<div class="pannel_head clearfix">
+							<h3 class="title text_uppercase">Bài viết hay</h3>
+						</div>
+						<ul class="art_relates clearfix">
+							{maccms:art num="6" paging="no" type="all" order="desc" by="hits"}
+							<li>
+								<a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}">
+									<div class="artlr_tit">
+										<p class="artlr_b">{$vo.art_name}</p>
+										<p class="artlr_name">{$vo.type.type_name}</p>
+									</div>
+									<div class="artlr_pic lazyload" data-original="{$vo.art_pic|mac_url_img}"><span class="look hidden_xs"></span></div>
+								</a>
+							</li>
+							{/maccms:art}
+						</ul>
+					</div>
+				</div>
+				<!-- END Sliderbar -->
+			</div>
+			<script>
+				$(function () {
+					var commBox = $('#pinglun');
+					var cookie_style = $.cookie("mystyle");
+					$('<div style="background: #F7F7F7;" class="fb-comments" data-href="'+ encodeURI(document.URL) +'" data-width="100%" data-numposts="10"></div>').appendTo(commBox);
+				});
+			</script>
+			<span style="display: none" class="mac_hits hits" data-mid="{$maccms.mid}" data-id="{$obj.art_id}" data-type=" hits"></span>
+			<span style="display: none" class="mac_hits hits_day" data-mid="{$maccms.mid}" data-id="{$obj.art_id}" data-type="hits_day"></span>
+			<span style="display: none" class="mac_hits hits_week" data-mid="{$maccms.mid}" data-id="{$obj.art_id}" data-type="hits_week"></span>
+			<span style="display: none" class="mac_hits hits_month" data-mid="{$maccms.mid}" data-id="{$obj.art_id}" data-type="hits_month"></span>
+			{include file="index/footer"}
+		</div>
+	</body>
+	
+</html>

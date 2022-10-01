@@ -1,0 +1,44 @@
+<!-- Sliderbar -->
+<div class="right_row fr pa_left hidden_xs hidden_mi">
+	{maccms:type ids="1,2,3" order="asc" by="sort" id="vo1" key="key1"}
+	<div class="pannel clearfix">
+		<div class="pannel_head clearfix">
+			<a class="text_muted pull_right" href="/index.php/label/rank.html">Xem thêm<i class="iconfont more_i">&#xe623;</i></a>
+			<h3 class="title">TOP {$vo1.type_name}</h3>
+		</div>
+		<ul class="vodlist clearfix">
+			{maccms:vod num="8" type="'.$vo1['type_id'].'" order="desc" by="hits_week"}
+			{if condition="$key eq 1"}
+			<li class="ranklist_item">
+				<a title="{$vo.vod_name}" href="{:mac_url_vod_detail($vo)}">
+					<div class="ranklist_img">
+						<div class="ranklist_thumb  lazyload" data-original="{:mac_url_img($vo.vod_pic)}">
+							<span class="play hidden_xs"></span>
+							<span class="part_nums part_num{$key}">{$key}</span>
+							<span class="pic_text text_right text_dy">{$vo.vod_score}</span>
+						</div>
+					</div>
+					<div class="ranklist_txt">
+						<div class="pannel_head clearfix">
+							<span class="text_muted pull_right"><i class="iconfont">&#xe631;</i>{$vo.vod_hits_week}</span>
+							<h4 class="title">{$vo.vod_name}</h4>
+						</div>
+						<p class="vodlist_sub">{$vo.vod_year}&nbsp;/&nbsp;{$vo.vod_area}&nbsp;/&nbsp;{$vo.vod_version}</p>
+						<p><span class="vodlist_sub">Trạng thái:&nbsp;{$vo.vod_remarks}</span></p>
+					</div>
+				</a>
+			</li>
+			{else}
+			<li class="part_eone">
+				<a href="{:mac_url_vod_detail($vo)}">
+					<span class="part_nums part_num{$key}">{$key}</span><span class="text_muted pull_right renqi">
+					<i class="iconfont">&#xe631;</i>&nbsp;{$vo.vod_hits_week}</span>{$vo.vod_name}
+				</a>
+			</li>
+			{/if}
+			{/maccms:vod}
+		</ul>
+	</div>
+	{/maccms:type}
+</div>
+<!-- END Sliderbar -->

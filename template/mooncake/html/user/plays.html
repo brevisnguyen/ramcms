@@ -1,0 +1,93 @@
+<?php $name = 'plays'; ?>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>Tài khoản - {$maccms.site_name}</title>
+	<meta name="keywords" content="Tài khoản, {$maccms.site_keywords}" />
+	<meta name="description" content="{$maccms.site_description}" />
+	{include file="user/include"}
+</head>
+
+<body id="uindex">
+	{include file="user/header"}
+	<div id="member" class="fn-clear">
+		{include file="user/left"}
+		<div id="right">
+			<div class="m-nav">
+				<a href="javascript:MAC.GoBack()" class="btn-left"><i class="iconfont ico-right">&#xe625;</i></a>
+				<a href="javascript:;" id="btnClear" class="btn-right">Xoá</a>
+				<span class="mb-title">Bộ sưu tập</span>
+			</div>
+			<div class="co-right co-right-bg">
+			<h2>Bộ sưu tập</h2>
+			<div class="gong">
+			<a href="javascript:;" onClick="MAC.CheckBox.All('ids[]');">Chọn tất cả</a>
+			<a href="javascript:;" onClick="MAC.CheckBox.Other('ids[]');">Huỷ chọn</a>
+			<a href="javascript:;" id="btnDel">Xoá</a>
+			<a href="javascript:;" id="btnClear2">Xoá Toàn Bộ</a>
+			</div>
+			<ul class="data__list clearfix">
+				<li class="no-tips text-center"><img class="no-cont" src="{$maccms.path_tpl}asset/img/no-cont.png" alt="Chưa có dữ liệu">Chưa có phim yêu thích, hãy thêm mới</li>
+				{volist name="list" id="vo"}
+				<li class="data__item">
+					<div class="xz-box"><input name="ids[]" type="checkbox" value="{$vo.ulog_id}"></div>
+					<div class="data__img">
+						<a class="data__thumb lazyload" href="{$vo.data.link}" title="{$vo.data.name}" data-original="{$vo.data.pic}"></a>
+					</div>	
+					<div class="data__txt">								
+						<h4 class="data__title"><a href="{$vo.data.link}" title="{$vo.data.name}">{$vo.data.name}</a></h4>
+						<p>Thể loại: {$vo.data.type.type_name}</p>
+						<p>Thời lượng xem: <span class="co-tz"></span></p>
+						<p>Thời gian: 2022-09-18 06:32</p>
+						{maccms:foreach name="$vo.data" id="vo1" key="key1"}
+						<p>{$key} - {$vo1}</p>
+						{/maccms:foreach}
+					</div>
+					<div class="data__del clearfix">
+						<a class="btn-brand btn-del" href="javascript:void(0)" onclick="delData({$vo.ulog_id})">Xoá</a>
+					</div>   		
+				</li>
+				{/volist}
+			</ul>
+			<div class="member-page"></div>
+		</div>
+		</div>
+	</div>
+	<script>
+		function delData(ids,all){
+			var msg ='Xoá';
+			if(all==1){
+				msg='Xoá toàn bộ';
+			}
+			if(confirm('Bạn có chắc chắc muốn '+msg+' không?')){
+				$.post("/index.php/user/ulog_del.html",{ids:ids,type:2,all:all},function(data) {
+					if (data.code == '1') {
+						alert('Xoá thành công');
+						location.reload();
+					}else {
+						alert('Xoá thất bại: ' + data.msg);
+					}
+				}, 'json')
+			}
+		}
+		$("#btnClear,#btnClear2").click(function(){
+			delData('',1);
+		});
+		$("#btnDel").click(function(){
+			var ids = MAC.CheckBox.Ids('ids[]');
+			if(ids==''){
+				alert("Hãy chọn phim cần xoá.");
+				return;
+			}
+			delData(ids,0);
+		});
+	</script>
+	{include file="user/footer"}
+</body>
+
+</html>

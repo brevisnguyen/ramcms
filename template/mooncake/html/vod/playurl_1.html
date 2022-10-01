@@ -1,0 +1,71 @@
+{notempty name="obj.vod_play_list"}
+<div class="wrapper_fl xl" id="hl01">
+    <div class="scroller">
+        <ul class="title_nav">
+            {maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+            {if$key lt 5}
+            <li class="tab-play {if$maccms.aid==15}{if$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']}conch-01{/if}{else}{if$key==1}conch-01{/if}{/if}" title="{$vo.player_info.show}">
+                <a  href="javascript:void(0);" class="{if$maccms.aid==15}{if$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']}playnow_info{/if}{else}{if$key==1}playnow_info{/if}{/if}">
+                    <i class="iconfont">&#xe62f;</i>&nbsp;{$vo.player_info.show}
+                </a>
+            </li>
+            {/if}
+            {/maccms:foreach}
+        </ul>
+    </div>
+</div>
+{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+{if$key lt 5}
+<div class="content {if$maccms.aid==15}{if$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']}show{else}hide{/if}{else}{if$key==1}show{else}hide{/if}{/if}">
+    <div class="player_infotip"><i class="iconfont">&#xe62d;</i>&nbsp;Đang sử dụng {$vo.player_info.show}&nbsp;-&nbsp;{$vo.player_info.des}</div>
+    <div id="playlistbox" class="playlist_notfull">
+        <div class="wrapper_fl" id="hl0{$key + 1}">
+            <div class="scroller">
+                <ul class="content_playlist clearfix">
+                    {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+                    {if $key2 elt 30}
+                    <li {if $key2 eq $param.nid && $vo.player_info.from eq $obj['vod_play_list'][$param['sid']]['player_info']['from']} class="active conch-0{$key +1}" {/if}>
+                        <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}</a>
+                    </li>
+                    {/if}
+                    {/maccms:foreach}
+                </ul>
+                <a href="javascript:;" onclick="showlist(this);" class="listshow hidden_xs"><span><i class="iconfont">&#xe63a;</i>&nbsp;Xem thêm</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="playlist_full" style="display:none;">
+        <ul class="content_playlist clearfix">
+            {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+            <li {if $key2 eq $param.nid && $vo.player_info.from eq $obj['vod_play_list'][$param['sid']]['player_info']['from']} class="active conch-0{$key +1}" {/if}>
+                <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}</a>
+            </li>
+            {/maccms:foreach}
+        </ul>
+    </div>
+</div>
+{/if}
+{/maccms:foreach}
+<script type="text/javascript">
+    if ($('#hl01 .title_nav').length) {
+        var $li = $('#hl01 .tab-play');
+        var $a = $('#hl01 .tab-play a');
+        var $ul = $('.content');
+        var $tp = $('.play_source_tips span');
+
+        $li.click(function () {
+            var $this = $(this);
+            var $t = $this.index();
+            $li.removeClass('conch-01');
+            $this.addClass('conch-01');
+            $a.removeClass('playnow_info');
+            $a.eq($t).addClass('playnow_info');
+            $ul.addClass('hide').removeClass('show');
+            $ul.eq($t).addClass('show').removeClass('hide');
+            $tp.addClass('hide').removeClass('show');
+            $tp.eq($t).addClass('show');
+        })
+
+    }
+</script>
+{/notempty}

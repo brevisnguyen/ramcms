@@ -1,0 +1,95 @@
+<?php $name = 'upgrade'; ?>
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+  <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Nâng cấp tài khoản - Tài khoản - {$maccms.site_name}</title> 
+  <meta name="keywords" content="Tài khoản, {$maccms.site_keywords}" /> 
+  <meta name="description" content="{$maccms.site_description}" />
+{include file="index/include"}
+ </head>
+ <body>
+{include file="index/header"}
+{include file="user/left"}
+       <div class="macplus-user-rows"><h2>Hệ thống hội viên<a class="hidden-lg pull-right font-16"  href="{:mac_url('user/index')}">Home</a></h2></div> 
+       <ul class="macplus-user-rows macplus-pannel-bg"> 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">Nhóm hiện tại</span> 
+          <span class="col-xs-wide-7 col-sm-wide-8 text-overflow">{$obj.group.group_name}</span> 
+         </div> </li> 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">Hạn dùng</span> 
+          <span class="col-xs-wide-7 col-sm-wide-8 text-overflow">{$obj.user_end_time|mac_day|mac_default='Vô hạn'}</span> 
+         </div> </li> 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">Số dư</span> 
+          <span class="col-xs-wide-7 col-sm-wide-8 text-overflow">{$obj.user_points} điểm</span> 
+         </div> </li>{volist name="group_list" id="vo"}{if condition="$vo.group_id gt 2"} 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">{$vo.group_name}</span> 
+		  <a class="col-xs-wide-7 col-sm-wide-8 grade" data-id="{$vo.group_id}" data-name="{$vo.group_name}" data-points="{$vo.group_points_day}" data-long="day" data-shij="1">1 ngày: {$vo.group_points_day} điểm</a> 
+         </div> </li> 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">{$vo.group_name}</span> 
+		  <a class="col-xs-wide-7 col-sm-wide-8 grade" data-id="{$vo.group_id}" data-name="{$vo.group_name}" data-points="{$vo.group_points_week}" data-long="week" data-shij="7">7 ngày: {$vo.group_points_week} điểm</a>
+         </div> </li> 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">{$vo.group_name}</span> 
+		  <a class="col-xs-wide-7 col-sm-wide-8 grade" data-id="{$vo.group_id}" data-name="{$vo.group_name}" data-points="{$vo.group_points_month}" data-long="month" data-shij="30">30 ngày: {$vo.group_points_month} điểm</a> 
+         </div> </li> 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">{$vo.group_name}</span> 
+		  <a class="col-xs-wide-7 col-sm-wide-8 grade" data-id="{$vo.group_id}" data-name="{$vo.group_name}" data-points="{$vo.group_points_year}" data-long="year" data-shij="365">30 ngày: {$vo.group_points_year} điểm</a>
+         </div> </li> 
+		 {/if}{/volist} 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+</div> 
+{include file="index/footer"}
+{include file="user/footer"}
+  <script>
+	$('.grade').click(function(){
+		var that=$(this);
+		var group_id = that.attr('data-id');
+		var group_name = that.attr('data-name');
+		var long = that.attr('data-long');
+		var points = that.attr('data-points');
+		var shij = that.attr('data-shij');
+		if(confirm('Bạn có chắc sẽ chi tiêu ['+points+'] điểm để nâng cấp ['+shij+' ngày '+group_name+'] không ?')) {
+			$.ajax({
+				url: "{:url('user/upgrade')}",
+				type: "post",
+				dataType: "json",
+				data: {group_id: group_id,long:long },
+				beforeSend: function () {
+					$("#btn_submit").val("loading...");
+				},
+				success: function (r) {
+					alert(r.msg);
+					if (r.code == 1) {
+						location.reload();
+					}
+				},
+				complete: function () {
+					$("#btn_submit").val("Gửi");
+				}
+			});
+		}
+	});
+</script>  
+ </body>
+</html>

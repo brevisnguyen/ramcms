@@ -1,0 +1,23 @@
+				<div class="macplus-pannel macplus-pannel-bg clearfix">					
+					<div class="macplus-pannel-box clearfix">
+						<div class="macplus-pannel_hd">
+							<div class="macplus-pannel__head add bottom-line clearfix">
+								<h3 class="title">Tin tức HOT</h3>													
+							</div>																		
+						</div>
+						<div class="macplus-pannel_bd col-pd">
+							<ul class="macplus-vodlist__text clearfix">
+							{maccms:art order="desc" by="hits" num="8"}
+							<li>
+								<a href="{:mac_url_art_detail($vo)}" target="_blank" class="clearfix">
+									<img class="col-xs-2 lazyload" data-original="{$vo.art_pic|mac_url_img}" alt="{$vo.art_name}">
+									<span class="macplus-art-mask hidden-xs"></span>
+									<span class="text-three col-xs-2">{$vo.art_name}</span>
+								</a>
+							</li>
+							{/maccms:art}
+
+							</ul>	
+						</div>	
+					</div>
+				</div>

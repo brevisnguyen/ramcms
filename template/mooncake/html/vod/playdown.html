@@ -1,0 +1,41 @@
+{notempty name="obj.vod_down_list"}
+<script type="text/javascript" src="{$maccms.path}macplus/js/down.js"></script>
+<div class="macplus-pannel macplus-pannel-bg clearfix">
+	<div class="macplus-pannel-box">
+		<div class="macplus-pannel_hd">
+			<div class="macplus-pannel__head clearfix">
+				<h3 class="title">Tải Xuống</h3>						
+				<ul class="nav nav-tabs pull-right down">
+					{maccms:foreach name="obj.vod_down_list" id="vo" key="key1"}
+					<li{if$key1==1} class="active"{/if}><a href="#playlist{$key1}" data-toggle="tab">{$vo.player_info.show}</a></li>
+					{/maccms:foreach}								
+				</ul>
+			</div>																		
+		</div>
+		<div class="macplus-pannel_bd clearfix" id="downul">
+		{maccms:foreach name="obj.vod_down_list" id="vo" key="key1"}
+			<ul class="macplus-vodlist__text downlist fade{if$key1==1} in active{/if}" id="playlist{$key1}">
+				{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+				<div class="striped-head top-line clearfix">
+					<span class="text col-xs-wide-5"><input type="checkbox" name="down_url_list_{$key1}" class="down_url" value="{$vo2.url}" file_name="{$vo2.name}" /></span>
+					<span class="wide col-xs-wide-95">
+					<li class="col-xs-wide-4 col-sm-wide-55"><input type="text" class="thunder_url col-xs-1" value="{$vo2.name} {$vo2.url}" onclick="this.select()" /></li>
+					<li class="col-xs-wide-3 col-sm-wide-15"><a href="javascript:;" class="down-default thunder_down col-xs-1">Tải Xuống</a></li>
+					<!-- <li class="col-xs-wide-3 col-sm-wide-15"><a href="javascript:;" class="down-default qqdl col-xs-1">旋风下载</a></li>
+					<li class="col-xs-wide-15 col-sm-wide-15 hidden-xs"><a href="javascript:;" class="down-default kk col-xs-1">看看播放</a></li> -->
+					</span>
+				</div>
+				{/maccms:foreach}
+				<div class="striped-head top-line clearfix">
+					<span class="down"><input id="allcheck{$key1}" type="checkbox" name="checkall"> Chọn Tất Cả </span>
+					<span class="wide">
+					<li class="col-sm-wide-15 col-xs-3"><a href="javascript:void(0);" target="_self" class="down-default col-xs-1 thunder_down_all">Tải Tất Cả</a></li>
+					<!-- <li class="col-sm-wide-15 col-xs-3"><a href="javascript:void(0);" target="_self" class="down-default col-xs-1 xf_down_all">旋风批量下载</a></li> -->
+					</span>
+				</div>
+			</ul>
+			{/maccms:foreach}	
+		</div>
+	</div>
+</div>	
+{/notempty}

@@ -1,0 +1,16 @@
+{if$__PAGING__.page_total>1}
+<ul class="page text_center cleafix">
+    <li class="hidden_mb"><a href="{$__PAGING__.page_url|mac_url_page=1}">Home</a></li>
+    <li><a href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_prev}" class="{if $__PAGING__['page_current'] elt 1}btns_disad{/if}">Previous</a></li>
+    {maccms:foreach name="$__PAGING__.page_num" id="num"}
+        {if condition="$__PAGING__['page_current'] eq $num"}
+        <li class="hidden_xs active"><a href="javascript:;">{$num}</a></li>
+        {else}
+        <li class="hidden_xs"><a href="{$__PAGING__.page_url|mac_url_page=$num}">{$num}</a></li>
+        {/if}
+    {/maccms:foreach}
+    <li><a class="{if $__PAGING__['page_current'] == $__PAGING__.page_total}btns_disad{/if}" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_next}">Next</a></li>
+    <li class="hidden_mb"><a class="{if $__PAGING__['page_current'] == $__PAGING__.page_total}btns_disad{/if}" href="{$__PAGING__.page_url|mac_url_page=$__PAGING__.page_total}">Last</a></li>
+</ul>
+<div class="page_tips hidden_mb">Trang&nbsp;<span>{$__PAGING__.page_current}</span>&nbsp;/&nbsp;{$__PAGING__.page_total}</div>
+{/if}

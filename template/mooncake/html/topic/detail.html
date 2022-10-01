@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		{include file="index/seokey"}
+		{include file="index/include"}
+	</head>
+
+	<body class="bstem">
+		<div id="topic_page">
+			{include file="index/header"}
+			<div class="hot_banner">
+				<div class="bgi_box">
+					<span class="bgi" style="background-image: url({:mac_url_img($obj.topic_pic)})""></span>
+					<span class="bgfd"></span>
+				</div>
+				<div class="hot_list">
+					<div class="topic_fm">
+						<div class="topiclist_con">
+							<span class="topiclist_thumb lazyload" title="{$obj.topic_name}" data-original="{:mac_url_img($obj.topic_pic_slide)}"></span>
+						</div>
+						<div class="topiclist_text">
+							<h3 class="title">{$obj.topic_name}</h3>
+							<div class="tpcon_box">{$obj.topic_content}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="vod_row">
+					<div class="pannel clearfix">
+						<div class="pannel_head clearfix">
+							<h3 class="title">Có&nbsp;<strong class="mycol">{$obj.vod_list|count}</strong>&nbsp;phim trong chủ đề <strong class="mycol">{$obj.topic_name}</strong></h3>
+						</div>
+						<ul class="vodlist vodlist_wi clearfix">
+							{maccms:foreach name="$obj.vod_list"}
+							<li class="vodlist_item num_{$key}">
+								{include file="index/vod_img1"}
+							</li>
+							{/maccms:foreach}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			{include file="index/footer"}
+		</div>
+	</body>
+	
+</html>

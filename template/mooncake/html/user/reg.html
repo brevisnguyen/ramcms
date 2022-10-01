@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>Đăng ký tài khoản - {$maccms.site_name}</title>
+	<meta name="keywords" content="{$maccms.site_keywords}" />
+	<meta name="description" content="{$maccms.site_description}" />
+    <link rel="shortcut icon" href="{$maccms.path_tpl}asset/img/favicon.png" type="image/x-icon" />
+    <link href="{$maccms.path_tpl}asset/css/member/member.conch.css" type="text/css" rel="stylesheet" />
+    <script src="{$maccms.path}static/js/jquery.js"></script>
+    <script src="{$maccms.path}static/js/jquery.autocomplete.js"></script>
+    <script src="{$maccms.path_tpl}asset/js/hlhtml.js"></script>
+    <script src="{$maccms.path_tpl}asset/js/member/jquery.superslide.js"></script>
+    <script src="{$maccms.path_tpl}asset/js/member/system.hl.user.js"></script>
+    <script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","aid":"{$maccms['aid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+    <script src="{$maccms.path}static/js/home.js"></script>
+    <script src="{$maccms.path_tpl}asset/js/member/formValidator-4.0.1.js" type="text/javascript"></script>
+    <script src="{$maccms.path}static/js/jquery.imageupload.js"></script>
+</head>
+
+<body id="reg">
+	<div class="reg-w">
+        <div class="reg-logo">
+            <a title="{$maccms.site_name}" style="background-image: url({$maccms.path_tpl}asset/img/logo_black.png);" href="/"></a>
+        </div>
+        <form method="post" id="fm" action="">
+            <h4>Đăng Ký</h4>
+            <div class="reg-group">
+                <label class="bd-r" style="letter-spacing: normal;">Tài khoản</label>
+				<input type="text" autocomplete="username" id="user_name" name="user_name" class="reg-control" placeholder="Nhập tài khoản muốn tạo">
+            </div>
+            <div class="reg-group">
+                <label>Mật khẩu</label>
+                <input type="password" id="user_pwd" name="user_pwd" class="reg-control" placeholder="Nhập mật khẩu">
+            </div>
+            <div class="reg-group">
+                <label>Nhập lại mật khẩu</label>
+                <input type="password" id="user_pwd2" name="user_pwd2" class="reg-control" placeholder="Nhập lại mật khẩu">
+            </div>
+            {if condition="$user_config.reg_verify neq 0"}
+            <div class="form-group">
+                <label>Mã xác nhận</label>
+                <input type="text" class="form-control" id="verify" name="verify" placeholder="Nhập mã xác nhận">
+                <img class="form-mt3" id="verify_img" src="{:url('verify/index')}" onClick="this.src=this.src+'?'" alt="Nhấp để làm mới" />
+            </div>
+            {/if}
+            <input type="button" id="btn_submit" class="btn-brand btn-sub" value="Đăng Ký">
+        </form>
+        <div class="reg-ts">
+            <a href="/">Trang chủ</a><a href="{:url('user/login')}">Đăng Nhập</a>
+            <a href="{:url('user/findpass')}">Quên mật khẩu?</a>
+        </div>
+    </div>
+	<!-- // sign-box#regbox end -->
+    <script type="text/javascript">
+        var countdown = 60;
+
+        function settime(val) {
+            if (countdown == 0) {
+                val.removeAttribute("disabled");
+                val.value = "Gửi mã";
+                countdown = 60;
+                return true;
+            } else {
+                val.setAttribute("disabled", true);
+                val.value = "Gửi lại sau (" + countdown + ")";
+                countdown--;
+            }
+            setTimeout(function () {
+                settime(val)
+            }, 1000)
+        }
+
+
+        $("body").bind('keyup', function (event) {
+            if (event.keyCode == 13) {
+                $('#btnLogin').click();
+            }
+        });
+
+        $('#btn_send_sms').click(function () {
+            var ac = $('input[name="ac"]').val();
+            var to = $('input[name="to"]').val();
+            if (ac == 'email') {
+                var pattern =
+                    /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+                var ex = pattern.test(to);
+                if (!ex) {
+                    alert('Email không hợp lệ');
+                    return;
+                }
+            } else if (ac == 'phone') {
+                var pattern = /^[1][0-9]{10}$/;
+                var ex = pattern.test(to);
+                if (!ex) {
+                    alert('SĐT không hợp lệ');
+                    return;
+                }
+            } else {
+                alert('Có lỗi xảy ra');
+                return;
+            }
+
+
+            settime(this);
+            var data = $("#fm").serialize();
+
+            $.ajax({
+                url: "{:url('user/reg_msg')}",
+                type: "post",
+                dataType: "json",
+                data: data,
+                beforeSend: function () {
+                    //开启loading
+                },
+                success: function (r) {
+                    alert(r.msg);
+                },
+                complete: function () {
+                    //结束loading
+                }
+            });
+        });
+
+        $('#btn_submit').click(function () {
+            if ($('#user_name').val() == '') {
+                alert('Tên tài khoản không thể trống');
+                $("#user_name").focus();
+                return false;
+            }
+            if ($('#user_pwd').val() == '') {
+                alert('Bạn chưa nhập mật khẩu');
+                $("#user_pwd").focus();
+                return false;
+            }
+            if ($('#verify').val() == '') {
+                alert('Bạn chưa nhạp xác nhận');
+                $("#verify").focus();
+                return false;
+            }
+
+            $.ajax({
+                url: "{:url('user/reg')}",
+                type: "post",
+                dataType: "json",
+                data: $('#fm').serialize(),
+                beforeSend: function () {
+                    $("#btn_submit").css("background", "#fd6a6a").val("loading...");
+                },
+                success: function (r) {
+                    alert(r.msg);
+                    if (r.code == 1) {
+                        location.href = "{:url('user/login')}";
+                    } else {
+                        $('#verify_img').click();
+                    }
+                },
+                complete: function () {
+                    $("#btn_submit").css("background", "#fa4646").val("Đăng Ký");
+                }
+            });
+
+        });
+    </script>
+    <div class="footer">
+        <div class="layout">
+            <div class="copyright">
+                <p>&copy; 2022 <a class="color" href="//{$maccms.site_url}">{$maccms.site_url}</a> All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	{include file="index/seokey"}
+	{include file="index/include"}
+</head>
+
+<body>
+	{include file="index/header"}
+	<div class="playWarp">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-1 col-xs-1 macplus-top-0">
+					<div class="macplus-player__item clearfix">
+						<div class="col-lg-wide-75 col-xs-1 macplus-top-1 padding-0">
+							<div class="macplus-player__switch"><span class="btn_switch_bg"></span><i
+									class="icon_sm icon_left_sm"></i><i class="icon_sm icon_right_sm"></i></div>
+							<div class="macplus-player__video embed-responsive embed-responsive-16by9">
+								<div class="macplus-player__jump">
+									<div class="macplus-play-jump">
+										<h3 class="title">Người dùng thân mến: </h3>
+										<span class="text">{$popedom.msg}
+											<p> Mẹo: Thanh toán một lần, xem mãi mãi, không bị trừ nhiều lần, cảm ơn các bạn đã ủng hộ.</p>
+										</span>
+										{if condition="$user.group.group_id eq 1"}
+										<a href="javascript:;" class="btn btn-primary mac_user hidden-xs" target="_blank">Đăng Nhập</a>
+										<a href="javascript:;" class="visible-xs col-xs-3" target="_blank">&nbsp;</a>
+										<a href="{:mac_url('user/login')}" class="btn btn-primary visible-xs col-xs-3" target="_blank">Đăng Nhập</a>
+										{else/}
+										<a href="{:url('user/buy')}" class="btn btn-primary" target="_blank">Nạp Tiền</a>
+										<a href="javascript:;" class="btn btn-primary" onclick="MAC.User.BuyPopedom(this)" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}" data-type="{if condition="$obj.player_info.flag eq 'play'"}4{else/}5{/if}">Xác Nhận</a>
+										{/if}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-wide-25 visible-lg hide">
+							<div class="player_side_hd">
+								<div class="player_helper"><span class="helper_btn"><i class="icon iconfont icon-lights"></i></span></div>
+							</div>
+							<div class="mod_player_side">
+								<div class="scroll_top">
+									<h2 class="player_title text-overflow"><a href="{:mac_url_vod_detail($obj)}" target="_blank">{$obj.vod_name}</a></h2>
+									<div class="player_hint">
+										<span class="player_h2">{$obj.vod_remarks}</span>
+										<div class="details-play-title clearfix">
+											<ul class="nav nav-tabs">
+												<li class="dropdown mplayer active">
+													<a href="#" id="myTabDrop2" class="gico {$obj['vod_play_list'][$param['sid']]['player_info']['from']}" data-toggle="dropdown">
+														<span class="name">{$obj['vod_play_list'][$param['sid']]['player_info']['show']}</span>
+														<b class="caret"></b>
+													</a>
+													<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2">
+														{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+														<li><a class="gico {$vo.player_info.from}" href="#con_dplaylist_{$key}" tabindex="-1" data-toggle="tab">{$vo.player_info.show}</a></li>
+														{/maccms:foreach}
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="scroll_wrap">
+									<div class="player_playlist macplus-pannel_hd clearfix">
+										{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+										<ul class="macplus-content__playlist column3 fade{if$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']} in active{/if}"
+											id="con_dplaylist_{$key}">
+											{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+											<li {if $key2==$param.nid&&$vo.player_info.from==$obj['vod_play_list'][$param['sid']]['player_info']['from']} class="active" {/if}>
+												<a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}</a>
+											</li>
+											{/maccms:foreach}
+										</ul>
+										{/maccms:foreach}
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+						<div class="macplus-player__detail detail  clearfix">
+							<ul class="more-btn">
+								<li><a class="btns-info btns-disad detailjiexi" href="javascript:;">Server</a></li>
+								<li><a class="btns-info btns-disad" href="javascript:;"
+										onclick="window.location.reload()">Ngẫu nhiên</a></li>
+								<li><a class="btns-info detailreport btns-disad" href="javascript:;" onclick="MAC.Gbook.Report('【ID:{$obj.vod_id} Tên phim {$obj.vod_name} - {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}-{$obj['vod_play_list'][$param['sid']]['player_info']['from']}】không xem được, vui lòng sửa lỗi. URL: ' + location.href,'{$obj.vod_id}')"> Báo Lỗi </a>
+								</li>
+								<li><a class="btns-info btns-disad" href="{$obj.player_info.link_pre}">Tập Tiếp</a></li>
+								<li><a class="btns-info btns-disad" href="{$obj.player_info.link_next}">Tập Trước</a></li>
+							</ul>
+							<h1 class="title"><a href="{:mac_url_vod_detail($obj)}">{$obj.vod_name}</a></h1>
+							<p class="data margin-0"><span class="text-muted">Thể Loại: </span>{empty
+								name="$obj.type_1.type_name"}<a
+									href="{:mac_url_type($obj.type)}">{$obj.type.type_name}</a>{else /}<a
+									href="{:mac_url_type($obj.type_1)}">{$obj.type_1.type_name}</a>{/empty}<span
+									class="split-line"></span><span
+									class="text-muted">Quốc Gia: </span>{$obj.vod_area|mac_url_create='area'}<span
+									class="split-line"></span><span
+									class="text-muted">Năm: </span>{$obj.vod_year|mac_url_create='year'}<span
+									class="split-line"></span><a class="detail-mori" href="javascript:;">Chi tiết: <i class="icon iconfont icon-moreunfold"></i></a></p>
+							<div class="detail-content" style="display: none;">
+								<p class="data"><span class="text-muted">Đạo diễn: </span>{$obj.vod_director|mac_url_create='director'}</p>
+								<p class="data"><span class="text-muted">Diễn viên: </span>{$obj.vod_actor|mac_url_create='actor'}</p>
+								<p class="data"><span class="text-muted">TAG: </span>{$obj.vod_class|mac_url_create='class'}</p>
+								<p class="data margin-0"><span class="text-muted">Nội Dung: </span>{$obj.vod_content|mac_filter_html}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="player-mask"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-wide-75 col-xs-1 macplus-top-1 macplus-lefter">
+				{include file="vod/playurl"}
+				{include file="vod/playleft"}
+			</div>
+		</div>
+		<div class="col-lg-wide-25 col-xs-1 visible-lg hide macplus-righter">
+			{include file="vod/playright"}
+		</div>
+	</div>
+	<div class="mac_hits hits hide" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" "="" data-type=" hits"></div>
+	</div>
+	</div>
+	</div>
+	</div>
+	{include file="index/footer"}
+</body>
+
+</html>
