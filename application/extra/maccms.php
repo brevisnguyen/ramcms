@@ -27,7 +27,7 @@ return array (
     'install_dir' => '/',
     'site_logo' => 'static/images/logo.jpg',
     'site_waplogo' => 'static/images/logo.jpg',
-    'template_dir' => 'default',
+    'template_dir' => 'mooncake',
     'html_dir' => 'html',
     'mob_status' => '0',
     'site_tj' => 'Mã thống kê website(Google analytics, ...)',
