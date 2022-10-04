@@ -26,7 +26,7 @@
 						{maccms:vod num="10" paging="yes" pageurl="vod/search" order="desc" by="time"}
 						<li class="searchlist_item">
 							<div class="searchlist_img">
-								<a class="vodlist_thumb lazyload" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" data-original="{$vo.vod_pic}">
+								<a class="vodlist_thumb lazyload" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" data-original="{:mac_url_img($vo.vod_pic)}">
 									<span class="play hidden_xs"></span>
 									<span class="pic_text text_right">{$vo.vod_remarks}</span>
                             	</a>
