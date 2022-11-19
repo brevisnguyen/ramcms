@@ -11,26 +11,23 @@
 </style>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header header-top">
-	
-	<div class="top-logo">{:lang('admin/index/index/name')}</div>
-	<ul class="layout-right" lay-filter="">	
-		 <li class="nav-item">
-			<a href="__ROOT__/" target="_blank"><i class="layui-icon layui-icon-home size-14"></i></a>
-	     </li> 
-		 <li class="nav-item ">
-			   <a href="{:url('index/clear')}" class="j-ajax " refresh="yes"><i class="layui-icon layui-icon-delete size-16"></i></a>
-		 </li>
-		 <li class="nav-item">
-			   <a href="javascript:;" id="admin_name">
-                   <i class="layui-icon layui-icon-app  size-14"></i>
-			   </a>
-			 
-		 </li>
-	</ul>	
-		
+        <div class="top-logo">{:lang('admin/index/index/name')}</div>
+        <ul class="layout-right" lay-filter="">	
+            <li class="nav-item">
+                <a href="__ROOT__/" target="_blank"><i class="layui-icon layui-icon-home size-14"></i></a>
+            </li> 
+            <li class="nav-item ">
+                <a href="{:url('index/clear')}" class="j-ajax " refresh="yes"><i class="layui-icon layui-icon-delete size-16"></i></a>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:;" id="admin_name">
+                    <i class="layui-icon layui-icon-app  size-14"></i>
+                </a>
+            </li>
+        </ul>
 	</div>
 
-	<div class="layui-header">
+	<div class="layui-header layui-bg-molv">
 	    <div class="fl header-logo">{:lang('admin/index/index/name')}</div>
 		<div class="fl header-fold topLevelMenus"><a href="javascript:;" title="{:lang('admin/index/index/menu_switch')}" class="aicon ai-caidan" id="foldSwitch"><i class="layui-icon">&#xe65f;</i></a></div>
 		 <a href="javascript:;" class=" site-tree-mobile layui-mobile layui-show-xs-block layui-hide-lg"><i class="layui-icon layui-icon-spread-left size-20"></i></a>
@@ -61,7 +58,7 @@
 			</ul>
 		</div>
 	</div>
- 
+
 	<div class="nav-item-ul">
 	  <div class="">
 		  <ul class="layui-nav">
@@ -70,7 +67,7 @@
 			  <li class="layui-nav-item"><a href="{:url('index/clear')}" class="j-ajax" refresh="yes">{:lang('admin/index/index/menu_cache_clear')}</a></li>
 			  <li class="layui-nav-item"><a href="{:url('index/logout')}">{:lang('admin/index/index/menu_logout')}</a></li>
 		  </ul>
-		
+
 	  </div>
 	</div>
 
@@ -146,7 +143,7 @@
 <script>
     window.localStorage.clear();
     var LAYUI_OFFSET = 60;
-	
+
 	$('#admin_name').click(function(){
 		 $('body').toggleClass('drawer-body-right');
 	})

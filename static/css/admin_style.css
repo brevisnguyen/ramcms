@@ -1,7 +1,14 @@
 /*后台图标*/
-
-:root {--system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";}
-body{background-color:#fff; font-family: var(--system-ui)}
+/* vietnamese */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZBhiI2B.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+body{background-color:#fff; font-family: 'Inter', sans-serif !important}
 .fl{float:left;}
 .fr{float:right;}
 .nobg{background-color:transparent!important}
@@ -78,7 +85,7 @@ body{background-color:#fff; font-family: var(--system-ui)}
 
 /*主面板*/
 .layui-form-item{margin-bottom: 10px;}
-.layui-form-pane .layui-form-label { padding: 8px 5px; }
+.layui-form-pane .layui-form-label { padding: 8px 5px; text-align: left !important; }
 .layui-layout-admin .layui-footer{ height:30px; line-height: 30px;}
 .layui-header,.layui-side {z-index:99999}
 
