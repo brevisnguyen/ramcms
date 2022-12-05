@@ -159,7 +159,7 @@ textarea,
 }
 
 .artlist_thumb,
-.art_relates .artlr_pic {
+.art_relates .artlr_pic, .art_relates .artlr_v_pic {
     border: 0;
 }
 

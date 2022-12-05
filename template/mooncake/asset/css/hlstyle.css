@@ -1746,6 +1746,15 @@ a:hover.swiper-button-prev {
     color: #999;
 }
 
+.art_relates .artlr_role {
+    position: absolute;
+    bottom: 0;
+    left: 0.3rem;
+    font-weight: normal;
+    font-size: 0.3rem;
+    color: #999;
+}
+
 .art_relates .no_artpic .artlr_tit {
     width: 100%;
     padding: 0;
@@ -1761,8 +1770,56 @@ a:hover.swiper-button-prev {
 }
 
 .art_relates .artlr_pic {
+    float: left;
+    width: 1.8rem;
+    position: relative;
+    display: block;
+    height: 1.8rem;
+    background: #ebebeb;
+    background-position: 50% 50%;
+    background-size: cover;
+    border-radius: 4px;
+    border: 0.025rem solid #f8f8f8;
+}
+
+.art_relates .artlr_c_name {
+    position: relative;
+    font-size: 0.375rem;
+    float: left;
+    width: max-content;
+    height: 1.8rem;
+    padding-left: 0.3rem;
+    overflow: hidden;
+    display: block;
+}
+
+.art_relates .artlr_v_name {
+    position: relative;
+    font-size: 0.375rem;
     float: right;
-    width: 2.8rem;
+    width: max-content;
+    height: 1.8rem;
+    padding-right: 0.3rem;
+    overflow: hidden;
+    display: block;
+}
+
+.art_relates .artlr_c_pic {
+    float: left;
+    width: 1.8rem;
+    position: relative;
+    display: block;
+    height: 1.8rem;
+    background: #ebebeb;
+    background-position: 50% 50%;
+    background-size: cover;
+    border-radius: 4px;
+    border: 0.025rem solid #f8f8f8;
+}
+
+.art_relates .artlr_v_pic {
+    float: right;
+    width: 1.8rem;
     position: relative;
     display: block;
     height: 1.8rem;

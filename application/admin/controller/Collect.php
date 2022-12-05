@@ -3,7 +3,11 @@ namespace app\admin\controller;
 use think\Db;
 use think\Cache;
 use app\common\validate\Vod as VodValidate;
+use DOMDocument;
+use DOMXPath;
 use think\Exception;
+
+use function PHPSTORM_META\map;
 
 class Collect extends Base
 {
@@ -770,5 +774,237 @@ class Collect extends Base
         $str = preg_replace('/[^a-z0-9-\s]/', '', $str);
         $str = preg_replace('/([\s]+)/', $divider, $str);
         return $str;
+    }
+
+    /**
+     * Myanimelist
+     */
+    public function myanimelist()
+    {
+        if (Request()->isPost()) {
+            $type_id = input('type_id');
+            $link = input('anime_link');
+            if ($type_id == '' || $link == '') {
+                return $this->error('Vui lòng nhập TypeID và Link');
+            }
+            $source_page = file_get_contents($link);
+            $doc = new DOMDocument('1.0', 'utf-8');
+            libxml_use_internal_errors(true);
+            $doc->preserveWhiteSpace = false;
+            $doc->loadHTML($source_page);
+
+            $data = [];
+            $data['type_id'] = intval(input('type_id'));
+            $data['vod_en'] = $this->getElementsByAttr($doc, 'meta', 'property', 'og:title')[0]->getAttribute('content');
+            $data['vod_pic'] = $data['vod_pic_thumb'] = $this->getElementsByAttr($doc, 'meta', 'property', 'og:image')[0]->getAttribute('content');
+            // $data['vod_content'] = $this->getElementsByAttr($doc, 'meta', 'property', 'og:description')[0]->getAttribute('content');
+            $data['vod_writer'] = $doc->getElementById('myinfo_anime_id')->getAttribute('value');
+            
+            $content = $doc->getElementById('content');
+            $infoLeft = $this->getElementsByAttr($content, 'div', 'class', 'leftside')[0];
+            $infoRight = $this->getElementsByAttr($content, 'div', 'class', 'rightside')[0];
+            $baseInfo = $this->getElementsByAttr($infoLeft, 'div', 'class', 'spaceit_pad');
+
+            $description = $this->getElementsByAttr($infoRight, 'p', 'itemprop', 'description')[0];
+            $data['vod_content'] = $description->ownerDocument->saveHTML( $description );
+
+            $genres = [];
+            $genre_nodes = $this->getElementsByAttr($infoLeft, 'span', 'itemprop', 'genre');
+            foreach ( $genre_nodes as $node ) {
+                if ( $node->nodeType == 1 ) { $genres[] = $node->textContent; }
+            }
+            $data['vod_class'] = join(',', $genres);
+            $data['vod_score'] = $this->getElementsByAttr($infoLeft, 'span', 'itemprop', 'ratingValue')[0]->textContent;
+
+            foreach ($baseInfo as $div) {
+                if ( ! $div->hasChildNodes() ) { return; }
+
+                foreach ($div->childNodes as $node) {
+                    if ( $node->nodeType == 1 && $node->getAttribute("class") == "dark_text") {
+                        switch ($node->textContent) {
+                            case 'English:':
+                                $data['vod_name'] = trim($node->nextSibling->textContent);
+                                break;
+                            case 'Episodes:':
+                                $data['vod_remarks'] = trim($node->nextSibling->textContent);
+                                break;
+                            case 'Status:':
+                                $data['vod_remarks'] = array_key_exists('vod_remarks', $data) ? 'Ep.' . $data['vod_remarks'] . '-' . trim($node->nextSibling->textContent) : trim($node->nextSibling->textContent);
+                                break;
+                            case 'Premiered:':
+                                $data['vod_year'] = trim($node->nextSibling->nextSibling->textContent);
+                                break;
+                            case 'Studios:':
+                                $data['vod_director'] = trim($node->nextSibling->nextSibling->textContent);
+                                break;
+                            case 'Duration:':
+                                $data['vod_duration'] = trim($node->nextSibling->textContent);
+                                break;
+                            default:
+                                # code...
+                                break;
+                        }
+                    }
+                }
+            }
+
+            // Characters & Voice Actors
+            $detail_characters_list = $this->getElementsByAttr($infoRight, 'div', 'class', 'detail-characters-list');
+            if ( count($detail_characters_list) ) { $detail_characters_list = $detail_characters_list[0]; }
+            $characters_actors = [];
+
+            if ( $detail_characters_list->hasChildNodes() ) {
+                $key = 0;
+                foreach ($detail_characters_list->childNodes as $column) {
+                    if ( ! $column->hasChildNodes() ) { break; }
+                    $tables = $column->childNodes;
+                    foreach ( $tables as $table ) {
+                        $picSurrounds = $this->getElementsByAttr($table, 'div', 'class', 'picSurround');
+                        if ( count($picSurrounds) == 2 ) {
+                            for ($i=0; $i < 2; $i++) { 
+                                $nodes = $picSurrounds[$i]->childNodes;
+                                foreach ($nodes as $node) {
+                                    if ( $node->nodeType == 1 && $node->nodeName == 'a' ) {
+                                        foreach ($node->childNodes as $item) {
+                                            if ( $item->nodeType == 1 && $item->nodeName == 'img' ) {
+                                                $img = $item->getAttribute('data-src');
+                                                $img = preg_replace('/\\?.*/', '', $img);
+                                                $img = parse_url($img);
+                                                $path = preg_replace('/\/r\/\d+x\d+/', '', $img['path']);
+
+                                                if ( $i == 0 ) {
+                                                    $characters_actors[$key]['c_name'] = $item->getAttribute('alt');
+                                                    $characters_actors[$key]['c_img'] = $img['scheme'] . '://' . $img['host'] . $path;
+                                                } elseif ( $i == 1 ) {
+                                                    $characters_actors[$key]['v_name'] = $item->getAttribute('alt');
+                                                    $characters_actors[$key]['v_img'] = $img['scheme'] . '://' . $img['host'] . $path;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } elseif (count($picSurrounds) == 1 ) {
+                            foreach ($picSurrounds[0]->childNodes as $node) {
+                                if ( $node->nodeType == 1 && $node->nodeName == 'a' ) {
+                                    foreach ($node->childNodes as $item) {
+                                        if ( $item->nodeType == 1 && $item->nodeName == 'img' ) {
+                                            $img = $item->getAttribute('data-src');
+                                            $img = preg_replace('/\\?.*/', '', $img);
+                                            $img = parse_url($img);
+                                            $path = preg_replace('/\/r\/\d+x\d+/', '', $img['path']);
+                                            $characters_actors[$key]['c_name'] = $item->getAttribute('alt');
+                                            $characters_actors[$key]['c_img'] = $img['scheme'] . '://' . $img['host'] . $path;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // Vai trò
+                        $role = $this->getElementsByAttr($table, 'div', 'class', 'spaceit_pad');
+                        if ( count($role) ) {
+                            if ( ! $role[0]->hasChildNodes() ) { continue; }
+                            foreach ( $role[0]->childNodes as $item ) {
+                                if ( $item->nodeType == 1 && $item->nodeName == "small") {
+                                    $characters_actors[$key]['c_role'] = $item->textContent;
+                                }
+                            }
+                        }
+                        $key += 1;
+                    }
+                }
+            }
+
+            $status = $this->anime_insert($data, $characters_actors);
+
+            if ($status) {
+                return $this->success('Thu thập thành công');
+            } else {
+                return $this->error('Thất bại, vui lòng kiểm tra lại');
+            }
+        }
+
+        return $this->fetch('admin@collect/myanimelist');
+    }
+
+    protected function anime_insert($baseInfo, $characters_actors)
+    {
+        if ( ! array_key_exists('vod_name', $baseInfo) ) {
+            $baseInfo['vod_name'] = $baseInfo['vod_en'];
+        }
+        $slug = $this->slugify($baseInfo['vod_name']);
+        $missing_data = array(
+            'vod_sub' => $slug,
+            'vod_status' => 1,
+            'vod_letter' => strtoupper(substr($slug,0,1)),
+            'vod_area' => 'Japan',
+            'vod_time' => time(),
+            'vod_time_add' => time(),
+            'vod_play_url' => '',
+            'vod_down_url' => '',
+            'vod_plot_name' => '',
+            'vod_plot_detail' => '',
+        );
+        $data = array_merge($missing_data, $baseInfo);
+
+        $vod_id = 0;
+        $where = [];
+        $where['vod_name'] = mac_filter_xss($baseInfo['vod_name']);
+        $where['vod_writer'] = $baseInfo['vod_writer'];
+        $info = model('Vod')->where($where)->find();
+
+        if ( !$info ) {
+            $vod_id = model('Vod')->insert($data, false, true);
+        } else {                
+            $vod_id = $info['vod_id'];
+            $where = [];
+            $where['vod_id'] = $info['vod_id'];
+            $update = VodValidate::formatDataBeforeDb($data);
+            model('Vod')->where($where)->update($update);
+        }
+
+        $is_success = false;
+
+        if ($vod_id != 0) {
+            $is_success = true;
+            foreach ($characters_actors as $character) {
+                if ( array_key_exists('c_name', $character) ) {
+                    $actor_id = model('Actor')->where(['actor_name' => $character['c_name']])->find();
+                    if ( $actor_id ) { continue; }
+                    $actor = array(
+                        'type_id' => $vod_id,
+                        'actor_name' => $character['c_name'], // Character
+                        'actor_en' => array_key_exists('v_name', $character) ? $character['v_name'] : '',  // Voice
+                        'actor_pic' => array_key_exists('c_img', $character) ? $character['c_img'] : '', // Character image
+                        'actor_blurb' => array_key_exists('v_img', $character) ? $character['v_img'] : '', // Voice image
+                        'actor_alias' => array_key_exists('c_role', $character) ? $character['c_role'] : 'N/A',
+                        'actor_status' => 1,
+                        'actor_content' => $data['vod_name'],
+                    );
+                    $actor_id = model('Actor')->insert($actor, false, true);
+                    if ($actor_id) {
+                        $is_success = true;
+                    }
+                }
+            }
+        } else {
+            $is_success = false;
+        }
+
+        return $is_success;
+    }
+
+    protected function getElementsByAttr($parentNode, $tagName, $attributeName, $className) {
+        $nodes=array();
+
+        $childNodeList = $parentNode->getElementsByTagName($tagName);
+        for ($i = 0; $i < $childNodeList->length; $i++) {
+            $temp = $childNodeList->item($i);
+            if (stripos($temp->getAttribute($attributeName), $className) !== false) {
+                $nodes[]=$temp;
+            }
+        }
+
+        return $nodes;
     }
 }

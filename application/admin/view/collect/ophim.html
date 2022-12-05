@@ -1,0 +1,171 @@
+{include file="../../../application/admin/view/public/head" /}
+<div class="page-container p10">
+    <div class="layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <label class="layui-form-label">PAGE FROM</label>
+            <div class="layui-input-inline w300">
+                <input name="page_from" type="number" class="layui-input">
+            </div>
+            <label class="layui-form-label">PAGE TO</label>
+            <div class="layui-input-inline w300">
+                <input name="page_to" type="number" class="layui-input">
+            </div>
+            <div class="layui-input-inline">
+                <button id="get_list_movies" class="layui-btn">GET MOVIES</button>
+            </div>
+        </div>
+        <h4>Crawl từng phim</h4>
+        <div class="layui-form-item">
+            <label class="layui-form-label">LINK</label>
+            <div class="layui-input-inline w500">
+                <input name="link_detail" type="text" class="layui-input">
+            </div>
+            <div class="layui-input-inline">
+                <button id="crawl_one" class="layui-btn">CRAWL NOW</button>
+            </div>
+        </div>
+        <div style="display: none" id="msg" class="layui-form-item">
+            <p id="msg_text"></p>
+        </div>
+        <div class="layui-input-block">
+            <textarea id="result_list_movies" rows="10" class="layui-textarea"></textarea>
+        </div>
+        <div class="layui-form-item center">
+            <div class="layui-input-block">
+                <button id="roll_movies" class="layui-btn">TRỘN LINK</button>
+                <button id="crawl_movies" class="layui-btn layui-btn-warm">Crawl Movies</button>
+            </div>
+        </div>
+
+        <div style="display: none;" id="result_success" class="layui-form-item">
+            <p>Crawl Thành Công</p>
+            <div class="layui-input-block">
+                <textarea id="list_crawl_success" rows="10" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div style="display: none;" id="result_error" class="layui-form-item">
+            <p>Crawl Lỗi</p>
+            <div class="layui-input-block">
+                <textarea id="list_crawl_error" rows="10" class="layui-textarea"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="../../../application/admin/view/public/foot" /}
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form','laypage', 'layer','upload'], function() {
+
+        const buttonGetListMovies = $("#get_list_movies");
+        const buttonCrawlOne = $("#crawl_one");
+        const inputPageFrom = $("input[name=page_from]");
+        const inputPageTo = $("input[name=page_to]");
+        const divMsg = $("div#msg");
+        const divMsgText = $("p#msg_text");
+        const textArealistMovies = $("textarea#result_list_movies");
+        const buttonCrawlMovies = $("#crawl_movies");
+        const buttonRollMovies = $("#roll_movies");
+        const divMsgCrawlSuccess = $("div#result_success");
+        const divMsgCrawlError = $("div#result_error");
+        const textAreaResultSuccess = $("textarea#list_crawl_success");
+        const textAreaResultError = $("textarea#list_crawl_error");
+
+        buttonRollMovies.on("click", () => {
+            var listLink = textArealistMovies.val();
+            listLink = listLink.split("\n");
+            listLink.sort(() => Math.random() - 0.5);
+            listLink = listLink.join("\n");
+            textArealistMovies.val(listLink);
+        });
+
+        buttonCrawlOne.on("click", () => {
+            textArealistMovies.show(300);
+        });
+
+        buttonGetListMovies.on("click", () => {
+            divMsg.show(300);
+            textArealistMovies.show(300);
+            crawl_page_callback(inputPageFrom.val());
+        });
+        const crawl_page_callback = (currentPage) => {
+            var urlPageCrawl = `https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=${currentPage}`;
+
+            if (currentPage < inputPageTo.val()) {
+                divMsgText.html("Done!");
+                buttonCrawlMovies.show(300);
+                return false;
+            }
+            divMsgText.html(`Crawl Page: ${urlPageCrawl}`);
+            $.ajax({
+                url: "{:url('crawl_ophim_page')}",
+                type: "POST",
+                data: {
+                    url: urlPageCrawl,
+                },
+                beforeSend: function () {
+                    buttonGetListMovies.hide(300);
+                },
+                success: function (res) {
+                    let currentList = textArealistMovies.val();
+                    if (currentList != "") currentList += "\n" + res;
+                    else currentList += res;
+
+                    textArealistMovies.val(currentList);
+                    currentPage--;
+                    crawl_page_callback(currentPage);
+                },
+            });
+        };
+
+        buttonCrawlMovies.on("click", () => {
+            divMsg.show(300);
+            divMsgCrawlSuccess.show(300);
+            divMsgCrawlError.show(300);
+            crawl_movies(false);
+        });
+        const crawl_movies = () => {
+            var listLink = textArealistMovies.val();
+            listLink = listLink.split("\n");
+            let linkCurrent = listLink.shift();
+            if (linkCurrent == "") {
+                divMsgText.html(`Crawl Done!`);
+                return false;
+            }
+            listLink = listLink.join("\n");
+            textArealistMovies.val(listLink);
+            divMsgText.html(`Crawl Movies: <b>${linkCurrent}</b>`);
+
+            $.ajax({
+                url: "{:url('crawl_ophim_movies')}",
+                type: "POST",
+                data: {
+                    url: linkCurrent,
+                },
+                beforeSend: function () {
+                    buttonCrawlMovies.hide(300);
+                    buttonRollMovies.hide(300);
+                },
+                success: function (res) {
+                    let data = JSON.parse(res);
+                    console.log(data);
+                    if (data.status) {
+                        let currentList = textAreaResultSuccess.val();
+                        if (currentList != "") currentList += "\n" + linkCurrent;
+                        else currentList += linkCurrent;
+                        textAreaResultSuccess.val(currentList);
+                    } else {
+                        let currentList = textAreaResultError.val();
+                        if (currentList != "") currentList += "\n" + linkCurrent;
+                        else currentList += linkCurrent;
+                        textAreaResultError.val(currentList);
+                    }
+                    crawl_movies();
+                },
+            });
+        };
+
+    });
+</script>
+</body>
+</html>

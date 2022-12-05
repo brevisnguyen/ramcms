@@ -95,6 +95,7 @@ class Actor extends Base {
         $page = 1;
         $where = [];
         $totalshow=0;
+        $vod_id=$lp['vod_id'];
 
         if(empty($num)){
             $num = 20;
@@ -229,6 +230,9 @@ class Actor extends Base {
                 $type = array_unique($type);
                 $where['type_id'] = ['in', implode(',', $type)];
             }
+        }
+        if(!empty($vod_id)){
+            $where['type_id'] = ['eq', $vod_id];
         }
         if(!empty($typenot)){
             $where['type_id'] = ['not in',$typenot];

@@ -241,6 +241,7 @@ return array(
         '9408' => array("show"=>0,'name' => '--自定义规则导入', 'controller' => 'cj',		'action' => 'import'),
 
         '95' => array("show"=>1,'name' => 'Crawls OPhim', 'controller' => 'collect',		'action' => 'ophim'),
+        '96' => array("show"=>1,'name' => 'Myanimelist', 'controller' => 'collect',		'action' => 'myanimelist'),
 
     )),
 

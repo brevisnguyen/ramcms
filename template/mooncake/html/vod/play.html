@@ -120,10 +120,10 @@
 											{$obj.vod_class|mac_url_create='class'}
 										</p>
 									</div>
-									<div class="panel play_content">
+									<div class="panel play_content" style="display: none;">
 										<p>Đạo diễn:&nbsp;{$obj.vod_director|mac_url_create='director'}</p>
 										<p>Diễn viên:&nbsp;{$obj.vod_actor|mac_url_create='actor'}</p>
-										<p>{$obj.vod_content|mac_filter_html}</p>
+										<p>{$obj.vod_content}</p>
 									</div>
 								</div>
 							</div>
@@ -171,6 +171,29 @@
 							{/maccms:vod}
 						</div>
 					</div>
+					<!-- Diễn viên và Lồng tiếng -->
+					<div class="pannel clearfix">
+						<div class="pannel_head clearfix">
+							<h3 class="title">Nhân vật & Diễn viên lồng tiếng</h3>
+						</div>
+						<ul class="art_relates clearfix">
+							<!-- type="'.$obj['vod_id'].'" -->
+							{maccms:actor num="10" order="asc" by="id" vod_id="'.$obj['vod_id'].'"}
+							<li>
+								<a href="#" title="{$vo.actor_name}">
+									<div class="artlr_c_pic lazyload" data-original="{$vo.actor_pic}"><span class="look"></span></div>
+									<div class="artlr_c_name">
+										<p class="artlr_b">{$vo.actor_name}</p>
+										<p class="artlr_role">{$vo.actor_alias}</p>
+									</div>
+									<div class="artlr_v_pic lazyload" data-original="{$vo.actor_blurb}"><span class="look"></span></div>
+									<div class="artlr_v_name"><p class="artlr_b">{$vo.actor_en}</p></div>
+								</a>
+							</li>
+							{/maccms:actor}
+						</ul>
+					</div>
+					<!-- END Diễn viên và Lồng tiếng -->
 					<!-- Gợi ý liên quan -->
 					<div class="pannel clearfix">
 						<div class="pannel_head clearfix">
