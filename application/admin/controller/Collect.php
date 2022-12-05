@@ -791,13 +791,13 @@ class Collect extends Base
             $doc = new DOMDocument('1.0', 'utf-8');
             libxml_use_internal_errors(true);
             $doc->preserveWhiteSpace = false;
-            $doc->loadHTML($source_page);
+            $doc->loadHTML(mb_convert_encoding($source_page, 'HTML-ENTITIES', 'UTF-8'));
 
             $data = [];
             $data['type_id'] = intval(input('type_id'));
             $data['vod_en'] = $this->getElementsByAttr($doc, 'meta', 'property', 'og:title')[0]->getAttribute('content');
             $data['vod_pic'] = $data['vod_pic_thumb'] = $this->getElementsByAttr($doc, 'meta', 'property', 'og:image')[0]->getAttribute('content');
-            // $data['vod_content'] = $this->getElementsByAttr($doc, 'meta', 'property', 'og:description')[0]->getAttribute('content');
+            $data['vod_name'] = $this->getElementsByAttr($doc, 'meta', 'property', 'og:title')[0]->getAttribute('content');
             $data['vod_writer'] = $doc->getElementById('myinfo_anime_id')->getAttribute('value');
             
             $content = $doc->getElementById('content');
@@ -805,8 +805,14 @@ class Collect extends Base
             $infoRight = $this->getElementsByAttr($content, 'div', 'class', 'rightside')[0];
             $baseInfo = $this->getElementsByAttr($infoLeft, 'div', 'class', 'spaceit_pad');
 
-            $description = $this->getElementsByAttr($infoRight, 'p', 'itemprop', 'description')[0];
-            $data['vod_content'] = $description->ownerDocument->saveHTML( $description );
+            $synopsis_tag = ['p', 'span'];
+            foreach ( $synopsis_tag as $tag ) {
+                $description = $this->getElementsByAttr($infoRight, $tag, 'itemprop', 'description');
+                if ($description) {
+                    $data['vod_content'] = $description[0]->ownerDocument->saveHTML( $description[0] );
+                    break;
+                }
+            }
 
             $genres = [];
             $genre_nodes = $this->getElementsByAttr($infoLeft, 'span', 'itemprop', 'genre');
@@ -814,7 +820,10 @@ class Collect extends Base
                 if ( $node->nodeType == 1 ) { $genres[] = $node->textContent; }
             }
             $data['vod_class'] = join(',', $genres);
-            $data['vod_score'] = $this->getElementsByAttr($infoLeft, 'span', 'itemprop', 'ratingValue')[0]->textContent;
+            $score = $this->getElementsByAttr($infoLeft, 'span', 'itemprop', 'ratingValue');
+            if ($score) { $data['vod_score'] = $score[0]->textContent; } else { $data['vod_score'] = random_int(5,8) * 1.2; }
+
+            $synonyms = [];
 
             foreach ($baseInfo as $div) {
                 if ( ! $div->hasChildNodes() ) { return; }
@@ -822,8 +831,14 @@ class Collect extends Base
                 foreach ($div->childNodes as $node) {
                     if ( $node->nodeType == 1 && $node->getAttribute("class") == "dark_text") {
                         switch ($node->textContent) {
-                            case 'English:':
-                                $data['vod_name'] = trim($node->nextSibling->textContent);
+                            case 'Synonyms:':
+                            case 'Japanese:':
+                                $alias = explode(',', trim($node->nextSibling->textContent));
+                                foreach ( $alias as &$n ) {
+                                    $n = trim($n);
+                                    // $n = mb_convert_encoding($n, 'UTF-8', 'auto');
+                                    array_push($synonyms, $n);
+                                }
                                 break;
                             case 'Episodes:':
                                 $data['vod_remarks'] = trim($node->nextSibling->textContent);
@@ -847,6 +862,7 @@ class Collect extends Base
                     }
                 }
             }
+            $data['vod_en'] = join(', ', $synonyms);
 
             // Characters & Voice Actors
             $detail_characters_list = $this->getElementsByAttr($infoRight, 'div', 'class', 'detail-characters-list');
@@ -929,8 +945,8 @@ class Collect extends Base
 
     protected function anime_insert($baseInfo, $characters_actors)
     {
-        if ( ! array_key_exists('vod_name', $baseInfo) ) {
-            $baseInfo['vod_name'] = $baseInfo['vod_en'];
+        if ( ! array_key_exists('vod_en', $baseInfo) ) {
+            $baseInfo['vod_en'] = $baseInfo['vod_name'];
         }
         $slug = $this->slugify($baseInfo['vod_name']);
         $missing_data = array(

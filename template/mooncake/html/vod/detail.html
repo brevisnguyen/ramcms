@@ -60,8 +60,8 @@
 									<span class="text_muted hidden_xs">Thể loại:&nbsp;</span>{$obj.vod_class|mac_url_create='class', 'vod', 'search', '&comma;&nbsp;'}&nbsp;
 								</li>
 								<li class="data"><span>Trạng thái:&nbsp;</span><span class="comm_content">{$obj.vod_remarks}</span></li>
-								<li class="data"><span>Diễn viên:&nbsp;</span>{$obj.vod_actor|mac_url_create='actor', 'vod', 'search', '&comma;&nbsp;'}</li>
-								<li class="data"><span>Đạo diễn:&nbsp;</span>{$obj.vod_director|mac_url_create='director'}</li>
+								<li class="data"><span>Tên khác:&nbsp;</span>{$obj.vod_en}</li>
+								<li class="data"><span>Studios:&nbsp;</span>{$obj.vod_director|mac_url_create='director'}</li>
 								<li class="desc hidden_xs"><span class="left text_muted">Nội dung:&nbsp;</span>{$obj.vod_content|mac_substring=150|mac_filter_html}&nbsp;<a href="#desc">Xem thêm&nbsp;></a></li>
 							</ul>
 						</div>
