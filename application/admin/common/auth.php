@@ -240,7 +240,7 @@ return array(
         '9407' => array("show"=>0,'name' => '--自定义规则导出', 'controller' => 'cj',		'action' => 'export'),
         '9408' => array("show"=>0,'name' => '--自定义规则导入', 'controller' => 'cj',		'action' => 'import'),
 
-        '95' => array("show"=>1,'name' => 'Crawls OPhim', 'controller' => 'collect',		'action' => 'ophim'),
+        '95' => array("show"=>1,'name' => 'JAV Films', 'controller' => 'collect',		'action' => 'javfilms'),
 
     )),
 
