@@ -279,24 +279,24 @@ var conch = {
                 }
             })
         },
-        qrcode: function () {
-            $.getScript(maccms.path + "/template/mooncake/asset/js/stem/jquery.qrcode.min.js", function () {
-                $(".cans").qrcode({
-                    width: 120,
-                    height: 120,
-                    text: encodeURI(conch.browser.url)
-                });
+        // qrcode: function () {
+        //     $.getScript(maccms.path + "/template/mooncake/asset/js/stem/jquery.qrcode.min.js", function () {
+        //         $(".cans").qrcode({
+        //             width: 120,
+        //             height: 120,
+        //             text: encodeURI(conch.browser.url)
+        //         });
 
-                function convertCanvasToImage(canvas) {
-                    var image = new Image();
-                    image.src = canvas.toDataURL("image/png");
-                    return image;
-                }
-                var mycans = $('canvas')[0];
-                var img = convertCanvasToImage(mycans);
-                $('.qrcode').append(img);
-            })
-        }
+        //         function convertCanvasToImage(canvas) {
+        //             var image = new Image();
+        //             image.src = canvas.toDataURL("image/png");
+        //             return image;
+        //         }
+        //         var mycans = $('canvas')[0];
+        //         var img = convertCanvasToImage(mycans);
+        //         $('.qrcode').append(img);
+        //     })
+        // }
     },
     scrolltop: function () {
         var a = $(window);
@@ -403,7 +403,7 @@ $(document).ready(function () {
     conch.close();
     conch.shorturl();
     conch.images.lazyload();
-    conch.images.qrcode();
+    // conch.images.qrcode();
     conch.scrolltop();
     conch.copy();
     conch.sort();
