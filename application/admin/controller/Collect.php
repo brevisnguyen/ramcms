@@ -666,10 +666,10 @@ class Collect extends Base
         array_push($arrTags, $sourcePage["movie"]["name"]);
         if($sourcePage["movie"]["name"] != $sourcePage["movie"]["origin_name"]) array_push($arrTags, $sourcePage["movie"]["origin_name"]);
 
-        // if($flag == 'i') {
-        //     $vod_pic = $this->upload_image($sourcePage["movie"]["thumb_url"], $sourcePage["movie"]["name"], $sourcePage["movie"]["year"], 'thumb');
-        //     $vod_pic_slide = $this->upload_image($sourcePage["movie"]["poster_url"], $sourcePage["movie"]["name"], $sourcePage["movie"]["year"], 'slide');
-        // }
+        if($flag == 'i') {
+             $vod_pic = $this->upload_image($sourcePage["movie"]["thumb_url"], $sourcePage["movie"]["name"], $sourcePage["movie"]["year"], 'thumb');
+             $vod_pic_slide = $this->upload_image($sourcePage["movie"]["poster_url"], $sourcePage["movie"]["name"], $sourcePage["movie"]["year"], 'slide');
+        }
     
         $data = array(
             'type_id' => $type_id,
