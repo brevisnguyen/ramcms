@@ -508,7 +508,7 @@ class Collect extends Base
             $url = 'https://javfilms.com/API/v1.0/index.php?';
             $url .= http_build_query([
                 'system' => 'videos',
-                'action' => '',
+                'action' => 'list',
                 'contentid' => '',
                 'sitecode' => 'javfilms',
                 'ip' => '',
@@ -529,6 +529,117 @@ class Collect extends Base
             'code' => 400,
             'msg' => 'Page not found!',
         ]);
+    }
+
+    public function javfilms_get_info()
+    {
+        if (Request()->has('contentid')) {
+            $url = 'https://javfilms.com/API/v1.0/index.php?';
+            $url .= http_build_query([
+                'system' => 'videos',
+                'action' => 'detail',
+                'contentid' => input('contentid'),
+                'sitecode' => 'javfilms',
+                'ip' => '',
+                'token' => '',
+                'category' => '',
+                'page' => '',
+            ]);
+            $res = mac_curl_get($url);
+            $res = json_decode($res);
+            $videos = $res->videos;
+            $cast = $res->casts_videos->cast;
+            $categories = [];
+            foreach ($res->categories as $category) {
+                if ($category->title == null) { continue; }
+                array_push($categories, $category->title);
+            }
+            $director = $videos->director != '' ? $videos->director : '';
+            if ($videos->studio != '') {
+                $studio = explode(',', $videos->studio);
+                if (count($studio) == 2) {
+                    $director = $director . '/' . $studio[1];
+                }
+            }
+
+            $type_id = 1;
+            if ( time() < intval($videos->releasetimestamp) ) {
+                $type_id = 2;
+            } else {
+                $type_id = 1;
+            }
+            $data = array(
+                'type_id' => $type_id,
+                'vod_name' => mac_substring($videos->title, 255),
+                'vod_sub' => $videos->contentid,
+                'vod_en' => $videos->title_jp,
+                'vod_status' => 1,
+                'vod_letter' => strtoupper(substr($videos->videocode,0,1)),
+                'vod_tag' => join(',', [$videos->videocode, $videos->title, $videos->title_jp]),
+                'vod_class' => join(',', $categories),
+                'vod_actor' => $cast != null ? $cast->name : '',
+                // 'vod_pic' => $this->upload_image($videos->thumbnail, $videos->contentid, $videos->year, 'thumbnail'),
+                // 'vod_pic_slide' => $this->upload_image($videos->thumbnail, $videos->contentid, $videos->year, 'coverimage'),
+                'vod_pic_screenshot' => preg_replace('/\s/', ',', $videos->moreimages),
+                'vod_director' => $director,
+                'vod_writer' => $videos->contentid,
+                'vod_remarks' => $videos->videocode . '-' . $videos->year,
+                'vod_pubdate' => date('d/m/Y', $videos->releasetimestamp),
+                'vod_area' => 'Japan',
+                'vod_year' => $videos->year,
+                'vod_hits' => $videos->plays,
+                'vod_duration' => $videos->duration . ' phút',
+                'vod_time' => time(),
+                'vod_time_add' => time(),
+                'vod_content' => "<p>{$videos->title}</p><br><p>Hình ảnh</p><br>",
+                'vod_play_url' => $videos->trailer != '' ? 'Trailer$' . $videos->trailer : '',
+                'vod_play_from' => 'ngm3u8',
+                'vod_plot_name' => '',
+                'vod_plot_detail' => '',
+                'vod_down_url' => '',
+            );
+            $vod_id = 0;
+            $where = [];
+            $where['vod_writer'] = $data['vod_writer'];
+            $info = model('Vod')->where($where)->find();
+            if ( !$info ) {
+                $data['vod_pic'] = $this->upload_image($videos->thumbnail, $videos->contentid, $videos->year, 'thumbnail');
+                $data['vod_pic_slide'] = $this->upload_image($videos->coverimage, $videos->contentid, $videos->year, 'coverimage');
+                $vod_id = model('Vod')->insert($data, false, true);
+            } else {                
+                $vod_id = $info['vod_id'];
+                $where = [];
+                $where['vod_id'] = $info['vod_id'];
+                $update = VodValidate::formatDataBeforeDb($data);
+                model('Vod')->where($where)->update($update);
+            }
+            if ($vod_id != 0 && $cast !== null) {
+                $actor_id = model('Actor')->where(['actor_name' => $cast->name])->find();
+                if ( ! $actor_id ) {
+                    $actor = array(
+                        'type_id' => $vod_id,
+                        'actor_name' => $cast->name,
+                        'actor_en' => $cast->name_jp,
+                        'actor_alias' => $cast->shortcode,
+                        'actor_pic' => $cast->photo,
+                        'actor_status' => 1,
+                        'actor_height' => $cast->height,
+                        'actor_birthday' => $cast->birthday,
+                        'actor_weight' => $cast->waist, // Eo
+                        'actor_birtharea' => $cast->hip, // Mông
+                        'actor_blood' => $cast->bust, // Ngực,
+                        'actor_starsign' => $cast->cup, // Size ngực
+                        'actor_content' => '',
+                    );
+                    $actor_id = model('Actor')->insert($actor, false, true);
+                }
+            }
+            return json([
+                'code' => 200,
+                'msg' => 'Done',
+                'id' => $videos->id,
+            ]);
+        }
     }
 
     protected function upload_image($url, $name, $year, $flag)

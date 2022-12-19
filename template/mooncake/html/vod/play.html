@@ -120,10 +120,15 @@
 											{$obj.vod_class|mac_url_create='class'}
 										</p>
 									</div>
-									<div class="panel play_content">
+									<div class="panel play_content" style="display: none;">
+										<p>Tên gốc:&nbsp;{$obj.vod_en}</p>
 										<p>Đạo diễn:&nbsp;{$obj.vod_director|mac_url_create='director'}</p>
-										<p>Diễn viên:&nbsp;{$obj.vod_actor|mac_url_create='actor'}</p>
-										<p>{$obj.vod_content|mac_filter_html}</p>
+										<p>Diễn viên:&nbsp;{maccms:actor num="1" vod_id="'.$obj['vod_id'].'"}{$vo.actor_name|mac_url_create='actor'}{/maccms:actor}</p>
+										<p>{$obj.vod_content}
+											{maccms:foreach name=":explode(',',$obj.vod_pic_screenshot)" id="vo"}
+												<img src="{$vo}" alt="{$obj.vod_name}" />
+											{/maccms:foreach}
+										</p>
 									</div>
 								</div>
 							</div>
@@ -171,6 +176,34 @@
 							{/maccms:vod}
 						</div>
 					</div>
+					<!-- Diễn viên -->
+					<div class="pannel clearfix">
+						<div class="pannel_head clearfix">
+							<h3 class="title">Diễn viên</h3>
+						</div>
+						<ul class="vodlist clearfix">
+							{maccms:actor num="1" order="asc" by="id" vod_id="'.$obj['vod_id'].'"}
+							<li class="ranklist_item">
+								<a title="{$vo.actor_name}" href="{:mac_url_vod_search(['actor'=>$vo.actor_name])}">
+									<div class="ranklist_img">
+										<div class="ranklist_thumb  lazyload" data-original="{:mac_url_img($vo.actor_pic)}">
+											<span class="pic_text text_right text_dy">{$vo.actor_name}</span>
+										</div>
+									</div>
+									<div class="ranklist_txt">
+										<div class="pannel_head clearfix">
+											<h4 class="title">{$vo.actor_name}</h4>
+											<h4 class="title">{$vo.actor_en}</h4>
+										</div>
+										<p class="vodlist_sub">Ngực&nbsp;{$vo.actor_blood}&nbsp;(Size&nbsp;{$vo.actor_starsign})&nbsp;/&nbsp;Eo&nbsp;{$vo.actor_weight}&nbsp;/&nbsp;Mông&nbsp;{$vo.actor_birtharea}&nbsp;/&nbsp;</p>
+										<p><span class="vodlist_sub">Ngày sinh:&nbsp;{$vo.actor_birthday|default='Đang cập nhật'}</span></p>
+									</div>
+								</a>
+							</li>
+							{/maccms:actor}
+						</ul>
+					</div>
+					<!-- END Diễn viên -->
 					<!-- Gợi ý liên quan -->
 					<div class="pannel clearfix">
 						<div class="pannel_head clearfix">

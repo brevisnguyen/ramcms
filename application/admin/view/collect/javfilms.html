@@ -14,13 +14,15 @@
                 lay-verify="required" lay-reqtext="Page To Không được bỏ trống">
             </div>
             <div class="layui-input-inline">
-                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="crawlBtn">GET INFO</button>
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="crawlBtn" id="crawlBtn">GET INFO</button>
             </div>
         </div>
     </div>
     <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
     <script type="text/html" id="crawlProgress">
-        <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>&nbsp;Loading...
+        <div id="{{=d.id}}">
+            <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>&nbsp;Loading...
+        </div>
     </script>
 </div>
 {include file="../../../application/admin/view/public/foot" /}
@@ -32,26 +34,32 @@
         var layer = layui.layer;
         var table = layui.table;
         var pagesList = [];
+        var tmpPagesList = [];
         form.render();
         form.on('submit(crawlBtn)', function(data) {
             let pageFrom = $('#pageFrom').val();
             let pageTo = $('#pageTo').val();
-            for (let i = parseInt(pageFrom); i <= pageTo; i--) {
+            for (let i = parseInt(pageFrom); i >= pageTo; i--) {
                 pagesList.push(i);
             }
-            crawl_pages([1]);
+            crawl_pages(pagesList);
         });
         const crawl_pages = (pagesList) => {
             if (pagesList.length == 0) {
                 layer.msg('Hoàn thành thu thập', {icon:6, time:2000});
+                $('#crawlBtn').removeClass('layui-btn-disabled');
                 return;
             }
             let currPage = pagesList.shift();
+            tmpPagesList = pagesList;
             $.ajax({
                 type: "GET",
                 url: "{:url('javfilms_get_pages')}",
                 data: {"page": currPage},
                 dataType: "json",
+                beforeSend: function () {
+                    $('#crawlBtn').addClass('layui-btn-disabled');
+                },
                 success: function (response) {
                     if (response.code == 200) {
                         table.render({
@@ -69,25 +77,40 @@
                             ]],
                             limit: response.per_page,
                         });
+                        let contentIds = [];
+                        $.each(response.data, function (idx, val) { 
+                            contentIds.push(val.contentid); 
+                        });
+                        crawl_info(contentIds);
                     } else {
                         layui.msg(response.msg, {icon:5, time:2000});
                     }
                 }
             });
         };
-        // table.render({
-        //     elem: '#currentTableId',
-        //     url: "",
-        //     cols: [[
-        //         {type: "checkbox", width: 50},
-        //         {field: 'id', title: 'ID'},
-        //         {field: 'contentid', title: 'Content'},
-        //         {field: 'videocode', title: 'Code'},
-        //         {field: 'title', title: 'Title'},
-        //         {field: 'duration', title: 'Duration'},
-        //         {field: 'year', title: 'Release'},
-        //     ]],
-        // });
+        const crawl_info = (ids) => {
+            let contentid = ids.shift();
+            if (contentid == null) {
+                crawl_pages(tmpPagesList);
+                return;
+            }
+            $.ajax({
+                type: "GET",
+                url: "{:url('javfilms_get_info')}",
+                data: {"contentid": contentid},
+                dataType: "json",
+                success: function (response) {
+                    if (response.code == 200) {
+                        update_table(response.id, response.msg);
+                    }
+                    crawl_info(ids);
+                }
+            });
+        };
+        const update_table = (id, msg) => {
+            let html = '<i class="layui-icon layui-icon-ok"></i>&nbsp;';
+            $('#' + id).html(html + msg);
+        };
     });
 </script>
 </body>

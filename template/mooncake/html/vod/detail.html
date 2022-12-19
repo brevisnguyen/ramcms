@@ -15,7 +15,7 @@
 		<!-- Thông tin phim {$obj.vod_name} -->
 		<div class="hot_banner ">
 			<div class="bgi_box">
-				<span class="bgi" style="background-image: url({:mac_url_img($obj.vod_pic)})"></span>
+				<span class="bgi" style="background-image: url({:mac_url_img($obj.vod_pic_slide)})"></span>
 				<span class="bgfd"></span>
 			</div>
 			<div class="detail_list_box">
@@ -37,7 +37,7 @@
 								<span class="text_muted pull_right hidden_mb">
 									<a href="javascript:;" class="open-share"><i class="iconfont shaixuan_i">&#xe615;</i>&nbsp;Share</a>
 								</span>
-								<h2 class="title">{$obj.vod_name}</h2>
+								<h2 class="title"><span style="color: #FFB800">{$obj.vod_remarks}</span> {$obj.vod_name}</h2>
 							</div>
 							<div id="detail_rating" class="fn-clear">
 								<div id="rating" class="fn-left" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-score="{$obj.vod_score/2|ceil}">
@@ -59,10 +59,16 @@
 									<span class="text_muted hidden_xs">Quốc gia:&nbsp;</span>{$obj.vod_area|mac_url_create='area'}&nbsp;<span class="split_line"></span>
 									<span class="text_muted hidden_xs">Thể loại:&nbsp;</span>{$obj.vod_class|mac_url_create='class', 'vod', 'search', '&comma;&nbsp;'}&nbsp;
 								</li>
-								<li class="data"><span>Trạng thái:&nbsp;</span><span class="comm_content">{$obj.vod_remarks}</span></li>
-								<li class="data"><span>Diễn viên:&nbsp;</span>{$obj.vod_actor|mac_url_create='actor', 'vod', 'search', '&comma;&nbsp;'}</li>
+								<li class="data"><span>Công chiếu:&nbsp;</span><span class="comm_content">{$obj.vod_pubdate}</span></li>
+								<li class="data">
+									<span class="text_muted hidden_xs">Code:&nbsp;</span>{$obj.vod_remarks}&nbsp;<span class="split_line"></span>
+									<span class="text_muted hidden_xs">Thời lượng:&nbsp;</span>{$obj.vod_duration}&nbsp;<span class="split_line"></span>
+									<span class="text_muted hidden_xs">Lượt xem:&nbsp;</span>{$obj.vod_hits}&nbsp;<span class="split_line"></span>
+								</li>
+								<li class="data"><span>Tên gốc:&nbsp;</span>{$obj.vod_en}</li>
+								<li class="data"><span>Diễn viên:&nbsp;</span>{maccms:actor num="1" vod_id="'.$obj['vod_id'].'"}{$vo.actor_name|mac_url_create='actor'}{/maccms:actor}</li>
 								<li class="data"><span>Đạo diễn:&nbsp;</span>{$obj.vod_director|mac_url_create='director'}</li>
-								<li class="desc hidden_xs"><span class="left text_muted">Nội dung:&nbsp;</span>{$obj.vod_content|mac_substring=150|mac_filter_html}&nbsp;<a href="#desc">Xem thêm&nbsp;></a></li>
+								<!-- <li class="desc hidden_xs"><span class="left text_muted">Nội dung:&nbsp;</span>{$obj.vod_content|mac_substring=150|mac_filter_html}&nbsp;<a href="#desc">Xem thêm&nbsp;></a></li> -->
 							</ul>
 						</div>
 						<div class="content_detail content_min content_btn fl">
@@ -99,14 +105,18 @@
 							<section>
 								<h2>Nội dung</h2>
 								<div class="content_desc context clearfix">
-									<span>{$obj.vod_content|mac_filter_html}</span>
+									<span>{$obj.vod_content}</span>
 									<a href="javascript:void(0);" class="show_btn" onclick="showdiv(this);">
 										<i class="line_bg"></i><i class="iconfont">&#xe63a;</i>
 										<em class="hidden_xs">&nbsp;Mở rộng</em>
 									</a>
 								</div>
 								<div class="content_desc full_text clearfix" style="display:none;">
-									<span>{$obj.vod_content|mac_filter_html}</span>
+									<span>{$obj.vod_content}
+										{maccms:foreach name=":explode(',',$obj.vod_pic_screenshot)" id="vo"}
+											<img src="{$vo}" alt="{$obj.vod_name}" />
+										{/maccms:foreach}
+									</span>
 									<a href="javascript:void(0);" class="hidden_btn" onclick="hidediv(this);">
 										<i class="iconfont">&#xe628;</i>
 										<em class="hidden_xs">&nbsp;Thu gọn</em>
