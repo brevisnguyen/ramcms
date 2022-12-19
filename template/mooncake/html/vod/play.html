@@ -182,7 +182,7 @@
 							<h3 class="title">Diễn viên</h3>
 						</div>
 						<ul class="vodlist clearfix">
-							{maccms:actor num="1" order="asc" by="id" vod_id="'.$obj['vod_id'].'"}
+							{maccms:actor num="1" vod_id="'.$obj['vod_id'].'"}
 							<li class="ranklist_item">
 								<a title="{$vo.actor_name}" href="{:mac_url_vod_search(['actor'=>$vo.actor_name])}">
 									<div class="ranklist_img">
