@@ -1,9 +1,94 @@
 {include file="../../../application/admin/view/public/head" /}
-
+<div class="page-container p10">
+    <div class="layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <label class="layui-form-label">Page From</label>
+            <div class="layui-input-inline">
+                <input type="number" name="pageFrom" id="pageFrom" class="layui-input"
+                lay-verify="required" lay-reqtext="Page From Không được bỏ trống">
+                <tip>Page From phải lớn hơn Page To</tip>
+            </div>
+            <label class="layui-form-label">Page To</label>
+            <div class="layui-input-inline">
+                <input type="number" name="pageTo" id="pageTo" class="layui-input"
+                lay-verify="required" lay-reqtext="Page To Không được bỏ trống">
+            </div>
+            <div class="layui-input-inline">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="crawlBtn">GET INFO</button>
+            </div>
+        </div>
+    </div>
+    <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+    <script type="text/html" id="crawlProgress">
+        <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>&nbsp;Loading...
+    </script>
+</div>
 {include file="../../../application/admin/view/public/foot" /}
 
 <script>
-
+    layui.use(['form', 'table','element'], function () {
+        var $ = layui.jquery;
+        var form = layui.form;
+        var layer = layui.layer;
+        var table = layui.table;
+        var pagesList = [];
+        form.render();
+        form.on('submit(crawlBtn)', function(data) {
+            let pageFrom = $('#pageFrom').val();
+            let pageTo = $('#pageTo').val();
+            for (let i = parseInt(pageFrom); i <= pageTo; i--) {
+                pagesList.push(i);
+            }
+            crawl_pages([1]);
+        });
+        const crawl_pages = (pagesList) => {
+            if (pagesList.length == 0) {
+                layer.msg('Hoàn thành thu thập', {icon:6, time:2000});
+                return;
+            }
+            let currPage = pagesList.shift();
+            $.ajax({
+                type: "GET",
+                url: "{:url('javfilms_get_pages')}",
+                data: {"page": currPage},
+                dataType: "json",
+                success: function (response) {
+                    if (response.code == 200) {
+                        table.render({
+                            elem: '#currentTableId',
+                            data: response.data,
+                            id: 'moviesTable',
+                            cols: [[
+                                {field: 'id', title: 'ID'},
+                                {field: 'contentid', title: 'Content'},
+                                {field: 'videocode', title: 'Code'},
+                                {field: 'title', title: 'Title'},
+                                {field: 'duration', title: 'Duration'},
+                                {field: 'year', title: 'Release'},
+                                {field: 'status', title: 'Status', templet: '#crawlProgress'}
+                            ]],
+                            limit: response.per_page,
+                        });
+                    } else {
+                        layui.msg(response.msg, {icon:5, time:2000});
+                    }
+                }
+            });
+        };
+        // table.render({
+        //     elem: '#currentTableId',
+        //     url: "",
+        //     cols: [[
+        //         {type: "checkbox", width: 50},
+        //         {field: 'id', title: 'ID'},
+        //         {field: 'contentid', title: 'Content'},
+        //         {field: 'videocode', title: 'Code'},
+        //         {field: 'title', title: 'Title'},
+        //         {field: 'duration', title: 'Duration'},
+        //         {field: 'year', title: 'Release'},
+        //     ]],
+        // });
+    });
 </script>
 </body>
 </html>

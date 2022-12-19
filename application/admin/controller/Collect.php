@@ -4,6 +4,7 @@ use think\Db;
 use think\Cache;
 use app\common\validate\Vod as VodValidate;
 use think\Exception;
+use think\Request;
 
 class Collect extends Base
 {
@@ -499,6 +500,35 @@ class Collect extends Base
     public function javfilms()
     {
         return $this->fetch('admin@collect/javfilms');
+    }
+
+    public function javfilms_get_pages()
+    {
+        if (Request()->has('page')) {
+            $url = 'https://javfilms.com/API/v1.0/index.php?';
+            $url .= http_build_query([
+                'system' => 'videos',
+                'action' => '',
+                'contentid' => '',
+                'sitecode' => 'javfilms',
+                'ip' => '',
+                'token' => '',
+                'category' => '',
+                'page' => input('page'),
+            ]);
+            $res = mac_curl_get($url);
+            $res = json_decode($res);
+            return json([
+                'code' => 200,
+                'msg' => 'success',
+                'per_page' => count($res->videos),
+                'data' => $res->videos,
+            ]);
+        }
+        return json([
+            'code' => 400,
+            'msg' => 'Page not found!',
+        ]);
     }
 
     protected function upload_image($url, $name, $year, $flag)
