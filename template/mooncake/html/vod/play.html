@@ -126,7 +126,7 @@
 										<p>Diễn viên:&nbsp;{maccms:actor num="1" vod_id="'.$obj['vod_id'].'"}{$vo.actor_name|mac_url_create='actor'}{/maccms:actor}</p>
 										<p>{$obj.vod_content}
 											{maccms:foreach name=":explode(',',$obj.vod_pic_screenshot)" id="vo"}
-												<img src="{$vo}" alt="{$obj.vod_name}" />
+												<img src="{$vo}" alt="{$obj.vod_name}" rel="nofollow"/>
 											{/maccms:foreach}
 										</p>
 									</div>

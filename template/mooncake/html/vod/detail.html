@@ -114,7 +114,7 @@
 								<div class="content_desc full_text clearfix" style="display:none;">
 									<span>{$obj.vod_content}
 										{maccms:foreach name=":explode(',',$obj.vod_pic_screenshot)" id="vo"}
-											<img src="{$vo}" alt="{$obj.vod_name}" />
+											<img src="{$vo}" alt="{$obj.vod_name}" rel="nofollow"/>
 										{/maccms:foreach}
 									</span>
 									<a href="javascript:void(0);" class="hidden_btn" onclick="hidediv(this);">
