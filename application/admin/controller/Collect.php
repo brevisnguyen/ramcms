@@ -606,8 +606,9 @@ class Collect extends Base
                 $data['vod_pic'] = $this->upload_image($videos->thumbnail, $videos->contentid, $videos->year, 'thumbnail');
                 $data['vod_pic_slide'] = $this->upload_image($videos->coverimage, $videos->contentid, $videos->year, 'coverimage');
                 // $moreimages = [];
-                // foreach (explode(' ',$videos->moreimages) as $image) {
-                //     $moreimages[] = $this->upload_image($image, $videos->contentid, $videos->year, 'screenshort');
+                // $screenshorts = explode("\n", $videos->moreimages);
+                // foreach ($screenshorts as $key => $image) {
+                //     $moreimages[] = $this->upload_image($image, $videos->contentid, $key, 'screenshort-');
                 // }
                 // $data['vod_pic_screenshot'] = join(',', $moreimages);
                 $vod_id = model('Vod')->insert($data, false, true);
@@ -643,6 +644,7 @@ class Collect extends Base
                 'code' => 200,
                 'msg' => 'Done',
                 'id' => $videos->id,
+                // 'sreenshorts' => $moreimages,
             ]);
         }
     }
