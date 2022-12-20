@@ -570,7 +570,7 @@ class Collect extends Base
             }
             $data = array(
                 'type_id' => $type_id,
-                'vod_name' => mac_substring($videos->title, 255),
+                'vod_name' => mac_substring($videos->videocode . ' ' . $videos->title, 255),
                 'vod_sub' => $videos->contentid,
                 'vod_en' => $videos->title_jp,
                 'vod_status' => 1,
@@ -583,7 +583,7 @@ class Collect extends Base
                 'vod_pic_screenshot' => preg_replace('/\s/', ',', $videos->moreimages),
                 'vod_director' => $director,
                 'vod_writer' => $videos->contentid,
-                'vod_remarks' => $videos->videocode . '-' . $videos->year,
+                'vod_remarks' => $videos->videocode,
                 'vod_pubdate' => date('d/m/Y', $videos->releasetimestamp),
                 'vod_area' => 'Japan',
                 'vod_year' => $videos->year,
