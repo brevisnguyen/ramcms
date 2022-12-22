@@ -13,5 +13,4 @@ nohup*
 .well-known
 node_modules/
 /upload
-ophim.html
-ophim.css
+application/data/install/install.lock

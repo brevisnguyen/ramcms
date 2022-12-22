@@ -14,11 +14,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-/* Enabling this variable helps avoid performance problems in row-based replication that can occur when tables have no primary key */
-/* Link: https://stackoverflow.com/questions/62418099/unable-to-create-or-change-a-table-without-a-primary-key-laravel-digitalocean */
-SET @ORIG_SQL_REQUIRE_PRIMARY_KEY = @@SQL_REQUIRE_PRIMARY_KEY;
-SET SQL_REQUIRE_PRIMARY_KEY = 0;
-
 -- 导出  表 ramcms.mac_actor 结构
 CREATE TABLE IF NOT EXISTS `mac_actor` (
   `actor_id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -62,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `mac_actor` (
   `actor_down` mediumint unsigned NOT NULL DEFAULT '0',
   `actor_tpl` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   `actor_jumpurl` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-  `actor_content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `actor_content` mediumtext NULL DEFAULT NULL COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`actor_id`),
   KEY `type_id` (`type_id`) USING BTREE,
   KEY `type_id_1` (`type_id_1`) USING BTREE,
@@ -105,8 +100,6 @@ CREATE TABLE IF NOT EXISTS `mac_admin` (
 
 -- 正在导出表  ramcms.mac_admin 的数据：~0 rows (大约)
 DELETE FROM `mac_admin`;
-INSERT INTO `mac_admin` (`admin_id`, `admin_name`, `admin_pwd`, `admin_random`, `admin_status`, `admin_auth`, `admin_login_time`, `admin_login_ip`, `admin_login_num`, `admin_last_login_time`, `admin_last_login_ip`) VALUES
-	(1, 'admin', '0f359740bd1cda994f8b55330c86d845', 'bf7ce85b418872889c2d619c07fbad5c', 1, '', 1671684927, 2130706433, 53, 1671454966, 2130706433);
 
 -- 导出  表 ramcms.mac_annex 结构
 CREATE TABLE IF NOT EXISTS `mac_annex` (
@@ -820,8 +813,8 @@ CREATE TABLE IF NOT EXISTS `mac_vod` (
   `vod_down_note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   `vod_down_url` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `vod_plot` tinyint unsigned NOT NULL DEFAULT '0',
-  `vod_plot_name` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `vod_plot_detail` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `vod_plot_name` longtext NULL DEFAULT NULL COLLATE utf8mb4_general_ci,
+  `vod_plot_detail` longtext NULL DEFAULT NULL COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`vod_id`),
   KEY `type_id` (`type_id`) USING BTREE,
   KEY `type_id_1` (`type_id_1`) USING BTREE,
