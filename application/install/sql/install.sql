@@ -15,6 +15,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- 导出  表 ramcms.mac_actor 结构
+DROP TABLE IF EXISTS `mac_actor`;
 CREATE TABLE IF NOT EXISTS `mac_actor` (
   `actor_id` int unsigned NOT NULL AUTO_INCREMENT,
   `type_id` int unsigned NOT NULL DEFAULT '0',
@@ -82,6 +83,7 @@ CREATE TABLE IF NOT EXISTS `mac_actor` (
 DELETE FROM `mac_actor`;
 
 -- 导出  表 ramcms.mac_admin 结构
+DROP TABLE IF EXISTS `mac_admin`;
 CREATE TABLE IF NOT EXISTS `mac_admin` (
   `admin_id` smallint unsigned NOT NULL AUTO_INCREMENT,
   `admin_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
@@ -96,12 +98,10 @@ CREATE TABLE IF NOT EXISTS `mac_admin` (
   `admin_last_login_ip` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`admin_id`),
   KEY `admin_name` (`admin_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- 正在导出表  ramcms.mac_admin 的数据：~0 rows (大约)
-DELETE FROM `mac_admin`;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- 导出  表 ramcms.mac_annex 结构
+DROP TABLE IF EXISTS `mac_annex`;
 CREATE TABLE IF NOT EXISTS `mac_annex` (
   `annex_id` int unsigned NOT NULL AUTO_INCREMENT,
   `annex_time` int unsigned NOT NULL DEFAULT '0',
@@ -118,6 +118,7 @@ CREATE TABLE IF NOT EXISTS `mac_annex` (
 DELETE FROM `mac_annex`;
 
 -- 导出  表 ramcms.mac_art 结构
+DROP TABLE IF EXISTS `mac_art`;
 CREATE TABLE IF NOT EXISTS `mac_art` (
   `art_id` int unsigned NOT NULL AUTO_INCREMENT,
   `type_id` smallint unsigned NOT NULL DEFAULT '0',
@@ -192,6 +193,7 @@ CREATE TABLE IF NOT EXISTS `mac_art` (
 DELETE FROM `mac_art`;
 
 -- 导出  表 ramcms.mac_card 结构
+DROP TABLE IF EXISTS `mac_card`;
 CREATE TABLE IF NOT EXISTS `mac_card` (
   `card_id` int unsigned NOT NULL AUTO_INCREMENT,
   `card_no` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
@@ -215,6 +217,7 @@ CREATE TABLE IF NOT EXISTS `mac_card` (
 DELETE FROM `mac_card`;
 
 -- 导出  表 ramcms.mac_cash 结构
+DROP TABLE IF EXISTS `mac_cash`;
 CREATE TABLE IF NOT EXISTS `mac_cash` (
   `cash_id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL DEFAULT '0',
@@ -235,6 +238,7 @@ CREATE TABLE IF NOT EXISTS `mac_cash` (
 DELETE FROM `mac_cash`;
 
 -- 导出  表 ramcms.mac_cj_content 结构
+DROP TABLE IF EXISTS `mac_cj_content`;
 CREATE TABLE IF NOT EXISTS `mac_cj_content` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `nodeid` int unsigned NOT NULL DEFAULT '0',
@@ -251,6 +255,7 @@ CREATE TABLE IF NOT EXISTS `mac_cj_content` (
 DELETE FROM `mac_cj_content`;
 
 -- 导出  表 ramcms.mac_cj_history 结构
+DROP TABLE IF EXISTS `mac_cj_history`;
 CREATE TABLE IF NOT EXISTS `mac_cj_history` (
   `md5` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`md5`),
@@ -261,6 +266,7 @@ CREATE TABLE IF NOT EXISTS `mac_cj_history` (
 DELETE FROM `mac_cj_history`;
 
 -- 导出  表 ramcms.mac_cj_node 结构
+DROP TABLE IF EXISTS `mac_cj_node`;
 CREATE TABLE IF NOT EXISTS `mac_cj_node` (
   `nodeid` smallint unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -300,6 +306,7 @@ CREATE TABLE IF NOT EXISTS `mac_cj_node` (
 DELETE FROM `mac_cj_node`;
 
 -- 导出  表 ramcms.mac_collect 结构
+DROP TABLE IF EXISTS `mac_collect`;
 CREATE TABLE IF NOT EXISTS `mac_collect` (
   `collect_id` int unsigned NOT NULL AUTO_INCREMENT,
   `collect_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
@@ -322,6 +329,7 @@ INSERT INTO `mac_collect` (`collect_id`, `collect_name`, `collect_url`, `collect
 	(1, 'NguonTV', 'https://api.nguonphim.tv/api.php/provide/vod/?ac=list', 2, 1, '', '', '', 0, '', 0, 0);
 
 -- 导出  表 ramcms.mac_comment 结构
+DROP TABLE IF EXISTS `mac_comment`;
 CREATE TABLE IF NOT EXISTS `mac_comment` (
   `comment_id` int unsigned NOT NULL AUTO_INCREMENT,
   `comment_mid` tinyint unsigned NOT NULL DEFAULT '1',
@@ -350,6 +358,7 @@ CREATE TABLE IF NOT EXISTS `mac_comment` (
 DELETE FROM `mac_comment`;
 
 -- 导出  表 ramcms.mac_gbook 结构
+DROP TABLE IF EXISTS `mac_gbook`;
 CREATE TABLE IF NOT EXISTS `mac_gbook` (
   `gbook_id` int unsigned NOT NULL AUTO_INCREMENT,
   `gbook_rid` int unsigned NOT NULL DEFAULT '0',
@@ -373,6 +382,7 @@ CREATE TABLE IF NOT EXISTS `mac_gbook` (
 DELETE FROM `mac_gbook`;
 
 -- 导出  表 ramcms.mac_group 结构
+DROP TABLE IF EXISTS `mac_group`;
 CREATE TABLE IF NOT EXISTS `mac_group` (
   `group_id` smallint NOT NULL AUTO_INCREMENT,
   `group_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
@@ -396,6 +406,7 @@ INSERT INTO `mac_group` (`group_id`, `group_name`, `group_status`, `group_type`,
 	(3, 'VIP', 1, ',1,2,3,4,20,21,22,', '{"1":{"1":"1","2":"2","3":"3","4":"4","5":"5"},"2":{"1":"1","2":"2","3":"3","4":"4","5":"5"},"3":{"1":"1","2":"2","3":"3","4":"4","5":"5"},"4":{"1":"1","2":"2","3":"3","4":"4","5":"5"},"20":{"1":"1","2":"2"},"21":{"1":"1","2":"2"},"22":{"1":"1","2":"2"}}', 10, 70, 300, 3600, 0);
 
 -- 导出  表 ramcms.mac_link 结构
+DROP TABLE IF EXISTS `mac_link`;
 CREATE TABLE IF NOT EXISTS `mac_link` (
   `link_id` smallint unsigned NOT NULL AUTO_INCREMENT,
   `link_type` tinyint unsigned NOT NULL DEFAULT '0',
@@ -416,6 +427,7 @@ CREATE TABLE IF NOT EXISTS `mac_link` (
 DELETE FROM `mac_link`;
 
 -- 导出  表 ramcms.mac_msg 结构
+DROP TABLE IF EXISTS `mac_msg`;
 CREATE TABLE IF NOT EXISTS `mac_msg` (
   `msg_id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL DEFAULT '0',
@@ -435,6 +447,7 @@ CREATE TABLE IF NOT EXISTS `mac_msg` (
 DELETE FROM `mac_msg`;
 
 -- 导出  表 ramcms.mac_order 结构
+DROP TABLE IF EXISTS `mac_order`;
 CREATE TABLE IF NOT EXISTS `mac_order` (
   `order_id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL DEFAULT '0',
@@ -456,6 +469,7 @@ CREATE TABLE IF NOT EXISTS `mac_order` (
 DELETE FROM `mac_order`;
 
 -- 导出  表 ramcms.mac_plog 结构
+DROP TABLE IF EXISTS `mac_plog`;
 CREATE TABLE IF NOT EXISTS `mac_plog` (
   `plog_id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL DEFAULT '0',
@@ -473,6 +487,7 @@ CREATE TABLE IF NOT EXISTS `mac_plog` (
 DELETE FROM `mac_plog`;
 
 -- 导出  表 ramcms.mac_role 结构
+DROP TABLE IF EXISTS `mac_role`;
 CREATE TABLE IF NOT EXISTS `mac_role` (
   `role_id` int unsigned NOT NULL AUTO_INCREMENT,
   `role_rid` int unsigned NOT NULL DEFAULT '0',
@@ -522,37 +537,8 @@ CREATE TABLE IF NOT EXISTS `mac_role` (
 -- 正在导出表  ramcms.mac_role 的数据：~0 rows (大约)
 DELETE FROM `mac_role`;
 
--- 导出  表 ramcms.mac_tmpart 结构
-CREATE TABLE IF NOT EXISTS `mac_tmpart` (
-  `id1` int unsigned NOT NULL AUTO_INCREMENT,
-  `name1` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id1`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- 正在导出表  ramcms.mac_tmpart 的数据：~0 rows (大约)
-DELETE FROM `mac_tmpart`;
-
--- 导出  表 ramcms.mac_tmpvod 结构
-CREATE TABLE IF NOT EXISTS `mac_tmpvod` (
-  `id1` int unsigned NOT NULL AUTO_INCREMENT,
-  `name1` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id1`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- 正在导出表  ramcms.mac_tmpvod 的数据：~0 rows (大约)
-DELETE FROM `mac_tmpvod`;
-
--- 导出  表 ramcms.mac_tmpwebsite 结构
-CREATE TABLE IF NOT EXISTS `mac_tmpwebsite` (
-  `id1` int unsigned NOT NULL AUTO_INCREMENT,
-  `name1` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id1`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- 正在导出表  ramcms.mac_tmpwebsite 的数据：~0 rows (大约)
-DELETE FROM `mac_tmpwebsite`;
-
 -- 导出  表 ramcms.mac_topic 结构
+DROP TABLE IF EXISTS `mac_topic`;
 CREATE TABLE IF NOT EXISTS `mac_topic` (
   `topic_id` smallint unsigned NOT NULL AUTO_INCREMENT,
   `topic_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
@@ -614,6 +600,7 @@ CREATE TABLE IF NOT EXISTS `mac_topic` (
 DELETE FROM `mac_topic`;
 
 -- 导出  表 ramcms.mac_type 结构
+DROP TABLE IF EXISTS `mac_type`;
 CREATE TABLE IF NOT EXISTS `mac_type` (
   `type_id` smallint unsigned NOT NULL AUTO_INCREMENT,
   `type_name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
@@ -655,6 +642,7 @@ INSERT INTO `mac_type` (`type_id`, `type_name`, `type_en`, `type_sort`, `type_mi
 	(7, 'Tin Tức Sao', 'star-news', 2, 2, 5, 1, 'type.html', 'show.html', 'detail.html', '', '', '', '', '', '', '{"class":"","area":"","lang":"","year":"","star":"","director":"","state":"","version":""}', '', '', '');
 
 -- 导出  表 ramcms.mac_ulog 结构
+DROP TABLE IF EXISTS `mac_ulog`;
 CREATE TABLE IF NOT EXISTS `mac_ulog` (
   `ulog_id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL DEFAULT '0',
@@ -676,6 +664,7 @@ CREATE TABLE IF NOT EXISTS `mac_ulog` (
 DELETE FROM `mac_ulog`;
 
 -- 导出  表 ramcms.mac_user 结构
+DROP TABLE IF EXISTS `mac_user`;
 CREATE TABLE IF NOT EXISTS `mac_user` (
   `user_id` int unsigned NOT NULL AUTO_INCREMENT,
   `group_id` smallint unsigned NOT NULL DEFAULT '0',
@@ -717,6 +706,7 @@ CREATE TABLE IF NOT EXISTS `mac_user` (
 DELETE FROM `mac_user`;
 
 -- 导出  表 ramcms.mac_visit 结构
+DROP TABLE IF EXISTS `mac_visit`;
 CREATE TABLE IF NOT EXISTS `mac_visit` (
   `visit_id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned DEFAULT '0',
@@ -732,6 +722,7 @@ CREATE TABLE IF NOT EXISTS `mac_visit` (
 DELETE FROM `mac_visit`;
 
 -- 导出  表 ramcms.mac_vod 结构
+DROP TABLE IF EXISTS `mac_vod`;
 CREATE TABLE IF NOT EXISTS `mac_vod` (
   `vod_id` int unsigned NOT NULL AUTO_INCREMENT,
   `type_id` smallint NOT NULL DEFAULT '0',
@@ -856,6 +847,7 @@ CREATE TABLE IF NOT EXISTS `mac_vod` (
 DELETE FROM `mac_vod`;
 
 -- 导出  表 ramcms.mac_vod_search 结构
+DROP TABLE IF EXISTS `mac_vod_search`;
 CREATE TABLE IF NOT EXISTS `mac_vod_search` (
   `search_key` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '搜索键（关键词md5）',
   `search_word` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '搜索关键词',
@@ -876,6 +868,7 @@ CREATE TABLE IF NOT EXISTS `mac_vod_search` (
 DELETE FROM `mac_vod_search`;
 
 -- 导出  表 ramcms.mac_website 结构
+DROP TABLE IF EXISTS `mac_website`;
 CREATE TABLE IF NOT EXISTS `mac_website` (
   `website_id` int unsigned NOT NULL AUTO_INCREMENT,
   `type_id` smallint unsigned NOT NULL DEFAULT '0',
