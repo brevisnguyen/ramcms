@@ -14,6 +14,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+/* Enabling this variable helps avoid performance problems in row-based replication that can occur when tables have no primary key */
+/* Link: https://stackoverflow.com/questions/62418099/unable-to-create-or-change-a-table-without-a-primary-key-laravel-digitalocean */
+SET @ORIG_SQL_REQUIRE_PRIMARY_KEY = @@SQL_REQUIRE_PRIMARY_KEY;
+SET SQL_REQUIRE_PRIMARY_KEY = 0;
+
 -- 导出  表 ramcms.mac_actor 结构
 DROP TABLE IF EXISTS `mac_actor`;
 CREATE TABLE IF NOT EXISTS `mac_actor` (
