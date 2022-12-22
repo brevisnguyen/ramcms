@@ -1,1 +1,0 @@
-document.write('Mã thống kê website(Google analytics, ...)')
