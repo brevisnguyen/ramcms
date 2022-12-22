@@ -13,3 +13,4 @@ nohup*
 .well-known
 node_modules/
 /upload
+application/data/install/install.lock
