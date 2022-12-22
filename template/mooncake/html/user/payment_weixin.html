@@ -1,0 +1,63 @@
+<?php $name = 'buy'; ?>
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+  <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>微信充值 - 会员中心 - {$maccms.site_name}</title>
+  <meta name="keywords" content="个人中心,{$maccms.site_keywords}" /> 
+  <meta name="description" content="{$maccms.site_description}" />
+{include file="index/include"}
+ </head>
+ <body>
+{include file="index/header"}
+{include file="user/left"}
+       <div class="macplus-user-rows"><h2>微信在线充值<a class="hidden-lg pull-right font-16"  href="{:mac_url('user/index')}">返回</a></h2></div> 
+		<form method="post" target="_blank" action="{:url('user/gopay')}">
+			<input type="hidden" name="order_id" value="{$info.order_id}">
+			<input type="hidden" name="order_code" value="{$info.order_code}">
+       <ul class="macplus-user-rows macplus-pannel-bg"> 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">订单编号</span> 
+          <span class="col-xs-wide-7 col-sm-wide-8 text-overflow">{$order.order_code}</span> 
+         </div> </li>
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">订单金额</span> 
+          <span class="col-xs-wide-7 col-sm-wide-8 text-overflow">{$order.order_price}元</span> 
+         </div> </li>
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">微信扫码</span> 
+          <span class="col-xs-wide-7 col-sm-wide-8 text-overflow"><img src="{:url('user/qrcode')}?data={$payment.code_url|urlencode}" width="150" height="150"/>
+         </div> </li>
+
+		 </div>
+       </ul> 
+	   </form> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+</div> 
+{include file="index/footer"}
+{include file="user/footer"}
+  <script>
+	function check(){
+		$.get("{:url('user/order_info')}" + '?order_id={$order.order_id}', function(data){
+			if(data.info.order_status == 1){
+				alert('支付完成，即将跳转到会员中心');
+				window.location.href = "{:url('user/index')}";
+			}
+		});
+	}
+	$(function(){
+		setInterval(function(){check()}, 5000);  //5秒查询一次支付是否成功
+	})
+</script>  
+ </body>
+</html>

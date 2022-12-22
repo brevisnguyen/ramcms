@@ -1,0 +1,64 @@
+<?php $name = 'orders'; ?>
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+  <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>订单记录 - 个人中心 - {$maccms.site_name}</title> 
+  <meta name="keywords" content="个人中心,{$maccms.site_keywords}" /> 
+  <meta name="description" content="{$maccms.site_description}" />
+{include file="index/include"}
+ </head>
+ <body>
+{include file="index/header"}
+{include file="user/left"}
+       <div class="macplus-user-rows"><h2><a href="{:mac_url('user/orders')}">在线充值记录</a>&nbsp;&nbsp;<a class="text-green" href="{:mac_url('user/cards')}">充值卡记录</a><a class="hidden-lg pull-right font-16"  href="{:mac_url('user/index')}">返回</a></h2></div> 
+       <ul class="macplus-user-rows macplus-pannel-bg"> 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+		  <span class="col-xs-wide-2 col-sm-wide-10 text-overflow">编号</span> 
+          <span class="col-xs-wide-4 col-sm-wide-5 text-overflow">卡号</span> 
+		  <span class="col-xs-wide-2 col-sm-wide-10 text-overflow">面值</span> 
+		  <span class="col-xs-wide-2 col-sm-wide-10 text-overflow">积分</span> 
+		  <span class="col-xs-wide-3 col-sm-wide-2 text-overflow hidden-xs">时间</span> 
+		  </div> </li>{volist name="list" id="vo"} 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-2 col-sm-wide-10 text-overflow">{$vo.card_id}</span> 
+          <span class="col-xs-wide-4 col-sm-wide-5 text-overflow">{$vo.card_no}</span> 
+		  <span class="col-xs-wide-2 col-sm-wide-10 text-overflow">{$vo.card_money}</span> 
+		  <span class="col-xs-wide-2 col-sm-wide-10 text-overflow">{$vo.card_points}</span> 
+		  <span class="col-xs-wide-10 col-sm-wide-2 text-overflow hidden-xs">{$vo.card_use_time|mac_day}</span> 
+		  </div> </li> {/volist}
+		 </div>
+       </ul> 
+		{if$__PAGING__.page_total>1} 
+		<div class="macplus-page text-center clearfix">
+			<ul class="macplus-page_info">
+				<li><a class="page_link" href="{$__PAGING__.page_url|str_replace='PAGELINK',1,###}" title="首页">首页</a></li>
+				<li><a class="page_link" href="{$__PAGING__.page_url|str_replace='PAGELINK',$__PAGING__.page_prev,###}" title="上一页">上一页</a></li>
+				<li class="active visible-xs"><span class="num">{$__PAGING__.page_current}/{$__PAGING__.page_total}</span></li>
+				{volist name="$__PAGING__.page_num" id="num"}
+				{if condition="$__PAGING__['page_current'] eq $num"}
+				<li class="hidden-xs active"><a class="page-link" href="javascript:;" title="第{$num}页">{$num}</a></li>
+				{else}
+				<li class="hidden-xs"><a class="page-link" href="{$__PAGING__.page_url|str_replace='PAGELINK',$num,###}" title="第{$num}页" >{$num}</a></li>
+				{/if}
+				{/volist}
+				<li><a class="page_link" href="{$__PAGING__.page_url|str_replace='PAGELINK',$__PAGING__.page_next,###}" title="下一页">下一页</a></li>
+				<li><a class="page_link" href="{$__PAGING__.page_url|str_replace='PAGELINK',$__PAGING__.page_total,###}" title="尾页">尾页</a></li>
+			</ul>
+		</div>
+		{/if}
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+</div> 
+{include file="index/footer"}
+{include file="user/footer"}
+ </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		{include file="index/seokey"}
+		{include file="index/include"}
+	</head>
+
+	<body>
+		{include file="index/header"}
+
+		<div class="container">
+			<div class="vod_row topic_row">
+				<div class="pannel clearfix">
+					{maccms:vod num="25" paging="yes" pageurl="vod/search" order="desc" by="time"}{/maccms:vod}
+					<div class="pannel_head clearfix"> <h2 class="title">Chủ Đề</h2> </div>
+					<ul class="topiclist clearfix">
+						{maccms:topic num="25" paging="yes" order="desc" by="time"}
+						<li class="topiclist_item num_{$vo.topic_id}">
+							{include file="index/topic_img"}
+						</li>
+						{/maccms:topic}
+					</ul>
+					{include file="index/pageer"}
+				</div>
+			</div>
+		</div>
+		
+		{include file="index/footer"}
+	</body>
+	
+</html>

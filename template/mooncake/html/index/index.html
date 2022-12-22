@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	{include file="index/seokey"}
+	{include file="index/include"}
+</head>
+
+<body class="bstem">
+	{include file="index/header"}
+	{include file="index/slider"}
+
+	<div class="container">
+		<div class="row hidden_mb">
+            <div class="pannel">
+                <ul class="hom_mob_list">
+					{maccms:type mid="1" ids="parent" order="asc" by="sort"}
+					<li>
+						<a class="mob_btn mob_btn{$vo.type_id}" href="{:mac_url_type($vo)}">
+							<i class="iconfont">{if $vo.type_id==1 }&#xe64a;{elseif $vo.type_id==2 }&#xe649;{elseif $vo.type_id==3 }&#xe64b;{elseif $vo.type_id==4 }&#xe648;{/if}</i>
+							<span class="mob_font">{$vo.type_name}</span>
+						</a>
+					</li>
+					{/maccms:type}
+                </ul>
+            </div>
+        </div>
+		<div class="row">
+			<div class="pannel">
+				<ul class="hom_sm_list vodlist_wi">
+					<li class="notice">
+                        <div class="smlist_box">
+                            <marquee scrollamount="4" behavior="scroll" onmouseover=this.stop() onmouseout=this.start()>Chào mừng bạn đến với web xem phim online miễn phí cập nhật nhanh nhất tại: <span class='mycol'>www.ishoutu.com</span> Liên hệ quảng cáo</marquee>
+                            <i class="iconfont nico">&#xe62d;</i>
+                        </div>
+                    </li>
+					<li class="hidden_xs">
+						<div class="smlist_box list_m">
+							{maccms:type ids="1" order="desc" by="sort" id="vo1" key="key1"}
+							<a class="text_muted" href="{:mac_url_type($vo1)}" title="Phim Bộ"><i class="iconfont">&#xe64a;</i>Phim Bộ</a>
+							{maccms:foreach name=":explode(',',$vo1.type_extend.area)" id="vo2" key="key2"}
+							{if$key2 lt 3}
+							<a class="num{$key2}" href="{:mac_url_type($vo1,['area'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a>
+							{/if}
+							{/maccms:foreach}
+							{/maccms:type}
+						</div>
+					</li>
+					<li class="hidden_xs">
+						<div class="smlist_box list_m">
+							{maccms:type ids="2" order="desc" by="sort" id="vo1" key="key1"}
+							<a class="text_muted" href="{:mac_url_type($vo1)}" title="Phim Lẻ"><i class="iconfont">&#xe649;</i>Phim Lẻ</a>
+							{maccms:foreach name=":explode(',',$vo1.type_extend.class)" id="vo2" key="key2"}
+							{if$key2 lt 3}
+							<a class="num{$key2}" href="{:mac_url_type($vo1,['class'=>$vo2],'show')}" title="{$vo2}">{$vo2}</a>
+							{/if}
+							{/maccms:foreach}
+							{/maccms:type}
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Phim Đề Xuất -->
+		<div class="vod_row tit_up">
+			<div class="pannel">
+				<div class="pannel_head clearfix">
+					<a class="text_muted pull_right v_change" href="javascript:;"><i class="iconfont">&#xe62a;</i>&nbsp;Ngẫu nhiên</a>
+					<h2 class="title"><i class="iconfont">&#xe631;</i>Phim Đề Cử</h2>
+					<span class="text_muted pull_left"><a href="{:mac_url('label/rank')}">Mới cập nhật<em class="new_date">{:mac_data_count(0,'today','vod')}</em></a></span>
+				</div>
+				<div class="cbox_list">
+					<div class="cbox1">
+						<ul class="vodlist vodlist_wi list_v6 clearfix">
+							{maccms:vod num="6" order="desc" by="time" level="0" key="key"}
+							<li class="vodlist_item num_{$key}">
+								{include file="index/vod_img"}
+							</li>
+							{/maccms:vod}
+						</ul>
+					</div>
+					<div class="cbox2 hide">
+						<ul class="vodlist vodlist_wi list_v6 clearfix">
+							{maccms:vod num="6" order="desc" by="time" level="0" start="7"}
+							<li class="vodlist_item num_">
+								{include file="index/vod_img"}
+							</li>
+							{/maccms:vod}
+						</ul>
+					</div>
+					<div class="cbox3 hide">
+						<ul class="vodlist vodlist_wi list_v6 clearfix">
+							{maccms:vod num="6" order="desc" by="time" level="0" start="13"}
+							<li class="vodlist_item num_">
+								{include file="index/vod_img"}
+							</li>
+							{/maccms:vod}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END Phim Đề Xuất -->
+		<!-- Tin Tức -->
+		<div class="row tit_up">
+			<div class="pannel">
+				<div class="pannel_head clearfix">
+					<a class="text_muted pull_right v_change" href="javascript:;"><i class="iconfont">&#xe62a;</i>&nbsp;Ngẫu nhiên</a>
+					<h2 class="title"><i class="iconfont">&#xe630;</i>Tin Tức</h2>
+					{maccms:type mid="2" ids="parent" order="asc" by="id"}
+					<a class="text_muted pull_left" href="{:mac_url_type($vo)}">Xem thêm<i class="iconfont more_i">&#xe623;</i></a>
+					{/maccms:type}
+					<span class="hidden_xs pull_left">
+						{maccms:type mid="2" ids="parent" order="asc" by="sort" id="vo" key="key"} 				  
+							{maccms:type parent="'.$vo['type_id'].'" order="asc" by="sort" id="vo2" key="key2"} 
+								<span class="split_line"></span><a href="{:mac_url_type($vo2)}" class="text_muted">{$vo2.type_name}</a>
+							{/maccms:type}
+						{/maccms:type}
+					</span>
+				</div>
+				<div class="cbox_list">
+					<div class="cbox1">
+						<ul class="arthom_list list_v5 clearfix">
+							{maccms:art num="5" paging="yes" type="current" order="desc" by="time" key="key"}
+							<li class="arthom_item num_{$key}">
+								{include file="index/art_img"}
+							</li>
+							{/maccms:art}
+						</ul>
+					</div>
+					<div class="cbox2 hide">
+						<ul class="arthom_list list_v5 clearfix">
+							{maccms:art num="5" start="6" paging="yes" type="current" order="desc" by="time" key="key"}
+							<li class="arthom_item num_{$key}">
+								{include file="index/art_img"}
+							</li>
+							{/maccms:art}
+						</ul>
+					</div>
+					<div class="cbox3 hide">
+						<ul class="arthom_list list_v5 clearfix">
+							{maccms:art num="5" start="13" paging="yes" type="current" order="desc" by="time" key="key"}
+							<li class="arthom_item num_{$key}">
+								{include file="index/art_img"}
+							</li>
+							{/maccms:art}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END Tin Tức -->
+		<!-- Video -->
+		<div class="vod_row tit_up">
+			{maccms:type ids="parent" order="asc" by="sort" id="vo1" key="key1" flag="vod"}
+			<div class="pannel">
+				<div class="pannel_head clearfix">
+					<a class="text_muted pull_right v_change" href="javascript:;"><i class="iconfont">&#xe62a;</i>&nbsp;Ngẫu nhiên</a>
+					<h2 class="title"><i class="iconfont">{switch name="vo1.type_id"}{case value="1"}&#xe64a;{/case}{case value="2"}&#xe649;{/case}{case value="3"}&#xe64b;{/case}{case value="4"}&#xe648;{/case}{default /}&#xe64a;{/switch}</i>{$vo1.type_name}</h2>
+					<a class="text_muted pull_left" href="{:mac_url_type($vo1,[],'show')}">Xem thêm<i class="iconfont more_i">&#xe623;</i></a>
+					<span class="hidden_xs pull_left">
+						{maccms:vod num="3" type="'.$vo1['type_id'].'" order="desc" by="time"}
+						<span class="split_line"></span><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" class="text_muted">{$vo.vod_name}</a>
+						{/maccms:vod}
+					</span>
+				</div>
+				<div class="cbox_list">
+					<div class="cbox1">
+						<ul class="vodlist vodlist_wi list_v6 clearfix">
+							{maccms:vod num="6" type="'.$vo1['type_id'].'" order="desc" by="time" key="key2"}
+							<li class="vodlist_item num_{$key2}">
+								{include file="index/vod_img"}
+							</li>
+							{/maccms:vod}
+						</ul>
+					</div>
+					<div class="cbox2 hide">
+						<ul class="vodlist vodlist_wi list_v6 clearfix">
+							{maccms:vod num="6" start="7" type="'.$vo1['type_id'].'" order="desc" by="time" key="key2"}
+							<li class="vodlist_item num_{$key2}">
+								{include file="index/vod_img"}
+							</li>
+							{/maccms:vod}
+						</ul>
+					</div>
+					<div class="cbox3 hide">
+						<ul class="vodlist vodlist_wi list_v6 clearfix">
+							{maccms:vod num="6" start="13" type="'.$vo1['type_id'].'" order="desc" by="time" key="key2"}
+							<li class="vodlist_item num_{$key2}">
+								{include file="index/vod_img"}
+							</li>
+							{/maccms:vod}
+						</ul>
+					</div>
+				</div>
+			</div>
+			{/maccms:type}
+		</div>
+		<!-- END Video -->
+		<!-- Topic -->
+		<div class="row tit_up">
+			<div class="pannel">
+				<div class="pannel_head clearfix">
+					<h2 class="title"><i class="iconfont">&#xe64c;</i>Chủ Đề</h2>
+                    <a class="text_muted pull_left" href="{:mac_url_topic_index()}">Xem thêm<i class="iconfont more_i">&#xe623;</i></a>
+				</div>
+				<ul class="topiclist topic_hom list_v5 clearfix">
+					{maccms:topic num="10" order="desc" by="sort" ids="all" key="key"}
+					<li class="topiclist_item num_{$key}">
+						{include file="index/topic_img"}
+					</li>
+					{/maccms:topic}
+				</ul>
+			</div>
+		</div>
+		<!-- END Topic -->
+		<!-- Ranking -->
+		<div class="row tit_up">
+			<div class="pannel">
+				<div class="pannel_head clearfix">
+                    <h2 class="title"><i class="iconfont">&#xe618;</i>Bảng Xếp Hạng</h2>
+                    <a class="text_muted pull_left" href="{:mac_url('label/rank')}">Xem thêm<i class="iconfont more_i">&#xe623;</i></a>
+                </div>
+				<div class="rank_hom list_scroll">
+					{maccms:type ids="1,2,3,4" order="asc" by="sort" id="vo1" key="key1"}
+					<div class="rank_info">
+						<div class="list_info">
+							<div class="pannel_head clearfix">
+                                <h3 class="title">Xếp hạng {$vo1.type_name}</h3>
+                            </div>
+							<ul class="part_rows">
+								{maccms:vod num="5" type="'.$vo1['type_id'].'" order="desc" by="hits"}
+								{if condition="$key eq 1"}
+								<li class="ranklist_item">
+									<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+										<div class="ranklist_img">
+											<div class="ranklist_thumb  lazyload" data-original="{:mac_url_img($vo.vod_pic)}">
+												<span class="play hidden_xs"></span>
+												<span class="part_nums part_num1">1</span>
+                                                <span class="pic_text text_right text_dy">{$vo.vod_score}</span>
+											</div>
+										</div>
+										<div class="ranklist_txt">
+											<div class="pannel_head clearfix">
+												<span class="text_muted pull_right"><i class="iconfont">&#xe631;</i>{$vo.vod_hits}</span>
+                                                <h4 class="title">{$vo.vod_name}</h4>
+												<p class="vodlist_sub">{$vo.vod_year}&nbsp;/&nbsp;{$vo.vod_area}&nbsp;/&nbsp;{$vo.vod_version}</p>
+                                            	<p><span class="vodlist_sub">Trạng thái: {$vo.vod_remarks}</span></p>
+											</div>
+										</div>
+									</a>
+								</li>
+								{else}
+								<li class="part_eone">
+									<a href="{:mac_url_vod_detail($vo)}">
+                                        <span class="part_nums part_num{$key}">{$key}</span>
+										<span class="text_muted pull_right renqi"><i class="iconfont">&#xe631;</i>&nbsp;{$vo.vod_hits}</span>
+										{$vo.vod_name}
+									</a>
+								</li>
+								{/if}
+								{/maccms:vod}
+							</ul>
+						</div>
+					</div>
+					{/maccms:type}
+				</div>
+			</div>
+		</div>
+		<!-- END Ranking -->
+	</div>
+	<!-- Footer -->
+	{include file="index/footer"}
+	<!-- END Footer -->
+</body>
+
+</html>

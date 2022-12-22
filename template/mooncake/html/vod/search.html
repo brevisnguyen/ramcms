@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		{include file="index/seokey"}
+		{include file="index/include"}
+	</head>
+
+	<body>
+		{include file="index/header"}
+
+		<div class="container ">
+			<div class="left_row fl">
+				<div class="pannel search_box clearfix">
+					<div class="pannel_head clearfix">
+						<h3 class="title">
+							{maccms:vod num="10" paging="yes" pageurl="vod/search" order="desc" by="time"}{/maccms:vod}
+							Có <em class="mac_total"></em> kết quả cho "<em>{$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year}{$param.class}</em>"
+						</h3>
+					</div>
+					<!-- Danh sách kết quả -->
+					<ul class="vodlist clearfix">
+						{maccms:vod num="10" paging="yes" pageurl="vod/search" order="desc" by="time"}
+						<li class="searchlist_item">
+							<div class="searchlist_img">
+								<a class="vodlist_thumb lazyload" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" data-original="{:mac_url_img($vo.vod_pic)}">
+									<span class="play hidden_xs"></span>
+									<span class="pic_text text_right">{$vo.vod_remarks}</span>
+                            	</a>
+							</div>
+							<div class="searchlist_titbox">
+								<h4 class="vodlist_title"><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"><span class="info_right">{$vo.type.type_name}</span>{$vo.vod_name}</a></h4>
+								<p class="vodlist_sub"><span>Đạo diễn: </span>{$vo.vod_director}</p>
+								<p class="vodlist_sub"><span>Diễn viên: </span>{$vo.vod_actor}</p>
+								<p class="vodlist_sub hidden_xs"><span>Nội dung: </span>{$vo.vod_content|mac_filter_xss}</p>
+								<div class="seebtn"><a href="{:mac_url_vod_detail($vo)}">Xem Phim&nbsp;<i class="iconfont">&#xe623;</i></a></div>
+							</div>
+						</li>
+						{/maccms:vod}
+					</ul>
+					{include file="index/pageer"}
+					<!-- END Danh sách kết quả -->
+				</div>
+			</div>
+			<div class="right_row fr pa_left hidden_xs hidden_mi">
+				<div class="pannel clearfix">
+					<div class="pannel_head clearfix">
+						<h3 class="title">Phim Đang HOT</h3>
+					</div>
+					<ul class="ranklist_r clearfix">
+						{maccms:vod num="10" type="all" order="desc" by="hits"}
+						<li class="part_eone">
+							<a href="{:mac_url_vod_detail($vo)}"><span class="part_nums part_num{$key}">{$key}</span><span class="info_right">{$vo.type.type_name}</span>{$vo.vod_name}</a>
+						</li>
+						{/maccms:vod}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$('.mac_total').html('{$__PAGING__.record_total}');
+		</script>
+
+		{include file="index/footer"}
+	</body>
+</html>

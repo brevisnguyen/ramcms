@@ -1,0 +1,208 @@
+{if condition="$maccms.aid eq 1"}
+<header id="header" class="wrapper">
+    <div class="nav">
+        <h1 class="slogan">{$sb.dscms.jc.gg}. Chúc các bạn xem phim vui vẻ<em>+</em></h1>
+        <div id="index-nav">
+            <ul class="nav-menu-items">
+                <li class="nav-menu-item selected">
+                    <a class="nav-link" href="{$maccms.path}" title="{$maccms.site_name}">Trang chủ</a>
+                </li>
+                {maccms:type ids="parent" order="asc" by="sort"}
+                <li class="nav-menu-item ">
+                    <a class="nav-link" href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+                </li>
+                {/maccms:type}
+                <li class="space-line-bold"></li>
+                <li class="nav-menu-item ec-head-app"><a class="nav-link" href="{$sb.dscms.jc.appurl}" title="Tải App"><i class="icon-app"></i>APP</a></li>
+                <li class="nav-menu-item drop hide">
+					<span class="nav-menu-icon">
+                        <i class="icon-all"></i>
+                    </span>
+                    <div class="drop-content sub-block">
+                        <div class="drop-content-box grid-box">
+                            <ul class="drop-content-items grid-items">
+
+                                <li class="grid-item">
+                                    <a href="{$maccms.path}">
+                                        <i class='icon-home'></i>
+                                        <div class="grid-item-name" title="{$maccms.site_name}">Trang chủ</div>
+                                    </a>
+                                </li>
+                                {maccms:type ids="parent" order="asc" by="sort"}
+                                <li class="grid-item">
+                                    <a href="{:mac_url_type($vo)}">
+                                        <i class='
+                                        {switch name="vo.type_id"}{case value="1"}
+                                        icon-cate-dy
+                                        {/case}{case value="2"}
+                                        icon-cate-ds
+                                        {/case}{case value="3"}
+                                        icon-cate-zy
+                                        {/case}{case value="4"}
+                                        icon-cate-dm
+                                        {/case} {default /}
+                                        icon-more
+                                        {/switch}
+                                        '></i>
+                                        <div class="grid-item-name" title="{$vo.type_name}">{$vo.type_name}</div>
+                                    </a>
+                                </li>
+                                {/maccms:type}
+                                <li class="grid-item grid-more">
+                                    <a href="{:mac_url_type($obj,['id'=>'1'],'show')}" title="Xem tất cả video">
+                                        <div class="grid-item-name">Tất cả videos</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shortcuts-mobile-overlay"></div>
+                </li>
+                <li class="space-line-bold"></li>
+                <li class="nav-menu-item drop">
+					<span class="nav-menu-icon">
+                        <i class="icon-watch-history"></i>
+                    </span>
+                    <div class="drop-content drop-history">
+                        <div class="drop-content-box">
+                            <ul class="drop-content-items" id="history">
+                                <li class="list-item list-item-title">
+                                    <a href="" class="playlist historyclean">
+                                        <i class="icon-clear"></i>
+                                    </a>
+                                    <strong>Lịch sử xem</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shortcuts-mobile-overlay"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="search-content">
+        <div class="index-logo"><span class="logo-s"><img style="overflow: auto;object-fit: cover;" src="{:mac_url_img($sb.dscms.jc.logo1)}" title="{$maccms.site_name}"></span></div>
+        <form method="get" action="{:mac_url('vod/search')}">
+            <div class="search-box">
+                <input class="search-input ac_wd" id="txtKeywords" type="text" name="wd" autocomplete="off" placeholder="Tìm kiếm...">
+                <div class="search-drop">
+                    <div class="drop-content-items ac_hot none">
+                        <div class="list-item list-item-title"><strong>Những chỉ mục mọi người đang tìm kiếm</strong></div>
+                        <div class="search-tag">
+                            {maccms:foreach name=":explode(',',$maccms.search_hot)" id="vo2" key="key2"}
+                            <a href="{:mac_url('vod/search',['wd'=>$vo2])}" {if condition="$key2 < 4"}class="hot"{/if}><i class="icon-hot"></i>{$vo2}</a>
+                            {/maccms:foreach}
+                        </div>
+                    </div>
+                </div>
+                <button class="search-btn search-go" type="submit"><i class="icon-search"></i></button>
+                <button class="cancel-btn" type="button">Hủy bỏ</button>
+            </div>
+        </form>
+    </div>
+</header>
+{else /}
+<header id="header" class="wrapper">
+    <div class="nav content">
+        <div class="brand">
+            <a href="{$maccms.path}" class="logo" title="{$maccms.site_name}"><img style="object-fit: cover;overflow: auto;" src="{:mac_url_img($sb.dscms.jc.logo2)}" alt="{$maccms.site_name}"></a>
+        </div>
+        <div class="nav-search">
+            {if condition="$maccms.aid neq 13"}
+            <form method="get" action="{:mac_url('vod/search')}">
+                <div class="search-box">
+                    <input class="search-input ac_wd" id="txtKeywords" type="text" name="wd" autocomplete="off" placeholder="Tìm kiếm...">
+                    <div class="search-drop">
+                        <div class="drop-content-items ac_hot none">
+                            <div class="list-item list-item-title"><strong>Những chỉ mục mọi người đang tìm kiếm</strong></div>
+                            <div class="search-tag">
+                                {maccms:foreach name=":explode(',',$maccms.search_hot)" id="vo2" key="key2"}
+                                <a href="{:mac_url('vod/search',['wd'=>$vo2])}" {if condition="$key2 < 4"}class="hot"{/if}><i class="icon-hot"></i>{$vo2}</a>
+                                {/maccms:foreach}
+                            </div>
+                        </div>
+                    </div>
+                    <button class="search-btn search-go" type="submit"><i class="icon-search"></i></button>
+                    <button class="cancel-btn" type="button">Hủy bỏ</button>
+                </div>
+            </form>
+            {/if}
+        </div>
+        <nav class="nav-menu">
+            <ul class="nav-menu-items">
+                <li class="nav-menu-item">
+                    <a class="nav-link" href="{$maccms.path}" title="{$maccms.site_name}"><span class="nav-menu-item-name">Trang chủ</span></a>
+                </li>
+                {maccms:type ids="parent" order="asc" by="sort"}
+                <li class='nav-menu-item {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"} selected{/if}'>
+                    <a class='nav-link' href="{:mac_url_type($vo)}"><span class="nav-menu-item-name">{$vo.type_name}</span></a>
+                </li>
+                {/maccms:type}
+                <li class="nav-menu-item drop">
+					<span class="nav-menu-icon">
+                        <i class="icon-all"></i>
+                    </span>
+                    <div class="drop-content sub-block">
+                        <div class="drop-content-box grid-box">
+                            <ul class="drop-content-items grid-items">
+
+                                <li class="grid-item">
+                                    <a href="{$maccms.path}">
+                                        <i class='icon-home'></i>
+                                        <div class="grid-item-name" title="{$maccms.site_name}">Trang chủ</div>
+                                    </a>
+                                </li>
+                                {maccms:type ids="parent" order="asc" by="sort"}
+                                <li class="grid-item">
+                                    <a href="{:mac_url_type($vo)}">
+                                        <i class='
+                                        {switch name="vo.type_id"}{case value="1"}
+                                        icon-cate-dy
+                                        {/case}{case value="2"}
+                                        icon-cate-ds
+                                        {/case}{case value="3"}
+                                        icon-cate-zy
+                                        {/case}{case value="4"}
+                                        icon-cate-dm
+                                        {/case} {default /}
+                                        icon-more
+                                        {/switch}
+                                        '></i>
+                                        <div class="grid-item-name" title="{$vo.type_name}">{$vo.type_name}</div>
+                                    </a>
+                                </li>
+                                {/maccms:type}
+                                <li class="grid-item grid-more">
+                                    <a href="{:mac_url_type($obj,['id'=>'1'],'show')}" title="Xem tất cả videos">
+                                        <div class="grid-item-name">Tất cả videos</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shortcuts-mobile-overlay"></div>
+                </li>
+                <li class="space-line-bold"></li>
+                <li class="nav-menu-item drop">
+					<span class="nav-menu-icon">
+                        <i class="icon-watch-history"></i>
+                    </span>
+                    <div class="drop-content drop-history">
+                        <div class="drop-content-box">
+                            <ul class="drop-content-items" id="history">
+                                <li class="list-item list-item-title">
+                                    <a href="" class="playlist historyclean">
+                                        <i class="icon-clear"></i>
+                                    </a>
+                                    <strong>Lịch sử xem</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shortcuts-mobile-overlay"></div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+{/if}

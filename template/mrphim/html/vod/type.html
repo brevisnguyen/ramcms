@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>最新{$obj.type_title}-推荐{$obj.type_title}-第{$param.page}页 - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" />
+    {include file="public/include"}
+</head>
+<body class="page">
+{include file="public/head"}
+<main id="main" class="wrapper">
+    <div class="content">
+        <div class="page-heading">
+            <h1 class="page-title">{$obj.type_title}</h1>
+            <div class="list-header scroll-box">
+                <div class="block-box-items scroll-content">
+                    {maccms:type num="8" ids="current" order="asc" by="sort" flag="vod"}
+                    <div class="block-box-item ">
+                        <a class="block-box-content" href="{:mac_url_type($vo,['area'=>$param.area,'year'=>$param.year,'class'=>$param.class],'show')}" title="{$vo.type_name|mac_filter_html}"><strong class="title">{$vo.type_name|mac_filter_html}</strong></a>
+                        <div class="block-box-bg">{$vo.type_name|mac_filter_html}</div>
+                    </div>
+                    {/maccms:type}
+                    {if condition='$key neq 0'}
+                    <div class="space-line-bold"></div>
+                    {/if}
+                    <div class="block-box-item"><a class="block-box-content" href="{:mac_url_type($obj,['id'=>'1'],'show')}" title="查看全部{$obj.type_title}"><strong class="title">Thư viện videos</strong></a>
+                        <div class="block-box-bg"><i class="icon-cate-dy"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="module module-bg">
+            <div class="module-heading">
+                <h2 class="module-title">{$obj.type_title}Phim hot</h2>
+            </div>
+            <div class="module-list module-lines-list">
+                <div class="module-items">
+                    {maccms:vod num="16" level="1" type="current" order="desc" by="time"}
+                    {include file="assembly/vodlist"}
+                    {/maccms:vod}
+                </div>
+            </div>
+        </div>
+        {if$obj.childids}
+        {maccms:type parent="current" order="asc" by="sort" mid="1" id="vo3"}
+        <div class="module module-bg">
+            <div class="module-heading">
+                <h2 class="module-title">{$vo3.type_name}</h2>
+            </div>
+            <div class="module-list module-lines-list">
+                <div class="module-items">
+                    {maccms:vod num="16" type="'.$vo3['type_id'].'" order="desc" by="time"}
+                    {include file="assembly/vodlist"}
+                    {/maccms:vod}
+                </div>
+            </div>
+        </div>
+        {/maccms:type}
+        {else}
+        <div class="module module-bg">
+            <div class="module-heading">
+                <h2 class="module-title">Bản cập nhật mới nhất</h2>
+            </div>
+            <div class="module-list module-lines-list">
+                <div class="module-items">
+                    {maccms:vod num="32" type="current" order="desc" by="time"}
+                    {include file="assembly/vodlist"}
+                    {/maccms:vod}
+                </div>
+            </div>
+        </div>
+        {/if}
+    </div>
+    <div class="module-footer module-type">
+        <a href="{:mac_url_type($obj,['id'=>'1'],'show')}" class="load-all" title="全部{$obj.type_title}">Tất cả{$obj.type_title}<i class="icon-arrow-right-o"></i></a>
+    </div>
+</main>
+{include file="public/foot"}
+</body>
+</html>

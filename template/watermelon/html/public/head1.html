@@ -1,0 +1,196 @@
+<!--wap端头部-->
+<div class="m_acmsd">
+<div class="wrapper">
+<div class="mask" id="mask_box"></div>
+<header class="header1 clearfix  nav" id="header">
+<p class="headLeft"><a href="{$maccms.site_url}" class="aLogo"></a></p>
+<p class="headRight">
+<a href="javascript:void(0);" class="aNav"><span>导航</span></a>
+<a href="javascript:void(0);" class="aSearch"><span>搜索</span></a>
+<a href="javascript:void(0);" class="aUnLogin"><span id="history">历史</span></a>
+<a href="{:mac_url('gbook/index')}" class="aHome"><span id="unameHeader">求片</span></a>
+</p>
+</header>
+
+<nav class="subNav globalPadding index_menu_top nav2" id="nav_menu" style="display:none; ">
+<div class="con clearfix">
+<p>
+<a href="{$maccms.path}" title="首页" class="{if condition="$maccms.aid eq 1"} cur{/if}">首页</a>
+{maccms:type num="10" order="asc" by="sort" ids="1,2,3,4,5"}
+<a  href="{:mac_url_type($vo)}" class="{$vo.type_id}={$vo.type_pid} {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"} cur{/if}">{$vo.type_name}</a>
+{/maccms:type}
+</p>
+</div>
+</nav>
+<section id="search_box" class="searchMenu" style="display:none">
+<form id="search" name="search" method="get" action="{:mac_url('vod/search')}" onSubmit="return qrsearch();" >
+<div class="searchFormCon globalPadding">
+<p class="pSearchForm">
+<input type="text" class="searchTxt searchTxtBlur ac_input mac_wd" name="wd" autocomplete="off" value="{$param.wd}" placeholder="请输入影片名称" /><input type="submit" value="" class="searchBtn search-button sub" id="searchbutton"><i class="clearSearchBtn" style="display:none;"><em></em></i>
+</p>
+</div>
+</form>        
+</section> 
+{maccms:art num="1" order="desc" by="time" level="1"}
+<div style='color:red;padding: 5px;margin: 10 5px;margin-top: 5px;font-size: 14px;border: 1px solid red;'>
+{$vo.art_content|mac_url_content_img}	
+</div>
+{/maccms:art}
+<div style="margin-top:10px;"></div>
+</div>
+<div style="margin-top:-80px;"></div>
+</div>
+<!--wap端头部 end-->
+<div class="pc_acmsd " >
+<div class="header clearfix">
+<div class="head wrap clearfix">
+<div class="logo"><a href="{$maccms.path}"></a></div>
+<div class="searchvod">
+<form name="formsearch" id="formsearch" action="{:mac_url('vod/search')}" method="post" target="_self">
+<input type="text" name="wd" class="search-input mac_wd" value="{$param.wd}" placeholder="请输入影片名称" id="searchword" />
+<input type="submit" id="searchbutton"  class=" sub" value="搜索影片" />
+</form>
+
+
+<div class="hotwords mbyc">热搜：
+ {maccms:foreach name=":explode(',',$maccms.search_hot)" id="vo2" key="key2"}
+<a href="{:mac_url('vod/search',['wd'=>$vo2])}">{$vo2}</a>
+{/maccms:foreach}
+</div>
+</div>
+<a href="javascript:void(0);" target="_self" class="caidan_btn pcyc"><i class="caidan"></i><span>导航</span></a>
+<ul id="tbmov-plus" class="mbyc">
+<li><a id="new" href="{:mac_url('label/new')}"><i class="ui-icon new-icon"></i>最近<br>更新</a></li>
+<li><a href="{:mac_url('label/hot')}"><i class="ui-icon top-icon"></i>影片<br>排行</a></li>
+<li><a rel="nofollow" href="{:mac_url('gbook/index')}"><i class="ui-icon gb-icon"></i>留言<br>反馈</a></li>
+<li><a rel="nofollow" target="_self" id="a-clo" href="javascript:void(0);" onmouseout="hideImg()" onmouseover="showImg()">手机<br>观看</a></li>
+<div id="wxImg" style="display:none;position: absolute; top: 85px; right: 0; z-index: 100;"><p style="text-align: center;">扫描二维码，访问《{$maccms.site_name}》</p><img src="{$maccms.path_tpl}images/wxewm.png"></div>
+</ul>	
+</div>
+<div class="sjmenu pcyc">
+<ul class="nav wrap clearfix">
+<li class="{if condition="$maccms.aid eq 1"} current{/if}"><a href="{$maccms.path}"><i class="fa fa-home"></i>首页</a></li>
+{maccms:type num="10" order="asc" by="sort" ids="parent"}
+<li><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+{/maccms:type}
+</ul>
+</div>
+<div class="menu mbyc">
+<ul class="nav wrap clearfix">
+<li class="{if condition="$maccms.aid eq 1"} current{/if}"><a href="{$maccms.path}"><i class="fa fa-home"></i>首页</a></li>
+{maccms:type num="10" order="asc" by="sort" ids="1,2,3,4,5"}
+<li class="{$vo.type_id}={$vo.type_pid} {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"} current{/if}"><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+{/maccms:type}
+<li class="lishi flr mbyc">
+	<div class="hisBox">
+				<div class="looked-box" id="List_top_0" onmouseover="showTop(0);" onmouseout="hideTop();" style="display: none;">
+					<div class="list1">
+						观看历史
+					</div>
+					<div class="widget-record">
+						<div class="list">
+							<ul class="item" id="history">
+								<li class="kong" style="color:#fff;">没有观看历史</li>
+							</ul>
+						</div>
+						<div class="info">
+							<span class="count"><a href="javascript:void(0)" onclick="DelHistory(-1); return false;" title="清空所有观看记录" target="_self" s>清空所有记录</a></span><span class="clock"><a href="javascript:void(0)" title="关闭" onclick="hideTop();" target="_self" >关闭</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="hisboxout">
+					<a href="javascript:void(0)" class="history" id="Tab_top_0" onmouseover="showTop(0);WriteHistory();" onmouseout="hideTop();">播放记录</a>
+				</div>
+			</div>
+		
+</li>
+</ul>
+</div>
+<div id="subnav" class="mbyc">
+<div class="layout fn-clear">
+{maccms:type ids="1" order="asc" by="sort" id="vo1" key="key1" flag="vod"}		
+<div class="subnav-tv fn-left"><strong class="movie">{$vo1.type_name}：</strong>
+{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2" }
+<a href="{:mac_url_type($vo2,[],'show')}">{$vo2.type_name}</a><em>|</em>
+{/maccms:type}
+</div>
+{/maccms:type}
+{maccms:type ids="2" order="asc" by="sort" id="vo1" key="key1" flag="vod"}		
+<div class="subnav-tv fn-right"><strong class="tv">{$vo1.type_name}：</strong>
+{maccms:type parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2" }
+<a href="{:mac_url_type($vo2,[],'show')}">{$vo2.type_name}</a><em>|</em>
+{/maccms:type}
+</div>
+{/maccms:type}
+</div>
+</div>
+</div>
+<div style="margin-top:10px;"></div>
+</div>
+<!--滚动头部-->
+<div class="pc_acmsd box" >
+<div class="header clearfix">
+<div class="sjmenu pcyc">
+<ul class="nav wrap clearfix">
+<li class="{if condition="$maccms.aid eq 1"} current{/if}"><a href="{$maccms.path}"><i class="fa fa-home"></i>首页</a></li>
+{maccms:type num="10" order="asc" by="sort" ids="parent"}
+<li><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+{/maccms:type}
+</ul>
+</div>
+<div class="menu mbyc">
+<ul class="nav wrap clearfix">
+<li class="{if condition="$maccms.aid eq 1"} current{/if}"><a href="{$maccms.path}"><i class="fa fa-home"></i>首页</a></li>
+{maccms:type num="10" order="asc" by="sort" ids="1,2,3,4,5"}
+<li class="{$vo.type_id}={$vo.type_pid} {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"} current{/if}"><a href="{:mac_url_type($vo)}">{$vo.type_name}</a></li>
+{/maccms:type}
+
+<div class="searchvod" style=" float: right;">
+<form name="formsearch" id="formsearch" action="{:mac_url('vod/search')}" method="post" target="_self">
+<input type="text" name="wd" class="search-input mac_wd" value="" placeholder="请输入影片名称" id="searchword" style="background: #fff;border: 2px solid #fff;">
+<input type="submit" id="searchbutton" class=" sub" value="搜索影片">
+</form>
+</div>
+</ul>
+</div>
+</div>
+<div style="margin-top:10px;"></div>
+</div>
+<script>
+    $(window).on("scroll",function(){
+            //判断向下滑动的距离
+            if($(window).scrollTop()>=100){
+                //将顶部导航栏固定
+                $(".nav").addClass("fixed");
+            }else{
+                $(".nav").removeClass("fixed");
+            }
+        });
+         $(window).on("scroll",function(){
+            //判断向下滑动的距离
+            if($(window).scrollTop()>=100){
+                //将顶部导航栏固定
+                $(".nav2").addClass("fixed2");
+            }else{
+                $(".nav2").removeClass("fixed2");
+            }
+        });
+</script>
+<style>
+    .fixed {
+          position: fixed;
+           top: 0;
+           z-index: 99;
+           width: 100%;
+
+}
+.fixed2{
+    position: fixed;
+           top: 50px;
+           z-index: 99;
+           width: 100%;
+}
+</style>
+<div class="homepage_top_bx_bg">	
+<div class="gonggao"><p><i class="fa fa-volume-down" aria-hidden="true"></i> 温馨提示：欢迎访问</p> <h1><a href="https://www.watermelon.com">西瓜影视</a></h1>，<p>请记住网址：www.watermelon.com，感谢网友的支持！提供最新高清电影热播电视剧在线观看，为广大用户免费提供在线观看电影和电视剧服务。</p></div>
+</div>

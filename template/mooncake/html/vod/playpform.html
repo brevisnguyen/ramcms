@@ -1,0 +1,19 @@
+     <div class="macplus-pannel macplus-pannel-bg clearfix">
+      <div class="macplus-pannel-box">
+       <div class="macplus-pannel_hd">
+        <div class="macplus-pannel__head clearfix">
+         <h3 class="title">Bình Luận Phim {$obj.vod_name}</h3>
+        </div>
+       </div>
+       <div class="macplus-pannel_bd">
+            <div class="mac_comment" data-id="{$obj.vod_id}" data-mid="{$maccms.mid}" ></div>
+       </div>
+      </div>
+    <script>
+        $(function(){
+            MAC.Comment.Login = {$comment.login};
+            MAC.Comment.Verify = {$comment.verify};
+            MAC.Comment.Init();
+            MAC.Comment.Show(1);
+        });
+    </script>

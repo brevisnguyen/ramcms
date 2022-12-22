@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>{$maccms.site_name}</title>
+    <meta name="keywords" content="{$maccms.site_keywords}" />
+    <meta name="description" content="{$maccms.site_description}" />
+    {include file="public/include"}
+</head>
+<body class="homepage">
+{include file="public/head"}
+<main id="index-main" class="wrapper">
+    <div class="content">
+        <!-- Video Statistic -->
+        <div class="module">
+            <h2>Cập nhật hôm nay <a href="javascript:;" class="module-tab-item" style="font-weight: 700;color: #ff2a14;">{:mac_data_count($obj.type_id,'today','vod')}</a> 
+                Tổng <a href="javascript:;" class="module-tab-item" style="font-weight: 700;color: #ff2a14;">{:mac_data_count($obj.type_id,'all','vod')}</a></h2>
+        </div>
+        <!-- 正在热播action -->
+        <div class="module" style="display: none !important;">
+            <div class="module-heading">
+                <h2 class="module-title">ĐANG PHÁT SÓNG</h2>
+            </div>
+            <div class="module-list module-lines-list">
+                <div class="module-items">
+                    {maccms:vod num="16" level="1" type="current" order="desc" by="time"}
+                    {include file="assembly/vodlist"}
+                    {/maccms:vod}
+                </div>
+            </div>
+        </div>
+        <!-- 正在热播end -->
+        <div class="module">
+            <div class="module-heading">
+                <h2 class="module-title"><i class="icon-cate-zy cornflowerblue"></i> PHIM MỚI CẬP NHẬT</h2>
+                <div class="module-tab">
+                    <input type="hidden" name="tab" id="tab" class="module-tab-input">
+                    <label class="module-tab-name"><span class="module-tab-value">Tất cả</span><i class="icon-arrow-bottom"></i></label>
+                    <div class="module-tab-items">
+                        <div class="module-tab-title">Danh mục<span class="close-drop"><i class="icon-close-o"></i></span></div>
+                        <div>
+                            {maccms:type ids="1,2,3,4" order="desc" by="sort"}
+                            <span class="module-tab-item tab-item {if condition='$vo.type_id eq 4'}selected{/if}" data-dropdown-value="{$vo.type_name}">{$vo.type_name}</span>
+                            {/maccms:type}
+                        </div>
+                    </div>
+                </div>
+                <div class="shortcuts-mobile-overlay"></div>
+            </div>
+            <div>
+                {maccms:type ids="1,2,3,4" order="desc" by="sort" mid="1" id="vo3"}
+                <div class="module-list module-line-list tab-list {if condition='$vo3.type_id eq 4'}selected{/if}">
+                    <div class="module-items scroll-box">
+                        <div class="scroll-content">
+                            {maccms:vod num="8" type="'.$vo3['type_id'].'" order="desc" by="time"}
+                            {include file="assembly/vodlist"}
+                            {/maccms:vod}
+                        </div>
+                    </div>
+                    <div class="module-footer">
+                        <a href="{:mac_url_type($obj,['id'=>'1'],'show')}" class="load-all" title="Thêm">Xem thêm<i class="icon-arrow-right-o"></i></a>
+                    </div>
+                </div>
+                {/maccms:type}
+            </div>
+        </div>
+        <!-- 最新影片 -->
+        {maccms:type ids="1,2,3,4" order="asc" by="sort" mid="1" id="vo3"}
+        <div class="module">
+            <div class="module-heading">
+                <h2 class="module-title">
+                    <i class='
+                        {switch name="vo3.type_id"}
+                        {case value="1"}
+                            icon-cate-dy coral
+                        {/case}
+                        {case value="2"}
+                            icon-cate-ds darkcyan
+                        {/case}
+                        {case value="3"}
+                            icon-tv violet
+                        {/case}
+                        {case value="4"}
+                            icon-cate-dm darkmagenta
+                        {/case}
+                        {default /}
+                            icon-more
+                        {/switch}
+                        '>
+                    </i>
+                    {$vo3.type_name}
+                </h2>
+                <a class="more" href="{:mac_url_type($vo3,[],'show')}" title="Nhiều phim hơn">Xem thêm<i class="icon-arrow-right-o"></i>
+                </a>
+            </div>
+            <div class="module-list module-lines-list">
+                <div class="module-items">
+                    {maccms:vod num="16" type="'.$vo3['type_id'].'" order="desc" by="time"}
+                    {include file="assembly/vodlist"}
+                    {/maccms:vod}
+                </div>
+            </div>
+        </div>
+        {/maccms:type}
+        <!-- 列表 -->
+    </div>
+</main>
+<div id="friendlink" class="wrapper hidden-xs">
+    <div class="content">
+        <h2>Liên kết:</h2>
+        {maccms:link num="10" type="all" order="desc" by="id"}
+        <a href="{$vo.link_url}" target="_blank" title="{$vo.link_name}">{$vo.link_name}</a>
+        {/maccms:link}
+        <br>
+         {$sb.dscms.jc.zhizhang} 
+        <!--<center>Cảm ơn bạn đã sử dụng mã nguồn này, nếu bạn thích nó, hãy truyền bá nó 😊</center>-->
+    </div>
+</div>
+{include file="public/foot"}
+</body>
+</html>

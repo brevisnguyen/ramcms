@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	{include file="index/seokey"}
+	{include file="index/include"}
+</head>
+
+<body id="graypage">
+	{include file="index/header"}
+	<div class="container white_pal">
+		<div class="input_row">
+			<div class="pannel clearfix">
+				<!-- Gbook -->
+				<div class="mac_msg_r">
+                    <form class="gbook_form gbook_font">
+                        <textarea class="gbook_content" name="gbook_content" placeholder="Nhập lời nhắn"></textarea>
+                        <div class="msg_code">
+                            <div class="remaining_w">Mẹo: Có thể viết <span class="gbook_remaining remaining">200</span> từ</div>
+							{if $gbook.verify == 1}
+                            <input type="text" name="verify" placeholder="Mã xác nhận" class="verify">
+							<img class="comm-code" src="{:mac_url('verify/index')}" data-role="{:mac_url('verify/index')}" title="Lấy mã mới" onClick="this.src=this.src+'?v=time()'"/>
+							{/if}
+                            <input type="button" class="gbook_submit submit_btn" value="Gửi">
+                        </div>
+                    </form>
+                </div>
+				<!-- END Gbook -->
+			</div>
+		</div>
+		<!-- List Gbook -->
+		<div class="commlist_row">
+			<div class="comm_list pannel clearfix">
+				<div class="pannel_head clearfix">
+					{maccms:gbook num="10" paging="yes" order="desc" by="id"}{/maccms:gbook}
+                    <span class="pull_right">Tổng&nbsp;<span class="mycol">{$__PAGING__.record_total}</span>&nbsp;lời nhắn&nbsp;&nbsp;Trang&nbsp;<span class="mycol">1</span></span>
+                    <h2 class="title">Lời nhắn</h2>
+                </div>
+				<ul class="part_rows">
+					{maccms:gbook num="10" paging="yes" order="desc" by="id"}
+					<li class="comm_each line_top margin">
+                        <img class="comm_avat part_roun" src="{:mac_get_user_portrait($vo['user_id'])}" />
+                        <div class="comm_head">
+                            <strong class="text_line">{$vo.gbook_name|htmlspecialchars_decode}</strong>
+                            <span class="part_tips">{$vo.gbook_time|date='Y-m-d H:i:s',###}<span class="split_line"></span><span class="mycol">#{$key}</span></span>
+                        </div>
+                        <div class="comm_cont">
+                            <div class="comm_content">
+								{$vo.gbook_content}
+							</div>
+							{if condition="$vo.gbook_reply_time gt 0"}
+							<div class="comm_reply comm_reply_child back_ashen comm_tops">
+								<div class="comm_rp_head comm_head">
+									<span class="text_line">Admin</span>
+									<span class="part_tips">{$vo.gbook_reply_time|date='Y-m-d H:i:s',###}</span>
+									<div class="comm_content">{$vo.gbook_reply}</div>
+								</div>
+							</div>
+							{/if}
+                        </div>
+                    </li>
+					{/maccms:gbook}
+				</ul>
+				{include file="index/pageer"}
+			</div>
+		</div>
+		<!-- END List Gbook -->
+	</div>
+	<script>
+		$(function () {
+			MAC.Gbook.Login = {$gbook.login};
+			MAC.Gbook.Verify = {$gbook.verify};
+			MAC.Gbook.Init();
+		});
+	</script>
+	{include file="index/footer"}
+</body>
+
+</html>

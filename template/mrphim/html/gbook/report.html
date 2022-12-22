@@ -1,0 +1,15 @@
+<form class="gbook_form" id="myform">
+ 	<div class="pb20 clearfix">
+ 		<textarea class="form-control gbook_data" name="gbook_content" rows="5" placeholder="Vui lòng nhập nội dung tin nhắn">{$param.name}</textarea>
+ 	</div>
+ 	<div class="clearfix">
+ 		<span class="gbook_remaining text-muted hidden-xs ec-head-app">Có thể nhập tối đa 200 ký tự</span>
+ 		<span class="pull-right">
+                                {if condition="$gbook.verify eq 1"}
+                               Mã xác nhận：<input type="text" name="verify" class="mac_verify form-control verify">
+                                {/if}
+			<a href="javascript:;" class="btn btn-warm gbook_submit btn-important">Xác nhận</a>
+
+ 		</span>
+    </div>	     				
+</form>

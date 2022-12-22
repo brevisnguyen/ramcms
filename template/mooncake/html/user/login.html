@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>Đăng nhập - {$maccms.site_name}</title>
+		<meta name="keywords" content="{$maccms.site_keywords}" />
+		<meta name="description" content="{$maccms.site_description}" />
+		<link href="{$maccms.path_tpl}asset/css/member/member.conch.css" type="text/css" rel="stylesheet" />
+		<script src="{$maccms.path}static/js/jquery.js"></script>
+		<script src="{$maccms.path}static/js/jquery.autocomplete.js"></script>
+		<script src="{$maccms.path_tpl}asset/js/hlhtml.js"></script>
+		<script src="{$maccms.path_tpl}asset/js/member/jquery.superslide.js"></script>
+		<script src="{$maccms.path_tpl}asset/js/member/system.hl.user.js"></script>
+		<script>var maccms={"path":"","mid":"6","url":"www.test.cn","wapurl":"wap.test.cn","mob_status":"0"};</script>
+		<script src="{$maccms.path}static/js/home.js"></script>
+		<script src="{$maccms.path_tpl}asset/js/member/formValidator-4.0.1.js" type="text/javascript"></script>
+		<script src="{$maccms.path}static/js/jquery.imageupload.js"></script>
+	</head>
+
+	<body id="reg">
+		<div class="reg-w">
+			<div class="reg-logo">
+				<a title="{$maccms.site_name}" style="background-image: url({$maccms.path_tpl}asset/img/logo_black.png);" href="/"></a>
+			</div>
+			<form method="post" id="fm" action="">
+				<h4>Đăng Nhập</h4>
+				<div class="reg-group">
+					<label class="bd-r" style="letter-spacing: normal;">Username</label><input type="text" id="user_name" name="user_name" class="reg-control" placeholder="Tên tài khoản">
+				</div>
+				<div class="reg-group">
+					<label>Mật khẩu</label><input type="password" id="user_pwd" name="user_pwd" class="reg-control" placeholder="Mật khẩu">
+				</div>
+				<input type="button" id="btn_submit" class="btn-brand btn-sub" value="Đăng Nhập">
+			</form>
+			<div class="reg-ts">
+			<a href="/">Trang chủ</a><a href="/index.php/user/reg.html">Đăng Ký</a><a href="/index.php/user/findpass.html">Quên mật khẩu</a>
+			</div>
+			<div class="reg-dl">
+				<ul>
+				</ul>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+			$(function(){
+				$("body").bind('keyup',function(event) {
+					if(event.keyCode==13){ $('#btnLogin').click(); }
+				});
+				$('#btn_submit').click(function() {
+					if ($('#user_name').val()  == '') { alert('Tên tài khoản trống'); $("#user_name").focus(); return false; }
+					if ($('#user_pwd').val()  == '') { alert('Bạn chưa nhập mật khẩu'); $("#user_pwd").focus(); return false; }
+					if ($('#verify').length> 0 && $('#verify').val()  == '') { alert('Bạn chưa nhập mã xác nhận'); $("#verify").focus(); return false; }
+
+					$.ajax({
+						url: "/index.php/user/login.html",
+						type: "post",
+						dataType: "json",
+						data: $('#fm').serialize(),
+						beforeSend: function () {
+							$("#btn_submit").css("background","#fd6a6a").val("loading...");
+						},
+						success: function (r) {
+							if(r.code==1){
+								location.href="/index.php/user/index.html";
+							}
+							else{
+								alert(r.msg);
+								$('#verify_img').click();
+							}
+						},
+						complete: function () {
+							$("#btn_submit").css("background","#fa4646").val("Đăng Nhập");
+						}
+					});
+
+				});
+			});
+
+		</script>
+		<div class="footer">
+			<div class="layout">
+				<div class="copyright">
+					<p>&copy; 2022 <a class="color" href="#">{$maccms.site_url}</a>  All Rights Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

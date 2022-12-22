@@ -1,0 +1,37 @@
+<div id="left" class="dl-bl">
+	<div id="ui-nav" class="m-nav">
+		<a href="javascript:MAC.GoBack()" class="btn-left"><i class="iconfont ico-right">&#xe625;</i></a>
+		<a href="/" class="btn-right"><i class="iconfont ico-right">&#xe634;</i></a>
+	</div>
+	<div class="tou">
+		<div class="tou-left">
+			<img class="face" src="{$maccms.path}static/images/touxiang.png" alt="Ảnh đại diện">
+		</div>
+		<div class="tou-right">
+			<span class="name-tit">{$obj.user_name}</span>
+		</div>
+	</div>
+	<div class="menber-info">
+		<div class="info-box">
+			<p class="m-points">{$obj.user_points}</p>
+			<p class="text-small">Điểm của bạn</p>
+		</div>
+		<div class="info-box">
+			<a href="{:mac_url('user/popedom')}">
+				<p>{$obj.group.group_name}</p>
+				<p class="text-small">Nhóm</p>
+			</a>
+		</div>
+	</div>
+	<ul>
+		<li><a href="{:mac_url('user/ajax_info')}"><i class="iconfont yonghu">&#xe62b;</i>Thông tin cơ bản<i class="iconfont ico-right">&#xe623;</i></a></li>
+		<li><a href="{:mac_url('user/info')}"><i class="iconfont xiugai">&#xe65e;</i>Cập nhật thông tin<i class="iconfont ico-right">&#xe623;</i></a></li>
+	</ul>
+	<ul>
+		<li><a href="{:mac_url('user/favs')}"><i class="iconfont lishi">&#xe629;</i>Bộ sưu tập<i class="iconfont ico-right">&#xe623;</i></a></li>
+		<li><a href="{:mac_url('user/plays')}"><i class="iconfont lishi">&#xe624;</i>Lịch sử xem<i class="iconfont ico-right">&#xe623;</i></a></li>
+	</ul>
+	<ul class="logout-ul">
+		<li class="logout-item"><a class="logout-link" href="{:mac_url('user/logout')}">Đăng xuất</a></li>
+	</ul>
+</div>

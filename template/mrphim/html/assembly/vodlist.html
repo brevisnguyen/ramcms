@@ -1,0 +1,27 @@
+<div class="module-item">
+    <div class="module-item-cover">
+        <div class="module-item-pic">
+            <a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" >
+                <i class="icon-play"></i>
+            </a>
+            <img class="lazy lazyloaded"  data-src="{:mac_url_img($vo.vod_pic)}" src="{:mac_url_img($sb.dscms.jc.pic)}"  alt="{$vo.vod_name}">
+            <div class="loading"></div>
+        </div>
+        <div class="module-item-caption">
+            <span>{$vo.vod_year}</span>
+            <span class="video-class">{$vo.type.type_name|default=$vo.type_1.type_name}</span>
+            <span>{$vo.vod_tag|default=$vo.vod_class|mac_substring=2}</span>
+        </div>
+        <div class="module-item-content">
+            <div class="module-item-style video-name">
+                <a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a>
+            </div>
+            <div class="module-item-style video-tag">{$vo.vod_actor|mac_url_create='actor','vod','search'}</div>
+            <div class="module-item-style video-text">{$vo.vod_content|mac_url_content_img}</div>
+        </div>
+    </div>
+    <div class="module-item-titlebox">
+        <a href="{:mac_url_vod_detail($vo)}" class="module-item-title" title="{$vo.vod_name}">{$vo.vod_name}</a>
+    </div>
+    <div class="module-item-text">{$vo.vod_remarks|mac_default='Lượt xem '.$vo.vod_hits}</div>
+</div>

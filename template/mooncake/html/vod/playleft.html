@@ -1,0 +1,61 @@
+	{if$maccms.aid==15}
+     <div class="macplus-pannel macplus-pannel-bg clearfix">
+      <div class="macplus-pannel-box">
+       <div class="macplus-pannel_hd">
+        <div class="macplus-pannel__head clearfix">
+         <h3 class="title">Diễn Viên</h3>
+        </div>
+       </div>
+       <div class="macplus-pannel_bd">
+         <div class="macplus-pannel-by2">
+        <ul class="macplus-vodlist__bd macplus-vodlist__at clearfix">
+		{maccms:foreach name=":explode(',',$obj.vod_actor)"}
+		{if$key < 5}
+         <li class="col-md-5 col-sm-4 col-xs-3{if$key==0} active{/if}{if$key > 2} hidden-xs{/if}">
+		<a class="role-wrap" href="#actorlist{$key+1}" data-toggle="tab">
+           <div class="col-xs-wide-35">
+            <img alt="{$vo1.actor_name}" src="{$maccms.path}macplus/img/avatar.jpg" class="role-img">
+           </div> 
+           <div class="col-xs-wide-65">
+            <h5 class="actor-name text-overflow">{$vo}</h5> 
+            <p class="text-muted hidden-xs">Vai Chính</p>
+           </div> 
+           <i class="line"></i>
+          </a>
+		  </li>
+		  {/if}
+		{/maccms:foreach}
+        </ul>
+         </div>
+		{maccms:foreach name=":explode(',',$obj.vod_actor)"}
+		{if$key < 5}
+        <ul class="macplus-vodlist__tor clearfix fade{if$key==0} active in{/if}" id="actorlist{$key+1}">
+		{maccms:vod num="5"" type="current" actor="'.$vo.'" order="desc" by="time"}
+         <li class="col-md-5 col-sm-4 col-xs-3">
+		  {include file="index/vod_img1"}
+		  </li>
+		{/maccms:vod}
+        </ul>
+		{/if}
+		{/maccms:foreach}
+       </div>
+      </div>
+     </div>
+	 {/if}
+     <div class="macplus-pannel macplus-pannel-bg clearfix">
+      <div class="macplus-pannel-box">
+       <div class="macplus-pannel_hd">
+        <div class="macplus-pannel__head clearfix">
+         <h3 class="title">Có Thể Bạn Thích</h3>
+        </div>
+       </div>
+       <div class="macplus-pannel_bd">
+        <ul class="macplus-vodlist__bd clearfix">
+		{maccms:vod num="10" type="current" order="desc" by="sort"}
+         <li class="col-md-5 col-sm-4 col-xs-3{if$key > 9} hidden-md hidden-xs{/if}">
+		  {include file="index/vod_img"}
+		  </li>
+		{/maccms:vod}
+        </ul>
+       </div>
+      </div>

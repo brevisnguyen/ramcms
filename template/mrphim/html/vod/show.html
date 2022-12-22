@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Cập nhật{$obj.type_name}-Đề xuất{$obj.type_name}-Lọc trang đầu tiên{$param.page} - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" />
+    {include file="public/include"}
+</head>
+<body class="library page">
+{include file="public/head"}
+<main id="main" class="wrapper">
+    <div class="content">
+        <div class="page-heading">
+            <h1 class="page-title">Thư viện videos</h1>
+            <div class="box">
+                <div class="library-box library-box-first scroll-box">
+                    <div class="scroll-content">
+                        <div class="library-list">
+                            {maccms:type ids="parent" order="asc" by="sort" flag="vod"}
+                            <a href="{:mac_url_type($vo,[],'show')}" class="library-item  {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}selected{/if}" title=" {$vo.type_name|mac_filter_html}">{$vo.type_name}</a>
+                            {/maccms:type}
+                        </div>
+                    </div>
+                </div>
+                {if$obj.childids||$obj.parent.childids}
+                <div class="library-box scroll-box">
+                    <div class="scroll-content">
+                        <a class="library-item library-item-first  {if condition="$obj.type_pid eq ''" }selected{/if}" href="{:mac_url_type($obj['parent'],['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">Tất cả các loại</a>
+                        <div class="library-list">
+                            {maccms:type ids="current" by="sort" order="asc"}
+                            <a class="library-item {if condition="$vo['type_id'] == $obj['type_id']" }selected{/if}" href="{:mac_url_type($vo,[],'show')}">{$vo.type_name}</a>
+                            {/maccms:type}
+                        </div>
+                    </div>
+                </div>
+                {/if}
+                <!-- {if $obj.type_extend.class||$obj.parent.type_extend.class}
+                <div class="library-box scroll-box">
+                    <div class="scroll-content">
+                        <a class="library-item library-item-first  {if condition="$param['class'] eq ''" }selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>'','order'=>$param['order'],'by'=>$param['by'] ],'show')}">Tất cả câu chuyện</a>
+                        <div class="library-list">
+                            {empty name="$obj.type_extend.area"} {maccms:foreach name=":explode(',',$obj.parent.type_extend.class)" id="vo2" key="key2"}
+                            <a class="library-item {if condition="$param['class'] eq $vo2" } selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a>
+                            {/maccms:foreach} {else /} {maccms:foreach name=":explode(',',$obj.type_extend.class)" id="vo2" key="key2"}
+                            <a class="library-item {if condition="$param['class'] eq $vo2" }selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a>
+                            {/maccms:foreach} {/empty}
+                        </div>
+                    </div>
+                </div>
+                {/if} -->
+                <!-- <div class="library-box scroll-box">
+                    <div class="scroll-content">
+                        <a class="library-item library-item-first  {if condition="$param['area'] eq ''" }selected{/if}" href="{:mac_url_type($obj,['area'=>'','lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">Tất cả khu vực</a>
+                        <div class="library-list">
+                            {empty name="$obj.type_extend.area"} {maccms:foreach name=":explode(',',$obj.parent.type_extend.area)" id="vo2" key="key2"}
+                            <a class="library-item {if condition="$param['area'] eq $vo2" }selected{/if}" href="{:mac_url_type($obj,['area'=>$vo2,'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a>
+                            {/maccms:foreach} {else /} {maccms:foreach name=":explode(',',$obj.type_extend.area)" id="vo2" key="key2"}
+                            <a class="library-item {if condition="$param['area'] eq $vo2" }selected{/if}"  href="{:mac_url_type($obj,['area'=>$vo2,'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a>
+                            {/maccms:foreach} {/empty}
+                        </div>
+                    </div>
+                </div> -->
+                <div class="library-box scroll-box">
+                    <div class="scroll-content">
+                        <a class="library-item library-item-first {if condition="$param['year'] eq ''" }selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>'','level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">Mọi lúc</a>
+                        <div class="library-list">
+                            {empty name="$obj.type_extend.year"} {maccms:foreach name=":explode(',',$obj.parent.type_extend.year)" id="vo2" key="key2"}
+                            <a class="library-item {if condition="$param['year'] eq $vo2" }selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$vo2,'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a>
+                            {/maccms:foreach} {else /} {maccms:foreach name=":explode(',',$obj.type_extend.year)" id="vo2" key="key2"}
+                            <a class="library-item {if condition="$param['year'] eq $vo2" }selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$vo2,'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a>
+                            {/maccms:foreach} {/empty}
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="library-box scroll-box">
+                    <div class="scroll-content">
+                        <a class="library-item library-item-first  {if condition="$param['lang'] eq ''" }selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>'','year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">Tất cả ngôn ngữ</a>
+                        <div class="library-list">
+                            {empty name="$obj.type_extend.lang"} {maccms:foreach name=":explode(',',$obj.parent.type_extend.lang)" id="vo2" key="key2"}
+                            <a class="library-item {if condition="$param['lang'] eq $vo2" }selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$vo2,'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a>
+                            {/maccms:foreach} {else /} {maccms:foreach name=":explode(',',$obj.type_extend.lang)" id="vo2" key="key2"}
+                            <a class="library-item {if condition="$param['lang'] eq $vo2" }selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$vo2,'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a>
+                            {/maccms:foreach} {/empty}
+                        </div>
+                    </div>
+                </div> -->
+                <div class="library-box scroll-box">
+                    <div class="scroll-content">
+                        <a class="library-item library-item-first  {if condition="$param['letter'] eq ''" }selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>'','state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">Tra theo chữ cái</a>
+                        <div class="library-list">
+                            {maccms:foreach name=":explode(',','A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,0-9')" id="vo2" key="key2"}
+                            <a class="library-item {if condition="$param['letter'] eq $vo2" }selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$vo2,'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a>
+                            {/maccms:foreach}
+                        </div>
+                    </div>
+                </div>
+                <div class="library-box scroll-box">
+                    <div class="scroll-content">
+                        <div class="library-list">
+                            <a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'time' ],'show')}" class="library-item  {if condition="$param.by eq '' || $param.by eq 'time'"}selected{/if}" title="按时间排序">Theo thứ tự thời gian</a>
+                            <a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'hits' ],'show')}" class="library-item {if condition="$param.by eq 'hits'"}selected{/if}" title="按人气排序">Độ phổ biến</a>
+                            <a class="library-item library-item-first {if condition="$param.by eq 'score'"}selected{/if}" href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'score' ],'show')}" title="按评分排序">Sắp xếp theo điểm số</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="library-box">
+                    <h2 class="library-stat">Thư viện videos cho bạn<span class="important mac_total"><em class="mac_total"></em></span>Một bộ phim</h2>
+                </div>
+            </div>
+            <!-- 筛选 -->
+        </div>
+        <div class="module">
+            <div class="module-list">
+                <div class="module-items">
+                    {maccms:vod num="72" paging="yes" half="3" pageurl="vod/show" type="current" order="desc" by="time"}
+                    {include file="assembly/vodlist"}
+                    {/maccms:vod}
+                </div>
+
+            </div>
+            <div class="module-footer">
+                {include file="public/paging"}
+            </div>
+        </div>
+    </div>
+</main>
+{include file="public/foot"}
+</body>
+</html>

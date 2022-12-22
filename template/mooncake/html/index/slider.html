@@ -1,0 +1,38 @@
+<div id="banstem" class="hot_banner">
+    <div class="bgi_box">
+        <span id="bgimage" class="bgi"></span>
+        <span class="bgfd"></span>
+    </div>
+
+    <div class="hot_list">
+        <div class="hot_banner_box">
+            <div class="banner-top">
+                <ul class="swiper-wrapper vodlist clearfix">
+                    {maccms:vod num="8" level="0" order="desc" type="current" by="time"}
+                    <li class="balist_item swiper-slide">
+                        <a class="balist_thumb swiper-lazy" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" data-background="{:mac_url_img($vo.vod_pic)}">
+                            <span class="play hidden_xs"></span>
+                            <div class="balist_titbox pic_text">
+                                <p class="vodlist_title">{$vo.vod_name}</p>
+                                <p class="vodlist_sub">{$vo.vod_en}</p>
+                            </div>
+                            <span class="balist_bg"></span>
+                        </a>
+                    </li>
+                    {/maccms:vod}
+                </ul>
+            </div>
+            <div class="banner-arrow">
+                <a class="swiper-button-prev" href="javascript:;"><i class="iconfont">&#xe625;</i></a>
+                <a class="swiper-button-next" href="javascript:;"><i class="iconfont">&#xe623;</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var bannum = document.getElementById('banstem').getElementsByTagName("li").length;
+    if (bannum < 3) {
+        $("#banstem").remove();
+        $("body").removeClass("bstem");
+    }
+</script>

@@ -1,0 +1,83 @@
+<script src="{$maccms.path_tpl}asset/js/stem/clipboard.min.js"></script>
+<script src="{$maccms.path_tpl}asset/js/stem/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+	function copyText() {
+	  var text = document.getElementById("text").innerText;
+	  var input = document.getElementById("input");
+	  input.value = text; // 修改文本框的内容
+	  input.select(); // 选中文本
+	  document.execCommand("copy"); // 执行浏览器复制命令
+	  alert("Đã Copy");
+	}
+</script>
+<div id="show" style="display: none;">
+	<div class="co-cg">
+	   <p>Đã Copy</p>
+	</div>
+</div>
+<script>
+	$(".face").imageUpload({
+		formAction: "/index.php/user/portrait.html",
+		inputFileName: 'file',
+		browseButtonValue: '<i class="iconfont xiazai">&#xe65e;</i>',
+		browseButtonClass: 'btn btn-default btn-xs face-upload',
+		automaticUpload: true,
+		hideDeleteButton: true,
+		hover: true
+	})
+	$(".face").on("imageUpload.uploadFailed", function (ev, err) {
+		alert(err);
+	});
+</script>
+<script type="text/javascript">
+    $(".flip").click(function(){
+		$(".panel").slideToggle("slow");
+		$(".xs1").toggle();
+		$(".xs2").toggle();
+    });
+</script>
+<script>
+	var btn=document.getElementById('btn');
+	var clipboard=new Clipboard(btn);
+	clipboard.on('success', function(e){
+		$('#show').slideDown().delay(1500).slideUp(300);
+	});
+	clipboard.on('error', function(e){
+		$('#show').slideDown().delay(1500).slideUp(300);
+	});
+	var btn=document.getElementById('btn2');
+	var clipboard=new Clipboard(btn2);
+	clipboard.on('success', function(e){
+		$('#show').slideDown().delay(1500).slideUp(300);
+	});
+	clipboard.on('error', function(e){
+		$('#show').slideDown().delay(1500).slideUp(300);
+	});
+</script>
+<script type="text/javascript">
+	$(".lazyload").lazyload({
+	effect: "fadeIn",
+	threshold: 200,
+	failurelimit: 15,
+	skip_invisible: !1
+	})
+</script>
+<div class="footer foot_nav clearfix">
+	<div class="layout">
+		<div class="copyright">
+			<p>&copy; 2022 <a class="color" href="//www.test.cn">www.test.cn</a> All Rights Reserved.</p>
+		</div>
+	</div>
+	<div class="foot_mnav hidden_mb">
+		<ul class="foot_rows">
+			{maccms:type mid="1" ids="parent" order="asc" by="sort"}
+			<li class="foot_text">
+				<a {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="active"{/if} href="{:mac_url_type($vo)}">
+					<i class="iconfont">{switch name="vo.type_id"}{case value="1"}&#xe64a;{/case}{case value="2"}&#xe649;{/case}{case value="3"}&#xe64b;{/case}{case value="4"}&#xe648;{/case}{default /}&#xe64a;{/switch}</i>
+					<span class="foot_font">{$vo.type_name}</span>
+				</a>
+			</li>
+			{/maccms:type}
+		</ul>
+	</div>
+</div>

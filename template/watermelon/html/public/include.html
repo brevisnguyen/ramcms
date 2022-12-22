@@ -1,0 +1,58 @@
+	<!--{include file="public/config"}-->
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="{$maccms.path_tpl}css/style.css" type="text/css" />
+		<link rel="stylesheet" href="{$maccms.path_tpl}css/font-awesome.min.css" type="text/css" />
+		<link rel="stylesheet" href="{$maccms.path_tpl}css/global.css" type="text/css" />
+		<link rel="stylesheet" href="{$maccms.path_tpl}css/font-awesome.min.css" type="text/css" />
+		<script type="text/javascript" src="{$maccms.path_tpl}js/jquery.min.js"></script>
+		<script src="{$maccms.path_tpl}js/hd.js"></script>
+		<script src="{$maccms.path_tpl}js/common.js"></script>
+		<script src="{$maccms.path_tpl}js/function.js"></script>
+		<script type="text/javascript" src="{$maccms.path_tpl}js/history.js"></script>
+		  <script type="text/javascript" src="{$maccms.path_tpl}js/histcooke.js"></script>
+		<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+		<script src="{$maccms.path}static/js/home.js"></script>
+		<style type="text/css">
+		.pc_acmsd{display:block;}
+		.m_acmsd{ display:none}
+		@media(max-width:768px) {
+		.pc_acmsd{display:none !important;}
+		.m_acmsd{display:block !important;}
+		.down-input{
+			margin-left: 10px;
+			width: 40%!important;
+    		padding: 4px;
+    		border-radius: 5px;
+        	border: 1px solid #eee;
+		}
+		}
+		.box{
+	  position: relative;
+	  width: 100%;
+	  z-index: 999;
+	  display: none;
+	}
+
+.box-active{
+  position: fixed;
+  top: 0;
+  display: block;
+}
+.w100{
+    width: 100%;
+}
+ 
+
+html,body{height:auto}
+		</style>
+		
+		<script>
+    window.addEventListener('scroll', function(){
+ 	let t = $('body, html').scrollTop();   
+ 	if(t>200){
+		$('.box').addClass('box-active')
+	}else{
+		$('.box').removeClass('box-active')
+	}
+ })
+</script>

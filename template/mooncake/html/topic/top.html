@@ -1,0 +1,21 @@
+<div class="macplus-pannel macplus-pannel-bg clearfix">
+	<div class="macplus-pannel-box">
+		<div class="macplus-pannel_hd">
+			<div class="macplus-pannel__head clearfix">
+				<h3 class="title">Topic đề xuất</h3>
+			</div>
+		</div>
+		<div class="macplus-pannel_bd">
+			<ul class="macplus-vodlist__text col-pd clearfix">
+				{maccms:topic num="4" order="desc" by="hist" ids="all"}
+				<li class="macplus-topic">
+					<a class="macplus-vodlist__thumb active lazyload img-shadow" href="{:mac_url_topic_detail($vo)}" 
+						title="{$vo.topic_name}" data-original="{$vo.topic_pic|mac_url_img}">
+						<span class="play-mask hidden-xs"><em class="play-icon-s"></em></span>
+						<span class="pic-tag pic-tag-b">{$vo.topic_name}</span>
+					</a>
+				</li>
+				{/maccms:topic}
+			</ul>
+		</div>
+	</div>

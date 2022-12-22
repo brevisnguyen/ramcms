@@ -1,0 +1,83 @@
+<div id="topnav" class="head_box">
+    <div class="header">
+        <div class="head_a">
+            <div class="head_logo">
+                <a title="{$maccms.site_url}" class="logo logo_b" style="background-image: url(/{$maccms.site_logo});" href="/"></a>
+                <a title="{$maccms.site_url}" class="logo logo_w" style="background-image: url(/{$maccms.site_logo});" href="/"></a>
+            </div>
+            <div class="head_menu_a hidden_xs hidden_mi">
+                <ul class="top_nav clearfix">
+                    <li {if condition='$maccms.aid eq 1'}class="active"{/if}><a href="/" title="Trang chủ">Home</a></li>
+                    {maccms:type ids="parent" order="asc" by="sort"}
+                    <li {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])"}class="active"{/if}><a href="{:mac_url_type($vo)}" title="{$vo.type_name}">{$vo.type_name}</a></li>
+                    {/maccms:type}
+                </ul>
+            </div>
+            <div class="head_user">
+                <ul>
+                    <li class="top_ico">
+                        <a href="javascript:;" class="history" title="Lịch sử xem"><i class="iconfont">&#xe624;</i></a>
+                    </li>
+                    <li class="top_ico">
+                        <a href="{:mac_url('gbook/index')}" title="Lời Nhắn"><i class="iconfont">&#xe632;</i></a>
+                    </li>
+                    <li class="top_ico">
+                        <a href="{:mac_url('label/rank')}" title="Bảng xếp hạng"><i class="iconfont">&#xe618;</i></a>
+                    </li>
+                    <li class="top_ico">
+                        <a class="mac_user" href="javascript:;" title="Người dùng"><i class="iconfont">&#xe62b;</i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="head_b">
+            <a class="bk_btn fl" href="javascript:MAC.GoBack()" title="Trở về"><i class="iconfont">&#xe625;</i></a>
+            <span class="hd_tit fl"></span>
+            <a class="se_btn fr open-share" href="javascript:void(0)" title="Chia sẻ"><i class="iconfont">&#xe615;</i></a>
+            <a class="se_btn pl_btn fr" href="#pinglun" title="Bình luận"><i class="iconfont">&#xe632;</i></a>
+
+            <div class="head_menu_b">
+                <a class="menu" href="javascript:void(0)" title="Danh mục"><i class="iconfont menu_ico">&#xe640;</i><span class="hidden_xs">&nbsp;Danh Mục</span></a>
+                <div class="all_menu">
+                    <div class="all_menu_inner">
+                        <div class="menu_top hidden_mb"><a class="close_menu" href="javascript:void(0)"><i class="iconfont">&#xe616;</i></a>Danh Mục</div>
+                        <!-- Danh mục -->
+                        <div class="all_menu_box">
+                            <ul class="nav_list clearfix">
+                                <li class="active"><a class="mob_btn mob_btn7" href="/" title="Trang chủ"><i class="iconfont">&#xe634;</i><span>HOME</span></a></li>
+                                {maccms:type ids="parent" order="asc" by="sort"}
+                                <li>
+                                    <a class="mob_btn mob_btn{$key}" href="{:mac_url_type($vo)}" title="{$vo.type_name}">
+                                        <i class="iconfont">{switch name="vo1.type_id"}{case value="1"}&#xe64a;{/case}{case value="2"}&#xe649;{/case}{case value="3"}&#xe64b;{/case}{case value="4"}&#xe648;{/case}{case value="5"}&#xe630;{/case}{default /}&#xe64a;{/switch}</i>
+                                        <span>{$vo.type_name}</span></a>
+                                </li>
+                                {/maccms:type}
+                                <li><a class="mob_btn mob_btn2" href="{:mac_url_topic_index()}" title="Chủ đề"><i class="iconfont">&#xe64c;</i><span>Chủ Đề</span></a></li>
+                                <li><a class="mob_btn mob_btn1" href="{:mac_url('gbook/index')}" title="Lời nhắn"><i class="iconfont">&#xe632;</i><span>Lời Nhắn</span></a></li>
+                                <li><a class="mob_btn mob_btn3" href="{:mac_url('label/rank')}" title="Mới cập nhật"><i class="iconfont">&#xe652;</i><span>Phim Mới</span></a></li>
+                                <li><a class="mob_btn mob_btn4" href="{:mac_url('label/rank')}" title="Bảng xếp hạng"><i class="iconfont">&#xe618;</i><span>Xếp Hạng</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="head_search">
+                <form id="search" name="search" method="get" action="{:mac_url('vod/search')}" onsubmit="return qrsearch();">
+                    <i class="iconfont">&#xe633;</i>
+                    <input id="txt" type="text" name="wd" class="mac_wd form_control" value="" placeholder="Có nhiều điều đợi bạn khám phá">
+                    <button class="submit" id="searchbutton" type="submit" name="submit">Tìm Kiếm</button>
+                </form>
+            </div>
+            <div class="head_hot_search hidden_xs">
+                <ul class="pops_list">
+                    <li><span class="hot_search_tit"><i class="iconfont">&#xe631;</i>&nbsp;Hot Search</span></li>
+                    {maccms:foreach name=":explode(',',$maccms.search_hot)"}
+                    <li><a href="{:mac_url('vod/search',['wd'=>html_entity_decode($vo)])}" class="hot_name">{$vo}</a></li>
+                    {/maccms:foreach}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

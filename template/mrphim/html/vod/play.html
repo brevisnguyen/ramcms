@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Xem trực tuyến {$obj.vod_name} {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} - Tài nguyên HD - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}Xem trực tuyến miễn phí,Tóm tắt {$obj.vod_name}" />
+    <meta name="description" content="{$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}Xem trực tuyến miễn phí,Tóm tắt {$obj.vod_name}" />
+    {include file="public/include"}
+</head>
+<body class="page play">
+{include file="public/head"}
+<main id="main" class="wrapper">
+    <div class="player-block">
+        <div class="content">
+            <div class="player-box">
+                <div class="player-box-main">
+                    <div class="tips-box"><span class="close-btn"><i class="icon-close-o"></i></span>
+                        <ul class="tips-list">
+                            <div class="swiper-container swiper-container-initialized swiper-container-vertical swiper-container-pointer-events">
+                                <div class="swiper-wrapper" id="swiper-wrapper-c10ce77a7b3638e47" aria-live="off" style="transition-duration: 0ms; transform: translate3d(0px, -1200px, 0px);">
+                                    <li class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" role="group" aria-label="1 / 4" style="height: 240px;">Đang xem《{$obj.vod_name}》 - {if condition="$obj.type_id_1==2"}Tập {$param.nid}{else /}Bộ sưu tập phát trực tuyến HD{/if}</li>
+                                    <li class="swiper-slide" data-swiper-slide-index="1" role="group" aria-label="2 / 4" style="height: 240px;"><span class="btn-main">Nhắc nhở</span>Không tin bất cứ quảng cáo nào trong video, đề phòng bị lừa gạt.</li>
+                                    <li class="swiper-slide" data-swiper-slide-index="2" role="group" aria-label="3 / 4" style="height: 240px;"><span class="btn-yellow">技巧</span>Nếu không thể phát video, hoặc chạy chậm hãy thử nhấn nút phát lại.</li>
+                                    <li class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="4 / 4" style="height: 240px;">Đang xem《{$obj.vod_name}》 - {if condition="$obj.type_id_1==2"}Tập {$param.nid}{else /}Bộ sưu tập phát trực tuyến HD{/if}</li>
+                                </div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                        </ul>
+                    </div>
+                    <div class="player-wrapper">{$player_data}{$player_js}</div>
+                </div>
+            </div>
+            <div class="player-info">
+                <div class="video-info">
+                    <div class="video-info-box">
+                        <div class="video-info-header">
+                            <h1 class="page-title"><a href="{:mac_url_vod_detail($obj)}" title="{$obj.vod_name}">{$obj.vod_name}</a></h1>
+                            <span class="btn-pc page-title">{if condition="$obj.type_id_1==2"}Tập {$param.nid}{else /}Bộ sưu tập phát trực tuyến HD{/if}</span>
+                            <div class="video-info-aux">
+                                <a href="{:mac_url_type($obj.type)}" title="{$obj.type.type_name}" class="tag-link"><span class="video-tag-icon"><i class="icon-cate-ds"></i>{$obj.type.type_name}</span></a>
+                                <div class="tag-link">{$obj.vod_class|mac_url_create='class','vod','search','<span class="slash">/</span>'}</div>
+                                <div class="tag-link">{$obj.vod_year|mac_url_create='year','vod','search'}&nbsp;</div>
+                                <div class="tag-link">{$obj.vod_area|mac_url_create='area','vod','search'}&nbsp;</div>
+                                <div class="tag-link">{$obj.vod_lang|mac_url_create='lang'}&nbsp;</div>
+                                <div class="tag-link"><a href="{:mac_url_type($obj.type)}" target="_blank">{$obj.type.type_name}</a>&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="video-info-main">
+                            <div class="video-info-items"><span class="video-info-itemtitle">Nội dung：</span>
+                                <div class="video-info-item video-info-content">
+                                    <p class="zkjj_a">{$obj.vod_content|mac_filter_html|mac_substring=200}<span class="zk_jj red">[Mở rộng]</span></p><p class="sqjj_a" style="display: none;">{$obj.vod_content|mac_filter_html}<span class="sq_jj red">[Thu lại]</span></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-player-handle">
+                        {if condition="$obj.type_id_1 neq 1"}
+                        {if$param.nid neq $obj['vod_play_list'][$param['sid']]['url_count']}
+                        <a href="{$obj.player_info.link_next}" class="btn-block-o handle-btn" title="Xem {$obj.vod_name}-{if condition="$obj.type_id_1==2"}Tập {$param.nid}{else /}Bộ sưu tập phát trực tuyến HD{/if}"><i class="icon-next"></i><p class="block-name">下一集</p></a>
+                        {/if}
+                        {/if}
+                        <div class="drop pc"><span class="btn-block-o handle-btn handle-more" title="Dùng điện thoại và quét"><i class="icon-qrcode"></i>
+              <p class="block-name">Điện thoại</p>
+              </span>
+                            <div class="drop-content handle-more-drop">
+                                <div class="drop-content-box">
+                                    <div class="drop-content-items"><a class="btn-qrcode">
+                                        <div class="qrcode-img"></div>
+                                        <div class="block-name">
+                                            <p>Sử dụng trình duyệt trên di động quét mã để xem</p>
+                                            <strong>{$obj.vod_name}-{if condition="$obj.type_id_1==2"}Tập {$param.nid}{else /}Bộ sưu tập phát trực tuyến HD{/if}</strong></div>
+                                    </a></div>
+                                </div>
+                            </div>
+                            <div class="shortcuts-mobile-overlay"></div>
+                        </div>
+                        <div class="video-player-handle-more">
+                            <div class="btn-block-o handle-btn handle-share share-btn" title="Chia sẻ<{$obj.vod_name}> tới bạn bè" data-clipboard-text="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}Tôi đang xem《{$obj.vod_name}》，Đề xuất cho bạn xem！"><i class="icon-share"></i>
+                                <p class="block-name">Chia sẻ</p>
+                            </div>
+                            <div class="drop"><span class="btn-block-o handle-btn handle-more"><i class="icon-more"></i>
+                <p class="block-name">Xem+</p>
+                </span>
+                                <div class="drop-content handle-more-drop">
+                                    <div class="drop-content-box">
+                                        <div class="drop-content-items">
+                                            <a class="btn-block-o btn-report" href="javascript:;"><i class="icon-warn"></i>
+                                                <p class="block-name"><strong>Lỗi video</strong><br>
+                                                   Nếu bạn không xem được vui lòng gửi cho chúng tôi</p>
+                                            </a>
+                                            <a class="btn-block-o btn-screen"><i class="icon-tv"></i>
+                                                <p class="block-name"><strong>Xem trên TV</strong><br>
+                                                    Hướng dẫn：Truyền video từ điện thoại của bạn lên TV</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shortcuts-mobile-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="player-box-side">
+                <div class="module-heading">
+                    <h2 class="module-title" title="Danh sách xem trực tuyến của {$obj.vod_name}">Xem trực tuyến</h2>
+                    <div class="module-tab module-player-tab  player-side-tab">
+                        <input type="hidden" name="tab" id="tab" class="module-tab-input">
+                        <label class="module-tab-name"><span class="module-tab-value">Nút chuyển đổi</span><i class="icon-arrow-bottom-o"></i></label>
+                        <div class="module-tab-items">
+                            <div class="module-tab-title">Danh sách<span class="close-drop"><i class="icon-close-o"></i></span></div>
+                            <div class="module-tab-content">
+                                <div class="module-tab-content">
+                                    {php}$num=1;{/php}{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+                                    <div class="module-tab-item tab-item {if condition="$param.sid eq $key"}selected{/if}" data-dropdown-value="{$vo.player_info.from}"><span>{$vo.player_info.show}</span><small>{$vo.url_count}</small></div>
+                                    {php}$num++;{/php}{/maccms:foreach}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shortcuts-mobile-overlay"></div>
+                </div>
+                {maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+                <div class="module-list module-player-list tab-list sort-list player-side-playlist {if condition="$obj.type_id eq 3"}module-vod-list{/if} {if condition="$param.sid eq $key"} selected{/if}">
+                    <div class="module-tab module-sorttab">
+                        <input type="hidden" name="tab-sort" id="tab-sort" class="module-tab-input">
+                        <label class="module-tab-name"><i class="icon-all"></i></label>
+                        <div class="module-tab-items">
+                            <div class="module-tab-title">Tuyển tập<span class="close-drop"><i class="icon-close-o"></i></span><a class="desc sort-button" href="javascript:void(0);" to="#sort-item-{#key}"><i class="icon-sort"></i>Loại</a></div>
+                            <div class="module-tab-content">
+                                <div class="module-blocklist">
+                                    <div class="sort-item" id="sort-item-{$key}">
+                                        {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+                                        <a {if condition="$param.sid eq $vo.sid && $param.nid eq $vo2.nid"}class="selected"{/if} href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" title="{$vo2.name}"><span>
+                                        {if condition="$obj.type_id_1 eq 2"}Tập {$key2}{else /}{$vo2.name}{/if}
+                        </span></a>
+                                        {/maccms:foreach}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shortcuts-mobile-overlay"></div>
+                    <div class="module-blocklist scroll-box scroll-box-y">
+                        <div class="scroll-content">
+                            {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+                            <a {if condition="$param.sid eq $vo.sid && $param.nid eq $vo2.nid"}class="selected"{/if} href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" title="{$vo2.name}"><span>
+                        {if condition="$obj.type_id_1 eq 2"}第{$key2}集{else /}{$vo2.name}{/if}
+                        </span></a>
+                            {/maccms:foreach}
+                        </div>
+                    </div>
+                </div>
+                {/maccms:foreach}
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="module">
+            <div class="module-heading">
+                <h2 class="module-title">Có thể bạn thích</h2>
+            </div>
+            <div class="module-list module-lines-list">
+                <div class="module-items">
+                    {maccms:vod num="16" type="'.$obj['type_id'].'" order="desc" by="time"}
+                    {include file="assembly/vodlist"}
+                    {/maccms:vod}
+                </div>
+            </div>
+        </div>
+        <div class="module">
+            <div class="module-heading">
+                <h2 class="module-title">Gợi ý liên quan</h2>
+                <a class="more" href="{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}" title="Thêm">Xem thêm<i class="icon-arrow-right-o"></i></a>
+            </div>
+            <div class="module-list module-lines-list">
+                <div class="module-items">
+                    {maccms:vod num="16" type="current" order="desc" by="time"}
+                    {include file="assembly/vodlist"}
+                    {/maccms:vod}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{include file="public/foot"}
+<div class="shortcuts-box"><div id="shortcuts-info"></div></div>
+
+<div class="shortcuts-mobile-overlay"></div>
+
+<div class="popup popup-tips none" >
+    <div class="popup-header">
+        <h3 class="popup-title">Hướng dẫn ghi màn hình</h3>
+    </div>
+    <div class="popup-main">
+        <p><strong>Bước đầu tiên</strong><br>
+            Kết nối TV/box và điện thoại di động với cùng một WIFI；</p>
+        <p><strong>Bước thứ 2</strong><br>
+            Trên trang phát video tìm biểu tượng <strong><i class="icon-screen-o"></i></strong>，Chọn thiết bị cần chiếu để kết nối；</p>
+        <p><strong>Nếu vẫn không thể kết nối？</strong><br>
+            Vui lòng nhấp vào nút bên dưới để xem hướng dẫn phát màn hình cho các điện thoại di động và trình duyệt khác nhau.</p>
+    </div>
+    <div class="popup-footer"><a href="{:mac_url('label/help')}" target="_blank" class="popup-btn-o">Xem hướng dẫn chi tiết</a></div>
+    <div class="close-popup" id="close-popup"><i class="icon-close-o"></i></div>
+</div>
+<!-- 投屏教程 -->
+
+<div class="shortcuts-mobile-overlay"></div>
+<div class="popup popup-report none" id="report-popup">
+    <div class="popup-icon"><img src="{$maccms.path_tpl}img/report.svg"></div>
+    <div class="popup-header">
+        <h2 class="popup-title">Báo lỗi</h2>
+    </div>
+    <div class="popup-main">
+        <div class="report-box">
+            <form class="gbook_form">
+                <input type="hidden" name="gbook_rid" value="1015">
+                <p>Nếu không thể xem được video, có thể là do nghẽn mạng, hoặc một số ký do khác. Bạn có thể thử <strong>chuyển kênh</strong> hoặc<strong> khởi động lại</strong> trang.</p>
+                <p>Các video sau vẫn không thể phát sau khi thử：</p>
+                <textarea class="report-content" name="gbook_content">Số hiệu【{$obj.vod_id}】Tên phim【{$obj.vod_name}】Không xem được vui lòng kiểm tra và sửa chữa, địa chỉ trang {$maccms.http_type}{$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>$param['sid'],'nid'=>$param['nid']])}
+</textarea>
+                <p class="verify-box"><input class="report-content report-input" name="verify" type="text" autocomplete="off">
+                    <img class="report-verify" src="{:mac_url('verify/index')}" onClick="this.src+='?'" ></p>
+                <input type="button" class="gbook_submit popup-btn" value="Xác nhận đúng, gửi">
+            </form>
+        </div>
+    </div>
+    <div class="close-popup"><i class="icon-close-o"></i></div>
+</div>
+<div class="shortcuts-mobile-overlay"></div>
+<span class="mac_ulog_set none" alt="Đặt lịch sử trình duyệt" data-type="4" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+<span class="mac_hits none" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}" data-type="hits"></span>
+<script>
+    $(".sq_jj").click(function(){
+        $(".sqjj_a").toggle();
+        $(".zkjj_a").toggle();
+    });
+    $(".zk_jj").click(function(){
+        $(".sqjj_a").toggle();
+        $(".zkjj_a").toggle();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    {include file="index/seokey"}
+	{include file="index/include"}
+</head>
+
+<body>
+    <div id="show_page">
+        {include file="index/header"}
+
+        <div class="container">
+            <div class="row">
+                <!-- Lọc phim -->
+                <div class="pannel vod_all clearfix">
+                    <div class="listnow">
+                        <div class="list_type_title">
+                            <div class="sx_title hidden_xs">Đã chọn</div>
+                            <div class="sx_title2">{$obj.type_name}</div>
+                            <ul class="sx_txt">
+                                {maccms:foreach name=":array_intersect_key($param, array_flip(array('class', 'area', 'year')))"}
+                                {notempty name="$vo"}
+                                <li><em>+</em>{$vo}</li>
+                                {/notempty}
+                                {/maccms:foreach}
+                            </ul>
+                            <span><a href="{:mac_url_type($obj,[],'show')}"><i class="iconfont">&#xe621;</i>&nbsp;Chọn lại</a></span>
+                        </div>
+                    </div>
+                    <div class="wrapper_fl" id="hl02">
+                        <div class="scroller">
+                            <ul class="screen_list clearfix">
+                                <li class="text hidden_xs"><span class="text_muted">Thể Loại</span></li>
+                                <li class="{if condition="$param['class'] eq ''"}hl conch-02{/if}"><a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>'','order'=>$param['order'],'by'=>$param['by'] ],'show')}">Tất cả</a></li>
+                                {empty name="$obj.type_extend.class"}
+                                    {maccms:foreach name=":explode(',',$obj.parent.type_extend.class)" id="vo2" key="key2"}
+                                    <li class="{if condition="$param['class'] eq $vo2"}hl conch-02{/if}"><a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                                    {/maccms:foreach}
+                                {else /}
+                                    {maccms:foreach name=":explode(',',$obj.type_extend.class)" id="vo2" key="key2"}
+                                    <li class="{if condition="$param['class'] eq $vo2"}hl conch-02{/if}"><a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                                    {/maccms:foreach}
+                                {/empty}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="wrapper_fl" id="hl03">
+                        <div class="scroller">
+                            <ul class="screen_list clearfix">
+                                <li class="text hidden_xs"><span class="text_muted">Quốc Gia</span></li>
+                                <li class="{if condition="$param['area'] eq ''"}hl conch-03{/if}"><a href="{:mac_url_type($obj,['area'=>'','lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">Tất cả</a></li>
+                                {empty name="$obj.type_extend.area"}
+                                    {maccms:foreach name=":explode(',',$obj.parent.type_extend.area)" id="vo2" key="key2"}
+                                    <li class="{if condition="$param['area'] eq $vo2"}hl conch-03{/if}"><a href="{:mac_url_type($obj,['area'=>$vo2,'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                                    {/maccms:foreach}
+                                {else /}
+                                    {maccms:foreach name=":explode(',',$obj.type_extend.area)" id="vo2" key="key2"}
+                                    <li class="{if condition="$param['area'] eq $vo2"}hl conch-03{/if}"><a href="{:mac_url_type($obj,['area'=>$vo2,'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                                    {/maccms:foreach}
+                                {/empty}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="wrapper_fl" id="hl04">
+                        <div class="scroller">
+                            <ul class="screen_list clearfix">
+                                <li class="text hidden_xs"><span class="text_muted">Năm</span></li>
+                                <li class="{if condition="$param['year'] eq ''"}hl conch-04{/if}"><a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>'','level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">Tất cả</a></li>
+                                {empty name="$obj.type_extend.year"}
+                                    {maccms:foreach name=":explode(',',$obj.parent.type_extend.year)" id="vo2" key="key2"}
+                                    <li class="{if condition="$param['area'] eq $vo2"}hl conch-04{/if}""><a href="{:mac_url_type($obj,['area'=>$vo2,'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')">{$vo2}</a></li>
+                                    {/maccms:foreach}
+                                {else /}
+                                    {maccms:foreach name=":explode(',',$obj.type_extend.year)" id="vo2" key="key2"}
+                                    <li class="{if condition="$param['year'] eq $vo2"}hl conch-04{/if}"><a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$vo2,'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                                    {/maccms:foreach}
+                                {/empty}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="wrapper_fl" id="hl05">
+                        <div class="scroller">
+                            <ul class="screen_list clearfix">
+                                <li class="text hidden_xs"><span class="text_muted">Chữ Cái</span></li>
+                                <li class="{if condition="$param['letter'] eq ''"}hl conch-05{/if}"><a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>'','state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">Tất cả</a></li>
+                                {maccms:foreach name=":explode(',','A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,0-9')" id="vo2" key="key2"}
+                                <li class="{if condition="$param['letter'] eq $vo2"}hl conch-05{/if}"><a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$vo2,'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                                {/maccms:foreach}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Lọc phim -->
+                <!-- Danh sách phim -->
+                <div class="pannel clearfix">
+                    {maccms:vod num="36" paging="yes" pageurl="vod/show" type="current" order="desc" by="time"}{/maccms:vod}
+                    <div class="wrapper_fl wrapper_tm" style="border-top: 0;">
+                        <ul class="screen_list sx_tz clearfix" style="float: left;">
+                            <li class="{if $param.by eq '' || $param.by eq 'time'}hl_fl{/if}">
+                                <a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'time' ],'show')}">Thời gian</a>
+                            </li>
+                            <li class="{if $param.by eq 'hits'}hl_fl{/if}">
+                                <a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'hits' ],'show')}">Lượt xem</a>
+                            </li>
+                            <li class="{if $param.by eq 'score'}hl_fl{/if}">
+                                <a href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>'score' ],'show')}">Đánh giá</a>
+                            </li>
+                        </ul>
+                        <span class="sx_total">Tổng <em class="mac_total"></em> phim</span>
+                    </div>
+                    <ul class="vodlist vodlist_wi clearfix">
+                        {maccms:vod num="36" paging="yes" pageurl="vod/show" type="current" order="desc" by="time"}
+                        <li class="vodlist_item num_{$key}">
+                            {include file="index/vod_img"}
+                        </li>
+                        {/maccms:vod}
+                    </ul>
+                    {include file="index/pageer"}
+                </div>
+                <!-- END Danh sách phim -->
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $('.mac_total').html('{$__PAGING__.record_total}');
+        </script>
+
+        {include file="index/footer"}
+    </div>
+</body>
+
+</html>

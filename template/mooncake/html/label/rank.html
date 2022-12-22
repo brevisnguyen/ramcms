@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>Bảng xếp hạng phim lẻ|Bảng xếp hạng phim bộ|Bảng xếp hạng phim hoạt hình|{$maccms.site_name}</title>
+		<meta name="keywords" content="Bảng xếp hạng phim lẻ|Bảng xếp hạng phim bộ|Bảng xếp hạng tv shows|Bảng xếp hạng anime|Bảng xếp hạng phim hoạt hình|Bảng xếp hạng phim hot"/>
+		<meta name="description" content="{$maccms.site_keywords}" />
+		<meta itemprop="url" property="og:url" content="{:mac_url('label/rank')}" />
+		<meta itemprop="name" property="og:title" content="{$maccms.site_name}" />
+		<meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+		<meta itemprop="description" property="og:description" content="{$maccms.site_keywords}" />
+		{include file="index/include"}
+	</head>
+
+	<body id="graypage">
+		{include file="index/header"}
+
+		<div class="container white_pal">
+			<div class="row">
+				<div class="pannel rankpage clearfix">
+					<div class="tabs">
+						<input type="radio" id="tab1" name="tab-control" checked>
+						<input type="radio" id="tab2" name="tab-control">
+						<input type="radio" id="tab3" name="tab-control">
+						<ul class="title_nav">
+							<li class="tab_rank" title="Xếp Hạng Tuần"><label for="tab1" role="button"><span><span class="hidden_xs">Xếp Hạng</span> Tuần</span></label></li>
+							<li class="tab_rank" title="Xếp Hạng Tháng"><label for="tab2" role="button"><span><span class="hidden_xs">Xếp Hạng</span> Tháng</span></label></li>
+							<li class="tab_rank" title="Xếp Hạng Tổng"><label for="tab3" role="button"><span><span class="hidden_xs">Xếp Hạng</span> Tổng</span></label></li>
+						</ul>
+						<div class="content">
+							<section>
+								<h2><span class="hidden_xs">Xếp Hạng</span> Tuần</h2>
+								{maccms:type ids="1,2,3" order="asc" by="sort"}
+								<div class="rank_info">
+									<div class="list_info">
+										<div class="pannel_head clearfix">
+											<span class="text_muted pull_right">
+												<a href="{:mac_url_type($vo,[],'show')}">Xem thêm<i class="iconfont more_i">&#xe623;</i></a>
+											</span>
+											<h3 class="title text_uppercase">Top 20 {$vo.type_name}</h3>
+										</div>
+										{maccms:vod num="20" type="'.$vo['type_id'].'" order="desc" by="hits_week"}
+										<ul class="part_rows">
+											{if condition="$key eq 1"}
+											<li class="ranklist_item">
+												<a title="{$vo.vod_name}" href="{:mac_url_vod_detail($vo)}">
+													<div class="ranklist_img">
+														<div class="ranklist_thumb  lazyload" data-original="{:mac_url_img($vo.vod_pic)}">
+															<span class="play hidden_xs"></span>
+															<span class="part_nums part_num1">1</span>
+														</div>
+													</div>
+													<div class="ranklist_txt">
+														<div class="pannel_head clearfix">
+															<span class="text_muted pull_right"><i class="iconfont">&#xe631;</i>{$vo.vod_hits_week}</span>
+															<h4 class="title">{$vo.vod_name}</h4>
+														</div>
+														<p class="vodlist_sub">{$vo.vod_year}&nbsp;/&nbsp;{$vo.vod_area}&nbsp;</p>
+														<p><span class="vodlist_sub">{$vo.vod_version}</span></p>
+													</div>
+												</a>
+											</li>
+											{else}
+											<li class="part_eone">
+												<a href="{:mac_url_vod_detail($vo)}">
+													<span class="part_nums part_num{$key}">{$key}</span>
+													<span class="text_muted pull_right renqi"><i class="iconfont">&#xe631;</i>&nbsp;{$vo.vod_hits_week}</span>
+													{$vo.vod_name}
+												</a>
+											</li>
+											{/if}
+										</ul>
+										{/maccms:vod}
+									</div>
+								</div>
+								{/maccms:type}
+							</section>
+							<section>
+								<h2><span class="hidden_xs">Xếp Hạng</span> Tháng</h2>
+								{maccms:type ids="1,2,3" order="asc" by="sort"}
+								<div class="rank_info">
+									<div class="list_info">
+										<div class="pannel_head clearfix">
+											<span class="text_muted pull_right">
+												<a href="{:mac_url_type($vo,[],'show')}">Xem thêm<i class="iconfont more_i">&#xe623;</i></a>
+											</span>
+											<h3 class="title text_uppercase">Top 20 {$vo.type_name}</h3>
+										</div>
+										{maccms:vod num="20" type="'.$vo['type_id'].'" order="desc" by="hits_month"}
+										<ul class="part_rows">
+											{if condition="$key eq 1"}
+											<li class="ranklist_item">
+												<a title="{$vo.vod_name}" href="{:mac_url_vod_detail($vo)}">
+													<div class="ranklist_img">
+														<div class="ranklist_thumb  lazyload" data-original="{:mac_url_img($vo.vod_pic)}">
+															<span class="play hidden_xs"></span>
+															<span class="part_nums part_num1">1</span>
+														</div>
+													</div>
+													<div class="ranklist_txt">
+														<div class="pannel_head clearfix">
+															<span class="text_muted pull_right"><i class="iconfont">&#xe631;</i>{$vo.vod_hits_month}</span>
+															<h4 class="title">{$vo.vod_name}</h4>
+														</div>
+														<p class="vodlist_sub">{$vo.vod_year}&nbsp;/&nbsp;{$vo.vod_area}&nbsp;</p>
+														<p><span class="vodlist_sub">{$vo.vod_version}</span></p>
+													</div>
+												</a>
+											</li>
+											{else}
+											<li class="part_eone">
+												<a href="{:mac_url_vod_detail($vo)}">
+													<span class="part_nums part_num{$key}">{$key}</span>
+													<span class="text_muted pull_right renqi"><i class="iconfont">&#xe631;</i>&nbsp;{$vo.vod_hits_month}</span>
+													{$vo.vod_name}
+												</a>
+											</li>
+											{/if}
+										</ul>
+										{/maccms:vod}
+									</div>
+								</div>
+								{/maccms:type}
+							</section>
+							<section>
+								<h2><span class="hidden_xs">Xếp Hạng</span> Tuần</h2>
+								{maccms:type ids="1,2,3" order="asc" by="sort"}
+								<div class="rank_info">
+									<div class="list_info">
+										<div class="pannel_head clearfix">
+											<span class="text_muted pull_right">
+												<a href="{:mac_url_type($vo,[],'show')}">Xem thêm<i class="iconfont more_i">&#xe623;</i></a>
+											</span>
+											<h3 class="title text_uppercase">Top 20 {$vo.type_name}</h3>
+										</div>
+										{maccms:vod num="20" type="'.$vo['type_id'].'" order="desc" by="hits"}
+										<ul class="part_rows">
+											{if condition="$key eq 1"}
+											<li class="ranklist_item">
+												<a title="{$vo.vod_name}" href="{:mac_url_vod_detail($vo)}">
+													<div class="ranklist_img">
+														<div class="ranklist_thumb  lazyload" data-original="{:mac_url_img($vo.vod_pic)}">
+															<span class="play hidden_xs"></span>
+															<span class="part_nums part_num1">1</span>
+														</div>
+													</div>
+													<div class="ranklist_txt">
+														<div class="pannel_head clearfix">
+															<span class="text_muted pull_right"><i class="iconfont">&#xe631;</i>{$vo.vod_hits}</span>
+															<h4 class="title">{$vo.vod_name}</h4>
+														</div>
+														<p class="vodlist_sub">{$vo.vod_year}&nbsp;/&nbsp;{$vo.vod_area}&nbsp;</p>
+														<p><span class="vodlist_sub">{$vo.vod_version}</span></p>
+													</div>
+												</a>
+											</li>
+											{else}
+											<li class="part_eone">
+												<a href="{:mac_url_vod_detail($vo)}">
+													<span class="part_nums part_num{$key}">{$key}</span>
+													<span class="text_muted pull_right renqi"><i class="iconfont">&#xe631;</i>&nbsp;{$vo.vod_hits}</span>
+													{$vo.vod_name}
+												</a>
+											</li>
+											{/if}
+										</ul>
+										{/maccms:vod}
+									</div>
+								</div>
+								{/maccms:type}
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{include file="index/footer"}
+	</body>
+
+</html>

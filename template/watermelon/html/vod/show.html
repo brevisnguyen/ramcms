@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>{$param.year}{$param.area}{$param.class}{if$GLOBALS['type_id']=='1'}2021最新电影_好看的电影排行榜_免费高清电影在线观看{else}{if$GLOBALS['type_id']=='2'}最新电视剧_电视剧排行榜_好看的电视剧_电视剧大全{else}{if$GLOBALS['type_id']=='3'}综艺节目_韩国综艺_台湾综艺节目_综艺节目排行榜_综艺节目大全{else}{if$GLOBALS['type_id']=='4'}动漫网_好看的动漫_日本动漫_动漫排行榜_动漫大全{else}{if$GLOBALS['type_id']=='29'}记录片_纪录片大全_纪录片频道{else}{if$GLOBALS['type_id']=='6'}动作片_动作电影大全_爱情动作片_好莱坞动作大片{else}{if$GLOBALS['type_id']=='7'}喜剧电影_喜剧电影爆笑_喜剧电影大全_喜剧电影国语版{else}{if$GLOBALS['type_id']=='8'}爱情片_经典爱情电影_爱情片大全_爱情电影网{else}{if$GLOBALS['type_id']=='9'}科幻片_科幻电影排行榜_好看的科幻电影_漫威科幻{else}{if$GLOBALS['type_id']=='10'}恐怖片_恐怖片排行榜_恐怖片大全_热门恐怖片{else}{if$GLOBALS['type_id']=='11'}剧情片_剧情片排行榜_好看的剧情片{else}{if$GLOBALS['type_id']=='12'}战争片_老电影战争片_战争片大全_好看的战争片{else}{if$GLOBALS['type_id']=='15'}日本电视剧_最新日本电视剧_日本电视剧排行榜_好看日本电视剧{else}{if$GLOBALS['type_id']=='13'}国产电视剧_电视剧排行榜_古装电视剧_穿越电视剧_电视剧大全{else}{if$GLOBALS['type_id']=='14'}tvb最新电视剧_tvb好看的电视剧_偶像剧_爱情电视剧排行榜{else}{if$GLOBALS['type_id']=='28'}韩剧tv_热播韩国电视剧排行榜_最新好看的韩国电视剧{else}{if$GLOBALS['type_id']=='16'}欧美电视剧_欧美电视剧排行_美剧排行榜2021_好看的欧美电视剧_美国电视剧{else}{if$GLOBALS['type_id']=='27'}台湾电视剧_最热门好看的台湾偶像剧电视剧收视率排行推荐{else}{if$GLOBALS['type_id']=='30'}韩国综艺_最新热门韩国综艺_好看的综艺节目排行榜{else}{if$GLOBALS['type_id']=='22'}美国综艺_美国好看的综艺节目_欧美综艺节目排行榜{else}{if$GLOBALS['type_id']=='20'}大陆综艺_好看的综艺节目_最新热门大陆综艺_综艺节目排行榜{else}{if$GLOBALS['type_id']=='21'}港台综艺_好看的综艺节目_港台搞笑综艺_综艺大热门_综艺节目排行榜{else}{if$GLOBALS['type_id']=='25'}欧美动画_欧美动画动漫排行榜{else}{if$GLOBALS['type_id']=='24'}日本动漫_日本动画片_最热日本动画排行榜{else}{if$GLOBALS['type_id']=='23'}国产动漫_最新国产动漫电视剧_热门大陆动漫推荐_国产动画片排行榜{else}{if$GLOBALS['type_id']=='26'}其它动漫_动画片_热门动漫排行榜{else}{if$GLOBALS['type_id']=='266'}韩国伦理片_最新_最热_伦理片视频在线观看{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if}{/if} - {$maccms.site_name}</title>
+	<meta name="keywords" content="最新{$obj.type_name}_{$obj.type_name}迅雷下载_{$maccms.site_keywords}">
+	<meta name="description" content="最新{$obj.type_name}_{$obj.type_name}在线迅雷下载_{$maccms.site_description}">
+    {include file="public/include"}
+	</head>
+  
+  <body>
+	{include file="public/head"}
+<div class="wrap">
+	<div class="row">
+		<div class="case">
+			<div class="feifan123-net">
+				<span>剧情</span>
+				<div class="list_nav j-list-nav" id="j-nav-type0">
+					<ul>
+                    	<li {if condition="$param['class'] eq ''"} class="active" {/if}><a  href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>'','order'=>$param['order'],'by'=>$param['by'] ],'show')}">全部</a></li>
+                {empty name="$obj.type_extend.area"}
+                {maccms:foreach name=":explode(',',$obj.parent.type_extend.class)" id="vo2" key="key2"}
+                <li {if condition="$param['class'] eq $vo2"} class="active" {/if}><a  href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                {/maccms:foreach}
+                {else /}
+                {maccms:foreach name=":explode(',',$obj.type_extend.class)" id="vo2" key="key2"}
+                <li {if condition="$param['class'] eq $vo2"} class="active" {/if}><a  href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$vo2,'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                {/maccms:foreach}
+                {/empty}
+					</ul>
+				</div>
+			</div>
+			<div class="feifan123-net">
+				<span>地区</span>
+				<div class="list_nav j-list-nav" id="j-nav-type1">
+					<ul>
+                     <li {if condition="$param['area'] eq ''"} class="active" {/if}><a  href="{:mac_url_type($obj,['area'=>'','lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">全部</a></li>
+                {empty name="$obj.type_extend.area"}
+                    {maccms:foreach name=":explode(',',$obj.parent.type_extend.area)" id="vo2" key="key2"}
+                    <li {if condition="$param['area'] eq $vo2"} class="active" {/if}><a  href="{:mac_url_type($obj,['area'=>$vo2,'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                    {/maccms:foreach}
+                {else /}
+                    {maccms:foreach name=":explode(',',$obj.type_extend.area)" id="vo2" key="key2"}
+                    <li {if condition="$param['area'] eq $vo2"} class="active" {/if}><a  href="{:mac_url_type($obj,['area'=>$vo2,'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                    {/maccms:foreach}
+                {/empty}
+
+					</ul>
+				</div>
+			</div>
+
+			<div class="feifan123-net">
+				<span>年代</span>
+				<div class="list_nav j-list-nav" id="j-nav-type3">
+					<ul>
+					 <li {if condition="$param['year'] eq ''"} class="active"{/if}><a  href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>'','level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">全部</a></li>
+                {empty name="$obj.type_extend.year"}
+                    {maccms:foreach name=":explode(',',$obj.parent.type_extend.year)" id="vo2" key="key2"}
+                    <li {if condition="$param['area'] eq $vo2"} class="active" {/if}><a  href="{:mac_url_type($obj,['area'=>$vo2,'lang'=>$param['lang'],'year'=>$param['year'],'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                    {/maccms:foreach}
+                {else /}
+                    {maccms:foreach name=":explode(',',$obj.type_extend.year)" id="vo2" key="key2"}
+                    <li {if condition="$param['year'] eq $vo2"} class="active" {/if}><a  href="{:mac_url_type($obj,['area'=>$param['area'],'lang'=>$param['lang'],'year'=>$vo2,'level'=>$param['level'],'letter'=>$param['letter'],'state'=>$param['state'],'tag'=>$param['tag'],'class'=>$param['class'],'order'=>$param['order'],'by'=>$param['by'] ],'show')}">{$vo2}</a></li>
+                    {/maccms:foreach}
+                {/empty}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="channel">
+			<div class="list clearfix">
+				<ul>
+				  {maccms:vod num="15" paging="yes" pageurl="vod/show" ha1f="3" type="current" order="desc" by="time"}
+				  <li>
+								<div class="li_li clearfix">
+									<div class="li_all">
+										<div class="li_img">
+											<a href="{:mac_url_vod_detail($vo)}"><img class="dpic dh" src="{:mac_url_img($vo.vod_pic)}">
+												<span class="rgba1">{if condition="$vo.vod_remarks neq ''"}{$vo.vod_remarks}{elseif condition="$vo.vod_serial gt 0"}第{$vo.vod_serial}集{else /}已完结{/if}</span></a>
+										</div>
+										<div class="li_text">
+											<p class="name">
+												<a href="{:mac_url_vod_detail($vo)}">{$vo.vod_name}</a>
+											</p>
+											<p class="actor">{$vo.vod_actor|mac_default='内详'}</p>
+										</div>
+										<a class="alink" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}"></a>
+									</div>
+								</div>
+							</li>
+					{/maccms:vod}
+				</ul>
+			</div>
+			{include file="public/paging"}	
+		</div>		
+	</div>
+</div>
+ {include file="public/foot"}
+</body>
+</html>

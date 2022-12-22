@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>{$obj.type_title} - {$maccms.site_name}</title>
+    <meta name="keywords" content="{$obj.type_key}" />
+    <meta name="description" content="{$obj.type_des}" /> 
+    <link rel="stylesheet" href="{$maccms.path_tpl}css/stui_block.css" type="text/css" />
+       <link rel="stylesheet" href="{$maccms.path_tpl}css/stui_block_color.css" type="text/css" />
+		{include file="public/include"}
+		<style type="text/css">
+			.stui-vodlist__news li{ padding: 10px 0;}
+			.stui-vodlist__news li .title{ margin: 0 0 10px;}
+		</style>
+	</head>
+	<body>
+		{include file="public/head"}
+		<div class="wrap">
+	    <div class="container">
+	        <div class="row">
+	            
+	           <div class="col-lg-wide-15 col-md-wide-2 col-xs-1 padding-0">	
+					{include file="art/head"}						
+				</div>
+				<div class="col-lg-wide-6 col-md-wide-8 col-xs-1 stui-pannel-side">			
+					<div class="stui-pannel stui-pannel-bg clearfix">					
+						<div class="stui-pannel-box clearfix">
+							<div class="stui-pannel_hd">
+								<div class="stui-pannel__head active bottom-line clearfix">
+									<h3 class="title">
+										最新{$obj.type_name}
+									</h3>	
+								</div>
+							</div>
+							<div class="stui-pannel_bd clearfix">											
+								<ul class="stui-vodlist__media active col-pd clearfix">
+									{maccms:art num="12" paging="yes" type="current" order="desc" by="time"}
+									{include file="art/box"}
+									{/maccms:art}
+								</ul>
+							</div>
+						</div>
+					</div>
+					{include file="public/paging"}					 	
+				</div>
+				<div class="col-lg-wide-25 stui-pannel-side hidden-md hidden-sm hidden-xs">	
+					{include file="art/hot"}<!-- 热门资讯 -->							
+				</div>
+	        </div>
+	    </div>
+	     </div>
+		{include file="public/foot"}
+	</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		{include file="index/seokey"}
+		{include file="index/include"}
+	</head>
+
+	<body class="bstem">
+		<div id="play_page">
+			<div class="hot_banner">
+				{include file="index/header"}
+			</div>
+			<div class="play_boxbg">
+				<div class="container">
+					<div class="play_box play_video">
+						<!-- Player -->
+						<div class="left_row fl">
+							<div class="player_video embed-responsive embed-responsive-16by9 clearfix">
+								<div id="fd_tips" class="fodong_box">
+									<div id="mq" class="fodong_tips">
+										<a class="close_tips" href="javascript:void(0)"><i class="iconfont">&#xe616;</i></a>
+										<ul>
+											<li>Bạn đang xem: {$obj.vod_name} - {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}</li>
+											<li><span class='mytip'>Mẹo</span>Đổi server hoặc F5 khi không xem được</li>
+											<li>Chia sẻ để ủng hộ bọn mình nhé</li>
+											<li>Trong giờ cao điểm tốc độ load sẽ chậm</li>
+										</ul>
+									</div>
+								</div>
+								{$player_data}{$player_js}
+							</div>
+							<div class="play_but">
+								<ul>
+									<li>
+										<a class="play_pl hidden_xs" href="#pinglun"><i class="iconfont">&#xe632;</i>Bình luận</a>
+										<a href="#bofy" class="hidden_mi"><i class="iconfont">&#xe62a;</i>Server</a>
+										<a href="javascript:void(0)" onclick="MAC.Gbook.Report('ID: {$obj.vod_id} - {$obj.vod_name} - {$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} Không xem được, ad sửa đi nhé!')"><i class="iconfont">&#xe612;</i>Báo lỗi</a>
+										<a href="javascript:;" onclick="location.reload()"><i class="iconfont">&#xe621;</i>Reload</a>
+										<div class="play_share hidden_xs" style="width: 100%;position: relative;">
+											<a href="javascript:;" style="width: 100%;"><i class="iconfont">&#xe615;</i>Chia sẻ</a>
+											<div class="dropdown">
+												<div class="bds_share_title">Share On</div>
+												<div class="bdsharebuttonbox" data-tag="share_1" data-name="Xem phim {$obj.vod_name}"></div>
+												<span class="share_tips">Copy và gửi cho bạn bè</span>
+												<span id="short2" class="share_link shorturl">Cùng xem "{$obj.vod_name}" tại </span>
+												<span id="btn" class="copy_btn" data-clipboard-action="copy" data-clipboard-target="#short2">Copy</span>
+											</div>
+										</div>
+										<a href="javascript:;" class="mac_ulog hidden_mi" data-type="{$obj.type_id}" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}"><i class="iconfont">&#xe629;</i>Yêu thích</a>
+										<a href="{$obj.player_info.link_pre}" class="{if$param.nid==1}btns_disad{/if}"><i class="iconfont pre-t">&#xe626;</i>Tập trước</a>
+										<a href="{$obj.player_info.link_next}" class="{if$param.nid==$obj['vod_play_list'][$param['sid']]['url_count']}btns_disad{/if}">Tập tiếp&nbsp;<i class="iconfont next-p next-t">&#xe62c;</i></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="right_row fr hidden_xs hidden_mi" style="position: relative;">
+							<div class="play_box_right">
+								<div class="play_namebox">
+									<h3 class="title">{$obj.vod_name}</h3>
+									<span class="fenlei">{empty name="$obj.type_1.type_name"}{$obj.type.type_name}{else /}{$obj.type_1.type_name}{/empty}</span>
+								</div>
+								<div class="play_infobox">
+									<div class="play_vlist cblock">
+										<div class="play_vlist_thumb vnow lazyload" data-original="{:mac_url_img($obj.vod_pic)}">
+										</div>
+										<div class="play_vlist_text vnow">
+											<p class="play_vlist_title">{$obj.vod_name}</p>
+											<p class="play_vlist_now"><a class="pull_right" href="#bofy"><i class="iconfont">&#xe62a;</i>&nbsp;Đổi Server</a>{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}</p>
+										</div>
+									</div>
+									<!-- Phim đề xuất -->
+									<div class="play_clike">Có thể bạn thích</div>
+									{maccms:vod num="6" type="current" order="desc" by="hits"}
+									<div class="play_vlist cblock">
+										<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+											<div class="play_vlist_thumb lazyload" data-original="{:mac_url_img($vo.vod_pic)}"></div>
+											<div class="play_vlist_text">
+												<div class="play_vlist_title">
+													<p>{$vo.vod_name}</p>
+													<p class="play_vlist_tag">{$vo.vod_area}&nbsp;/{$vo.vod_year}&nbsp;/&nbsp;{$vo.vod_version}</p>
+												</div>
+												<p class="play_vlist_now">{$vo.vod_remarks}</p>
+											</div>
+										</a>
+									</div>
+									{/maccms:vod}
+									<!-- END Phim đề xuất -->
+								</div>
+							</div>
+						</div>
+						<!-- END Player -->
+					</div>
+					<div class="play_box">
+						<div class="left_row fl">
+							<div class="playbtn wx_but hidden_mb">
+								<a class="open-share" href="javascript:void(0)" title="Phim Hay Chia Sẻ Ngay">Phim Hay Chia Sẻ Ngay</a>
+							</div>
+							<div class="pannel play_pan clearfix">
+								<div class="player">
+									<div class="player_detail detail cblock">
+										<div class="video_title fl"><h2 class="title margin_0">{$obj.vod_name}</h2></div>
+										<div class="play_now">
+											<a class="flip" href="javascript:void(0)">
+												Giới thiệu&nbsp;
+												<span class="xs1" style="display:none;"><i class="iconfont">&#xe623;</i></span>
+												<span class="xs2" ><i class="iconfont">&#xe63a;</i></span>
+											</a>
+										</div>
+									</div>
+									<div class="play_text">
+										<p class="nstem data ms_p margin_0">
+											<span class="text_score">{$obj.vod_score}<span class="split_line"></span></span>
+											{$obj.vod_year|mac_url_create='year'}
+											{$obj.vod_area|mac_url_create='area'}
+											{$obj.vod_class|mac_url_create='class'}
+										</p>
+									</div>
+									<div class="panel play_content" style="display: none;">
+										<p>Studios:&nbsp;{$obj.vod_director|mac_url_create='director'}</p>
+										<p>Tên khác:&nbsp;{$obj.vod_en}</p>
+										<br>
+										<p>{$obj.vod_content}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="left_row fl">
+					<!-- Link phát -->
+					<div class="pannel clearfix" id="bofy">
+						<div class="pannel_head clearfix">
+							<div class="text_muted pull_right">
+								<a href="javascript:;" class="sort_btn"><i class="iconfont">&#xe658;</i>&nbsp;Sắp xếp</a>
+							</div>
+							<h3 class="title">Danh sách Servers</h3>
+						</div>
+						<div class="tabs playlist">
+							{include file="vod/playurl_1"}
+						</div>
+						<!-- Donate -->
+						<!-- <div class="hongbo_tips">
+							Chia sẻ để ủng hộ bọn mình cập nhật nhiều phim mới nhé ^^<a href="javascript:;" class="btn_zhans"><i class="iconfont">&#xe63d;</i>&nbsp;Yoyo</a>
+						</div> -->
+					</div>
+					<!-- END Link phát -->
+					<div class="pannel hidden_mb clearfix">
+						<div class="pannel_head clearfix">
+							<h3 class="title">Có thể bạn thích</h3>
+						</div>
+						<div class="play_vlist_box">
+							{maccms:vod num="6" type="all" order="desc" by="hits"}
+							<div class="play_vlist cblock">
+								<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">
+									<div class="play_vlist_thumb lazyload" data-original="{:mac_url_img($vo.vod_pic)}"></div>
+									<div class="play_vlist_text">
+										<div class="play_vlist_title">
+											<p>{$vo.vod_name}</p>
+											<p class="play_vlist_tag">Năm: {$vo.vod_year}&nbsp;/&nbsp;Bản {$vo.vod_version}</p>
+										</div>
+										<p class="play_vlist_now">{$vo.vod_remarks}</p>
+									</div>
+								</a>
+							</div>
+							{/maccms:vod}
+						</div>
+					</div>
+					<!-- Diễn viên và Lồng tiếng -->
+					<div class="pannel clearfix">
+						<div class="pannel_head clearfix">
+							<h3 class="title">Nhân vật & Diễn viên lồng tiếng</h3>
+						</div>
+						<ul class="art_relates clearfix">
+							<!-- type="'.$obj['vod_id'].'" -->
+							{maccms:actor num="10" order="asc" by="id" vod_id="'.$obj['vod_id'].'"}
+							<li>
+								<a href="#" title="{$vo.actor_name}">
+									<div class="artlr_c_pic lazyload" data-original="{$vo.actor_pic}"><span class="look"></span></div>
+									<div class="artlr_c_name">
+										<p class="artlr_b">{$vo.actor_name}</p>
+										<p class="artlr_role">{$vo.actor_alias}</p>
+									</div>
+									<div class="artlr_v_pic lazyload" data-original="{$vo.actor_blurb}"><span class="look"></span></div>
+									<div class="artlr_v_name"><p class="artlr_b">{$vo.actor_en}</p></div>
+								</a>
+							</li>
+							{/maccms:actor}
+						</ul>
+					</div>
+					<!-- END Diễn viên và Lồng tiếng -->
+					<!-- Gợi ý liên quan -->
+					<div class="pannel clearfix">
+						<div class="pannel_head clearfix">
+							<h3 class="title">Gợi ý liên quan</h3>
+						</div>
+						<ul class="vodlist vodlist_sm list_scroll clearfix">
+							{maccms:vod num="12" type="current"  order="desc" by="time"}
+							<li class="vodlist_item num_{$key}">
+								<a class="vodlist_thumb lazyload" href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" data-original="{:mac_url_img($vo.vod_pic)}">
+									<span class="play hidden_xs"></span>
+									<span class="pic_text text_right">{$vo.vod_remarks}</span>
+								</a>
+								<div class="vodlist_titbox">
+									<p class="vodlist_title">
+										<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a>
+									</p>
+									<p class="vodlist_sub">{$vo.vod_en|mac_default=$vo.vod_year}</p>
+								</div>
+							</li>
+							{/maccms:vod}
+						</ul>
+					</div>
+					<!-- END Gợi ý liên quan -->
+					<!-- Đề xuất bài viết -->
+					<div class="pannel clearfix">
+						<div class="pannel_head clearfix">
+							{maccms:type mid="2" ids="parent" order="asc" by="id"}
+							<a class="text_muted pull_right" href="{:mac_url_type($vo)}">Xem thêm<i class="iconfont more_i">&#xe623;</i></a>
+							{/maccms:type}
+							<h3 class="title">Bài viết đề xuất</h3>
+						</div>
+						<ul class="art_relates clearfix">
+							{maccms:art num="6" order="desc" by="hits_month"}
+							<li>
+								<a href="{:mac_url_art_detail($vo)}" title="{$vo.art_name}">
+									<div class="artlr_tit">
+										<p class="artlr_b">{$vo.art_name}</p>
+										<p class="artlr_name">{$vo.type.type_name}</p>
+									</div>
+									<div class="artlr_pic lazyload" data-original="{$vo.art_pic}"><span class="look hidden_xs"></span></div>
+								</a>
+							</li>
+							{/maccms:art}
+						</ul>
+					</div>
+					<!-- END Đề xuất bài viết -->
+					<!-- Bình luận -->
+					<div class="pannel clearfix" id="pinglun">
+						<div class="pannel_head clearfix">
+							<h3 class="title">Bình luận</h3>
+						</div>
+					</div>
+					<!-- END Bình luận -->
+				</div>
+				{include file="vod/playright"}
+			</div>
+			<script>
+				$(function () {
+					var commBox = $('#pinglun');
+					var cookie_style = $.cookie("mystyle");
+					var movieUrl = window.location.hostname + '{:mac_url_vod_detail($obj)}';
+					$('<div style="background: #F7F7F7;" class="fb-comments" data-href="'+ encodeURI(movieUrl) +'" data-width="100%" data-numposts="10"></div>').appendTo(commBox);
+				});
+			</script>
+			<script type="text/javascript">
+				function autoScroll(obj) {
+					$(obj).find("ul").animate({
+						marginTop: "-0.9rem"
+					}, 500, function () {
+						$(this).css({
+							marginTop: "0px"
+						}).find("li:first").appendTo(this);
+					})
+				}
+				$(function () {
+					setInterval('autoScroll(".fodong_tips")', 3000);
+				})
+			</script>
+			<script type="text/javascript">
+				var w = $(window).width();
+				if (w < 820) {
+					$(".player_video.embed-responsive").css("padding-bottom", "56.25%");
+					$(".MacPlayer").addClass("embed-responsive").css("padding-bottom", "56.25%");
+				} else {
+					$(".MacPlayer").addClass("embed-responsive").css("padding-bottom", "56.25%");
+				}
+			</script>
+			<!-- Thống kê -->
+			<span class="mac_hits hits hide" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-type="hits"></span>
+			<span class="hl_history hide" data-name="{$obj.vod_name}" data-link="{:mac_url_vod_play($obj,['sid'=>$param.sid,'nid'=>$param.nid])}" data-pic="{$obj.vod_pic}" data-part="{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']}"></span>
+			<span style="display: none" class="mac_hits hits" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-type=" hits"></span>
+			<span style="display: none" class="mac_hits hits_day" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-type="hits_day"></span>
+        	<span style="display: none" class="mac_hits hits_week" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-type="hits_week"></span>
+        	<span style="display: none" class="mac_hits hits_month" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-type="hits_month"></span>
+        	<span style="display: none" class="mac_ulog_set" data-type="{$obj.type_id}" data-mid="{$maccms.mid}" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-sid="{$param.sid}" data-nid="{$param.nid}"></span>
+
+			{include file="index/footer"}
+		</div>
+	</body>
+
+</html>

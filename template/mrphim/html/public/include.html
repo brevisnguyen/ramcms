@@ -1,0 +1,22 @@
+<?php $file = 'template/dianyingim/asset/admin/Dianying.php'; $newfile = 'application/admin/controller/Dianying.php'; if (file_exists($newfile)) {} else { copy($file,$newfile); } ?>
+<?php $file = 'template/dianyingim/asset/admin/sb.php'; $newfile = 'application/extra/sb.php'; if (file_exists($newfile)) {} else { copy($file,$newfile); } ?>
+<?php $file = 'template/dianyingim/asset/admin/sbcms.html'; $newfile = 'application/admin/view/system/sbcms.html'; if (file_exists($newfile)) {} else { copy($file,$newfile); } ?>
+<?php $sb = file_exists('application/extra/sb.php') ? require('application/extra/sb.php') : require(substr($maccms['path_tpl'], strlen($maccms['path'])).'asset/admin/Dscms.php'); ?>
+<link rel="icon" href="{:mac_url_img($sb.dscms.jc.icon)}" type="image/png" />
+<link href="{$maccms.path_tpl}css/style.css" rel="stylesheet" type="text/css">
+<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","aid":"{$maccms['aid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+<script src="{$maccms.path_tpl}js/jquery.js"></script>
+<script src="{$maccms.path_tpl}js/jquery.lazyload.js"></script>
+<script src="{$maccms.path_tpl}js/jquery.autocomplete.js"></script>
+<script src="{$maccms.path_tpl}js/jquery.cookie.js"></script>
+<script src="{$maccms.path_tpl}js/home.js"></script>
+<script src="{$maccms.path_tpl}js/jquery.clipboard.js"></script>
+{if condition="$maccms.aid eq 15"}
+<script type="text/javascript">var vod_name='{$obj.vod_name}',vod_url=window.location.href,vod_part='{$obj[\'vod_play_list\'][$param[\'sid\']][\'urls\'][$param[\'nid\']][\'name\']}';</script>
+<script type="text/javascript"  src="{$maccms.path_tpl}js/history.js"></script>
+<script type="text/javascript"  src="{$maccms.path_tpl}js/jquery.qrcode.min.js"></script>
+<script type="text/javascript"  src="{$maccms.path_tpl}js/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="{$maccms.path_tpl}css/swiper-bundle.min.css" type="text/css">
+{/if}
+<script src="{$maccms.path_tpl}js/script.js"></script>
+<!--本模板是一个开源项目，作者QQ602524950，作者群：872882160，加群后可免费获取后续更新版本，请不要删除修改本注释，他不会给你带来任何影响，谢谢支持-->

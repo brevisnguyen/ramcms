@@ -1,0 +1,42 @@
+<?php $name = 'popedom'; ?>
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+  <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Quyền hạn - Tài khoản - {$maccms.site_name}</title> 
+  <meta name="keywords" content="Tài khoản, {$maccms.site_keywords}" /> 
+  <meta name="description" content="{$maccms.site_description}" />
+{include file="index/include"}
+ </head>
+ <body>
+{include file="index/header"}
+{include file="user/left"}
+       <div class="macplus-user-rows"><h2>Quyền truy cập của bạn<a class="hidden-lg pull-right font-16"  href="{:mac_url('user/index')}">Home</a></h2></div> 
+       <ul class="macplus-user-rows macplus-pannel-bg"> 
+	   {volist name="type_tree" id="vo"} 
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">{$vo.type_name}</span> 
+          <span class="col-xs-wide-7 col-sm-wide-8 text-overflow">{foreach name="$vo.popedom" id="v2"}{if condition="$v2 eq 1"} {$key}<span class="text-green">√ </span> {else} {$key}<span class="text-red">× </span> {/if}{/foreach}</span> 
+         </div> </li>{volist name="vo.child" id="child"}
+        <li class="padding-x macplus-user-rows line-top"> 
+         <div class="block font-16 macplus-user-rows"> 
+          <span class="col-xs-wide-3 col-sm-wide-2 text-overflow">{$child.type_name}</span> 
+          <span class="col-xs-wide-7 col-sm-wide-8 text-overflow">{foreach name="$child.popedom" id="v2"}{if condition="$v2 eq 1"} {$key}<span class="text-green">√ </span> {else} {$key}<span class="text-red">× </span> {/if}{/foreach}</span> 
+         </div> </li> {/volist}{/volist} 
+		 </div>
+       </ul> 
+	   </form> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+</div> 
+{include file="index/footer"}
+{include file="user/footer"}
+ </body>
+</html>

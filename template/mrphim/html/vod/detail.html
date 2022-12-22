@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>{$obj.vod_name} | Chi tiết {$obj.vod_name}|Xem trực tuyến {$obj.vod_name}|Tải xuống - {$maccms.site_name}</title>
+    <meta name="keywords" content="Xem phim {$obj.vod_name}, Tải xuống{$obj.vod_name}" />
+    <meta name="description" content="Chi tiết {$obj.vod_name}: {$obj.vod_blurb}" />
+    {include file="public/include"}
+</head>
+<body class="view page">
+{include file="public/head"}
+<main id="main" class="wrapper">
+    <div class="content">
+        <div class="box view-heading">
+            <div class="mobile-play">
+                <div class="module-item-cover">
+                    <div class="module-item-pic"><img class="lazyload" data-src="{$obj.vod_pic|mac_url_img}" src="{$maccms.path_tpl}img/loading.png"></div>
+                </div>
+            </div>
+            <div class="video-cover">
+                <div class="module-item-cover">
+                    <div class="module-item-pic">
+                        <a href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}" title="{$obj.vod_name}"><i class="icon-play"></i></a><img class="lazyload" alt="{$obj.vod_name}" data-src="{$obj.vod_pic|mac_url_img}" src="{$maccms.path_tpl}img/loading.png">
+                        <div class="loading"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="video-info">
+                <div class="video-info-header">
+                    <h1 class="page-title">{$obj.vod_name}</h1>
+                    <h2 class="video-subtitle" title="{$obj.vod_en}">{$obj.vod_en}</h2>
+                    <div class="video-info-aux">
+                        <a href="{:mac_url_type($obj.type)}" title="{$obj.type.type_name}" class="tag-link">
+						    <span class="video-tag-icon"><i class="icon-cate-dy"></i>{$obj.type.type_name}</span>
+                        </a>
+                        <div class="tag-link">{$obj.vod_class|mac_url_create='class','vod','search','<span class="slash">/</span>'}</div>
+                        <div class="tag-link">{$obj.vod_year|mac_url_create='year','vod','search'}&nbsp;</div>
+                        <div class="tag-link">{$obj.vod_area|mac_url_create='area','vod','search'}&nbsp;</div>
+                        <div class="tag-link">{$obj.vod_lang|mac_url_create='lang'}&nbsp;</div>
+                    </div>
+                    <a href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}" class="btn-important btn-large shadow-drop video-info-play" title="{$obj.vod_name}"><i class="icon-play"></i><strong>立即播放</strong></a>
+                </div>
+                <div class="video-info-main">
+                    <div class="video-info-items"><span class="video-info-itemtitle">Đạo diễn: </span>
+                        <div class="video-info-item video-info-actor"><span class="slash">/</span>
+                            {$obj.vod_director|mac_url_create='director','vod','search','<span class="slash">/</span>'}
+                        </div>
+                    </div>
+                    <div class="video-info-items"><span class="video-info-itemtitle">Diễn viên chính: </span>
+                        <div class="video-info-item video-info-actor"><span class="slash">/</span>
+                            {$obj.vod_actor|mac_url_create='actor','vod','search','<span class="slash">/</span>'}
+                        </div>
+                    </div>
+                    <div class="video-info-items"><span class="video-info-itemtitle">Phát hành: </span>
+                        <div class="video-info-item">{$obj.vod_pubdate|mac_default=$obj.vod_year} ({$obj.vod_area})</div>
+                    </div>
+                    <div class="video-info-items"><span class="video-info-itemtitle">Trạng thái: </span>
+                        <div class="video-info-item">{$obj.vod_remarks|mac_default=$obj.vod_hits.'Lượt xem'}</div>
+                    </div>
+                    <div class="video-info-items"><span class="video-info-itemtitle">Nội dung: </span>
+                        <div class="video-info-item video-info-content">
+                            <p class="zkjj_a">{$obj.vod_content|mac_filter_html|mac_substring=200}<span class="zk_jj red">[Mở rộng]</span></p><p class="sqjj_a" style="display: none;">{$obj.vod_content|mac_filter_html}<span class="sq_jj red">[Thu gọn]</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-info-footer display">
+                    <div class="video-info-share">
+                        <button class="share-btn" data-clipboard-text="{$maccms.site_url}{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}我正在电影先生 dianyingxs.com观看《{$obj.vod_name}》，推荐给你一起看！">Phim hay, chia sẻ với bạn bè<i class="icon-happy"></i></button>
+                    </div>
+                    <a href="{:mac_url_vod_play($obj,['sid'=>1,'nid'=>1])}" class="btn-important btn-large shadow-drop" title="Xem {$obj.vod_name}"><i class="icon-play"></i><strong>Xem</strong></a>
+
+                    {notempty name="$obj.vod_down_from"}
+                    <span class="btn-aux btn-aux-o btn-large gotodownloadlist"><i class="icon-download" onclick="click_scroll();"></i><strong>Tải xuống</strong></span>
+                    {/notempty}
+                </div>
+            </div>
+        </div>
+        <script>
+            $(".sq_jj").click(function(){
+                $(".sqjj_a").toggle();
+                $(".zkjj_a").toggle();
+            });
+            $(".zk_jj").click(function(){
+                $(".sqjj_a").toggle();
+                $(".zkjj_a").toggle();
+            });
+            $('.gotodownloadlist').click(function(){$('html,body').animate({scrollTop:$('#download-list').offset().top}, 800);});
+        </script>
+        <!-- 简介 -->
+
+        <div class="module">
+            <div class="module-heading">
+                <h2 class="module-title" title="{$obj.vod_name} danh sách xem trực tuyến">Xem trực tuyến</h2>
+                Thứ tự ngược lại
+                <div class="module-tab module-player-tab ">
+                    <input type="hidden" name="tab" id="tab" class="module-tab-input">
+                    <label class="module-tab-name"><span class="module-tab-value">{$vo.player_info.from}</span><i class="icon-arrow-bottom-o"></i></label>
+                    <div class="module-tab-items">
+                        <div class="module-tab-title">Xem danh sách<span class="close-drop"><i class="icon-close-o"></i></span></div>
+                        <div class="module-tab-content">
+                            {php}$num=1;{/php}{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+                            <div class="module-tab-item tab-item {if$num==1}selected{/if}" data-dropdown-value="{$vo.player_info.from}"><span>{$vo.player_info.show}</span><small>{$vo.url_count}</small></div>
+                            {php}$num++;{/php}{/maccms:foreach}
+                        </div>
+                    </div>
+                </div>
+                <div class="shortcuts-mobile-overlay"></div>
+            </div>
+            {php}$num=1;{/php}{maccms:foreach name="obj.vod_play_list" id="vo" key="key"}
+            <div class="module-list module-player-list tab-list sort-list {if condition='$obj.type_id eq 3'}module-vod-list{/if} {if$num==1} selected{/if}" id="glist-{$key}">
+                <div class="module-tab module-sorttab">
+                    <input type="hidden" name="tab-sort" id="tab-sort" class="module-tab-input">
+                    <label class="module-tab-name"><i class="icon-all"></i></label>
+                    <div class="module-tab-items">
+                        <div class="module-tab-title">Tuyển tập<span class="close-drop"><i class="icon-close-o"></i></span><a class="desc sort-button" href="javascript:void(0);" to="#sort-item-{$key}"><i class="icon-sort"></i>Loại</a></div>
+                        <div class="module-tab-content">
+                            <div class="module-blocklist">
+                                <div class="sort-item" id="sort-item-1">
+                                    {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+                                    <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" title="{$vo2.name}"><span>{if condition="$obj.type_id_1 eq 2"}Đầu tiên{$key2}Thu thập{else /}{$vo2.name}{/if}</span></a>
+                                    {/maccms:foreach}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shortcuts-mobile-overlay"></div>
+                <div class="module-blocklist scroll-box scroll-box-y">
+                    <div class="scroll-content">
+                        {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+                        <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}" title="{$vo2.name}"><span>
+                        {if condition="$obj.type_id_1 eq 2"}Tập {$key2}{else /}{$vo2.name}{/if}
+                        </span></a>
+                        {/maccms:foreach}
+                    </div>
+                </div>
+            </div>
+            {php}$num++;{/php}{/maccms:foreach}
+        </div>
+
+    {notempty name="$obj.vod_down_from"}
+    <div class="module" id="download-list" name="download-list">
+        <div class="module-heading">
+            <h2 class="module-title" title="Download {$obj.vod_name}">Tải video</h2>
+            <div class="module-tab module-player-tab"><input type="hidden" name="downtab" id="downtab" class="module-tab-input"><label class="module-tab-name"><span class="module-tab-value">MH SD</span><i class="icon-arrow-bottom-o"></i></label>
+                <div class="module-tab-items">
+                    <div class="module-tab-title">Phiên bản video<span class="close-drop"><i class="icon-close-o"></i></span></div>
+                    <div class="module-tab-content">
+                        {maccms:foreach name="obj.vod_down_list" id="vo"}
+                        <div class="module-tab-item downtab-item  {if condition='$key eq 1'}selected{/if}"><span data-dropdown-value="{$vo.player_info.show}">{$vo.player_info.show}</span><small>6</small></div>
+                        {/maccms:foreach}
+                    </div>
+                </div>
+            </div>
+            <div class="shortcuts-mobile-overlay"></div>
+        </div>
+        {maccms:foreach name="obj.vod_down_list" id="vo" key="key"}
+        <div class="module-list module-player-list sort-list module-downlist {if condition="$key eq 1"}selected{/if}">
+            <div class="scroll-box-y">
+                <div class="module-row-one">
+                    {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+                    <div class="module-row-info">
+                        <a class="module-row-text copy" href="javascript:;" data-clipboard-text="{$vo2.url}" title="Sao chép địa chỉ tải xuống {$vo2.name}"><i class="icon-video-file"></i>
+                            <div class="module-row-title">
+                                <h4>{$vo2.name}</h4>
+                                <p>{$vo2.url}</p>
+                            </div>
+                        </a>
+                        <div class="module-row-shortcuts">
+                            <a class="btn-pc btn-down" href="{$vo2.url}" title="{$vo2.name}"><i class="icon-download"></i><span>Tải xuống</span></a>
+                            <a class="btn-copyurl copy" href="javascript:;" data-clipboard-text="{$vo2.url}" title="Sao chép địa chỉ tải xuống {$vo2.name}"><i class="icon-url"></i><span class="btn-pc">Sao chép Link</span></a>
+                        </div>
+                    </div>
+                    {/maccms:foreach}
+
+                </div>
+            </div>
+        </div>
+        {/maccms:foreach}
+    </div>
+    {/notempty}
+
+    <div class="module">
+        <div class="module-heading">
+            <h2 class="module-title">Có thể bạn thích</h2>
+        </div>
+        <div class="module-list module-lines-list">
+            <div class="module-items">
+                {maccms:vod num="16" type="'.$obj['type_id'].'" order="desc" by="time"}
+                {include file="assembly/vodlist"}
+                {/maccms:vod}
+            </div>
+        </div>
+    </div>
+    <div class="module" style="display: none !important;">
+        <div class="module-heading">
+            <h2 class="module-title">Gợi ý liên quan</h2>
+            <a class="more" href="{:mac_url_vod_play($vo,['sid'=>$vo.sid,'nid'=>1])}" title="更多">Xem thêm<i class="icon-arrow-right-o"></i></a>
+        </div>
+        <div class="module-list module-lines-list">
+            <div class="module-items">
+                {maccms:vod num="16" type="current" order="desc" by="time"}
+                {include file="assembly/vodlist"}
+                {/maccms:vod}
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+{include file="public/foot"}
+<div class="shortcuts-box"><div id="shortcuts-info"></div></div>
+<span class="mac_ulog_set none" alt="Đặt lịch sử duyệt trang" data-type="4" data-mid="1" data-id="67609" data-sid="0" data-nid="0"></span>
+<span class="mac_hits none" data-mid="1" data-id="67609" data-type="hits"></span>
+</body>
+</html>

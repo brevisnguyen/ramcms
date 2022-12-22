@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Bảng tin - {$maccms.site_name}</title>
+	{include file="public/include"}
+	<script>
+		$(function(){
+			MAC.Gbook.Login = {$gbook.login};
+			MAC.Gbook.Verify = {$gbook.verify};
+			MAC.Gbook.Init();
+		});
+	</script>
+	<style>
+		.container{ position: relative; margin-right: auto; margin-left: auto;}
+		.row{ position: relative; margin: 0; padding: 0;}
+		.container:before,.container:after,.row:before,.row:after,.clearfix:before, .clearfix:after{ display: table; content: " "; clear: both;}
+		select{cursor: pointer; border: none; outline: none;}
+		input,textarea{outline: medium none; outline: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+		input.form-control,input.btn{ outline:0px; -webkit-appearance: none;}
+		input[type="checkbox"]{ vertical-align: -2px;}
+		.form-control{display:block; width:100%; height:35px; padding: 0 10px; font-size:12px; line-height: 20px; border-radius:4px; transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+		textarea.form-control{ height: auto; padding: 10px;}
+		.form-control.verify{ width: 90px; text-align: center; margin-right: 10px; display: inline-block;}
+		.pb20{padding-bottom:20px}
+		.pull-right{float:right!important}
+		.pull-right img{border:0;vertical-align:middle}
+		.btn{display:inline-block;padding:8px 30px;font-size:12px}
+		.top-line-dot:before{content:" ";position:absolute;left:0;top:0;right:0;width:100%;height:1px;border:1px dotted #eee}
+		.text-red{color:red}
+		.form-control{ background-color:#F5F5F5; color: #999999; border: 1px solid #eee;}
+		.form-control:focus{ border-color:#ff9900; -webkit-box-shadow:inset 0 1px 1px rgba(255,136,0,.075),0 0 8px rgba(255,136,0,.6);}
+		.styu-message__list{ position: relative; padding: 20px 0;}
+		.styu-message__list .avatar{ float: left; width: 60px;}
+		.styu-message__list .data{ margin-left: 60px;}
+		.styu-message__list .data .name{ margin: 0; font-size: 16px;}
+		.styu-message__list .data .content{ padding: 5px 0; line-height: 20px; word-wrap: break-word; white-space: normal;}
+		.styu-message__list .data .admin,.styu-message__list .data .content{ margin: 0; font-size: 14px;}
+		.styu-message__list.child{ margin-top: 20px; padding-bottom: 0;}
+		@media (min-width: 1200px){.container{ max-width: 1200px;}.container{ padding-left: 0px;  padding-right: 0px;}.container.min{ width: 1200px; padding: 0;}}
+		@media (max-width: 767px){body,body.active{ padding-bottom: 50px;}[class*=col-],.myui-panel,.myui-content__list li{ padding: 5px}.flickity-prev-next-button.previous{ left: 5px;}.flickity-prev-next-button.next{ right: 5px;}.myui-vodlist__text li a,.myui-vodlist__media li{ padding: 10px 0;}.myui-screen__list{ padding: 10px 5px 0;}.myui-screen__list li{ margin-bottom: 5px; margin-right: 5px;}.myui-extra{ right: 20px; bottom: 80px;}.myui-page{ padding: 0 5px;}}.myui-topbg{ position: absolute; top: 0; left: 0; right: 0; width: 100%;  background-image: linear-gradient( 135deg, #583230 10%, #360940 100%);}
+	</style>
+</head>
+<body class="page">
+{include file="public/head"} 
+<div class="container min">
+    <div class="row">
+     	<div class="myui-panel myui-panel-bg clearfix">
+     		<div class="myui-panel-box clearfix">
+				<div class="module-heading">
+					<h2 class="module-title">Tôi muốn để lại tin nhắn</h2>
+				</div>
+     			<div class="myui-panel-bd col-pd clearfix">
+     				{include file="gbook/report"} 
+     			</div>
+     		</div>
+     	</div>
+
+    	<div class="myui-panel myui-panel-bg clearfix">
+    		<div class="myui-panel-box clearfix">
+				<div class="module-heading">
+					<h2 class="module-title">Người dùng để lại lời nhắn</h2>
+				</div>
+    			<div class="myui-panel_bd col-pd">
+    				{maccms:gbook num="'.$mytheme['gbook']['num'].'" paging="yes" order="desc" by="id"}
+    				<div class="styu-message__list top-line-dot clearfix">
+    					<div class="avatar">
+    						<a href="javascript:;"><img class="face" src="__STATIC__/images/home/duface.png" width="45" height="45" /></a> 
+    					</div>
+    					<div class="data">
+    						<span class="text-muted pull-right">{$vo.gbook_time|date='Y-m-d H:i:s',###}</span>
+    						<h5 class="name"><a class="font-bold" href="javascript:;">{$vo.gbook_name}</a></h5>
+    						<p class="content">{$vo.gbook_content}</p>
+    						{if condition="$vo.gbook_reply_time gt 0"}
+							<p class="text-red admin">Admin trả lời：{$vo.gbook_reply}（{$vo.gbook_reply_time|date='Y-m-d H:i:s',###}）</p>
+							{/if}
+    					</div>
+    				</div>
+    				{/maccms:gbook}	
+    			</div> 
+    		</div>		
+    		
+    		{if $mytheme.gbook.ad && $mytheme.gbook.ad1}
+			<div class="myui-panel myui-panel-bg clearfix">
+				<div class="myui-panel-box clearfix">
+					<div class="myui-panel_bd">
+						<div class="col-xs-1">
+							{$mytheme.gbook.ad1}
+						</div>
+					</div>
+				</div>				
+			</div>
+			{/if}
+
+			<div class="module-footer">
+				{include file="public/paging"}
+			</div>
+	    </div>
+    </div>
+</div>
+{include file="public/foot"}
+</body>
+</html>
