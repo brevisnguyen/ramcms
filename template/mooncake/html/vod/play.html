@@ -264,8 +264,8 @@
 				$(function () {
 					var commBox = $('#pinglun');
 					var cookie_style = $.cookie("mystyle");
-					var movieUrl = window.location.hostname + '{:mac_url_vod_detail($obj)}';
-					$('<div style="background: #F7F7F7;" class="fb-comments" data-href="'+ encodeURI(movieUrl) +'" data-width="100%" data-numposts="10"></div>').appendTo(commBox);
+					var movieUrl = window.location.protocol + '//' + window.location.hostname + '{:mac_url_vod_detail($obj)}';
+					$('<div style="background: #F7F7F7;" class="fb-comments" data-href="'+ encodeURI(movieUrl) +'" data-width="100%" data-lazy="true" data-numposts="10"></div>').appendTo(commBox);
 				});
 			</script>
 			<script type="text/javascript">
