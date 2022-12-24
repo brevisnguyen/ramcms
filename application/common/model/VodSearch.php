@@ -45,7 +45,7 @@ class VodSearch extends Base {
             $id_list = is_array($id_list) ? $id_list : [];
             $this->insert([
                 'search_key'           => $search_key,
-                'search_word'          => mb_substr('%' . $search_word . '%', 0, 128),
+                'search_word'          => mb_substr($search_word, 0, 128),
                 'search_field'         => mb_substr($search_field, 0, 64),
                 'search_hit_count'     => 1,
                 'search_last_hit_time' => time(),
