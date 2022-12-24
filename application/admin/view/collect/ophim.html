@@ -70,6 +70,7 @@
         const divMsgCrawlError = $("div#result_error");
         const textAreaResultSuccess = $("textarea#list_crawl_success");
         const textAreaResultError = $("textarea#list_crawl_error");
+        const inputLink = $("input[name=link_detail]");
 
         buttonRollMovies.on("click", () => {
             var listLink = textArealistMovies.val();
@@ -80,18 +81,46 @@
         });
 
         buttonCrawlOne.on("click", () => {
-            textArealistMovies.show(300);
+            if (inputLink.val() == "") {
+                alert("Mời nhập link phim");
+                return;
+            }
+            var urlPhim = inputLink.val();
+            divMsg.show(300);
+            divMsgCrawlSuccess.show(300);
+            divMsgCrawlError.show(300);
+            divMsgText.html(`Crawl Link: ${urlPhim}`);
+            $.ajax({
+                url:"{:url('crawl_ophim_link')}",
+                type: "POST",
+                data: {
+                    url: urlPhim,
+                },
+                beforeSend: function () {
+                    buttonCrawlOne.hide(300);
+                },
+                success: function (res) {
+                    let data = JSON.parse(res);
+                    if (data.status) {
+                        textAreaResultSuccess.val(urlPhim);
+                    } else {
+                        textAreaResultError.val(urlPhim);
+                    }
+                    divMsgText.html("Done!");
+                    buttonCrawlOne.show(300);
+                }
+            })
         });
 
         buttonGetListMovies.on("click", () => {
             divMsg.show(300);
             textArealistMovies.show(300);
-            crawl_page_callback(inputPageFrom.val());
+            crawl_page_callback(parseInt(inputPageFrom.val()));
         });
         const crawl_page_callback = (currentPage) => {
             var urlPageCrawl = `https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=${currentPage}`;
 
-            if (currentPage < inputPageTo.val()) {
+            if (currentPage < parseInt(inputPageTo.val())) {
                 divMsgText.html("Done!");
                 buttonCrawlMovies.show(300);
                 return false;

@@ -504,6 +504,29 @@ class Collect extends Base
         return $this->fetch('admin@collect/ophim');
     }
 
+    public function crawl_ophim_link()
+    {
+        try {
+            $url = input('url');
+            $host = parse_url($url, PHP_URL_HOST);
+            $api_url = str_replace($host, 'ophim1.com', $url);
+            $html = mac_curl_get($api_url);
+            $html = mac_filter_tags($html);
+            $sourcePage = json_decode($html, true);
+            $title = $sourcePage['movie']['name'];
+            $year = $sourcePage['movie']['year'];
+            $ophim_id = $sourcePage['movie']['_id'];
+            $result = $this->add_movie($title, $year, $ophim_id, $sourcePage);
+            return $result;
+        } catch (\Throwable $th) {
+            $result = array(
+                'status' => true,
+                'msg' => "Crawl error: " . $th,
+            );
+            return json_encode($result);
+        }
+    }
+
     public function crawl_ophim_page()
     {
         $url = input('url');
@@ -538,7 +561,8 @@ class Collect extends Base
             $org_title = explode('|', $data_post)[4];
             $year = explode('|', $data_post)[5];
 
-            $api_url = str_replace('ophim.tv', 'ophim1.com', $url);
+            $host = parse_url($url, PHP_URL_HOST);
+            $api_url = str_replace($host, 'ophim1.com', $url);
             $html = mac_curl_get($api_url);
             $html = mac_filter_tags($html);
             $sourcePage = json_decode($html, true);
@@ -553,6 +577,21 @@ class Collect extends Base
             //     return json_encode($result);
             // }
 
+            $result = $this->add_movie($title, $year, $ophim_id, $sourcePage);
+            return $result;
+
+        } catch (Exception $e) {
+            $result = array(
+                'status' => true,
+                'msg' => "Crawl error"
+            );
+            return json_encode($result);
+        }
+    }
+
+    protected function add_movie($title, $year, $ophim_id, $sourcePage)
+    {
+        try {
             // Check cập nhật
             $where = [];
             $where['vod_name'] = mac_filter_xss($title);
@@ -565,17 +604,17 @@ class Collect extends Base
             $vod_id = "";
 
             if ( !$info ) {
-                foreach ($sourcePage["movie"]["category"] as $key => $value) {
-                    if ( strpos($value["name"], 'Phim 18+') !== false ) {
-                        $result = array(
-                            'status' => true,
-                            'post_id' => '',
-                        );
-                        return json_encode($result);
-                    }
-                }
+                // foreach ($sourcePage["movie"]["category"] as $key => $value) {
+                //     if ( strpos($value["name"], 'Phim 18+') !== false ) {
+                //         $result = array(
+                //             'status' => true,
+                //             'post_id' => '',
+                //         );
+                //         return json_encode($result);
+                //     }
+                // }
 
-                $data = $this->create_data($sourcePage, $url, $ophim_id, 'i');
+                $data = $this->create_data($sourcePage, $ophim_id, 'i');
 
                 $vod_id = model('Vod')->insert($data, false, true);
                 if ($vod_id > 0) {
@@ -596,7 +635,7 @@ class Collect extends Base
                     }
                 }
 
-                $data = $this->create_data($sourcePage, $url, $ophim_id, 'u');
+                $data = $this->create_data($sourcePage, $ophim_id, 'u');
                 
                 $vod_id = $info['vod_id'];
                 $where = [];
@@ -611,18 +650,17 @@ class Collect extends Base
                 'post_id' => $vod_id,
             );
             return json_encode($result);
-
-        } catch (Exception $e) {
+        } catch (\Throwable $th) {
             $result = array(
                 'status' => true,
                 'post_id' => $vod_id,
-                'msg' => "Crawl error"
+                'msg' => "Crawl error: " . $th,
             );
             return json_encode($result);
         }
     }
 
-    protected function create_data($sourcePage, $url, $ophim_id, $flag)
+    protected function create_data($sourcePage, $ophim_id, $flag)
     {
         if($sourcePage["movie"]["type"] == "single") {
             $type_name = "phim lẻ";
