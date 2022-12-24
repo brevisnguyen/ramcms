@@ -28,6 +28,7 @@ class VodSearch extends Base {
             $id_list = [];
             $search_word_exploded = explode(',', $search_word);
             foreach ($search_word_exploded as $search_word) {
+                $search_word = trim(mb_strtolower($search_word));
                 $id_list += $this->getResultIdList($search_word, $search_field);
             }
             $id_list = array_unique($id_list);
