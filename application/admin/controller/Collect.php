@@ -667,8 +667,8 @@ class Collect extends Base
         if($sourcePage["movie"]["name"] != $sourcePage["movie"]["origin_name"]) array_push($arrTags, $sourcePage["movie"]["origin_name"]);
 
         if($flag == 'i') {
-             $vod_pic = $this->upload_image($sourcePage["movie"]["thumb_url"], $sourcePage["movie"]["name"], $sourcePage["movie"]["year"], 'thumb');
-             $vod_pic_slide = $this->upload_image($sourcePage["movie"]["poster_url"], $sourcePage["movie"]["name"], $sourcePage["movie"]["year"], 'slide');
+            $vod_pic = $this->upload_image($sourcePage["movie"]["thumb_url"], $sourcePage["movie"]["name"], $sourcePage["movie"]["year"], 'thumb');
+            $vod_pic_slide = $this->upload_image($sourcePage["movie"]["poster_url"], $sourcePage["movie"]["name"], $sourcePage["movie"]["year"], 'slide');
         }
     
         $data = array(
@@ -698,9 +698,9 @@ class Collect extends Base
             'vod_down_url' => '',
             'vod_plot_name' => '',
             'vod_plot_detail' => '',
-            'vod_pic' => $sourcePage["movie"]["thumb_url"],
-            'vod_pic_thumb' => $sourcePage["movie"]["thumb_url"],
-            'vod_pic_slide' => $sourcePage["movie"]["poster_url"],
+            'vod_pic' => $vod_pic,
+            'vod_pic_thumb' => $vod_pic,
+            'vod_pic_slide' => $vod_pic_slide,
         );
 
         if($sourcePage["movie"]["status"] == 'trailer') {
