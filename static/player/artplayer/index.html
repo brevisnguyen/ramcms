@@ -14,6 +14,12 @@
     <div id="videodiv" class="artplayer-app"></div>
 
     <script type="text/javascript">
+        const TVC_VIDEO = "https://bit.ly/i9bet-mung-xuan-quy-mao";
+        const TVC_URL = "https://bit.ly/i9bet-mung-xuan-quy-mao";
+        const TVC_PLAY_DURATION = 8;
+        const TVC_TOTAL_DURATION = 36;
+        const IS_AUTO_SKIP_TVC = true;
+        let isTVCPlayed = false;
 
         var video_type = '';
         if( parent.MacPlayer.PlayUrl.indexOf('.m3u8') >- 1 ){
@@ -39,6 +45,7 @@
             miniProgressBar: true,
             backdrop: true,
             playsInline: true,
+            autoplay: true,
             autoPlayback: true,
             airplay: true,
             theme: '#23ade5',
@@ -141,7 +148,22 @@
                         }
                     }
                 },
-            }
+            },
+            plugins: [
+                artplayerPluginAds({
+                    video: TVC_VIDEO,
+                    url: TVC_URL,
+                    playDuration: TVC_PLAY_DURATION,
+                    totalDuration: TVC_TOTAL_DURATION,
+                    muted: true,
+                    i18n: {
+                        close: 'Bỏ qua quảng cáo',
+                        countdown: '%s giây',
+                        detail: 'Xem thêm',
+                        canBeClosed: 'Tắt quảng cáo sau %s giây',
+                    },
+                }),
+            ],
         });
         if (video_type == 'embed') {
             art.on('video:ended', () => {
@@ -151,6 +173,28 @@
                 onVideoEnded();
             });
         }
+
+        if (IS_AUTO_SKIP_TVC) {
+            let playDuration = TVC_PLAY_DURATION;
+            art.on('play', () => {
+                if (!isTVCPlayed) {
+                    var i = setInterval(() => {
+                        if (playDuration <= 0) {
+                            art.plugins.artplayerPluginAds.skip();
+                            if (video_type == 'embed') {
+                                art.on('video:ended', () => {
+                                    onVideoEnded();
+                                });
+                            }
+                            isTVCPlayed = true;
+                            clearInterval(i);
+                        }
+                        playDuration--;
+                    }, 1000);
+                }
+            });
+        }
+
         function onVideoEnded() {
             art.pause();
             let playerDiv = document.getElementById('videodiv');
