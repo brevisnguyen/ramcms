@@ -158,6 +158,8 @@ class Index extends Base
         if(!$res) {
             $this->error(lang('admin/index/clear_err'));
         }
+        // Dọn dẹp cache kết quả tìm kiếm
+        model('VodSearch')->clearOldResult(true);
         return $this->success(lang('admin/index/clear_ok'));
     }
 
