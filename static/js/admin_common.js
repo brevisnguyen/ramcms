@@ -16,7 +16,26 @@ layui.define(['element', 'form'], function(exports) {
 
     $(function(){
         if( typeof(MAC_VERSION) !='undefined' && typeof(PHP_VERSION) !='undefined' && typeof(THINK_VERSION) !='undefined' ) {
-            eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('$(\'3\').9(\'<0\'+\'1 4="\'+\'//5.6.7/8/?c=2&a=\'+b+\'&d=\'+e+\'&f=\'+g+\'&h=\'+i.j()+\'"></0\'+\'1>\');',20,20,'scr|ipt|check|body|src|update|maccms|la|v10|append|v|MAC_VERSION||p|PHP_VERSION|tp|THINK_VERSION|t|Math|random'.split('|'),0,{}));
+            $.ajax({
+                type: "GET",
+                url: atob("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2JyZXZpcy1uZy9yYW1jbXNfdXBkYXRlL21hc3Rlci9qc29uL2NoYW5nZV9sb2cuanNvbg=="),
+                dataType: "json",
+                success: function (response) {
+                    if (typeof(response.latestVersion != "undefined")) {
+                        var currentVersion = MAC_VERSION.replace("/\./g", "");
+                        var latestVersion = response.latestVersion.replace("/\./g", "");
+                        var html = "";
+                        if (latestVersion > currentVersion) {
+                            var update_content = response.change_log.join("<br>");
+                            html += '<table class="tbinfo pleft layui-table" ><thead><th colspan="4"><span class="layui-badge-dot"></span> <span style="margin-right: 10px;font-weight: bold;">Bản cập nhật mới '+response.latestVersion+'</span><a target="_blank" class="layui-btn layui-btn-normal" href="'+response.telegram+'"><i class="layui-icon layui-icon-release"></i> Nhóm Telegram RamCMS</a>&nbsp;&nbsp;&nbsp;<a class="layui-btn layui-btn-danger" target="_blank" href="'+response.githubRepo+'"><i class="layui-icon layui-icon-app"></i> RamCMS Github</a></th></thead><tr><td colspan="4"><a class="j-iframe" title="Cập nhật ngay" data-href="'+ADMIN_PATH+'/admin/update/step1.html?file='+response.packageName+'"><font class="tit s20">Ấn để cập nhật ngay!</font></a></td></tr><tr><td colspan="4">'+update_content+'</td></tr></table>';
+                        } else {
+                            html += '<table class="tbinfo pleft layui-table" ><thead><th colspan="4"><span class="layui-badge-dot"></span> <a class="layui-btn layui-btn-normal" style="margin-left: 10px;" target="_blank" href="'+response.telegram+'"><i class="layui-icon layui-icon-release"></i> Nhóm Telegram RamCMS</a>&nbsp;&nbsp;&nbsp;<a class="layui-btn layui-btn-danger" target="_blank" href="'+response.githubRepo+'"><i class="layui-icon layui-icon-app"></i> RamCMS Github</a></th></thead><tr><td colspan="4"><font class="tit s20">Phiên bản hiện tại là mới nhất</font></td></tr></table>';
+                        }
+                        $("body").append("<style>.tit{color:blue;} .tif{color:red;} .s20{font-size:20px;} </style>");
+                        $("table:last").after(html);
+                    }
+                }
+            });
         }
     });
 
