@@ -13,7 +13,7 @@ class Update extends Base
         parent::__construct();
         //header('X-Accel-Buffering: no');
 
-        $this->_url = base64_decode("aHR0cDovL3VwZGF0ZS5tYWNjbXMubGEv")."v10/";
+        $this->_url = base64_decode("aHR0cHM6Ly9naXRodWIuY29tL2JyZXZpcy1uZy9yYW1jbXNfdXBkYXRlL3Jhdy9tYXN0ZXIv");
         $this->_save_path = './application/data/update/';
     }
 
@@ -28,7 +28,7 @@ class Update extends Base
             return $this->error(lang('param_err'));
         }
         $version = config('version.code');
-        $url = $this->_url .$file . '.zip?t='.time();
+        $url = $this->_url . $file . '.zip?t='.time();
 
         echo $this->fetch('admin@public/head');
         echo "<div class='update'><h1>".lang('admin/update/step1_a')."</h1><textarea rows=\"25\" class='layui-textarea' readonly>".lang('admin/update/step1_b')."\n";
