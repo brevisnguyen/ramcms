@@ -18,7 +18,7 @@ layui.define(['element', 'form'], function(exports) {
         if( typeof(MAC_VERSION) !='undefined' && typeof(PHP_VERSION) !='undefined' && typeof(THINK_VERSION) !='undefined' ) {
             $.ajax({
                 type: "GET",
-                url: atob("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2JyZXZpcy1uZy9yYW1jbXNfdXBkYXRlL21hc3Rlci9qc29uL2NoYW5nZV9sb2cuanNvbg=="),
+                url: atob("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2JyZXZpcy1uZy9yYW1jbXNfdXBkYXRlL21hc3Rlci9qc29uL2NoYW5nZV9sb2cuanNvbg==") + "?t=" + Date.now(),
                 dataType: "json",
                 success: function (response) {
                     if (typeof(response.latestVersion != "undefined")) {
