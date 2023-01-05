@@ -1,9 +1,9 @@
 <?php
 return array (
-    'name' => '苹果CMS内容管理系统',
-    'copyright' => 'MacCMS',
-    'url' => '//github.com/magicblack',
-    'code' => '2023.1000.3051',
-    'license' => '开源版',
+    'name' => 'RamCMS',
+    'copyright' => 'RamCMS',
+    'url' => '//github.com/brevis-ng/ramcms',
+    'code' => '2023.1000.3052.1',
+    'license' => 'MIT',
 );
 ?>
