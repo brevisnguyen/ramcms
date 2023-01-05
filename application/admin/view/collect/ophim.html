@@ -2,6 +2,15 @@
 <div class="page-container p10">
     <div class="layui-form layui-form-pane">
         <div class="layui-form-item">
+            <label class="layui-form-label">BỎ QUA</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="filter_type[]" value="single" title="Phim Lẻ" lay-skin="primary">
+                <input type="checkbox" name="filter_type[]" value="series" title="Phim Bộ" lay-skin="primary">
+                <input type="checkbox" name="filter_type[]" value="hoathinh" title="Hoạt Hình" lay-skin="primary">
+                <input type="checkbox" name="filter_type[]" value="tvshows" title="TV Shows" lay-skin="primary">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">PAGE FROM</label>
             <div class="layui-input-inline w300">
                 <input name="page_from" type="number" class="layui-input">
@@ -71,6 +80,8 @@
         const textAreaResultSuccess = $("textarea#list_crawl_success");
         const textAreaResultError = $("textarea#list_crawl_error");
         const inputLink = $("input[name=link_detail]");
+
+        var inputFilterType = [];
 
         buttonRollMovies.on("click", () => {
             var listLink = textArealistMovies.val();
@@ -151,6 +162,10 @@
             divMsg.show(300);
             divMsgCrawlSuccess.show(300);
             divMsgCrawlError.show(300);
+
+            $("input[name='filter_type[]']:checked").each(function () {
+                inputFilterType.push($(this).val());
+            });
             crawl_movies(false);
         });
         const crawl_movies = () => {
@@ -170,6 +185,7 @@
                 type: "POST",
                 data: {
                     url: linkCurrent,
+                    filterType: inputFilterType.join(","),
                 },
                 beforeSend: function () {
                     buttonCrawlMovies.hide(300);
@@ -180,8 +196,8 @@
                     console.log(data);
                     if (data.status) {
                         let currentList = textAreaResultSuccess.val();
-                        if (currentList != "") currentList += "\n" + linkCurrent;
-                        else currentList += linkCurrent;
+                        if (currentList != "") currentList += "\n" + linkCurrent + '====>' + data.msg;
+                        else currentList += linkCurrent + '====>' + data.msg;
                         textAreaResultSuccess.val(currentList);
                     } else {
                         let currentList = textAreaResultError.val();

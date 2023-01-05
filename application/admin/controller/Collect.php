@@ -552,8 +552,8 @@ class Collect extends Base
     public function crawl_ophim_movies()
     {
         try {
-            
             $data_post = input('url');
+            $filterType = input('filterType');
             $url = explode('|', $data_post)[0];
             $ophim_id = explode('|', $data_post)[1];
             $ophim_update_time 	= explode('|', $data_post)[2];
@@ -567,17 +567,11 @@ class Collect extends Base
             $html = mac_filter_tags($html);
             $sourcePage = json_decode($html, true);
 
-            // $data = $this->create_data($sourcePage, $url, $ophim_id, $ophim_update_time);
+            if ($filterType) {
+                $filterType = explode(",", $filterType);
+            }
 
-            // if ( strpos($data['vod_class'], 'Phim 18+') !== false ) {
-            //     $result = array(
-            //         'status' => true,
-            //         'post_id' => '',
-            //     );
-            //     return json_encode($result);
-            // }
-
-            $result = $this->add_movie($title, $year, $ophim_id, $sourcePage);
+            $result = $this->add_movie($title, $year, $ophim_id, $sourcePage, $filterType);
             return $result;
 
         } catch (Exception $e) {
@@ -589,9 +583,15 @@ class Collect extends Base
         }
     }
 
-    protected function add_movie($title, $year, $ophim_id, $sourcePage)
+    protected function add_movie($title, $year, $ophim_id, $sourcePage, $filterType = [])
     {
         try {
+            if (in_array($sourcePage["movie"]["type"], $filterType)) {
+                return json_encode(array(
+                    'status' => true,
+                    'msg' => "Bỏ qua",
+                ));
+            }
             // Check cập nhật
             $where = [];
             $where['vod_name'] = mac_filter_xss($title);
@@ -604,16 +604,6 @@ class Collect extends Base
             $vod_id = "";
 
             if ( !$info ) {
-                // foreach ($sourcePage["movie"]["category"] as $key => $value) {
-                //     if ( strpos($value["name"], 'Phim 18+') !== false ) {
-                //         $result = array(
-                //             'status' => true,
-                //             'post_id' => '',
-                //         );
-                //         return json_encode($result);
-                //     }
-                // }
-
                 $data = $this->create_data($sourcePage, $ophim_id, 'i');
 
                 $vod_id = model('Vod')->insert($data, false, true);
@@ -624,17 +614,7 @@ class Collect extends Base
                     $des = 'Vod insert failed';
                 }
 
-            } else {                
-                foreach ($sourcePage["movie"]["category"] as $key => $value) {
-                    if ( strpos($value["name"], 'Phim 18+') !== false ) {
-                        $result = array(
-                            'status' => true,
-                            'post_id' => '',
-                        );
-                        return json_encode($result);
-                    }
-                }
-
+            } else {
                 $data = $this->create_data($sourcePage, $ophim_id, 'u');
                 
                 $vod_id = $info['vod_id'];
@@ -647,6 +627,7 @@ class Collect extends Base
 
             $result = array(
                 'status' => true,
+                'msg' => 'Done',
                 'post_id' => $vod_id,
             );
             return json_encode($result);
@@ -705,8 +686,8 @@ class Collect extends Base
         if($sourcePage["movie"]["name"] != $sourcePage["movie"]["origin_name"]) array_push($arrTags, $sourcePage["movie"]["origin_name"]);
 
         if($flag == 'i') {
-            $vod_pic = $this->upload_image($sourcePage["movie"]["thumb_url"], $sourcePage["movie"]["name"], $sourcePage["movie"]["year"], 'thumb');
-            $vod_pic_slide = $this->upload_image($sourcePage["movie"]["poster_url"], $sourcePage["movie"]["name"], $sourcePage["movie"]["year"], 'slide');
+            $vod_pic = $this->syncImages(1, $sourcePage["movie"]["thumb_url"])['pic'];
+            $vod_pic_slide = $this->syncImages(1, $sourcePage["movie"]["poster_url"])['pic'];
         }
     
         $data = array(
@@ -776,6 +757,16 @@ class Collect extends Base
         file_put_contents($_save_path.$_save_name, file_get_contents($url));
 
         return $_save_path.$_save_name;
+    }
+
+    protected function syncImages($pic_status, $pic_url, $flag = 'vod')
+    {
+        $img_url_downloaded = $pic_url;
+        if ($pic_status == 1) {
+            $config = (array)config('maccms.upload');
+            $img_url_downloaded = model('Image')->down_load($pic_url, $config, $flag);
+        }
+        return ['pic' => $img_url_downloaded];
     }
 
     protected function play_list($episodes)
