@@ -24,13 +24,15 @@
         var video_type = '';
         if( parent.MacPlayer.PlayUrl.indexOf('.m3u8') >- 1 ){
             video_type = 'hls';
+        } else if (parent.MacPlayer.PlayUrl.indexOf('.mp4') >- 1) {
+            video_type = 'mp4';
         } else {
             video_type = 'embed';
         }
 
         var art = new Artplayer({
             container: '.artplayer-app',
-            url: video_type == 'hls' ? parent.MacPlayer.PlayUrl : '/static/player/artplayer/1s_blank.mp4',
+            url: (video_type == 'hls' || video_type == 'mp4') ? parent.MacPlayer.PlayUrl : '/static/player/artplayer/1s_blank.mp4',
             title: parent.player_aaaa.vod_data.vod_name,
             poster: parent.player_aaaa.vod_data.vod_poster != "" ? parent.player_aaaa.vod_data.vod_poster : parent.player_aaaa.vod_data.vod_pic,
             pip: true,
