@@ -4,7 +4,7 @@
   <meta name="description" content="{$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url('index/index')}" />
   <meta itemprop="name" property="og:title" content="{$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$maccms.site_description}" />
 {elseif$maccms.aid==2}
   <title>Cập nhật mới nhất - {$maccms.site_name}</title>
@@ -12,7 +12,7 @@
   <meta name="description" content="{$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url('map/index')}" />
   <meta itemprop="name" property="og:title" content="Cập nhật mới nhất - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$maccms.site_description}" />
 {elseif$maccms.aid==4}
   <title>Bảng tin - {$maccms.site_name}</title>
@@ -20,7 +20,7 @@
   <meta name="description" content="{$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url('gbook/index')}" />
   <meta itemprop="name" property="og:title" content="Bảng tin - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$maccms.site_description}" />
 {elseif$maccms.aid==6}
   <title>Profile - {$maccms.site_name}</title>
@@ -28,7 +28,7 @@
   <meta name="description" content="{$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url('user/index')}" />
   <meta itemprop="name" property="og:title" content="Profile - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$maccms.site_description}" />
 {elseif$maccms.aid==10}
   <title>{$maccms.site_name}</title>
@@ -36,7 +36,7 @@
   <meta name="description" content="{$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url('vod/index')}" />
   <meta itemprop="name" property="og:title" content="{$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$maccms.site_description}" />
 {elseif$maccms.aid==11}
   <title>{$obj.type_title|mac_default=$obj.type_name} - {$maccms.site_name}</title>
@@ -44,7 +44,7 @@
   <meta name="description" content="{$obj.type_des|mac_default=$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url_type($obj)}" />
   <meta itemprop="name" property="og:title" content="{$obj.type_title|mac_default=$obj.type_name} - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$obj.type_des|mac_default=$maccms.site_description}" />
 {elseif$maccms.aid==12}
   <title>{$param.year}{$param.area}{$obj.type_name}{$param.lang} - {$maccms.site_name}</title>
@@ -52,7 +52,7 @@
   <meta name="description" content="{$obj.type_des|mac_default=$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url_type($obj,['area'=>$param.area,'lang'=>$param.lang,'year'=>$param.year],'show')}" />
   <meta itemprop="name" property="og:title" content="{$param.year}{$param.area}{$obj.type_name}{$param.lang} - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$obj.type_des|mac_default=$maccms.site_description}" />
 {elseif$maccms.aid==13}
   <title>Kết quả tìm kiếm cho {$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang} - {$maccms.site_name}</title>
@@ -60,7 +60,7 @@
   <meta name="description" content="{$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url('vod/search',['wd'=>$param.wd])}" />
   <meta itemprop="name" property="og:title" content="Kết quả tìm kiếm cho {$param.wd}{$param.actor}{$param.director}{$param.area}{$param.lang}{$param.year} - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$maccms.site_description}" />
 {elseif$maccms.aid==14}
   <title>{$obj.vod_name|mac_default='404'} - {$obj.vod_en|mac_default='404'} - {$obj.type.type_name}{$obj.type_1.type_name} - {$maccms.seo.vod.name}</title>
@@ -69,7 +69,7 @@
   <meta itemprop="url" property="og:url" content="{:mac_url_vod_detail($obj)}" />
   <meta itemprop="name" property="og:title" content="{$obj.vod_name}_{$obj.type.type_name}{$obj.type_1.type_name} - {$maccms.site_name}" />
   <meta itemprop="type" property="og:type" content="videolist" />
-  <meta itemprop="image" property="og:image" content="{$obj.vod_pic|mac_url_img}" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}{$obj.vod_pic|mac_url_img}" />
   <meta itemprop="class" property="og:video:class" content="{$obj.type.type_name}" />
   <meta itemprop="actor" property="og:video:actor" content="{$obj.vod_actor}" />
   <meta itemprop="uploadDate" property="og:video:date" content="{$obj.vod_time|date='Y-m-d',###}" />
@@ -82,7 +82,7 @@
   <meta itemprop="url" property="og:url" content="{:mac_url_vod_detail($obj)}" />
   <meta itemprop="name" property="og:title" content="Đang xem phim {$obj.vod_name}{$obj['vod_play_list'][$param['sid']]['urls'][$param['nid']]['name']} | {$obj['vod_play_list'][$param['sid']]['player_info']['show']}_{$obj.type.type_name}{$obj.type_1.type_name} - {$maccms.site_name}" />
   <meta itemprop="type" property="og:type" content="video" />
-  <meta itemprop="image" property="og:image" content="{$obj.vod_pic|mac_url_img}" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}{$obj.vod_pic|mac_url_img}" />
   <meta itemprop="class" property="og:video:class" content="{$obj.type.type_name}" />
   <meta itemprop="actor" property="og:video:actor" content="{$obj.vod_actor}" />
   <meta itemprop="uploadDate" property="og:video:date" content="{$obj.vod_time|date='Y-m-d',###}" />
@@ -95,7 +95,7 @@
   <meta itemprop="url" property="og:url" content="{:mac_url_vod_detail($obj)}" />
   <meta itemprop="name" property="og:title" content="{$obj.vod_name}_{$obj['vod_down_list'][$param['sid']]['player_info']['show']}_{$obj.type.type_name}{$obj.type_1.type_name} - {$maccms.site_name}" />
   <meta itemprop="type" property="og:type" content="download" />
-  <meta itemprop="image" property="og:image" content="{$obj.vod_pic|mac_url_img}" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}{$obj.vod_pic|mac_url_img}" />
   <meta itemprop="class" property="og:video:class" content="{$obj.type.type_name}" />
   <meta itemprop="actor" property="og:video:actor" content="{$obj.vod_actor}" />
   <meta itemprop="uploadDate" property="og:video:date" content="{$obj.vod_time|date='Y-m-d',###}" />
@@ -107,7 +107,7 @@
   <meta name="description" content="{$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url('art/index')}" />
   <meta itemprop="name" property="og:title" content="Blog - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$maccms.site_description}" />
 {elseif$maccms.aid==21}
   <title>{$obj.type_title|mac_default=$obj.type_name} - {$maccms.site_name}</title>
@@ -115,7 +115,7 @@
   <meta name="description" content="{$obj.type_des|mac_default=$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url_type($obj)}" />
   <meta itemprop="name" property="og:title" content="{$obj.type_name} - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$obj.type_des|mac_default=$maccms.site_description}" />
 {elseif$maccms.aid==24}
   <title>{$obj.art_name|mac_default='404'}_{$obj.type.type_name} - {$maccms.site_name}</title>
@@ -124,7 +124,7 @@
   <meta itemprop="url" property="og:url" content="{:mac_url_art_detail($obj)}" />
   <meta itemprop="name" property="og:title" content="{$obj.art_name}_{$obj.type.type_name} - {$maccms.site_name}" />
   <meta itemprop="type" property="og:type" content="article" />
-  <meta itemprop="image" property="og:image" content="{$obj.art_pic|mac_url_img}" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}{$obj.art_pic|mac_url_img}" />
   <meta itemprop="releaseDate" property="og:release_date" content="{$obj.art_time|date='Y-m-d',###}"/>
   <meta itemprop="description" property="og:description" content="{$obj.art_content|mac_filter_html|mac_substring=110}" />
 {elseif$maccms.aid==30}
@@ -141,7 +141,7 @@
   <meta name="description" content="{$obj.topic_des|mac_default=$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url_topic_detail($obj)}" />
   <meta itemprop="name" property="og:title" content="Topic {$obj.topic_name} - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$obj.topic_des|mac_default=$maccms.site_description}" />
 {elseif$maccms.aid==80}
   <title>Tin tức Sao - {$maccms.site_name}</title>
@@ -149,7 +149,7 @@
   <meta name="description" content="{$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url_topic_index()}" />
   <meta itemprop="name" property="og:title" content="明星首页 - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$maccms.path}macplus/img/logo.png" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}/{$maccms.site_logo}" />
   <meta itemprop="description" property="og:description" content="{$maccms.site_description}" />
 {elseif$maccms.aid==84}
   <title>Diễn viên {$obj.actor_name} - {$maccms.site_name}</title>
@@ -157,6 +157,6 @@
   <meta name="description" content="{$obj.actor_blurb|mac_default=$maccms.site_description}" />
   <meta itemprop="url" property="og:url" content="{:mac_url_actor_detail($obj)}" />
   <meta itemprop="name" property="og:title" content="Diễn viên {$obj.actor_name} - {$maccms.site_name}" />
-  <meta itemprop="image" property="og:image" content="{$obj.actor_pic|mac_url_img}" />
+  <meta itemprop="image" property="og:image" content="{$maccms.site_url}{$obj.actor_pic|mac_url_img}" />
   <meta itemprop="description" property="og:description" content="{$obj.actor_blurb|mac_default=$maccms.site_description}" />
 {/if}
