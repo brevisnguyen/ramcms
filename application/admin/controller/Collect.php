@@ -869,6 +869,9 @@ class Collect extends Base
                                     array_push($synonyms, $n);
                                 }
                                 break;
+                            case 'Type:':
+                                $data['vod_lang'] = trim($node->nextSibling->nextSibling->textContent);
+                                break;
                             case 'Episodes:':
                                 $data['vod_remarks'] = trim($node->nextSibling->textContent);
                                 break;
