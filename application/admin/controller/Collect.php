@@ -577,7 +577,7 @@ class Collect extends Base
                 'vod_letter' => strtoupper(substr($videos->videocode,0,1)),
                 'vod_tag' => mac_substring(join(',', [$videos->videocode, $videos->contentid, $videos->year, $videos->plays, $director, join(',', $categories), $videos->title_jp]), 255),
                 'vod_class' => join(',', $categories),
-                'vod_actor' => $cast != null ? ($cast->name ?? '') : '',
+                'vod_actor' => mac_substring($cast != null ? ($cast->name ?? '') : '', 255),
                 // 'vod_pic' => $this->upload_image($videos->thumbnail, $videos->contentid, $videos->year, 'thumbnail'),
                 // 'vod_pic_slide' => $this->upload_image($videos->thumbnail, $videos->contentid, $videos->year, 'coverimage'),
                 'vod_pic_screenshot' => preg_replace('/\s/', ',', $videos->moreimages),
