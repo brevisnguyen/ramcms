@@ -11,7 +11,7 @@
 	<div class="player_infotip"><i class="iconfont">&#xe62d;</i>&nbsp;Đang sử dụng {$vo.player_info.show}&nbsp;-&nbsp;{$vo.player_info.des}</div>
 	<div id="playlistbox" class="playlist_notfull">
 		<ul class="content_playlist list_scroll clearfix">
-			{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+			{maccms:foreach name=":array_reverse($vo.urls)" id="vo2" key="key2"}
 			{if $key2 elt 30}
 			<li><a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}</a></li>
 			{/if}
@@ -21,7 +21,7 @@
 	</div>
 	<div class="playlist_full">
 		<ul class="content_playlist clearfix">
-			{maccms:foreach name="vo.urls" id="vo2" key="key2"}
+			{maccms:foreach name=":array_reverse($vo.urls)" id="vo2" key="key2"}
 			<li {if $vo.url_count eq 1}style="min-width: fit-content;"{/if}><a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}</a></li>
 			{/maccms:foreach}
 		</ul>

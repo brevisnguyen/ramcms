@@ -22,9 +22,9 @@
         <div class="wrapper_fl" id="hl0{$key + 1}">
             <div class="scroller">
                 <ul class="content_playlist clearfix">
-                    {maccms:foreach name="vo.urls" id="vo2" key="key2"}
+                    {maccms:foreach name=":array_reverse($vo.urls)" id="vo2" key="key2"}
                     {if $key2 elt 30}
-                    <li {if $key2 eq $param.nid && $vo.player_info.from eq $obj['vod_play_list'][$param['sid']]['player_info']['from']} class="active conch-0{$key +1}" {/if}>
+                    <li {if condition="$param.sid eq $vo.sid && $param.nid eq $vo2.nid"} class="active conch-0{$key +1}" {/if}>
                         <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}</a>
                     </li>
                     {/if}
@@ -36,8 +36,8 @@
     </div>
     <div class="playlist_full" style="display:none;">
         <ul class="content_playlist clearfix">
-            {maccms:foreach name="vo.urls" id="vo2" key="key2"}
-            <li {if $key2 eq $param.nid && $vo.player_info.from eq $obj['vod_play_list'][$param['sid']]['player_info']['from']} class="active conch-0{$key +1}" {/if}>
+            {maccms:foreach name=":array_reverse($vo.urls)" id="vo2" key="key2"}
+            <li {if condition="$param.sid eq $vo.sid && $param.nid eq $vo2.nid"} class="active conch-0{$key +1}" {/if}>
                 <a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}</a>
             </li>
             {/maccms:foreach}
